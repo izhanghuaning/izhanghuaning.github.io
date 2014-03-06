@@ -1,0 +1,253 @@
+
+<!DOCTYPE html>
+<!--[if IE 7 ]>    <html lang="zh-CN" class="ie7"> <![endif]-->
+<!--[if IE 8 ]>    <html lang="zh-CN" class="ie8"> <![endif]-->
+<!--[if (gte IE 9)|!(IE)]><!--> <html lang="zh-CN"> <!--<![endif]-->
+  <head>
+	  <meta charset="utf-8">
+	  <!--[if IE 8 ]><meta http-equiv="X-UA-Compatible" content="IE=7"><![endif]-->
+	  <title>BW编程之javascript概述篇(一)</title>
+	<meta name="keywords" content="javascript,js">
+    <meta name="description" content="Learning javascript">
+    <meta name="author" content="张华宁">
+
+    <!-- Enable responsive viewport -->
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+	<!-- Favicon -->
+	<link rel="shortcut icon" href="/favicon.ico">
+
+    <!-- atom & rss feed -->
+    <link href="/atom.xml" type="application/atom+xml" rel="alternate" title="Sitewide ATOM Feed">
+    <link href="/rss.xml" type="application/rss+xml" rel="alternate" title="Sitewide RSS Feed">
+
+	<!-- Styles 
+	<link rel="stylesheet" href="/assets/themes/twitter/css/style.min.css">
+	<link rel="stylesheet" href="/assets/themes/twitter/css/font-awesome.min.css">
+	-->
+	<!-- le Styles -->
+	<link rel="stylesheet" href="/assets/themes/twitter/bootstrap/css/bootstrap.2.2.2.min.css">
+	<link rel="stylesheet" href="/assets/themes/twitter/css/style.css?body=1">
+
+	<!-- Scripts -->
+	<script type="text/javascript" src="/assets/themes/twitter/js/jquery-1.10.1.min.js"></script>
+
+    <!-- Le HTML5 shim, for IE6-8 support of HTML elements -->
+    <!--[if lt IE 9]>
+	<script src="/assets/themes/twitter/js/html5shiv.js"></script>
+    <![endif]-->
+
+  </head>
+
+  <body>
+    <div class="navbar">
+      <div class="navbar-inner">
+        <div class="container-narrow">
+          <a class="brand" href="/">张华宁的笔记本</a>
+          <ul class="nav">
+            
+            
+            
+
+
+  
+    
+      
+      	
+      	<li><a href="/tags.html">Tags</a></li>
+      	
+      
+    
+  
+    
+      
+    
+  
+    
+      
+    
+  
+    
+      
+    
+  
+    
+      
+    
+  
+    
+      
+      	
+      	<li><a href="/categories.html">Categories</a></li>
+      	
+      
+    
+  
+    
+      
+      	
+      	<li><a href="/pages.html">Pages</a></li>
+      	
+      
+    
+  
+    
+      
+      	
+      	<li><a href="/archive.html">Archive</a></li>
+      	
+      
+    
+  
+
+
+
+          </ul>
+        </div>
+      </div>
+    </div>
+
+    <div class="container-narrow">
+
+      <div class="content">
+        
+<div class="page-header">
+  <h1>BW编程之javascript概述篇(一) </h1>
+</div>
+
+<div class="row-fluid post-full">
+  <div class="span12">
+    <div class="date">
+      <span>01 May 2011</span>
+    </div>
+    <div class="content">
+      <h4 id="white">White：我是一个编程菜鸟，我想学习点关于编程的知识，从什么语言入手比较好？</h4>
+
+<p><em>Black:</em> 俗话说“信心要比黄金更可贵”。学习一种编程语言最终要的是它能让你喜欢它，并且有信心能掌握它，使用它。怎么样提高信心呢？首先是入手快，其次所见即所得。这样才能不停的取得成就感和满足感，提升更大的信心。</p>
+
+<p><em>入手快：</em> JavaScript只要有浏览器（IE8以上、Chrome、FireFox等）就可以学习，不需要安装任何IDE。javascript语法简单，是弱类型语言，不需要记住很多语法知识，上手速度快。</p>
+
+<p><em>所见即所得：</em> javascript是解释性语言，不需要经过编译即可直接运行。代码可以执行在console执行看到结果。对Dom（文档对象模型，简单来说就是网页）的操作也是即时呈现。</p>
+<hr />
+<h4 id="whitejavascript">White：为什么要学习javascript,它的使用场景广泛么?</h4>
+
+<p><em>Black:</em> javascript可以说是世界上使用最多的编程语言，每个网页几乎都在使用它。随着互联网的发展，大量的网站已经由静态web网页发展到了web应用，web应用需要处理大量的用户交互，这就离不开javascript的支持。</p>
+<hr />
+<h4 id="whitejavascript_2">White:简单介绍一下javascript吧</h4>
+
+<p><em>Black:</em> 好的，javascript其实主要包含几个部分：javascript语言核心(ECMAScript),客户端javascript（宿主浏览器），服务端javascript（node.js)。我们j接下来只关心前面2个部分，因为node.js我也没多少使用经验。</p>
+
+<p>简单来说javascript就是一种高端的、动态的、弱类型的编程语言，非常适合面向对象和函数式的编程风格。javascript的语法来自java，它的一等函数来自语scheme(一种lisp方言)，基于原型的继承来自self。我们不需要了解上面的java、scheme、self语言，因为我也不知道。</p>
+
+<p><strong>特别声明:javascript和java没有任何关系，除了名字和语法有点相似，买书的时候千万不要买java的书来学习javascript。</strong></p>
+<hr />
+<h4 id="whitejavascript_3">White:既然谈到javascript书籍，有哪写书值得购买呢？</h4>
+
+<p><em>Black:</em> 好的，推荐这些书籍主要是为了你能够用最少的精力和金钱得到更多的知识和技能，没有任何广告和商业成分，并且这些书都是我购买并且仔细阅读过的。</p>
+
+<p>基础级：JavaScript权威指南、JavaScript高级程序设计</p>
+
+<p>进阶级：JavaScript语言精粹、基于MVC的Javacript Web富应用开发、Javacript模式、编写可维护的JavaScript（这本暂时没看完）</p>
+
+<p>上面几本书看完基本对于javascript也有了一定认识了，完全可以自己去探索更多javascript的美丽世界了。好书可以多读几遍，可以有更多的收获。</p>
+<hr />
+<h4 id="whitejavascript_4">White:你为什么会写这些博客，并且javascript系列会涉及到哪些内容呢？</h4>
+
+<p><em>Black:</em>这些年看过很多书，也看过很多其他人的博客，加深了对很多知识和技术的掌握。很多时候在看书或者看博客的时候有一些感悟，但是过一点时间不去深入研究就忘记了，所以希望能够有个笔记本来记录自己在学习技术过程中的点点滴滴。最好也能够对其他偶尔来到这里的人有所帮助，共享、免费，提倡自由、平等是每个程序员的追求。</p>
+
+<p>至于javascript的内容是基于上面那些书籍和一些博客的内容加上自己的一些理解，基本算是想到哪里说到哪里，可能会比较杂，但是还是尽量按照从基础到进阶的过程来组织。</p>
+    </div>
+
+  
+    <ul class="tag_box inline">
+      <li><i class="icon-folder-open"></i></li>
+      
+      
+
+
+  
+     
+    	<li><a href="/categories.html#books-ref">
+    		books <span>2</span>
+    	</a></li>
+    
+  
+
+
+    </ul>
+    
+
+  
+    <ul class="tag_box inline">
+      <li><i class="icon-tags"></i></li>
+      
+      
+
+
+  
+     
+    	<li><a href="/tags.html#javascript-ref">javascript <span>2</span></a></li>
+     
+    	<li><a href="/tags.html#web-ref">web <span>2</span></a></li>
+    
+  
+
+
+
+    </ul>
+    
+
+    <hr>
+    <div class="pagination">
+      <ul>
+      
+        <li class="prev disabled"><a>&larr; Previous</a></li>
+      
+        <li><a href="/archive.html">Archive</a></li>
+      
+        <li class="next"><a href="/books/2011/05/05/jsdg-chap2-types-values-variables.html" title="JSDG Chap2 types values variables">Next &rarr;</a></li>
+      
+      </ul>
+    </div>
+    <hr>
+    
+
+
+  <div id="disqus_thread"></div>
+<script type="text/javascript">
+    var disqus_developer = 1;
+    var disqus_shortname = 'izhanghuaning'; // required: replace example with your forum shortname
+    
+    /* * * DON'T EDIT BELOW THIS LINE * * */
+    (function() {
+        var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+        dsq.src = 'http://' + disqus_shortname + '.disqus.com/embed.js';
+        (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    })();
+</script>
+<noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+<a href="http://disqus.com" class="dsq-brlink">blog comments powered by <span class="logo-disqus">Disqus</span></a>
+
+
+
+
+  </div>
+</div>
+
+
+      </div>
+	  <hr>
+      <footer>
+        <p>&copy;2011-2014 张华宁
+          基于 <a href="http://jekyllbootstrap.com" target="_blank" title="The Definitive Jekyll Blogging Framework">Jekyll Bootstrap</a>
+          和 <a href="http://twitter.github.com/bootstrap/" target="_blank">Twitter Bootstrap</a> 搭建,
+		  <em><strong>本博客的很多想法来自于其他优秀博客作者，时隔久远不能给出每个链接了，如果原作者觉得被冒犯，请留言或联系我（izhanghuaning$163.com），我会及时进行处理，衷心感谢你们，本博客内容和源代码遵循<a href="http://opensource.org/licenses/mit-license.php" target="_blank">MIT开源协议</a>,转载请注明出处，谢谢。</strong></em>
+        </p>
+      </footer>
+
+    </div>
+
+    
+  </body>
+</html>
+
