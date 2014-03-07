@@ -5,14 +5,92 @@
         <description>张华宁的笔记本 - 张华宁</description>
         <link>http://izhanghuaning.github.io</link>
         <link>http://izhanghuaning.github.io</link>
-        <lastBuildDate>2014-03-06T11:16:56+08:00</lastBuildDate>
-        <pubDate>2014-03-06T11:16:56+08:00</pubDate>
+        <lastBuildDate>2014-03-07T16:36:59+08:00</lastBuildDate>
+        <pubDate>2014-03-07T16:36:59+08:00</pubDate>
         <ttl>1800</ttl>
 
 
         <item>
-                <title>BW编程之javascript变量类型篇(二)</title>
-                <description></description>
+                <title>BW编程之javascript类型篇(二)</title>
+                <description>&lt;h4 id=&quot;white&quot;&gt;White:类型、值、变量分别指什么，它们之间有什么联系和区别？&lt;/h4&gt;
+
+&lt;p&gt;&lt;em&gt;Black:&lt;/em&gt;计算机程序的运行需要对“值value”进行操作。在编程语言中，能够表示并操作的值的类型称作”数据类型type“，编程语言最基本的特性是支持多种数据类型，比如字符串、数字、布尔值、数组等等。当程序需要将一个值反复使用，就需要将其保存在一个”变量variable“中。简单来说 &lt;code&gt;var name = &amp;quot;zhn&amp;quot; &lt;/code&gt;中var是类型，”zhn“是值，name是变量。&lt;/p&gt;
+&lt;hr /&gt;
+&lt;h4 id=&quot;whitejavascript&quot;&gt;White:javascript是弱类型语言，这个怎么理解？&lt;/h4&gt;
+
+&lt;p&gt;&lt;em&gt;Black:&lt;/em&gt;强/弱类型是指类型检查的严格程度的。语言有无类型，弱类型和强类型三种。无类型的不检查，甚至不区分指令和数据。弱类型的检查很弱，仅能严格的区分指令和数据。强类型的则严格的在编译期进行检查。&lt;/p&gt;
+
+&lt;p&gt;像java、c#等强类型语言而言，变量和值都有自己的类型，在编译阶段就可检查类型匹配。比如&lt;code&gt;String name&lt;/code&gt;，变量name的类型是String，这是静态类型，也就是name只能被赋值字符串&lt;code&gt;name=&amp;quot;zhn&amp;quot;&lt;/code&gt;，而不能被赋值数字&lt;code&gt;name=30&lt;/code&gt;，否则编译就会报错。你也可以声明&lt;code&gt;object age&lt;/code&gt;，这样可以&lt;code&gt;age = 30, age = &amp;quot;zhn&amp;quot;&lt;/code&gt;，这样可以近似实现弱类型，不过这样会需要在运行时频繁的类型转换，不能发挥强类型的优点了。&lt;/p&gt;
+
+&lt;p&gt;而javascript中的变量都用var来声明，比如&lt;code&gt;var name&lt;/code&gt;本身不指定具体类型，name可以被赋任何类型值，&lt;code&gt;name=&amp;quot;zhn&amp;quot;， name=3， name=new Date()， name=[1,2,3]&lt;/code&gt;等等都是可以的，所以说js是弱类型语言，就是变量无类型，值有类型。&lt;/p&gt;
+&lt;hr /&gt;
+&lt;h4 id=&quot;whitejavascript_2&quot;&gt;White:javascript的值有哪些类型？&lt;/h4&gt;
+
+&lt;p&gt;&lt;em&gt;Black:&lt;/em&gt;js中的值分为原始类型和对象类型两大类，原始类型只有5种，分别是：字符串、数字、布尔值、null、undefined。&lt;/p&gt;
+
+&lt;p&gt;除了原始类型其他的都是对象类型，常见的有数组Array、正则RegExp、日期Date、错误Error、普通对象Object、函数Function等。&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;&lt;em&gt;注意：原始类型都是不可变类型。对象类型都是可变类型。&lt;/em&gt;&lt;/strong&gt;&lt;/p&gt;
+&lt;hr /&gt;
+&lt;h4 id=&quot;whitejavascript_3&quot;&gt;White:详细介绍一下javascript原始类型？&lt;/h4&gt;
+
+&lt;p&gt;&lt;em&gt;Black:&lt;/em&gt;原始类型都是不可变类型。不能修改原始值本身，包括特别是字符串也不能修改。例如：&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;	1 var name = &amp;quot;zhn&amp;quot;; //=&amp;gt; zhn
+	2 var zhn = &amp;quot;zhn&amp;quot;;  //=&amp;gt; zhn
+	3 name = name.toUpperCase(); //=&amp;gt; ZHN
+	4 zhn //=&amp;gt; zhn&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;上面的行1,2中”zhn”是完全不相关的内存中的两个区域的值，行3中的toUpperCase没有改变行1中的”zhn”，而是生成了一个新的”ZHN”来进行替代，原来行1的”zhn”没有任何变量去关联它，它会被js的垃圾回收机制进行回收。而2中的”zhn”不受任何影响。&lt;/p&gt;
+
+&lt;p&gt;原始类型中的字符串、数字、布尔值都可以被包装成相应的对象String、Number、Boolean。被包装成对象后具有相应的一些方法,比如string的sub、split、toUpperCase等方法。在包装对象的过程中有”临时对象”的概念需要注意，例如：&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;	1 var name = &amp;quot;zhn&amp;quot;;
+	2 name.toUpperCase(); //=&amp;gt; ZHN，注意这里没有进行赋值，包装的是一个临时对象obj,然后调用了obj.toUpperCase()方法。
+	3 name //=&amp;gt; zhn ，注意name依然是&amp;quot;zhn&amp;quot;，没有任何改变，行2中的临时对象obj已经被抛弃了。&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;原始类型中的null和undefined都代表“空”的意思,它们都是唯一值,不可被包装成对象，也就是它们没有任何方法，调用它们的任何方法都会报错。null和undefined一般来说其区别是：null代表定义了变量但未赋值的空，引用类型的变量赋空值一般也用null，&lt;code&gt;typeof null //=&amp;gt; object&lt;/code&gt;。undefined代表未定义的空，就是不存在这个变量&lt;code&gt;typeof undefined //=&amp;gt; undefined&lt;/code&gt;。&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;&lt;em&gt;null是关键字，undefined不是关键字，是一个全局变量。你或许可以认为undefined是表示系统级的，出乎意料或者类似错误的值的空缺。而null是程序级的，正常的或意料之中的值的空缺。如果需要将其赋给变量或属性或参数，最佳选择是使用null。&lt;/em&gt;&lt;/strong&gt;&lt;/p&gt;
+&lt;hr /&gt;
+&lt;h4 id=&quot;whitejavascript_4&quot;&gt;White:javascript的原始类型使用中有哪些需要注意的？&lt;/h4&gt;
+
+&lt;p&gt;&lt;em&gt;Black:&lt;/em&gt; 关于数字，js预定义了全局变量Infinity和NaN表示正无穷大和非数字，其中NaN和任何值都不相等，包括自身。判断Nan需要使用x != NaN进行判断。还有浮点数运算是有误差，整数没有。&lt;/p&gt;
+
+&lt;p&gt;关于布尔值，假值只有false、“”、0、-0、null、NaN、undefined，其余都是真值，真值也就是在if语句判断中为真，假值判断为假。&lt;/p&gt;
+&lt;hr /&gt;
+&lt;h4 id=&quot;whitejavascript_5&quot;&gt;White:详细介绍一下javascript的对象类型？&lt;/h4&gt;
+
+&lt;p&gt;&lt;em&gt;Black:&lt;/em&gt;对象类型都是可变的引用类型，它们的值是可修改的。&lt;/p&gt;
+
+&lt;p&gt;所有js的对象类型都可以看作统一看作哈希值（hash或者字典），由键、值对构成。例如：&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;	var zhn = { name:&amp;quot;zhanghuaning&amp;quot;, 
+				age:30,
+				say: function() {return &amp;quot;Hello world&amp;quot;}
+			  };
+	var names = [&amp;quot;zhn&amp;quot;, &amp;quot;black&amp;quot;, &amp;quot;white&amp;quot;];
+	var sayHi = function(name) {return &amp;quot;Hi&amp;quot; + name;};
+	zhn[&amp;quot;name&amp;quot;] //=&amp;gt; zhanghuaning
+	names[0] //=&amp;gt; zhn ,数组只是键为正整数并且会自动维护length的对象。
+	sayHi[&amp;quot;length&amp;quot;] //=&amp;gt;1,相当语sayHi.length取得函数的声明参数个数，function也是对象，length是它的属性。&lt;/code&gt;&lt;/pre&gt;
+&lt;hr /&gt;
+&lt;h4 id=&quot;white_2&quot;&gt;White:介绍一下类型转换的相关内容？&lt;/h4&gt;
+
+&lt;p&gt;&lt;em&gt;Black:&lt;/em&gt; 比较罗嗦，上一张图片慢慢看吧。介绍一点小技巧或注意的吧，遇到这些情况能认识就好。&lt;/p&gt;
+
+&lt;p&gt;注意事项：==和===的区别在于前者会进行类型转换后比较&lt;code&gt;2 == &amp;quot;2&amp;quot; //=&amp;gt; true&lt;/code&gt;，后者不进行类型转换比较&lt;code&gt;2 === &amp;quot;2&amp;quot; //=&amp;gt;false&lt;/code&gt;。&lt;/p&gt;
+
+&lt;p&gt;+优先考虑字符串&lt;code&gt;1 + &amp;quot;x&amp;quot; //=&amp;gt;&amp;quot;1x&amp;quot;&lt;/code&gt;,其他操作考虑数字&lt;code&gt;&amp;quot;2&amp;quot; * &amp;quot;3&amp;quot; //=&amp;gt;6 ,“1” - “x” //=&amp;gt;NaN&lt;/code&gt;&lt;/p&gt;
+
+&lt;p&gt;小技巧： x + ”” 转换成字符串&lt;/p&gt;
+
+&lt;p&gt;+x 转换成数字&lt;/p&gt;
+
+&lt;p&gt;!!x 转换成布尔值&lt;/p&gt;
+
+&lt;p&gt;void 0 转换成undefined&lt;/p&gt;
+&lt;hr /&gt;</description>
                 <link>http://izhanghuaning.github.io/books/2011/05/05/jsdg-chap2-types-values-variables.html</link>
                 <guid>http://izhanghuaning.github.io/books/2011/05/05/jsdg-chap2-types-values-variables</guid>
                 <pubDate>2011-05-05T00:00:00+08:00</pubDate>
