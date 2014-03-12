@@ -4,7 +4,7 @@
  <title>张华宁的笔记本</title>
  <link href="http://izhanghuaning.github.io/" rel="self"/>
  <link href="http://izhanghuaning.github.io"/>
- <updated>2014-03-07T16:53:33+08:00</updated>
+ <updated>2014-03-12T16:34:10+08:00</updated>
  <id>http://izhanghuaning.github.io</id>
  <author>
    <name>张华宁</name>
@@ -13,11 +13,146 @@
 
  
  <entry>
+   <title>BW编程之javascript变量篇2(四)</title>
+   <link href="http://izhanghuaning.github.io/books/2011/05/15/jsdg-chap2-types-values-variables3.html"/>
+   <updated>2011-05-15T00:00:00+08:00</updated>
+   <id>http://izhanghuaning.github.io/books/2011/05/15/jsdg-chap2-types-values-variables3</id>
+   <content type="html">&lt;p&gt;&lt;strong&gt;&lt;em&gt;本篇定位于进阶篇，初次接触javascript的可跳过本篇&lt;/em&gt;&lt;/strong&gt;&lt;/p&gt;
+
+&lt;h4 id=&quot;whitejsstackheap&quot;&gt;White:什么是上下文调用栈，js中的栈(stack)和堆(heap)的理解？&lt;/h4&gt;
+
+&lt;p&gt;&lt;em&gt;Black:&lt;/em&gt;正如前一篇模拟js解释器所示，js代码初始所在的作用域为顶级作用域。js只有一种作用域即函数作用域，每当代码执行到一个函数的时候，暂停执行外层作用域,并保留当前代码的上下文和执行位置，然后进入一个新的作用域，产生一个新的上下文，如此反复就构成了一个上下文栈式结构，每一层都是一个作用域范围即一个上下文，进入新的作用域类似于入栈push一个新上下文，从内层作用域返回类似于出栈pop出当前上下文，所以叫做上下文调用栈。当代码在内层作用域执行完以后返回外部作用域的代码位置，丢掉内层的上下文(闭包情况例外)，使用外层上下文继续向下进行,所有函数执行完返回顶级作用域，这时候window对象作为当前上下文对象（变量对象VO），当前包含上下文的对象即活动对象。&lt;/p&gt;
+
+&lt;p&gt;说到堆栈，很多人当希望深入了解某些代码的执行过程（比如java、c#、javascript等），喜欢模拟内存中数据进行分析，这是一个很好的方法,对于理解程序很有帮助。在java中原始值是通过栈来维护的，而引用值是通过堆来管理的，这主要是考虑程序的效率，栈速度快但容量小，堆容量大但相对慢，堆里面的对象是通过new的方式来分配空间并创建的，也涉及到垃圾回收的管理。&lt;/p&gt;
+
+&lt;p&gt;但是在javascript对我们可以说只有堆，没有栈结构，因为有变量对象VO的概念，所以所有的数据都是以堆的形式管理的，解释器不直接取数据，都是通过变量对象VO取数据，这是很重要的一点，尤其是想要理解闭包的概念。javascript的内存中数据结构很简单VO作为上下文，通过链表的形式链接所有的VO，链接起来就是上下文调用栈，这里的栈只是一个描述性概念，不是内存管理数据的方式，所以&lt;strong&gt;&lt;em&gt;“正式的称呼叫作用域链”&lt;/em&gt;&lt;/strong&gt;，凸显了链这个结构。&lt;/p&gt;
+
+&lt;p&gt;下面会继续讲解VO概念。&lt;/p&gt;
+&lt;hr /&gt;
+&lt;h4 id=&quot;whitevariable_objectactive_object&quot;&gt;White:什么是变量对象（variable object）和活动对象(active object)？&lt;/h4&gt;
+
+&lt;p&gt;&lt;em&gt;Black:&lt;/em&gt;如前所述，声明全局变量，它会成为一个全局对象window的一个属性，那么局部变量呢，按照统一性进行推论应该成为某个对象的属性。这个对象即是假设的上下文对象VO。当代码执行的时候，会形成一个作用域链，在每个作用域有一个由很多变量、参数、函数等组成的上下文，包含上下文中的内容的对象被成为变量对象VO，解释器正在执行的作用域的VO就是活动对象AO。&lt;/p&gt;
+
+&lt;p&gt;VO对象对我们是透明（不可见）的，它由解释器来创建和维护的，我们代码不能操作VO。但是我们可以通过chrome等的开发者工具可以查看到scope variables即作用域链，里面有各个VO。我假设的VO对象结构是下面这个样子：&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;	var VO = {
+		var1:&amp;quot;var1&amp;quot;,
+		function1:function() {},
+		arg1:arg1,
+		.//变量、函数、参数都编程了VO对象的属性
+		.//还有个作用域链的属性和this属性
+		.//注意：表达式不能成为VO的属性
+		ScopeChains:[VO的上面的属性 + 上级ScopeChains],
+		this:特殊值//=》函数的调用者被关联到this。
+
+	}&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;ScopeChains和this两个属性不进入作用域链查找，查找时先看当前VO有没有相应属性，没有则进入上一级的ScopeChains查找。this是javascript的最核心内容（也可能是之一），后面应该也要单独讲解。&lt;/p&gt;
+&lt;hr /&gt;
+&lt;h4 id=&quot;whitevo__proto__objectprototype&quot;&gt;White:VO既然是个对象，那么它的原型(__proto__)是什么？对象Object.prototype？&lt;/h4&gt;
+
+&lt;p&gt;&lt;em&gt;Black:&lt;/em&gt;我有个假设是函数级VO的原型是null，因为我在chrome的开发者工具做了如下测试：&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;	function test() { return toString() }
+	test();//=&amp;gt;[object window]
+	window.toString = function() {return &amp;quot;window toString&amp;quot;}
+	test();//=&amp;gt;window toString&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;测试中的toString()方法在test的作用域没有定义，但是Object中有这个方法，它的返回值就是[object xxxx]的形式，所以第一次调用的就是Object的toString方法。这个调用是调用的VO的原型的toString方法还是通过window调用的呢？所以把window的toString重写，然后再次调用，发现是调用的window的toString方法。根据作用域链，解释器应该先从test的VO寻找toString方法，既然是从VO对象中查找属性则涉及到原型链查找，如果VO的原型链有Object，应该会直接调用Object的toSring方法。但是后面证实解释器是从test的VO，找到window的VO,然后调用的window的toString方法，所以我假设VO的原型(__proto__)是null，所以VO直接沿着作用域链的VO查找所有参数、变量和函数，而不会去原型链查找。&lt;/p&gt;
+
+&lt;p&gt;但是到了window的VO呢？似乎不能满足上面假说，因为调用了window的toString方法，这个方法是从其原型链的Object得到的，这里是有冲突的，所以我的另一个假说是window的VO引用了window自身，从chrome也可以看到这个意思(Global window)。&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;&lt;em&gt;这里的假说有待商榷，希望有了解的能够指正，我没有去研究js引擎的内容，谢谢&lt;/em&gt;&lt;/strong&gt;&lt;/p&gt;
+&lt;hr /&gt;
+&lt;h4 id=&quot;white&quot;&gt;White:作用域链是如何形成的呢？&lt;/h4&gt;
+
+&lt;p&gt;&lt;em&gt;Black:&lt;/em&gt;在最顶级作用域中，作用域链只有一个全局对象组成，即window VO。在不包含嵌套函数的函数体内，作用域链上有两个对象，第一个是函数自身VO，还有其外层的window VO。如果函数中还有嵌套函数，那么内部嵌套函数的作用域链就是自身VO + 所有的外层ScopeChains，一直包含到window VO。作用域链是在解释器进入函数的时候进行重新定义（或者说延伸），不断进行 新的ScopeChains = 自身VO + 外层ScopeChains。&lt;/p&gt;
+
+&lt;p&gt;嵌套函数更加特殊的地方在于，因为作用域链是在进入函数时重新定义的，所以嵌套函数的作用域链在每次执行外部函数时定义的，虽然嵌套函数的代码相同，但关联这段代码的作用域链却不相同。&lt;/p&gt;
+
+&lt;p&gt;作用域链有几个特殊情形是with和try…catch,这两种情况都会产生一个新的作用域上下文即变量对象VO,附加到整个作用域链最前面，即在with中的ScopeChains = with_VO + 当前函数Scopehains。try…catch也是一样的。&lt;/p&gt;
+&lt;hr /&gt;</content>
+ </entry>
+ 
+ <entry>
    <title>BW编程之javascript变量篇(三)</title>
-   <link href="http://izhanghuaning.github.io/books/2011/05/10/jsdg-chap2-ypes-values-variables2.html"/>
+   <link href="http://izhanghuaning.github.io/books/2011/05/10/jsdg-chap2-types-values-variables2.html"/>
    <updated>2011-05-10T00:00:00+08:00</updated>
-   <id>http://izhanghuaning.github.io/books/2011/05/10/jsdg-chap2-ypes-values-variables2</id>
-   <content type="html"></content>
+   <id>http://izhanghuaning.github.io/books/2011/05/10/jsdg-chap2-types-values-variables2</id>
+   <content type="html">&lt;h4 id=&quot;white&quot;&gt;White:变量是什么？&lt;/h4&gt;
+
+&lt;p&gt;&lt;em&gt;Black:&lt;/em&gt;正如前面类型篇所讲，变量就是一个标签，贴到了“值alue”上面，代码可以通过变量来操作它所代表的值，主要是为了方便复用。&lt;/p&gt;
+
+&lt;p&gt;变量根据是否可以改变分为普通变量和常量，常量就是赋值之后不能二次赋值（改变）的特殊只读变量，js没有真正声明常量的语法，基本是约定俗称的全大写的变量表示常量。&lt;/p&gt;
+
+&lt;p&gt;js的变量根据其作用域(有效范围)分为私有变量、局部变量、全局变量等，js的作用域只有函数作用域，外层作用域的变量可以穿透作用域到内层作用域，当内外层作用域的变量冲突的话，内层作用域的变量起作用（覆盖了外层），这实际上是变量的作用域链的查找规则决定的，后面会深入探讨作用域链。还有一种特殊的能跨作用域的变量是闭包的概念，这也是一个进阶的内容，放在后面单独开出一章来讲解。一句话理解闭包就是从作用域A操作（访问）作用域B中的变量,基本是指外部访问内部作用域的变量。&lt;/p&gt;
+
+&lt;p&gt;js中没有真正声明私有变量的语法，约定俗称是变量前面或者后面加上一个或两个下划线表示该变量为私有变量（_name,name_,__proto__等），作者不希望其他人使用这些变量，此所谓防君子不防小人，别人照样能随意操作你的私有变量。真正实现的私有变量是通过闭包来实现的，但是性能效率比较低，后面讲解闭包会详细说明。&lt;/p&gt;
+&lt;hr /&gt;
+&lt;h4 id=&quot;white_2&quot;&gt;White:变量作用域是什么？&lt;/h4&gt;
+
+&lt;p&gt;&lt;em&gt;Black:&lt;/em&gt;变量的作用域是指”程序源代码中定义这个变量”的区域。js的作用域只有一种，函数作用域。全局作用域可以看作一种特殊的函数作用域，类似语程序的入口函数(main)的概念，所有的js代码都是在全局作用域被解释器顺序解释并执行，遇到执行函数时则进入函数作用域(function)解释并执行。&lt;/p&gt;
+
+&lt;p&gt;全局对象（一般是window）是js解释器加载js代码时候创建的特殊对象（上下文对象或活动对象），所有未声明在其他函数作用域(function)的变量、函数都会成为window对象的属性，它们在代码中的任何地方（所有作用域中）都是可见的。如下所示：&lt;/p&gt;
+
+&lt;p&gt;……………隐藏的js文件或script开始标签&amp;lt; script&amp;gt;………………..&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;	var scope = &amp;quot;global&amp;quot;;
+	function checkscope() {
+		var localscope = &amp;quot;local&amp;quot;;
+		scope_without_var = &amp;quot;scope_without_var&amp;quot;;
+		return scope + &amp;quot; &amp;quot; + localscope + &amp;quot; &amp;quot; + scope_without_var;
+	}
+	scope;//=&amp;gt;global
+	localscope;//=&amp;gt;未声明错误
+	scope_without_var;//=&amp;gt;未声明错误,注意还没有执行checkscope，解释器还不知道它的存在
+	
+	checkscope();//=&amp;gt;global local scope_without_var，这里执行了checkscope
+	
+	scope;//=&amp;gt;global
+	localscope;//=&amp;gt;未声明错误
+	scope_without_var;//=&amp;gt;scope_without_var，注意执行checkscope后的改变&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;……………..隐藏的js文件或script结束标签&amp;lt;/ script&amp;gt;……………….&lt;/p&gt;
+&lt;hr /&gt;
+&lt;h4 id=&quot;whitejs&quot;&gt;White:js解释器是如何工作的，声明提前是怎么回事？&lt;/h4&gt;
+
+&lt;p&gt;&lt;strong&gt;&lt;em&gt;编译式和解释式的区别在于，编译式是编译后就在执行前先知先觉，解释式必须执行到相应代码才能看到，属于后知后觉。javascript是解释式的语言&lt;/em&gt;&lt;/strong&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;black在模拟javascript解释器：&lt;/strong&gt; 大家好，我是一个XX浏览器的js解释器，我遵守ECMAScript的规则来处理js代码。我看到一个js文件或者一个script标签，这两者意义相同，我用js文件进行代指吧。我知道我到了工作的时候了，我首先逐行阅读这个js文件查看都声明了哪些变量或者函数，不管变量是不是通过var声明的。这时候我不执行任何表达式或语句，也不进入任何函数内部，我把”所有变量（var | no var）”和”所有函数”(通过”function run() {}”声明式的,不考虑”var run = function() {}”这种表达式的方式，后一种把var run做变量处理)都提升到任何js代码之前进行集中声明，这样我就知道了这个js文件都声明了哪些变量和函数了，我把顶级作用域的这些声明都附加成window对象的属性，便于以后的作用域链的查找。然后我又一次从原始js文件（隐藏的变量提前之前）逐行进行处理，进行遇到的各个”表达式和语句(表达式和语句的区别以后会讲解)”，直到遇到执行函数。&lt;/p&gt;
+
+&lt;p&gt;我在顶级作用域遇到执行函数这时候，我找到了相应的函数声明，然后我就进入函数内部(有时候需要带上参数)，一下子我离开了顶级作用域，进入了这个函数的作用域了，又是一个未知的新天地，我就重复上段所做的，先看声明，再变量提前，再执行表达式和语句，直到遇到下一个函数，如此反复，遇到return返回语句我就把当前的结果返回上一级作用域或者执行完函数最后一句，这时候返回undefined。&lt;/p&gt;
+
+&lt;p&gt;现在我又回到顶级作用域了，继续向下执行，直到js文件末尾。&lt;/p&gt;
+
+&lt;p&gt;ok，我的工作完成了。&lt;/p&gt;
+&lt;hr /&gt;
+&lt;h4 id=&quot;whitejsvarscopelocalscopevarscope_without_var&quot;&gt;White:上面js中变量声明中使用var方式”scope”,”localscope”和不使用var声明变量”scope_without_var”的区别是什么？&lt;/h4&gt;
+
+&lt;p&gt;&lt;strong&gt;注意：不使用var可以声明变量是js的一个坏特性，完全可以不使用这种做法，而且我们也应该不使用这样的声明方式。&lt;/strong&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;em&gt;Black:&lt;/em&gt;js中变量声明一般使用var声明&lt;code&gt;var last_name=&amp;quot;zhang&amp;quot;;&lt;/code&gt;，如果读取还未赋值&lt;code&gt;var my_name;&lt;/code&gt;时返回undefined。也可以不是用var而不声明直接使用变量&lt;code&gt;first_name=&amp;quot;huaning&amp;quot;&lt;/code&gt;，但是读取未声明的变量&lt;code&gt;full_name//=&amp;gt;报错&lt;/code&gt;会报错。&lt;/p&gt;
+
+&lt;p&gt;例如在最顶级作用域window作用域来说，这两种方式的区别在于，前一种方式显式声明了一个全局变量，后一种方式隐式声明了全局变量（全局属性）name，即全局对象window增加了一个新的first_name的属性。window的所有属性都是可以在js代码中以变量形式直接使用的，之所以说是window的属性是因为对于属性可以使用&lt;code&gt;delete first_name //=&amp;gt;true&lt;/code&gt;表达式返回true，而对于变量&lt;code&gt;delete last_name //=&amp;gt;false&lt;/code&gt;。区别看下面代码：&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;	var last_name;
+	last_name; //=&amp;gt; undefined
+	first_name; //=&amp;gt;未声明错误
+	last_name = &amp;quot;zhang&amp;quot;;
+	first_name = &amp;quot;huaning&amp;quot;;
+	last_name; //=&amp;gt; zhang
+	first_name; //=&amp;gt;huaning
+
+	window.hasOwnProperty(&amp;quot;last_name&amp;quot;); //=&amp;gt;true
+	window.hasOwnProperty(&amp;quot;first_name&amp;quot;); //=&amp;gt;true
+	delete last_name; //=&amp;gt;false
+	delete first_name; //=&amp;gt;true
+	last_name; //=&amp;gt; &amp;quot;&amp;quot;
+	first_name; //=&amp;gt;未声明错误&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;&lt;strong&gt;注意：在函数内部当不使用var声明的全局变量scope_without_var，在解释器进入函数之前是不存在的，因为解释器还不知道它的存在,解释器进入该函数后，scope_without_var才能被所有的代码使用&lt;/strong&gt;&lt;/p&gt;
+&lt;hr /&gt;
+&lt;h5 id=&quot;&quot;&gt;此篇太长，读到这里基本注意力涣散了，所以另起一片继续变量篇后续内容&lt;/h5&gt;</content>
  </entry>
  
  <entry>
@@ -137,9 +272,9 @@
 
 &lt;p&gt;&lt;em&gt;Black:&lt;/em&gt; 好的，推荐这些书籍主要是为了你能够用最少的精力和金钱得到更多的知识和技能，没有任何广告和商业成分，并且这些书都是我购买并且仔细阅读过的。&lt;/p&gt;
 
-&lt;p&gt;基础级：JavaScript权威指南、JavaScript高级程序设计&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;&lt;em&gt;基础级：JavaScript权威指南、JavaScript高级程序设计&lt;/em&gt;&lt;/strong&gt;&lt;/p&gt;
 
-&lt;p&gt;进阶级：JavaScript语言精粹、基于MVC的Javacript Web富应用开发、Javacript模式、编写可维护的JavaScript（这本暂时没看完）&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;&lt;em&gt;进阶级：JavaScript语言精粹、基于MVC的Javacript Web富应用开发、Javacript模式、编写可维护的JavaScript（这本暂时没看完）&lt;/em&gt;&lt;/strong&gt;&lt;/p&gt;
 
 &lt;p&gt;上面几本书看完基本对于javascript也有了一定认识了，完全可以自己去探索更多javascript的美丽世界了。好书可以多读几遍，可以有更多的收获。&lt;/p&gt;
 &lt;hr /&gt;

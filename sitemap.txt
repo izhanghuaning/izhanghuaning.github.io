@@ -9,6 +9,7 @@ http://izhanghuaning.github.io/categories.html
 http://izhanghuaning.github.io/pages.html
 http://izhanghuaning.github.io/archive.html
 
-http://izhanghuaning.github.io/books/2011/05/10/jsdg-chap2-ypes-values-variables2.html
+http://izhanghuaning.github.io/books/2011/05/15/jsdg-chap2-types-values-variables3.html
+http://izhanghuaning.github.io/books/2011/05/10/jsdg-chap2-types-values-variables2.html
 http://izhanghuaning.github.io/books/2011/05/05/jsdg-chap2-types-values-variables.html
 http://izhanghuaning.github.io/books/2011/05/01/jsdg-chap1-introduction.html
