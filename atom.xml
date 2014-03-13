@@ -4,7 +4,7 @@
  <title>张华宁的笔记本</title>
  <link href="http://izhanghuaning.github.io/" rel="self"/>
  <link href="http://izhanghuaning.github.io"/>
- <updated>2014-03-12T16:34:10+08:00</updated>
+ <updated>2014-03-13T15:06:24+08:00</updated>
  <id>http://izhanghuaning.github.io</id>
  <author>
    <name>张华宁</name>
@@ -13,10 +13,142 @@
 
  
  <entry>
-   <title>BW编程之javascript变量篇2(四)</title>
-   <link href="http://izhanghuaning.github.io/books/2011/05/15/jsdg-chap2-types-values-variables3.html"/>
+   <title>BW编程之js表达式、运算符篇2(六)</title>
+   <link href="http://izhanghuaning.github.io/books/2011/05/25/jsdg-chap4-expression-operators2.html"/>
+   <updated>2011-05-25T00:00:00+08:00</updated>
+   <id>http://izhanghuaning.github.io/books/2011/05/25/jsdg-chap4-expression-operators2</id>
+   <content type="html">&lt;h4 id=&quot;whitejs&quot;&gt;White:js中什么是表达式和运算符？&lt;/h4&gt;
+
+&lt;p&gt;&lt;em&gt;Black:&lt;/em&gt;&lt;/p&gt;
+&lt;hr /&gt;
+&lt;h4 id=&quot;whitejs_2&quot;&gt;White:js中什么是表达式和运算符？&lt;/h4&gt;
+
+&lt;p&gt;&lt;em&gt;Black:&lt;/em&gt;&lt;/p&gt;
+&lt;hr /&gt;
+&lt;h4 id=&quot;whitejs_3&quot;&gt;White:js中什么是表达式和运算符？&lt;/h4&gt;
+
+&lt;p&gt;&lt;em&gt;Black:&lt;/em&gt;&lt;/p&gt;
+&lt;hr /&gt;
+&lt;h4 id=&quot;whitejs_4&quot;&gt;White:js中什么是表达式和运算符？&lt;/h4&gt;
+
+&lt;p&gt;&lt;em&gt;Black:&lt;/em&gt;&lt;/p&gt;
+&lt;hr /&gt;
+&lt;h4 id=&quot;whitejs_5&quot;&gt;White:js中什么是表达式和运算符？&lt;/h4&gt;
+
+&lt;p&gt;&lt;em&gt;Black:&lt;/em&gt;&lt;/p&gt;
+&lt;hr /&gt;
+&lt;h4 id=&quot;whitejs_6&quot;&gt;White:js中什么是表达式和运算符？&lt;/h4&gt;
+
+&lt;p&gt;&lt;em&gt;Black:&lt;/em&gt;&lt;/p&gt;
+&lt;hr /&gt;
+&lt;h4 id=&quot;whitejs_7&quot;&gt;White:js中什么是表达式和运算符？&lt;/h4&gt;
+
+&lt;p&gt;&lt;em&gt;Black:&lt;/em&gt;&lt;/p&gt;
+&lt;hr /&gt;</content>
+ </entry>
+ 
+ <entry>
+   <title>BW编程之js表达式、运算符篇(五)</title>
+   <link href="http://izhanghuaning.github.io/books/2011/05/20/jsdg-chap4-expression-operators.html"/>
+   <updated>2011-05-20T00:00:00+08:00</updated>
+   <id>http://izhanghuaning.github.io/books/2011/05/20/jsdg-chap4-expression-operators</id>
+   <content type="html">&lt;h4 id=&quot;whitejs&quot;&gt;White:js中什么是表达式和运算符？&lt;/h4&gt;
+
+&lt;p&gt;&lt;em&gt;Black:&lt;/em&gt;在js中表达式（expression）是一个短语，js解释器会将其计算出一个结果。程序中的常量是最简单的一类表达式。变量名也是一种简单表达式，它的值就是赋值给变量的值。复杂表达式是由简单表达式组成的，常用的方法是使用运算符(operator)。运算符按照特定的运算规则对操作数进行运算，并计算出新值。&lt;/p&gt;
+
+&lt;p&gt;表达式主要包含原始表达式(直接量(常量)、关键字(true,false，null,this)、变量），对象和数组初始化表达式（&lt;code&gt;var p = {x:2, y:3}&lt;/code&gt;、&lt;code&gt;var days = [1,2,3]&lt;/code&gt;） ，函数定义表达式（&lt;code&gt;var sum = function(a,b) {return a + b}&lt;/code&gt;)，属性访问表达式(&lt;code&gt;p.x&lt;/code&gt;、&lt;code&gt;p[&amp;quot;y&amp;quot;]&lt;/code&gt;、&lt;code&gt;days[0]&lt;/code&gt;），调用表达式（调用函数或方法的语法表示），对象创建表达式(new)，运算表达式（见下面运算符所示）等。&lt;/p&gt;
+
+&lt;p&gt;js中的运算符主要用于算术表达式(+、-、*、/)、比较表达式(&amp;lt;、===、&amp;gt;）、逻辑表达式（&amp;amp;&amp;amp;、||、！）、赋值表达式（=）等。大多数运算符都用标点符号表示，比如+-*/，也有一些运算符用关键字表示，比如delete、instanceof、typeof、void等。运算符是有优先级和结合性(一元操作符、赋值、三元条件运算符都是右结合)的，关于运算符可参见下图：&lt;/p&gt;
+&lt;hr /&gt;
+&lt;h4 id=&quot;white&quot;&gt;White:什么是左值,什么是表达式副作用？&lt;/h4&gt;
+
+&lt;p&gt;&lt;em&gt;Black:&lt;/em&gt;左值是一个术语，它指“表达式只能出现在运算符的左侧”。在js中变量、对象属性、数组元素均是左值。ECMAScript规范允许内置函数返回左值，但是自定义函数不能返回左值。&lt;/p&gt;
+
+&lt;p&gt;表达式副作用是指本来计算表达式（比如&lt;code&gt;2*3&lt;/code&gt;)不会对程序的运行状态造成任何影响，程序后续的计算也不会受到该表达式运算的影响，但是有一些表达式在即算后会产生上述影响，这就是表达式的副作用。&lt;/p&gt;
+
+&lt;p&gt;会产生副作用的表达式有：赋值、自增、函数调用、对象创建、delete等。&lt;/p&gt;
+&lt;hr /&gt;
+&lt;h4 id=&quot;white_2&quot;&gt;White:调用表达式怎么理解？&lt;/h4&gt;
+
+&lt;p&gt;&lt;em&gt;Black:&lt;/em&gt;调用表达式(invocation expression）是一种调用（或者执行）函数或方法的语法表示。当调用表达式进行求值的时候，首先计算函数表达式，然后计算参数表达式，得到一组参数。然后实参的值被依次传递给形参，这些形参是定义函数时指定的，接下来执行函数体。执行后返回该函数的返回值，如果没有则返回undefined。&lt;/p&gt;
+
+&lt;p&gt;在js中函数调用有两种方式普通调用和new调用，这两种方式调用同一个函数，其意义确实差异巨大。普通方式是通过func.apply方式来对函数过程进行调用，而new方式是对象创建表达式，详细见下面的new关键字的理解。&lt;/p&gt;
+
+&lt;p&gt;函数表达式本身可以说没有副作用，但是因为函数体内部的语句或者表达式可能会产生副作用，所以这种情况下一般说函数表达式是有副作用的。&lt;/p&gt;
+&lt;hr /&gt;
+&lt;h4 id=&quot;whitenew&quot;&gt;White:对象创建表达式和new关键字怎么理解？&lt;/h4&gt;
+
+&lt;p&gt;&lt;em&gt;Black:&lt;/em&gt;对象创建表达式(object creation expression)创建一个对象并调用一个函数(这个函数称作构造函数)初始化对象的属性。&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;&lt;em&gt;new的本质&lt;/em&gt;&lt;/strong&gt;，new关键字本质上也是调用函数的方式（普通函数调用是通过func.apply或func.call方式调用），它的特殊性在于把函数当作构造函数来执行，并最终创建一个对象。其过程如下：js解释器new关键字时知道是创建对象的时候了，首先传见一个新的空对象（{}），然后把这个对象赋值给this（自定义函数无法给this赋值），再调用构造函数把传入的参数和构造函数中赋值给this的属性都作为新对象的属性，如果构造函数没有return则把这个构造好新对象作为返回值，如果有return则把其返回的对象作为最后的返回值，即创建表达式计算的值。&lt;/p&gt;
+&lt;hr /&gt;
+&lt;h4 id=&quot;white_3&quot;&gt;White:比较运算符中的==和===的区别是什么？&lt;/h4&gt;
+
+&lt;p&gt;&lt;em&gt;Black:&lt;/em&gt;简单来说==会进行类型转换后比较，而===不进行类型转换直接比较，===也是严格比较,应该只使用===。&lt;/p&gt;
+
+&lt;p&gt;===规则为：&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;如果两个值类型不同，则它们不相等。&lt;/li&gt;
+
+&lt;li&gt;如果两个值都是null或者undefined，则它们不相等。&lt;/li&gt;
+
+&lt;li&gt;如果两个值都是true或者都是false，则相等。&lt;/li&gt;
+
+&lt;li&gt;任何一个是NaN则不相等，NaN需要使用!==来判断。&lt;/li&gt;
+
+&lt;li&gt;如果两个值为数字且数值相等，则相等。0和-0相等。&lt;/li&gt;
+
+&lt;li&gt;两个字符串只有它们所对应存储的16位数字完全相等，则它们相等。（字符串实际上是16位整数数值组成的序列，同一字符串但编码不同就是2个不同的整数序列，所以不相等。）&lt;/li&gt;
+
+&lt;li&gt;如果两个引用值指向同一个对象、数组或者函数，则相等，只比较引用不考虑具体的值的情况。&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;==规则就是===规则然后每一个都允许进行类型转换后尝试比较，比如&lt;code&gt;null==undefined //=&amp;gt;true&lt;/code&gt;。&lt;/p&gt;
+
+&lt;p&gt;对象转换原始值是除了日期先进行toString，其他都是先valueof后调用toString进行转换。&lt;/p&gt;
+&lt;hr /&gt;
+&lt;h4 id=&quot;white_4&quot;&gt;White:对象转换为原始值有哪些规则？&lt;/h4&gt;
+
+&lt;p&gt;&lt;em&gt;Black:&lt;/em&gt;所有对象都继承了2个转换方法，第一个是toString（），它的作用是返回一个反映对象的字符串，默认是&lt;code&gt;[object Object]&lt;/code&gt;,我们可以通过Object.prototype.toString.call(o)来得到o的实际类型，比如&lt;code&gt;[object String]&lt;/code&gt;。&lt;/p&gt;
+
+&lt;p&gt;第二个是valueof()，如果存在任意原始值，它就默认将对象转换未它的原始值。但是大多数对象无法真正表示为一个原始值，因此默认的valueof简单返回对象本身，而不是一个原始值。&lt;/p&gt;
+
+&lt;p&gt;对象到字符串的转换步骤（先toString后valueof）：&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;	if(o.has_method(toString) &amp;amp;&amp;amp; o.toString()===&amp;quot;原始值&amp;quot;)
+	{
+		return o.toString().转成字符串;
+	} else if(o.has_method(valueof) &amp;amp;&amp;amp; o.valueof() === &amp;quot;原始值&amp;quot;)
+	{
+		return o.valueof().转成字符串；
+	} else
+	{
+		throw 异常；
+	}&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;对象到数字的转换步骤（先valueof后toString）：&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;	if(o.has_method(valueof) &amp;amp;&amp;amp; o.valueof() === &amp;quot;原始值&amp;quot;)
+	{
+		return o.valueof().转成数字；
+	} else if(o.has_method(toString) &amp;amp;&amp;amp; o.toString()===&amp;quot;原始值&amp;quot;)
+	{
+		return o.toString().数字;
+	} else
+	{
+		throw 异常；
+	}&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;对象转换原始值是除了日期先进行toString，其他都是先valueof后调用toString进行转换。&lt;/p&gt;
+&lt;hr /&gt;</content>
+ </entry>
+ 
+ <entry>
+   <title>BW编程之js变量篇2(四)</title>
+   <link href="http://izhanghuaning.github.io/books/2011/05/15/jsdg-chap3-types-values-variables3.html"/>
    <updated>2011-05-15T00:00:00+08:00</updated>
-   <id>http://izhanghuaning.github.io/books/2011/05/15/jsdg-chap2-types-values-variables3</id>
+   <id>http://izhanghuaning.github.io/books/2011/05/15/jsdg-chap3-types-values-variables3</id>
    <content type="html">&lt;p&gt;&lt;strong&gt;&lt;em&gt;本篇定位于进阶篇，初次接触javascript的可跳过本篇&lt;/em&gt;&lt;/strong&gt;&lt;/p&gt;
 
 &lt;h4 id=&quot;whitejsstackheap&quot;&gt;White:什么是上下文调用栈，js中的栈(stack)和堆(heap)的理解？&lt;/h4&gt;
@@ -75,10 +207,10 @@
  </entry>
  
  <entry>
-   <title>BW编程之javascript变量篇(三)</title>
-   <link href="http://izhanghuaning.github.io/books/2011/05/10/jsdg-chap2-types-values-variables2.html"/>
+   <title>BW编程之js变量篇(三)</title>
+   <link href="http://izhanghuaning.github.io/books/2011/05/10/jsdg-chap3-types-values-variables2.html"/>
    <updated>2011-05-10T00:00:00+08:00</updated>
-   <id>http://izhanghuaning.github.io/books/2011/05/10/jsdg-chap2-types-values-variables2</id>
+   <id>http://izhanghuaning.github.io/books/2011/05/10/jsdg-chap3-types-values-variables2</id>
    <content type="html">&lt;h4 id=&quot;white&quot;&gt;White:变量是什么？&lt;/h4&gt;
 
 &lt;p&gt;&lt;em&gt;Black:&lt;/em&gt;正如前面类型篇所讲，变量就是一个标签，贴到了“值alue”上面，代码可以通过变量来操作它所代表的值，主要是为了方便复用。&lt;/p&gt;
@@ -156,10 +288,10 @@
  </entry>
  
  <entry>
-   <title>BW编程之javascript类型篇(二)</title>
-   <link href="http://izhanghuaning.github.io/books/2011/05/05/jsdg-chap2-types-values-variables.html"/>
+   <title>BW编程之js类型篇(二)</title>
+   <link href="http://izhanghuaning.github.io/books/2011/05/05/jsdg-chap3-types-values-variables.html"/>
    <updated>2011-05-05T00:00:00+08:00</updated>
-   <id>http://izhanghuaning.github.io/books/2011/05/05/jsdg-chap2-types-values-variables</id>
+   <id>http://izhanghuaning.github.io/books/2011/05/05/jsdg-chap3-types-values-variables</id>
    <content type="html">&lt;h4 id=&quot;white&quot;&gt;White:类型、值、变量分别指什么，它们之间有什么联系和区别？&lt;/h4&gt;
 
 &lt;p&gt;&lt;em&gt;Black:&lt;/em&gt;计算机程序的运行需要对“值value”进行操作。在编程语言中，能够表示并操作的值的类型称作”数据类型type“，编程语言最基本的特性是支持多种数据类型，比如字符串、数字、布尔值、数组等等。当程序需要将一个值反复使用，就需要将其保存在一个”变量variable“中。简单来说 &lt;code&gt;var name = &amp;quot;zhn&amp;quot; &lt;/code&gt;中var是类型，”zhn“是值，name是变量。&lt;/p&gt;
@@ -244,7 +376,7 @@
  </entry>
  
  <entry>
-   <title>BW编程之javascript概述篇(一)</title>
+   <title>BW编程之js概述篇(一)</title>
    <link href="http://izhanghuaning.github.io/books/2011/05/01/jsdg-chap1-introduction.html"/>
    <updated>2011-05-01T00:00:00+08:00</updated>
    <id>http://izhanghuaning.github.io/books/2011/05/01/jsdg-chap1-introduction</id>
