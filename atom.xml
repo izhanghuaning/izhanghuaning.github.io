@@ -4,7 +4,7 @@
  <title>张华宁的笔记本</title>
  <link href="http://izhanghuaning.github.io/" rel="self"/>
  <link href="http://izhanghuaning.github.io"/>
- <updated>2014-03-13T15:06:24+08:00</updated>
+ <updated>2014-03-14T14:42:17+08:00</updated>
  <id>http://izhanghuaning.github.io</id>
  <author>
    <name>张华宁</name>
@@ -13,11 +13,65 @@
 
  
  <entry>
-   <title>BW编程之js表达式、运算符篇2(六)</title>
+   <title>BW编程之js表达式篇2 eval(六)</title>
    <link href="http://izhanghuaning.github.io/books/2011/05/25/jsdg-chap4-expression-operators2.html"/>
    <updated>2011-05-25T00:00:00+08:00</updated>
    <id>http://izhanghuaning.github.io/books/2011/05/25/jsdg-chap4-expression-operators2</id>
-   <content type="html">&lt;h4 id=&quot;whitejs&quot;&gt;White:js中什么是表达式和运算符？&lt;/h4&gt;
+   <content type="html">&lt;h4 id=&quot;white&quot;&gt;White:表达式计算是什么？&lt;/h4&gt;
+
+&lt;p&gt;&lt;em&gt;Black:&lt;/em&gt;js同许多解释性语言一样，可以解释并运行由js代码组成的字符串，并产生一个值。这就是表达式运算，在js中通过全局函数eval()来实现这个工作。对于eval记住一句话：”eval()是魔鬼”，能不用就不要用。&lt;/p&gt;
+
+&lt;p&gt;eval只有一个参数，如果传入的参数不是字符串，它直接返回这个参数，否则它会把参数字符串当作js代码来解释，如果解释失败则抛出错误，成功则开始执行。&lt;/p&gt;
+&lt;hr /&gt;
+&lt;h4 id=&quot;whiteeval&quot;&gt;White:eval有哪些需注意的地方？&lt;/h4&gt;
+
+&lt;p&gt;&lt;em&gt;Black:&lt;/em&gt;记住一句话：”eval()是魔鬼”，能不用就不要用。&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;在你觉得需要使用eval方法的时候，请再三考虑一下是否有更好的方式来替代eval。&lt;/li&gt;
+
+&lt;li&gt;eval只能执行单独有语义的代码，不能作为函数的一部分来运行，比如&lt;code&gt;eval(&amp;quot;return;&amp;quot;)//=&amp;gt;错误&lt;/code&gt;。&lt;/li&gt;
+
+&lt;li&gt;非直接调用eval(使用&lt;code&gt;geval = eval;&lt;/code&gt;别名)时，它使用全局对象作为上下文作用域，并且无法读、写、定义局部变量和函数。&lt;/li&gt;
+
+&lt;li&gt;eval别名调用方式允许我们执行一些对上下文没有任何依赖的代码片段。&lt;/li&gt;
+
+&lt;li&gt;对待eval最好把它当作一个运算符，而不是一个函数。&lt;/li&gt;
+
+&lt;li&gt;在严格模式下，eval可以查询和修改局部变量，但是不能在局部作用域定义新的变量或函数。&lt;/li&gt;
+
+&lt;li&gt;ajax返回的json送入eval进行处理时需要对json加括号包住&lt;code&gt;eval(&amp;quot;(&amp;quot;+json+&amp;quot;)&amp;quot;)&lt;/code&gt;来转成对象处理,但是json处理一般是用JSON.parse进行解析。&lt;/li&gt;
+&lt;/ul&gt;
+&lt;hr /&gt;
+&lt;h4 id=&quot;whiteeval_2&quot;&gt;White:为什么说”eval是魔鬼”？&lt;/h4&gt;
+
+&lt;p&gt;&lt;em&gt;Black:&lt;/em&gt;主要有以下几个原因:&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;使用eval的代码晦涩难懂，不容易维护。&lt;/li&gt;
+
+&lt;li&gt;eval包含安全隐患，它可以执行可能被篡改过的代码，这是在处理ajax请求的json响应的常见的反模式。&lt;/li&gt;
+
+&lt;li&gt;eval使用了调用者的变量作用域环境，即它查找变量的值和定义新变量的操作和局部作用域的代码完全一样，会改变调用者（局部或全局）的变量对象VO。&lt;/li&gt;
+
+&lt;li&gt;优化或者js压缩工具不能很好的对包含eval的代码进行优化。&lt;/li&gt;
+
+&lt;li&gt;setInterval()、setTimeout()、new Function()这些方法传递字符串参数的时候和eval类似，应尽量避免传递字符串给它们。&lt;/li&gt;
+&lt;/ul&gt;
+&lt;hr /&gt;
+&lt;h4 id=&quot;whiteeval_3&quot;&gt;White:使用哪些方式可以尽量安全eval的方式？&lt;/h4&gt;
+
+&lt;p&gt;&lt;em&gt;Black:&lt;/em&gt;有一些方式可以替换或者较好方式使用eval，主要有以下几种：&lt;/p&gt;
+
+&lt;ol&gt;
+&lt;li&gt;使用new Function(str)来替代eval，str中使用var定义的变量会在局部函数作用域运行，不会自动成为全局变量。&lt;/li&gt;
+
+&lt;li&gt;使用立即函数封装eval的调用，也可避免其中var定义的变量自动成为全局变量。&lt;/li&gt;
+
+&lt;li&gt;使用new Function的方式只能看到全局作用域，不影响局部作用域链。&lt;/li&gt;
+&lt;/ol&gt;
+&lt;hr /&gt;
+&lt;h4 id=&quot;whitejs&quot;&gt;White:js中什么是表达式和运算符？&lt;/h4&gt;
 
 &lt;p&gt;&lt;em&gt;Black:&lt;/em&gt;&lt;/p&gt;
 &lt;hr /&gt;
@@ -34,14 +88,6 @@
 &lt;p&gt;&lt;em&gt;Black:&lt;/em&gt;&lt;/p&gt;
 &lt;hr /&gt;
 &lt;h4 id=&quot;whitejs_5&quot;&gt;White:js中什么是表达式和运算符？&lt;/h4&gt;
-
-&lt;p&gt;&lt;em&gt;Black:&lt;/em&gt;&lt;/p&gt;
-&lt;hr /&gt;
-&lt;h4 id=&quot;whitejs_6&quot;&gt;White:js中什么是表达式和运算符？&lt;/h4&gt;
-
-&lt;p&gt;&lt;em&gt;Black:&lt;/em&gt;&lt;/p&gt;
-&lt;hr /&gt;
-&lt;h4 id=&quot;whitejs_7&quot;&gt;White:js中什么是表达式和运算符？&lt;/h4&gt;
 
 &lt;p&gt;&lt;em&gt;Black:&lt;/em&gt;&lt;/p&gt;
 &lt;hr /&gt;</content>
@@ -78,7 +124,7 @@
 &lt;hr /&gt;
 &lt;h4 id=&quot;whitenew&quot;&gt;White:对象创建表达式和new关键字怎么理解？&lt;/h4&gt;
 
-&lt;p&gt;&lt;em&gt;Black:&lt;/em&gt;对象创建表达式(object creation expression)创建一个对象并调用一个函数(这个函数称作构造函数)初始化对象的属性。&lt;/p&gt;
+&lt;p&gt;&lt;em&gt;Black:&lt;/em&gt;对象创建表达式(object creation expression)创建一个对象并调用一个函数(这个函数称作构造函数)初始化对象的属性。js通过new关键字来进行对象创建，new关键字调用的函数与普通调用方式有2点不同：改变了上下文和改变了返回值。&lt;/p&gt;
 
 &lt;p&gt;&lt;strong&gt;&lt;em&gt;new的本质&lt;/em&gt;&lt;/strong&gt;，new关键字本质上也是调用函数的方式（普通函数调用是通过func.apply或func.call方式调用），它的特殊性在于把函数当作构造函数来执行，并最终创建一个对象。其过程如下：js解释器new关键字时知道是创建对象的时候了，首先传见一个新的空对象（{}），然后把这个对象赋值给this（自定义函数无法给this赋值），再调用构造函数把传入的参数和构造函数中赋值给this的属性都作为新对象的属性，如果构造函数没有return则把这个构造好新对象作为返回值，如果有return则把其返回的对象作为最后的返回值，即创建表达式计算的值。&lt;/p&gt;
 &lt;hr /&gt;

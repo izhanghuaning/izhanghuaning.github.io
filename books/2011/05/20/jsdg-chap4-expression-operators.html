@@ -151,7 +151,7 @@
 <hr />
 <h4 id="whitenew">White:对象创建表达式和new关键字怎么理解？</h4>
 
-<p><em>Black:</em>对象创建表达式(object creation expression)创建一个对象并调用一个函数(这个函数称作构造函数)初始化对象的属性。</p>
+<p><em>Black:</em>对象创建表达式(object creation expression)创建一个对象并调用一个函数(这个函数称作构造函数)初始化对象的属性。js通过new关键字来进行对象创建，new关键字调用的函数与普通调用方式有2点不同：改变了上下文和改变了返回值。</p>
 
 <p><strong><em>new的本质</em></strong>，new关键字本质上也是调用函数的方式（普通函数调用是通过func.apply或func.call方式调用），它的特殊性在于把函数当作构造函数来执行，并最终创建一个对象。其过程如下：js解释器new关键字时知道是创建对象的时候了，首先传见一个新的空对象（{}），然后把这个对象赋值给this（自定义函数无法给this赋值），再调用构造函数把传入的参数和构造函数中赋值给this的属性都作为新对象的属性，如果构造函数没有return则把这个构造好新对象作为返回值，如果有return则把其返回的对象作为最后的返回值，即创建表达式计算的值。</p>
 <hr />
@@ -264,7 +264,7 @@
       
         <li><a href="/archive.html">Archive</a></li>
       
-        <li class="next"><a href="/books/2011/05/25/jsdg-chap4-expression-operators2.html" title="BW编程之js表达式、运算符篇2(六)">Next &rarr;</a></li>
+        <li class="next"><a href="/books/2011/05/25/jsdg-chap4-expression-operators2.html" title="BW编程之js表达式篇2 eval(六)">Next &rarr;</a></li>
       
       </ul>
     </div>
