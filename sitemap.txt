@@ -9,6 +9,7 @@ http://izhanghuaning.github.io/categories.html
 http://izhanghuaning.github.io/pages.html
 http://izhanghuaning.github.io/archive.html
 
+http://izhanghuaning.github.io/books/2011/05/30/jsdg-chap6-object.html
 http://izhanghuaning.github.io/books/2011/05/25/jsdg-chap4-expression-operators2.html
 http://izhanghuaning.github.io/books/2011/05/20/jsdg-chap4-expression-operators.html
 http://izhanghuaning.github.io/books/2011/05/15/jsdg-chap3-types-values-variables3.html

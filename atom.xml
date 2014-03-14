@@ -4,13 +4,40 @@
  <title>张华宁的笔记本</title>
  <link href="http://izhanghuaning.github.io/" rel="self"/>
  <link href="http://izhanghuaning.github.io"/>
- <updated>2014-03-14T14:42:17+08:00</updated>
+ <updated>2014-03-14T15:02:39+08:00</updated>
  <id>http://izhanghuaning.github.io</id>
  <author>
    <name>张华宁</name>
    <email>izhanghuaning$163.com</email>
  </author>
 
+ 
+ <entry>
+   <title>BW编程之js对象篇(七)</title>
+   <link href="http://izhanghuaning.github.io/books/2011/05/30/jsdg-chap6-object.html"/>
+   <updated>2011-05-30T00:00:00+08:00</updated>
+   <id>http://izhanghuaning.github.io/books/2011/05/30/jsdg-chap6-object</id>
+   <content type="html">&lt;h4 id=&quot;whitejs&quot;&gt;White:js中什么是表达式和运算符？&lt;/h4&gt;
+
+&lt;p&gt;&lt;em&gt;Black:&lt;/em&gt;&lt;/p&gt;
+&lt;hr /&gt;
+&lt;h4 id=&quot;whitejs_2&quot;&gt;White:js中什么是表达式和运算符？&lt;/h4&gt;
+
+&lt;p&gt;&lt;em&gt;Black:&lt;/em&gt;&lt;/p&gt;
+&lt;hr /&gt;
+&lt;h4 id=&quot;whitejs_3&quot;&gt;White:js中什么是表达式和运算符？&lt;/h4&gt;
+
+&lt;p&gt;&lt;em&gt;Black:&lt;/em&gt;&lt;/p&gt;
+&lt;hr /&gt;
+&lt;h4 id=&quot;whitejs_4&quot;&gt;White:js中什么是表达式和运算符？&lt;/h4&gt;
+
+&lt;p&gt;&lt;em&gt;Black:&lt;/em&gt;&lt;/p&gt;
+&lt;hr /&gt;
+&lt;h4 id=&quot;whitejs_5&quot;&gt;White:js中什么是表达式和运算符？&lt;/h4&gt;
+
+&lt;p&gt;&lt;em&gt;Black:&lt;/em&gt;&lt;/p&gt;
+&lt;hr /&gt;</content>
+ </entry>
  
  <entry>
    <title>BW编程之js表达式篇2 eval(六)</title>
@@ -70,26 +97,6 @@
 
 &lt;li&gt;使用new Function的方式只能看到全局作用域，不影响局部作用域链。&lt;/li&gt;
 &lt;/ol&gt;
-&lt;hr /&gt;
-&lt;h4 id=&quot;whitejs&quot;&gt;White:js中什么是表达式和运算符？&lt;/h4&gt;
-
-&lt;p&gt;&lt;em&gt;Black:&lt;/em&gt;&lt;/p&gt;
-&lt;hr /&gt;
-&lt;h4 id=&quot;whitejs_2&quot;&gt;White:js中什么是表达式和运算符？&lt;/h4&gt;
-
-&lt;p&gt;&lt;em&gt;Black:&lt;/em&gt;&lt;/p&gt;
-&lt;hr /&gt;
-&lt;h4 id=&quot;whitejs_3&quot;&gt;White:js中什么是表达式和运算符？&lt;/h4&gt;
-
-&lt;p&gt;&lt;em&gt;Black:&lt;/em&gt;&lt;/p&gt;
-&lt;hr /&gt;
-&lt;h4 id=&quot;whitejs_4&quot;&gt;White:js中什么是表达式和运算符？&lt;/h4&gt;
-
-&lt;p&gt;&lt;em&gt;Black:&lt;/em&gt;&lt;/p&gt;
-&lt;hr /&gt;
-&lt;h4 id=&quot;whitejs_5&quot;&gt;White:js中什么是表达式和运算符？&lt;/h4&gt;
-
-&lt;p&gt;&lt;em&gt;Black:&lt;/em&gt;&lt;/p&gt;
 &lt;hr /&gt;</content>
  </entry>
  

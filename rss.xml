@@ -5,10 +5,37 @@
         <description>张华宁的笔记本 - 张华宁</description>
         <link>http://izhanghuaning.github.io</link>
         <link>http://izhanghuaning.github.io</link>
-        <lastBuildDate>2014-03-14T14:42:17+08:00</lastBuildDate>
-        <pubDate>2014-03-14T14:42:17+08:00</pubDate>
+        <lastBuildDate>2014-03-14T15:02:39+08:00</lastBuildDate>
+        <pubDate>2014-03-14T15:02:39+08:00</pubDate>
         <ttl>1800</ttl>
 
+
+        <item>
+                <title>BW编程之js对象篇(七)</title>
+                <description>&lt;h4 id=&quot;whitejs&quot;&gt;White:js中什么是表达式和运算符？&lt;/h4&gt;
+
+&lt;p&gt;&lt;em&gt;Black:&lt;/em&gt;&lt;/p&gt;
+&lt;hr /&gt;
+&lt;h4 id=&quot;whitejs_2&quot;&gt;White:js中什么是表达式和运算符？&lt;/h4&gt;
+
+&lt;p&gt;&lt;em&gt;Black:&lt;/em&gt;&lt;/p&gt;
+&lt;hr /&gt;
+&lt;h4 id=&quot;whitejs_3&quot;&gt;White:js中什么是表达式和运算符？&lt;/h4&gt;
+
+&lt;p&gt;&lt;em&gt;Black:&lt;/em&gt;&lt;/p&gt;
+&lt;hr /&gt;
+&lt;h4 id=&quot;whitejs_4&quot;&gt;White:js中什么是表达式和运算符？&lt;/h4&gt;
+
+&lt;p&gt;&lt;em&gt;Black:&lt;/em&gt;&lt;/p&gt;
+&lt;hr /&gt;
+&lt;h4 id=&quot;whitejs_5&quot;&gt;White:js中什么是表达式和运算符？&lt;/h4&gt;
+
+&lt;p&gt;&lt;em&gt;Black:&lt;/em&gt;&lt;/p&gt;
+&lt;hr /&gt;</description>
+                <link>http://izhanghuaning.github.io/books/2011/05/30/jsdg-chap6-object.html</link>
+                <guid>http://izhanghuaning.github.io/books/2011/05/30/jsdg-chap6-object</guid>
+                <pubDate>2011-05-30T00:00:00+08:00</pubDate>
+        </item>
 
         <item>
                 <title>BW编程之js表达式篇2 eval(六)</title>
@@ -65,26 +92,6 @@
 
 &lt;li&gt;使用new Function的方式只能看到全局作用域，不影响局部作用域链。&lt;/li&gt;
 &lt;/ol&gt;
-&lt;hr /&gt;
-&lt;h4 id=&quot;whitejs&quot;&gt;White:js中什么是表达式和运算符？&lt;/h4&gt;
-
-&lt;p&gt;&lt;em&gt;Black:&lt;/em&gt;&lt;/p&gt;
-&lt;hr /&gt;
-&lt;h4 id=&quot;whitejs_2&quot;&gt;White:js中什么是表达式和运算符？&lt;/h4&gt;
-
-&lt;p&gt;&lt;em&gt;Black:&lt;/em&gt;&lt;/p&gt;
-&lt;hr /&gt;
-&lt;h4 id=&quot;whitejs_3&quot;&gt;White:js中什么是表达式和运算符？&lt;/h4&gt;
-
-&lt;p&gt;&lt;em&gt;Black:&lt;/em&gt;&lt;/p&gt;
-&lt;hr /&gt;
-&lt;h4 id=&quot;whitejs_4&quot;&gt;White:js中什么是表达式和运算符？&lt;/h4&gt;
-
-&lt;p&gt;&lt;em&gt;Black:&lt;/em&gt;&lt;/p&gt;
-&lt;hr /&gt;
-&lt;h4 id=&quot;whitejs_5&quot;&gt;White:js中什么是表达式和运算符？&lt;/h4&gt;
-
-&lt;p&gt;&lt;em&gt;Black:&lt;/em&gt;&lt;/p&gt;
 &lt;hr /&gt;</description>
                 <link>http://izhanghuaning.github.io/books/2011/05/25/jsdg-chap4-expression-operators2.html</link>
                 <guid>http://izhanghuaning.github.io/books/2011/05/25/jsdg-chap4-expression-operators2</guid>
