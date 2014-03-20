@@ -5,32 +5,108 @@
         <description>张华宁的笔记本 - 张华宁</description>
         <link>http://izhanghuaning.github.io</link>
         <link>http://izhanghuaning.github.io</link>
-        <lastBuildDate>2014-03-14T15:02:39+08:00</lastBuildDate>
-        <pubDate>2014-03-14T15:02:39+08:00</pubDate>
+        <lastBuildDate>2014-03-20T16:39:20+08:00</lastBuildDate>
+        <pubDate>2014-03-20T16:39:20+08:00</pubDate>
         <ttl>1800</ttl>
 
 
         <item>
                 <title>BW编程之js对象篇(七)</title>
-                <description>&lt;h4 id=&quot;whitejs&quot;&gt;White:js中什么是表达式和运算符？&lt;/h4&gt;
+                <description>&lt;h4 id=&quot;whitejsjs&quot;&gt;White:js中什么是js对象？&lt;/h4&gt;
 
-&lt;p&gt;&lt;em&gt;Black:&lt;/em&gt;&lt;/p&gt;
+&lt;p&gt;&lt;em&gt;Black:&lt;/em&gt;在js中类型分为原始类型和对象类型，除了原始类型string、number、bool、null、undefined外的其他所有类型都属于对象类型。对象最基本的形式是“名/值”对的无序集合。如&lt;code&gt;var o = {x:1,y:2}&lt;/code&gt;，其中x、y为对象o的属性，其值可以为任何类型。访问对象的值可以通过点(.)形式，也可以通过数组索引（&lt;code&gt;o[&amp;quot;x&amp;quot;]&lt;/code&gt;）的形式，一般采用前者，但是后者可以实现很多动态强大功能。&lt;/p&gt;
+
+&lt;p&gt;对象包括内置对象(ECMASCript原生对象）、宿主对象（浏览器定义的）、自定义对象（程序员定义的）。&lt;/p&gt;
+
+&lt;p&gt;对象属性不仅是字符串，属性(property)本身也有自己的属性(attribute)，对象不仅可以访问自己的属性，也可以访问其继承的属性，这种继承是通过js的“原型链”的核心功能实现的。&lt;/p&gt;
+
+&lt;p&gt;对象是可变的，我们通过引用而非值来操作对象。对象最常见的用法是创建、设置、查找、删除、检测和枚举它的属性。&lt;/p&gt;
 &lt;hr /&gt;
-&lt;h4 id=&quot;whitejs_2&quot;&gt;White:js中什么是表达式和运算符？&lt;/h4&gt;
+&lt;h4 id=&quot;whitejs&quot;&gt;White:js中创建对象有哪些方式？&lt;/h4&gt;
 
-&lt;p&gt;&lt;em&gt;Black:&lt;/em&gt;&lt;/p&gt;
+&lt;p&gt;&lt;em&gt;Black:&lt;/em&gt;js中创建对象有三种方式：对象直接量、new、Object.create()；&lt;/p&gt;
+
+&lt;p&gt;对象直接量就是直接通过花括号进行初始化对象，如下所示：&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;	var empty = {};
+	var point = {x:1, y:1};
+	var book = {
+		&amp;quot;title&amp;quot;:&amp;quot;Javascript&amp;quot;,
+		&amp;quot;for&amp;quot;:&amp;quot;all audiences&amp;quot;,
+		&amp;quot;author&amp;quot;:{
+			firstname:&amp;quot;huaning&amp;quot;,
+			lastname:&amp;quot;zhang&amp;quot;
+		}
+	}&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;new方式请参见&lt;a href=&quot;/books/2011/05/20/jsdg-chap4-expression-operators.html&quot;&gt;对象创建表达式和new关键字&lt;/a&gt;。&lt;/p&gt;
+
+&lt;p&gt;Object.new(proto，options)方式是ECMAScript5新定义的，它是Object的一个静态方法，其中第一个参数表示以proto作为所创建的对象的原型(__proto__)，第二个参数是一个对象，用来初始化所创建的对象的属性。&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;	var nullobject = Object.create(null);//这个对象不包含任何方法，是真正的空对象,同null类似。
+	var emptyobject = Object.create(Object.prototype);//这个对象是普通空对象，其原型是Object.prototype
+	//ECMAScript5的Object.crate方法模拟
+	function inherit(p) {
+		if(p == null) throw TypeError();
+		if(Object.create) return Object.create(p);
+		var t = typeof p;
+		if(t !== &amp;quot;object&amp;quot; &amp;amp;&amp;amp; t!== &amp;quot;function&amp;quot;) throw TypeError;
+		function f() = {};
+		f.prototype = p;
+		return new f();
+	}
+	//new f()作为临时对象，是为了函数作为返回值时，隔离不同的新创建对象和原型p的关联关系。
+	
+	//举例说明：
+	function Animal ={name=&amp;quot;p&amp;quot;};
+	function Cat = inherit(Animal);
+	Cat.prototype.say = function(){return &amp;quot;miao&amp;quot;;}
+	function Dog = Inherit(Animal);
+	Dog.prototype.say = function() {return &amp;quot;wang&amp;quot;;}
+	
+	//如果不使用临时对象，则Dog和Cat会相互影响，可以自己尝试。&lt;/code&gt;&lt;/pre&gt;
 &lt;hr /&gt;
-&lt;h4 id=&quot;whitejs_3&quot;&gt;White:js中什么是表达式和运算符？&lt;/h4&gt;
+&lt;h4 id=&quot;whitejspropertyattribute&quot;&gt;White:js中对象的属性(property)本身有哪些特性(attribute)？&lt;/h4&gt;
 
-&lt;p&gt;&lt;em&gt;Black:&lt;/em&gt;&lt;/p&gt;
+&lt;p&gt;&lt;em&gt;Black:&lt;/em&gt;属性的特性包括名、值、可枚举性、可配置性。&lt;/p&gt;
+
+&lt;p&gt;Object.getOwnPropertyDescriptor()可以获得某个对象的属性描述符。&lt;/p&gt;
+
+&lt;p&gt;Object.defineProperty()传入要修改的对象、要修改的属性及属性描述符对象，即可修改某种属性。&lt;/p&gt;
 &lt;hr /&gt;
-&lt;h4 id=&quot;whitejs_4&quot;&gt;White:js中什么是表达式和运算符？&lt;/h4&gt;
+&lt;h4 id=&quot;whitejsattribute&quot;&gt;White:js中对象有哪些属性(attribute)？&lt;/h4&gt;
 
-&lt;p&gt;&lt;em&gt;Black:&lt;/em&gt;&lt;/p&gt;
+&lt;p&gt;&lt;em&gt;Black:&lt;/em&gt;对象的属性有原型属性(__proto__）、类属性(class)、可扩展性。&lt;/p&gt;
+
+&lt;p&gt;原型属性在下面详细讲解。&lt;/p&gt;
+
+&lt;p&gt;类属性是一个字符串，用来表示对象的类型信息，通过Object.prototype.toString.call(o)方式取得&lt;code&gt;[xxx class]&lt;/code&gt;形式字符串。&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;	//下面函数可以取得对象类型
+	function classof(o) {
+		if(o === null) return &amp;quot;Null&amp;quot;;
+		if(o === undefined) return &amp;quot;Underfined&amp;quot;;
+		return Object.prototype.toString.call(o).slice(8, -1);
+	}&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;可扩展性配合属性的特性可以实现只读对象等特殊对象,用的少，现用现查不具体讲解。&lt;/p&gt;
 &lt;hr /&gt;
-&lt;h4 id=&quot;whitejs_5&quot;&gt;White:js中什么是表达式和运算符？&lt;/h4&gt;
+&lt;h4 id=&quot;whitejs__proto__prototype&quot;&gt;White:js中对象原型(__proto__)和prototype有什么区别？&lt;/h4&gt;
 
 &lt;p&gt;&lt;em&gt;Black:&lt;/em&gt;&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;	1. 所有对象都有__proto__，但不是每个对象都有prototype。
+	2. prototype是函数(function)特有的。
+	3. 函数也是对象，它既有__proto__(Function.prototype)，也有prototype(new f().__proto__);
+	4. Function的__proto__和prototype是同一个。
+	5. Object.prototype.__proto__ 是null。
+	6. Object.prototype是所有对象的最终__proto__。
+	7. Object是一个函数，Object.prototype是一个对象。
+	8. Object.prototype必须是一个对象，而不能是函数。&lt;/code&gt;&lt;/pre&gt;
+&lt;hr /&gt;
+&lt;h4 id=&quot;whitejsjson&quot;&gt;White:js对象序列化json对象方法有哪些？&lt;/h4&gt;
+
+&lt;p&gt;&lt;em&gt;Black:&lt;/em&gt; json序列化方法有JSON.stringify(o)和JSON.parse(s)来进行序列化和反序列化。json只支持对象、数组、字符串、数字、true、false、null，不支持日期、函数、Regxp、Error等的序列化。json字符串中日期建议以字符串或者timestamp形式。&lt;/p&gt;
 &lt;hr /&gt;</description>
                 <link>http://izhanghuaning.github.io/books/2011/05/30/jsdg-chap6-object.html</link>
                 <guid>http://izhanghuaning.github.io/books/2011/05/30/jsdg-chap6-object</guid>
