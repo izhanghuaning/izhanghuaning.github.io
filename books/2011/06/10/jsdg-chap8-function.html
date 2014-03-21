@@ -1,0 +1,328 @@
+
+<!DOCTYPE html>
+<!--[if IE 7 ]>    <html lang="zh-CN" class="ie7"> <![endif]-->
+<!--[if IE 8 ]>    <html lang="zh-CN" class="ie8"> <![endif]-->
+<!--[if (gte IE 9)|!(IE)]><!--> <html lang="zh-CN"> <!--<![endif]-->
+  <head>
+	  <meta charset="utf-8">
+	  <!--[if IE 8 ]><meta http-equiv="X-UA-Compatible" content="IE=7"><![endif]-->
+	  <title>BW编程之js函数篇(九)</title>
+	<meta name="keywords" content="张华宁,javascript,js，function">
+    <meta name="description" content="javascript 函数 function">
+    <meta name="author" content="张华宁">
+
+    <!-- Enable responsive viewport -->
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+	<!-- Favicon -->
+	<link rel="shortcut icon" href="/favicon.ico">
+
+    <!-- atom & rss feed -->
+    <link href="/atom.xml" type="application/atom+xml" rel="alternate" title="Sitewide ATOM Feed">
+    <link href="/rss.xml" type="application/rss+xml" rel="alternate" title="Sitewide RSS Feed">
+
+	<!-- Styles 
+	<link rel="stylesheet" href="/assets/themes/twitter/css/style.min.css">
+	<link rel="stylesheet" href="/assets/themes/twitter/css/font-awesome.min.css">
+	-->
+	<!-- le Styles -->
+	<link rel="stylesheet" href="/assets/themes/twitter/bootstrap/css/bootstrap.2.2.2.min.css">
+	<link rel="stylesheet" href="/assets/themes/twitter/css/style.css?body=1">
+
+	<!-- Scripts -->
+	<script type="text/javascript" src="/assets/themes/twitter/js/jquery-1.10.1.min.js"></script>
+
+    <!-- Le HTML5 shim, for IE6-8 support of HTML elements -->
+    <!--[if lt IE 9]>
+	<script src="/assets/themes/twitter/js/html5shiv.js"></script>
+    <![endif]-->
+
+  </head>
+
+  <body>
+    <div class="navbar">
+      <div class="navbar-inner">
+        <div class="container-narrow">
+          <a class="brand" href="/">张华宁的笔记本</a>
+          <ul class="nav">
+            
+            
+            
+
+
+  
+    
+      
+      	
+      	<li><a href="/tags.html">Tags</a></li>
+      	
+      
+    
+  
+    
+      
+    
+  
+    
+      
+    
+  
+    
+      
+    
+  
+    
+      
+    
+  
+    
+      
+    
+  
+    
+      
+      	
+      	<li><a href="/categories.html">Categories</a></li>
+      	
+      
+    
+  
+    
+      
+      	
+      	<li><a href="/pages.html">Pages</a></li>
+      	
+      
+    
+  
+    
+      
+      	
+      	<li><a href="/archive.html">Archive</a></li>
+      	
+      
+    
+  
+
+
+
+          </ul>
+        </div>
+      </div>
+    </div>
+
+    <div class="container-narrow">
+
+      <div class="content">
+        
+<div class="page-header">
+  <h1>BW编程之js函数篇(九) </h1>
+</div>
+
+<div class="row-fluid post-full">
+  <div class="span12">
+    <div class="date">
+      <span>10 June 2011</span>
+    </div>
+    <div class="content">
+      <h4 id="whitejs">White:js中的函数的重要意义是什么？</h4>
+
+<p><em>Black:</em>js中函数是核心中的核心。js中的函数是第一类对象，不同于java、C#等语言，可以说js的强大来源于其函数。</p>
+
+<p>函数是第一类对象代表：</p>
+
+<ol>
+<li>函数可以赋值给变量。</li>
+
+<li>函数可以作为参数传入其他函数。</li>
+
+<li>函数可以作为返回值。</li>
+
+<li>函数可以嵌套使用。</li>
+
+<li>js中只有函数作用域。</li>
+</ol>
+<hr />
+<h4 id="whitejs_2">White:js中函数和方法有什么区别？</h4>
+
+<p><em>Black:</em>js中函数调用还需要一个重要的概念：调用上下文，即this关键字的值。如果函数挂载在一个对象上，作为对象的一个属性，那么就称为该对象的方法。当通过对象来调用函数时，该对象就是此次调用的上下文，也就是this的值。</p>
+
+<p>没有直接使用对象来调用的函数（全局函数或者嵌套函数）就是普通意义上的函数，其this的值就是全局对象window（ECMAScript5好像严格模式下改了，成undefined了）。</p>
+<hr />
+<h4 id="whitejs_3">White:js中函数定义的方式有哪些？</h4>
+
+<p><em>Black:</em>js中函数定义有三种方法：函数声明、函数表达式、new Function。</p>
+
+<p>函数声明(FD)的特点：</p>
+
+<ol>
+<li>有一个特定的名称。</li>
+
+<li>在源代码中的位置：程序级 和 函数体内。</li>
+
+<li>在进入上下文阶段创建，会变量提前。</li>
+
+<li>影响变量对象（VO）。</li>
+
+<li>声明方式 <code>function funcName(arg,arg2,...) {...}</code>。</li>
+</ol>
+
+<p>函数表达式(FE)特点：</p>
+
+<ol>
+<li>可以有可选名称（只能在函数内使用，主要用于调试）。</li>
+
+<li>在源代码中的位置： 可以使用表达式的地方。</li>
+
+<li>在代码的执行阶段创建，不会变量提前。</li>
+
+<li>不会影响变量对象（VO）。</li>
+
+<li>声明方式<code>var funcName = function(arg1...) {...}</code>。</li>
+</ol>
+
+<p>任何函数都是Function的一个实例，所以可以通过<code>var funcName = Function(&quot;x&quot;,&quot;y&quot;,&quot;return x*y;&quot;</code>。</p>
+
+<p>Function方式的特点：</p>
+
+<ol>
+<li>允许js在运行时动态创建并编译函数。</li>
+
+<li>每次调用Function都会解析函数体，并创建新的函数对象。</li>
+
+<li>不使用本地作用域，只使用顶级作用域。</li>
+
+<li>此方法很少用到。</li>
+</ol>
+<hr />
+<h4 id="whitejs_4">White:js中函数的调用方式有哪些？</h4>
+
+<p><em>Black:</em>js中创建对象有四种方式：</p>
+
+<ul>
+<li>作为函数</li>
+
+<li>作为方法</li>
+
+<li>作为构造函数</li>
+
+<li>通过call或apply调用</li>
+</ul>
+
+<p>作为函数和方法调用是普通调用，其最终也是通过apply实现的，call是apply的一个愈发糖。它们的区别就是调用上下文this。</p>
+
+<p>通过构造函数调用请参见<a href="/books/2011/05/20/jsdg-chap4-expression-operators.html">对象创建表达式和new关键字</a>。</p>
+
+<p>call和apply间接调用，js中函数也是对象，和其他js对象没有什么不同，函数对象也有其自己的方法，其中call和apply可以用来间接调用函数。这两个方法需要指定所需的this的值，也就是说函数可以指定任何对象作为其this的值，哪怕哪个对象没有这个方法，这就可以实现函数借用。形式如<code>func.call(othis,arg1,arg2...);</code>其中othis是传入的对象作为func的this。</p>
+
+<p>ECMAScript5新定义了一个bind方法，返回一个绑定了对象的方法，如<code>var g =f.bind(o); g();</code>等同<code>f.call(o);</code>。</p>
+
+<p>方法的调用还可以使用方括号的形式<code>o[&quot;f&quot;]();</code>。</p>
+<hr />
+<h4 id="whitejs_5">White:js中函数的形参和实参是什么概念？</h4>
+
+<p><em>Black:</em>js中形参是可选的，实参是一个类数组对象（arguments)。形参是在定义函数时所声明的参<code>function f(arg1,arg2)</code>中的arg1，arg2是形参，函数有一个length属性其值就是形参的个数。调用函数时传入的参数为实参，其不受形参影响，可多，可少。</p>
+
+<p>arguments是指向实参对象（Arguments）的引用，是一个类数组对象，可以通过索引来取得参数的值，并且通过索引和通过参数名arg1取得的是同一个值，通过任一方式操作都等价的，修改其中一个会影响另一个。</p>
+
+<p>arguments是一个对象，它也有自己的属性，callee代表正在执行的函数，caller代表调用正在执行的函数的函数（外层函数）。</p>
+<hr />
+<h4 id="whitejquery">White:jquery中常见的参数对象是什么意思？</h4>
+
+<p><em>Black:</em>函数中的参数越多，调用起来就越不方便，所以引出了参数对象的概念，把所有参数封装为一个对象，对像赋值后直接传递给函数。</p>
+<hr />
+    </div>
+
+  
+    <ul class="tag_box inline">
+      <li><i class="icon-folder-open"></i></li>
+      
+      
+
+
+  
+     
+    	<li><a href="/categories.html#books-ref">
+    		books <span>11</span>
+    	</a></li>
+    
+  
+
+
+    </ul>
+    
+
+  
+    <ul class="tag_box inline">
+      <li><i class="icon-tags"></i></li>
+      
+      
+
+
+  
+     
+    	<li><a href="/tags.html#javascript-ref">javascript <span>11</span></a></li>
+     
+    	<li><a href="/tags.html#web-ref">web <span>11</span></a></li>
+    
+  
+
+
+
+    </ul>
+    
+
+    <hr>
+    <div class="pagination">
+      <ul>
+      
+        <li class="prev"><a href="/books/2011/06/05/jsdg-chap7-array.html" title="BW编程之js数组篇(八)">&larr; Previous</a></li>
+      
+        <li><a href="/archive.html">Archive</a></li>
+      
+        <li class="next"><a href="/books/2011/06/15/jsdg-chap8-closure.html" title="BW编程之js函数篇闭包(十)">Next &rarr;</a></li>
+      
+      </ul>
+    </div>
+    <hr>
+    
+
+
+  <div id="disqus_thread"></div>
+<script type="text/javascript">
+    var disqus_developer = 1;
+    var disqus_shortname = 'izhanghuaning'; // required: replace example with your forum shortname
+    
+    /* * * DON'T EDIT BELOW THIS LINE * * */
+    (function() {
+        var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+        dsq.src = 'http://' + disqus_shortname + '.disqus.com/embed.js';
+        (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    })();
+</script>
+<noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+<a href="http://disqus.com" class="dsq-brlink">blog comments powered by <span class="logo-disqus">Disqus</span></a>
+
+
+
+
+  </div>
+</div>
+
+
+      </div>
+	  <hr>
+      <footer>
+        <p>&copy;2011-2014 张华宁
+          基于 <a href="http://jekyllbootstrap.com" target="_blank" title="The Definitive Jekyll Blogging Framework">Jekyll Bootstrap</a>
+          和 <a href="http://twitter.github.com/bootstrap/" target="_blank">Twitter Bootstrap</a> 搭建,
+		  <em><strong>本博客的很多想法来自于其他优秀博客作者，时隔久远不能给出每个链接了，如果原作者觉得被冒犯，请留言或联系我（izhanghuaning$163.com），我会及时进行处理，衷心感谢你们，本博客内容和源代码遵循<a href="http://opensource.org/licenses/mit-license.php" target="_blank">MIT开源协议</a>,转载请注明出处，谢谢。</strong></em>
+        </p>
+      </footer>
+
+    </div>
+
+    
+  </body>
+</html>
+

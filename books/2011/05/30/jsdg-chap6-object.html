@@ -171,7 +171,7 @@
 	//new f()作为临时对象，是为了函数作为返回值时，隔离不同的新创建对象和原型p的关联关系。
 	
 	//举例说明：
-	function Animal ={name=&quot;p&quot;};
+	function Animal() {name=&quot;p&quot;};
 	function Cat = inherit(Animal);
 	Cat.prototype.say = function(){return &quot;miao&quot;;}
 	function Dog = Inherit(Animal);
@@ -204,6 +204,19 @@
 
 <p>可扩展性配合属性的特性可以实现只读对象等特殊对象,用的少，现用现查不具体讲解。</p>
 <hr />
+<h4 id="whitejs__proto__">White:js中对象原型(__proto__)是什么？</h4>
+
+<p><em>Black:</em> js是一种面向对象的语言，面向对象的特征有封装、继承、多态。js完全可以写出像java那样的Class式的程序，它是通过<code>function ClassName（）</code>这样的方式来实现Class的。有了Class可以把数据和方法封装起来，而且对于弱类型的js来说多态更是容易实现，最显而易见就是”鸭式辩型”的方式。剩下的继承在js中就是通过原型来实现的，大多数语言的继承是通过模板即Class方式实现，但js是通过原型来实现的。 下面是示例：</p>
+
+<pre><code>	function Animal() { name=&quot;animal&quot;; };
+	var animal = new Animal();
+	animal.name;//=&gt;animal
+	animal.say();//错误，未定义say
+	Animal.prototype.say = function(){return &quot;I am &quot;+ this.name;}
+	animal.say();//=&gt;I am animal;
+	animal.__proto__ === Animal.prototype;//=&gt;true
+	Animal.__proto__ === Function.prototype;//=&gt;true</code></pre>
+<hr />
 <h4 id="whitejs__proto__prototype">White:js中对象原型(__proto__)和prototype有什么区别？</h4>
 
 <p><em>Black:</em></p>
@@ -233,7 +246,7 @@
   
      
     	<li><a href="/categories.html#books-ref">
-    		books <span>7</span>
+    		books <span>11</span>
     	</a></li>
     
   
@@ -251,9 +264,9 @@
 
   
      
-    	<li><a href="/tags.html#javascript-ref">javascript <span>7</span></a></li>
+    	<li><a href="/tags.html#javascript-ref">javascript <span>11</span></a></li>
      
-    	<li><a href="/tags.html#web-ref">web <span>7</span></a></li>
+    	<li><a href="/tags.html#web-ref">web <span>11</span></a></li>
     
   
 
@@ -266,11 +279,11 @@
     <div class="pagination">
       <ul>
       
-        <li class="prev"><a href="/books/2011/05/25/jsdg-chap4-expression-operators2.html" title="BW编程之js表达式篇2 eval(六)">&larr; Previous</a></li>
+        <li class="prev"><a href="/books/2011/05/25/jsdg-chap4-expression-operators2.html" title="BW编程之js表达式篇eval(六)">&larr; Previous</a></li>
       
         <li><a href="/archive.html">Archive</a></li>
       
-        <li class="next disabled"><a>Next &rarr;</a>
+        <li class="next"><a href="/books/2011/06/05/jsdg-chap7-array.html" title="BW编程之js数组篇(八)">Next &rarr;</a></li>
       
       </ul>
     </div>

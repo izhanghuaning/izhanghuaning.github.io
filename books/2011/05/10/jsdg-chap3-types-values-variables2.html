@@ -133,7 +133,7 @@
 
 <p>js的变量根据其作用域(有效范围)分为私有变量、局部变量、全局变量等，js的作用域只有函数作用域，外层作用域的变量可以穿透作用域到内层作用域，当内外层作用域的变量冲突的话，内层作用域的变量起作用（覆盖了外层），这实际上是变量的作用域链的查找规则决定的，后面会深入探讨作用域链。还有一种特殊的能跨作用域的变量是闭包的概念，这也是一个进阶的内容，放在后面单独开出一章来讲解。一句话理解闭包就是从作用域A操作（访问）作用域B中的变量,基本是指外部访问内部作用域的变量。</p>
 
-<p>js中没有真正声明私有变量的语法，约定俗称是变量前面或者后面加上一个或两个下划线表示该变量为私有变量（_name,name_,__proto__等），作者不希望其他人使用这些变量，此所谓防君子不防小人，别人照样能随意操作你的私有变量。真正实现的私有变量是通过闭包来实现的，但是性能效率比较低，后面讲解闭包会详细说明。</p>
+<p>js中没有真正声明私有变量的语法，约定俗称是变量前面或者后面加上一个或两个下划线表示该变量为私有变量（_name,name_,__proto__等），作者不希望其他人使用这些变量，此所谓防君子不防小人，别人照样能随意操作你的私有变量。真正实现的私有变量是通过闭包来实现的，但是性能效率比较低，关于闭包会详细说明请参见<a href="/books/2011/06/15/jsdg-chap8-closure.html">javascript闭包详解</a>。</p>
 <hr />
 <h4 id="white_2">White:变量作用域是什么？</h4>
 
@@ -211,7 +211,7 @@
   
      
     	<li><a href="/categories.html#books-ref">
-    		books <span>7</span>
+    		books <span>11</span>
     	</a></li>
     
   
@@ -229,9 +229,9 @@
 
   
      
-    	<li><a href="/tags.html#javascript-ref">javascript <span>7</span></a></li>
+    	<li><a href="/tags.html#javascript-ref">javascript <span>11</span></a></li>
      
-    	<li><a href="/tags.html#web-ref">web <span>7</span></a></li>
+    	<li><a href="/tags.html#web-ref">web <span>11</span></a></li>
     
   
 
@@ -248,7 +248,7 @@
       
         <li><a href="/archive.html">Archive</a></li>
       
-        <li class="next"><a href="/books/2011/05/15/jsdg-chap3-types-values-variables3.html" title="BW编程之js变量篇2(四)">Next &rarr;</a></li>
+        <li class="next"><a href="/books/2011/05/15/jsdg-chap3-types-values-variables3.html" title="BW编程之js变量篇作用域链(四)">Next &rarr;</a></li>
       
       </ul>
     </div>

@@ -4,13 +4,263 @@
  <title>张华宁的笔记本</title>
  <link href="http://izhanghuaning.github.io/" rel="self"/>
  <link href="http://izhanghuaning.github.io"/>
- <updated>2014-03-20T16:39:20+08:00</updated>
+ <updated>2014-03-21T17:30:00+08:00</updated>
  <id>http://izhanghuaning.github.io</id>
  <author>
    <name>张华宁</name>
    <email>izhanghuaning$163.com</email>
  </author>
 
+ 
+ <entry>
+   <title>BW编程之js函数篇this(十一)</title>
+   <link href="http://izhanghuaning.github.io/books/2011/06/20/jsdg-chap8-this.html"/>
+   <updated>2011-06-20T00:00:00+08:00</updated>
+   <id>http://izhanghuaning.github.io/books/2011/06/20/jsdg-chap8-this</id>
+   <content type="html">&lt;h4 id=&quot;whitethis&quot;&gt;White:this是什么？&lt;/h4&gt;
+
+&lt;p&gt;&lt;em&gt;Black:&lt;/em&gt;this是一个关键字，不是变量，也不是属性名，js语法不允许给this赋值。和变量不同，关键字this没有作用域限制，嵌套的函数不会从外层函数中继承this，每个函数作用域即&lt;a href=&quot;/books/2011/05/15/jsdg-chap3-types-values-variables3.html&quot;&gt;变量对象VO&lt;/a&gt;都有自己的this。&lt;/p&gt;
+
+&lt;p&gt;当内层嵌套函数想使用外层函数的this需要使用变量对this进行保存后使用。&lt;/p&gt;
+
+&lt;p&gt;任何函数的调用都会隐式传入一个实参，这个实参是一个对象，方法调用的母体就是这个对象。this是方法调用的核心，也就是谁正在调用方法，其就是调用上下文。&lt;/p&gt;
+&lt;hr /&gt;
+&lt;h4 id=&quot;whitejs&quot;&gt;White:js中创建对象有哪些方式？&lt;/h4&gt;
+
+&lt;p&gt;&lt;em&gt;Black:&lt;/em&gt;js中创建对象有三种方式：对象直接量、new、Object.create()；&lt;/p&gt;
+&lt;hr /&gt;
+&lt;h4 id=&quot;whitejs_2&quot;&gt;White:js中创建对象有哪些方式？&lt;/h4&gt;
+
+&lt;p&gt;&lt;em&gt;Black:&lt;/em&gt;js中创建对象有三种方式：对象直接量、new、Object.create()；&lt;/p&gt;
+&lt;hr /&gt;
+&lt;h4 id=&quot;whitejs_3&quot;&gt;White:js中创建对象有哪些方式？&lt;/h4&gt;
+
+&lt;p&gt;&lt;em&gt;Black:&lt;/em&gt;js中创建对象有三种方式：对象直接量、new、Object.create()；&lt;/p&gt;
+&lt;hr /&gt;
+&lt;h4 id=&quot;whitejs_4&quot;&gt;White:js中创建对象有哪些方式？&lt;/h4&gt;
+
+&lt;p&gt;&lt;em&gt;Black:&lt;/em&gt;js中创建对象有三种方式：对象直接量、new、Object.create()；&lt;/p&gt;
+&lt;hr /&gt;
+&lt;h4 id=&quot;whitejs_5&quot;&gt;White:js中创建对象有哪些方式？&lt;/h4&gt;
+
+&lt;p&gt;&lt;em&gt;Black:&lt;/em&gt;js中创建对象有三种方式：对象直接量、new、Object.create()；&lt;/p&gt;
+&lt;hr /&gt;</content>
+ </entry>
+ 
+ <entry>
+   <title>BW编程之js函数篇闭包(十)</title>
+   <link href="http://izhanghuaning.github.io/books/2011/06/15/jsdg-chap8-closure.html"/>
+   <updated>2011-06-15T00:00:00+08:00</updated>
+   <id>http://izhanghuaning.github.io/books/2011/06/15/jsdg-chap8-closure</id>
+   <content type="html">&lt;h4 id=&quot;whitejs&quot;&gt;White:js中创建对象有哪些方式？&lt;/h4&gt;
+
+&lt;p&gt;&lt;em&gt;Black:&lt;/em&gt;js中创建对象有三种方式：对象直接量、new、Object.create()；&lt;/p&gt;
+&lt;hr /&gt;
+&lt;h4 id=&quot;whitejs_2&quot;&gt;White:js中创建对象有哪些方式？&lt;/h4&gt;
+
+&lt;p&gt;&lt;em&gt;Black:&lt;/em&gt;js中创建对象有三种方式：对象直接量、new、Object.create()；&lt;/p&gt;
+&lt;hr /&gt;
+&lt;h4 id=&quot;whitejs_3&quot;&gt;White:js中创建对象有哪些方式？&lt;/h4&gt;
+
+&lt;p&gt;&lt;em&gt;Black:&lt;/em&gt;js中创建对象有三种方式：对象直接量、new、Object.create()；&lt;/p&gt;
+&lt;hr /&gt;
+&lt;h4 id=&quot;whitejs_4&quot;&gt;White:js中创建对象有哪些方式？&lt;/h4&gt;
+
+&lt;p&gt;&lt;em&gt;Black:&lt;/em&gt;js中创建对象有三种方式：对象直接量、new、Object.create()；&lt;/p&gt;
+&lt;hr /&gt;
+&lt;h4 id=&quot;whitejs_5&quot;&gt;White:js中创建对象有哪些方式？&lt;/h4&gt;
+
+&lt;p&gt;&lt;em&gt;Black:&lt;/em&gt;js中创建对象有三种方式：对象直接量、new、Object.create()；&lt;/p&gt;
+&lt;hr /&gt;
+&lt;h4 id=&quot;whitejs_6&quot;&gt;White:js中创建对象有哪些方式？&lt;/h4&gt;
+
+&lt;p&gt;&lt;em&gt;Black:&lt;/em&gt;js中创建对象有三种方式：对象直接量、new、Object.create()；&lt;/p&gt;
+&lt;hr /&gt;</content>
+ </entry>
+ 
+ <entry>
+   <title>BW编程之js函数篇(九)</title>
+   <link href="http://izhanghuaning.github.io/books/2011/06/10/jsdg-chap8-function.html"/>
+   <updated>2011-06-10T00:00:00+08:00</updated>
+   <id>http://izhanghuaning.github.io/books/2011/06/10/jsdg-chap8-function</id>
+   <content type="html">&lt;h4 id=&quot;whitejs&quot;&gt;White:js中的函数的重要意义是什么？&lt;/h4&gt;
+
+&lt;p&gt;&lt;em&gt;Black:&lt;/em&gt;js中函数是核心中的核心。js中的函数是第一类对象，不同于java、C#等语言，可以说js的强大来源于其函数。&lt;/p&gt;
+
+&lt;p&gt;函数是第一类对象代表：&lt;/p&gt;
+
+&lt;ol&gt;
+&lt;li&gt;函数可以赋值给变量。&lt;/li&gt;
+
+&lt;li&gt;函数可以作为参数传入其他函数。&lt;/li&gt;
+
+&lt;li&gt;函数可以作为返回值。&lt;/li&gt;
+
+&lt;li&gt;函数可以嵌套使用。&lt;/li&gt;
+
+&lt;li&gt;js中只有函数作用域。&lt;/li&gt;
+&lt;/ol&gt;
+&lt;hr /&gt;
+&lt;h4 id=&quot;whitejs_2&quot;&gt;White:js中函数和方法有什么区别？&lt;/h4&gt;
+
+&lt;p&gt;&lt;em&gt;Black:&lt;/em&gt;js中函数调用还需要一个重要的概念：调用上下文，即this关键字的值。如果函数挂载在一个对象上，作为对象的一个属性，那么就称为该对象的方法。当通过对象来调用函数时，该对象就是此次调用的上下文，也就是this的值。&lt;/p&gt;
+
+&lt;p&gt;没有直接使用对象来调用的函数（全局函数或者嵌套函数）就是普通意义上的函数，其this的值就是全局对象window（ECMAScript5好像严格模式下改了，成undefined了）。&lt;/p&gt;
+&lt;hr /&gt;
+&lt;h4 id=&quot;whitejs_3&quot;&gt;White:js中函数定义的方式有哪些？&lt;/h4&gt;
+
+&lt;p&gt;&lt;em&gt;Black:&lt;/em&gt;js中函数定义有三种方法：函数声明、函数表达式、new Function。&lt;/p&gt;
+
+&lt;p&gt;函数声明(FD)的特点：&lt;/p&gt;
+
+&lt;ol&gt;
+&lt;li&gt;有一个特定的名称。&lt;/li&gt;
+
+&lt;li&gt;在源代码中的位置：程序级 和 函数体内。&lt;/li&gt;
+
+&lt;li&gt;在进入上下文阶段创建，会变量提前。&lt;/li&gt;
+
+&lt;li&gt;影响变量对象（VO）。&lt;/li&gt;
+
+&lt;li&gt;声明方式 &lt;code&gt;function funcName(arg,arg2,...) {...}&lt;/code&gt;。&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;p&gt;函数表达式(FE)特点：&lt;/p&gt;
+
+&lt;ol&gt;
+&lt;li&gt;可以有可选名称（只能在函数内使用，主要用于调试）。&lt;/li&gt;
+
+&lt;li&gt;在源代码中的位置： 可以使用表达式的地方。&lt;/li&gt;
+
+&lt;li&gt;在代码的执行阶段创建，不会变量提前。&lt;/li&gt;
+
+&lt;li&gt;不会影响变量对象（VO）。&lt;/li&gt;
+
+&lt;li&gt;声明方式&lt;code&gt;var funcName = function(arg1...) {...}&lt;/code&gt;。&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;p&gt;任何函数都是Function的一个实例，所以可以通过&lt;code&gt;var funcName = Function(&amp;quot;x&amp;quot;,&amp;quot;y&amp;quot;,&amp;quot;return x*y;&amp;quot;&lt;/code&gt;。&lt;/p&gt;
+
+&lt;p&gt;Function方式的特点：&lt;/p&gt;
+
+&lt;ol&gt;
+&lt;li&gt;允许js在运行时动态创建并编译函数。&lt;/li&gt;
+
+&lt;li&gt;每次调用Function都会解析函数体，并创建新的函数对象。&lt;/li&gt;
+
+&lt;li&gt;不使用本地作用域，只使用顶级作用域。&lt;/li&gt;
+
+&lt;li&gt;此方法很少用到。&lt;/li&gt;
+&lt;/ol&gt;
+&lt;hr /&gt;
+&lt;h4 id=&quot;whitejs_4&quot;&gt;White:js中函数的调用方式有哪些？&lt;/h4&gt;
+
+&lt;p&gt;&lt;em&gt;Black:&lt;/em&gt;js中创建对象有四种方式：&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;作为函数&lt;/li&gt;
+
+&lt;li&gt;作为方法&lt;/li&gt;
+
+&lt;li&gt;作为构造函数&lt;/li&gt;
+
+&lt;li&gt;通过call或apply调用&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;作为函数和方法调用是普通调用，其最终也是通过apply实现的，call是apply的一个愈发糖。它们的区别就是调用上下文this。&lt;/p&gt;
+
+&lt;p&gt;通过构造函数调用请参见&lt;a href=&quot;/books/2011/05/20/jsdg-chap4-expression-operators.html&quot;&gt;对象创建表达式和new关键字&lt;/a&gt;。&lt;/p&gt;
+
+&lt;p&gt;call和apply间接调用，js中函数也是对象，和其他js对象没有什么不同，函数对象也有其自己的方法，其中call和apply可以用来间接调用函数。这两个方法需要指定所需的this的值，也就是说函数可以指定任何对象作为其this的值，哪怕哪个对象没有这个方法，这就可以实现函数借用。形式如&lt;code&gt;func.call(othis,arg1,arg2...);&lt;/code&gt;其中othis是传入的对象作为func的this。&lt;/p&gt;
+
+&lt;p&gt;ECMAScript5新定义了一个bind方法，返回一个绑定了对象的方法，如&lt;code&gt;var g =f.bind(o); g();&lt;/code&gt;等同&lt;code&gt;f.call(o);&lt;/code&gt;。&lt;/p&gt;
+
+&lt;p&gt;方法的调用还可以使用方括号的形式&lt;code&gt;o[&amp;quot;f&amp;quot;]();&lt;/code&gt;。&lt;/p&gt;
+&lt;hr /&gt;
+&lt;h4 id=&quot;whitejs_5&quot;&gt;White:js中函数的形参和实参是什么概念？&lt;/h4&gt;
+
+&lt;p&gt;&lt;em&gt;Black:&lt;/em&gt;js中形参是可选的，实参是一个类数组对象（arguments)。形参是在定义函数时所声明的参&lt;code&gt;function f(arg1,arg2)&lt;/code&gt;中的arg1，arg2是形参，函数有一个length属性其值就是形参的个数。调用函数时传入的参数为实参，其不受形参影响，可多，可少。&lt;/p&gt;
+
+&lt;p&gt;arguments是指向实参对象（Arguments）的引用，是一个类数组对象，可以通过索引来取得参数的值，并且通过索引和通过参数名arg1取得的是同一个值，通过任一方式操作都等价的，修改其中一个会影响另一个。&lt;/p&gt;
+
+&lt;p&gt;arguments是一个对象，它也有自己的属性，callee代表正在执行的函数，caller代表调用正在执行的函数的函数（外层函数）。&lt;/p&gt;
+&lt;hr /&gt;
+&lt;h4 id=&quot;whitejquery&quot;&gt;White:jquery中常见的参数对象是什么意思？&lt;/h4&gt;
+
+&lt;p&gt;&lt;em&gt;Black:&lt;/em&gt;函数中的参数越多，调用起来就越不方便，所以引出了参数对象的概念，把所有参数封装为一个对象，对像赋值后直接传递给函数。&lt;/p&gt;
+&lt;hr /&gt;</content>
+ </entry>
+ 
+ <entry>
+   <title>BW编程之js数组篇(八)</title>
+   <link href="http://izhanghuaning.github.io/books/2011/06/05/jsdg-chap7-array.html"/>
+   <updated>2011-06-05T00:00:00+08:00</updated>
+   <id>http://izhanghuaning.github.io/books/2011/06/05/jsdg-chap7-array</id>
+   <content type="html">&lt;h4 id=&quot;whitejs&quot;&gt;White:js中数组是什么？&lt;/h4&gt;
+
+&lt;p&gt;&lt;em&gt;Black:&lt;/em&gt;数组是值的有序集合，每个值在数组中都有一个位置，以从0开始的数字表示，称为索引。js中的数组就是一个特殊的对象，这个对象的属性名恰好是数字，并且它有一个可以自己维护值的属性length。&lt;/p&gt;
+
+&lt;p&gt;在js中数组是一个非常重要的概念，js中的集合就是通过数组来实现的，提供了很多集合的操作方法。绝大多数数组方法都支持回调函数，这也就是高阶函数的概念。&lt;/p&gt;
+
+&lt;p&gt;js中数组有如下特征：&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;当有新的元素添加到列表中时，自动更新length属性&lt;/li&gt;
+
+&lt;li&gt;设置length为一个较小的值将截断数组&lt;/li&gt;
+
+&lt;li&gt;从Array.prototype继承了一些方法&lt;/li&gt;
+
+&lt;li&gt;其类属性(class)为“Array”&lt;/li&gt;
+&lt;/ul&gt;
+&lt;hr /&gt;
+&lt;h4 id=&quot;whitejs_2&quot;&gt;White:js中数组有哪些方法？&lt;/h4&gt;
+
+&lt;p&gt;&lt;em&gt;Black:&lt;/em&gt;ECMAScript3中的方法主要有；&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;join(splitor)将数组中所有元素都转化为字符串并连接在一起，并用分割符进行隔离，默认分割符是逗号(,)。&lt;/li&gt;
+
+&lt;li&gt;reverse()将数组中元素的顺序逆序排列，并返回逆序的数组，修改原数组。&lt;/li&gt;
+
+&lt;li&gt;sort(callback)将数组中元素通过callback排序后返回排序后的数组，修改原数组。&lt;/li&gt;
+
+&lt;li&gt;concat(elements)把elements连接到原数组后面，如果elements中有数组则一次扁平化后连接其元素。修改原数组。&lt;/li&gt;
+
+&lt;li&gt;slice()返回数组的一个片段或字数组，原数组不变。其参数是”顾头不顾尾”，包含起始点元素，不包含结束点元素。&lt;/li&gt;
+
+&lt;li&gt;splice()在数组中插入或删除元素，修改原数组。&lt;/li&gt;
+
+&lt;li&gt;push()、pop()将数组当作栈使用。修改原数组。&lt;/li&gt;
+
+&lt;li&gt;unshift()、shift()类似栈，但是是对头进行操作。修改原数组。&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;ECMAScript5增加了新方法如下：&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;forEach(callback)遍历数组并为每个元素调用callback，返回修改后的数组。修改原数组。&lt;/li&gt;
+
+&lt;li&gt;map(callback)遍历数组并为每个元素调用callback，返回新数组。&lt;/li&gt;
+
+&lt;li&gt;filter(callback)返回满足callback的原数组的一个子集的新数组。&lt;/li&gt;
+
+&lt;li&gt;every(callback)、some(callback)数组的逻辑判定，是否满足callback，返回true或false。&lt;/li&gt;
+
+&lt;li&gt;reduce(callback,start)使用callback对数组进行组合，返回一个单个值。&lt;/li&gt;
+
+&lt;li&gt;indexOf(el)搜索数组给出el元素的索引值。&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;数组还可以定义很多方法，这些需要自己去实现。&lt;/p&gt;
+&lt;hr /&gt;
+&lt;h4 id=&quot;white&quot;&gt;White:什么是类数组对象？&lt;/h4&gt;
+
+&lt;p&gt;&lt;em&gt;Black:&lt;/em&gt;是一个对象，却具有数组的特征，可以通过Array.prototype.slice.call(o,0,o.length-1)转化为真正的数组。数组的很多方法都可以直接使用于类数组对象。最常见的就是Arguments对象。&lt;/p&gt;
+
+&lt;p&gt;Arguments是每个函数体中都有的参数对象，代表了实际传入函数的参数，将在下一篇函数篇进行详细介绍。&lt;/p&gt;
+&lt;hr /&gt;</content>
+ </entry>
  
  <entry>
    <title>BW编程之js对象篇(七)</title>
@@ -63,7 +313,7 @@
 	//new f()作为临时对象，是为了函数作为返回值时，隔离不同的新创建对象和原型p的关联关系。
 	
 	//举例说明：
-	function Animal ={name=&amp;quot;p&amp;quot;};
+	function Animal() {name=&amp;quot;p&amp;quot;};
 	function Cat = inherit(Animal);
 	Cat.prototype.say = function(){return &amp;quot;miao&amp;quot;;}
 	function Dog = Inherit(Animal);
@@ -96,6 +346,19 @@
 
 &lt;p&gt;可扩展性配合属性的特性可以实现只读对象等特殊对象,用的少，现用现查不具体讲解。&lt;/p&gt;
 &lt;hr /&gt;
+&lt;h4 id=&quot;whitejs__proto__&quot;&gt;White:js中对象原型(__proto__)是什么？&lt;/h4&gt;
+
+&lt;p&gt;&lt;em&gt;Black:&lt;/em&gt; js是一种面向对象的语言，面向对象的特征有封装、继承、多态。js完全可以写出像java那样的Class式的程序，它是通过&lt;code&gt;function ClassName（）&lt;/code&gt;这样的方式来实现Class的。有了Class可以把数据和方法封装起来，而且对于弱类型的js来说多态更是容易实现，最显而易见就是”鸭式辩型”的方式。剩下的继承在js中就是通过原型来实现的，大多数语言的继承是通过模板即Class方式实现，但js是通过原型来实现的。 下面是示例：&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;	function Animal() { name=&amp;quot;animal&amp;quot;; };
+	var animal = new Animal();
+	animal.name;//=&amp;gt;animal
+	animal.say();//错误，未定义say
+	Animal.prototype.say = function(){return &amp;quot;I am &amp;quot;+ this.name;}
+	animal.say();//=&amp;gt;I am animal;
+	animal.__proto__ === Animal.prototype;//=&amp;gt;true
+	Animal.__proto__ === Function.prototype;//=&amp;gt;true&lt;/code&gt;&lt;/pre&gt;
+&lt;hr /&gt;
 &lt;h4 id=&quot;whitejs__proto__prototype&quot;&gt;White:js中对象原型(__proto__)和prototype有什么区别？&lt;/h4&gt;
 
 &lt;p&gt;&lt;em&gt;Black:&lt;/em&gt;&lt;/p&gt;
@@ -116,7 +379,7 @@
  </entry>
  
  <entry>
-   <title>BW编程之js表达式篇2 eval(六)</title>
+   <title>BW编程之js表达式篇eval(六)</title>
    <link href="http://izhanghuaning.github.io/books/2011/05/25/jsdg-chap4-expression-operators2.html"/>
    <updated>2011-05-25T00:00:00+08:00</updated>
    <id>http://izhanghuaning.github.io/books/2011/05/25/jsdg-chap4-expression-operators2</id>
@@ -274,7 +537,7 @@
  </entry>
  
  <entry>
-   <title>BW编程之js变量篇2(四)</title>
+   <title>BW编程之js变量篇作用域链(四)</title>
    <link href="http://izhanghuaning.github.io/books/2011/05/15/jsdg-chap3-types-values-variables3.html"/>
    <updated>2011-05-15T00:00:00+08:00</updated>
    <id>http://izhanghuaning.github.io/books/2011/05/15/jsdg-chap3-types-values-variables3</id>
@@ -308,7 +571,7 @@
 
 	}&lt;/code&gt;&lt;/pre&gt;
 
-&lt;p&gt;ScopeChains和this两个属性不进入作用域链查找，查找时先看当前VO有没有相应属性，没有则进入上一级的ScopeChains查找。this是javascript的最核心内容（也可能是之一），后面应该也要单独讲解。&lt;/p&gt;
+&lt;p&gt;ScopeChains和this两个属性不进入作用域链查找，查找时先看当前VO有没有相应属性，没有则进入上一级的ScopeChains查找。this是javascript的最核心内容（也可能是之一），后面应该也要单独讲解,请参见&lt;a href=&quot;/books/2011/06/20/jsdg-chap8-this.html&quot;&gt;javascript this详解&lt;/a&gt;。&lt;/p&gt;
 &lt;hr /&gt;
 &lt;h4 id=&quot;whitevo__proto__objectprototype&quot;&gt;White:VO既然是个对象，那么它的原型(__proto__)是什么？对象Object.prototype？&lt;/h4&gt;
 
@@ -348,7 +611,7 @@
 
 &lt;p&gt;js的变量根据其作用域(有效范围)分为私有变量、局部变量、全局变量等，js的作用域只有函数作用域，外层作用域的变量可以穿透作用域到内层作用域，当内外层作用域的变量冲突的话，内层作用域的变量起作用（覆盖了外层），这实际上是变量的作用域链的查找规则决定的，后面会深入探讨作用域链。还有一种特殊的能跨作用域的变量是闭包的概念，这也是一个进阶的内容，放在后面单独开出一章来讲解。一句话理解闭包就是从作用域A操作（访问）作用域B中的变量,基本是指外部访问内部作用域的变量。&lt;/p&gt;
 
-&lt;p&gt;js中没有真正声明私有变量的语法，约定俗称是变量前面或者后面加上一个或两个下划线表示该变量为私有变量（_name,name_,__proto__等），作者不希望其他人使用这些变量，此所谓防君子不防小人，别人照样能随意操作你的私有变量。真正实现的私有变量是通过闭包来实现的，但是性能效率比较低，后面讲解闭包会详细说明。&lt;/p&gt;
+&lt;p&gt;js中没有真正声明私有变量的语法，约定俗称是变量前面或者后面加上一个或两个下划线表示该变量为私有变量（_name,name_,__proto__等），作者不希望其他人使用这些变量，此所谓防君子不防小人，别人照样能随意操作你的私有变量。真正实现的私有变量是通过闭包来实现的，但是性能效率比较低，关于闭包会详细说明请参见&lt;a href=&quot;/books/2011/06/15/jsdg-chap8-closure.html&quot;&gt;javascript闭包详解&lt;/a&gt;。&lt;/p&gt;
 &lt;hr /&gt;
 &lt;h4 id=&quot;white_2&quot;&gt;White:变量作用域是什么？&lt;/h4&gt;
 
