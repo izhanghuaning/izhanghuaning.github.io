@@ -4,13 +4,140 @@
  <title>张华宁的笔记本</title>
  <link href="http://izhanghuaning.github.io/" rel="self"/>
  <link href="http://izhanghuaning.github.io"/>
- <updated>2014-03-21T17:30:00+08:00</updated>
+ <updated>2014-03-26T09:28:17+08:00</updated>
  <id>http://izhanghuaning.github.io</id>
  <author>
    <name>张华宁</name>
    <email>izhanghuaning$163.com</email>
  </author>
 
+ 
+ <entry>
+   <title>BW编程之js模块篇类(十三)</title>
+   <link href="http://izhanghuaning.github.io/books/2011/06/30/jsdg-chap9-class.html"/>
+   <updated>2011-06-30T00:00:00+08:00</updated>
+   <id>http://izhanghuaning.github.io/books/2011/06/30/jsdg-chap9-class</id>
+   <content type="html">&lt;h4 id=&quot;whitejs&quot;&gt;White:js中类是什么？&lt;/h4&gt;
+
+&lt;p&gt;&lt;em&gt;Black:&lt;/em&gt; 在js中，每个js对象都是一个属性集合，相互之间没有任何联系。当开发人员需要复用某个对象，想要共享某个对象的属性时，继承的概念就显现出来了。首先要定义一个模板类(class)，然后使用模板来生产相似的实例(instance)。每个实例都有模板定义的属性，是相似的对象，达到了复用的目的。&lt;/p&gt;
+
+&lt;p&gt;在js中，继承是基于原型来实现的。如果两个实例从同一个原型对象继承了属性，我们就说它们是同一个类的实例，它们往往是由同一个构造函数创建并初始化的。&lt;/p&gt;
+
+&lt;p&gt;关于构造函数请参见：&lt;a href=&quot;/books/2011/05/20/jsdg-chap4-expression-operators.html&quot;&gt;对象创建表达式和new关键字&lt;/a&gt;。&lt;/p&gt;
+
+&lt;p&gt;调用构造函数的一个重要特征是：构造函数的prototype属性被用作新对象的原型，者意味着通过同一个构造函数创建的所有对象都继承字同一个对象，因此它们都是同一个类的实例。&lt;/p&gt;
+
+&lt;p&gt;根据js约定俗称的做法，代表类的构造函数的首字母要大写，表明自己应该被new方式调用，如果使用普通方式调用就会出现意想不到的问题。new 关键字改变了函数的返回值、this，没有参数时可以省略括号。&lt;/p&gt;
+&lt;hr /&gt;
+&lt;h4 id=&quot;whitejs_2&quot;&gt;White:js中类的标识是构造函数么？&lt;/h4&gt;
+
+&lt;p&gt;&lt;em&gt;Black:&lt;/em&gt; js中类的唯一标识是原型对象(__proto__)。当且仅当两个对象继承自同一个原型对象时，它们才属于同一个类的实例。而初始化对象状态的构造函数则不能作为类的标识，两个构造函数的prototype可能指向同一个原型对象，那么这两个构造函数创建的实例属于同一个类。&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;	function Animal() {
+		this.belongto = &amp;quot;animal&amp;quot;;
+	}
+	
+	function Cat() {
+		this.belongto = &amp;quot;cat&amp;quot;;
+	}
+
+	function Dog() {
+		this.belongto = &amp;quot;dog&amp;quot;;
+	}
+
+	Cat.prototype = Animal.prototype;
+	Dog.prototype = Animal.prototype;
+
+	var c = new Cat;
+	var d = new Dog;
+	c.__proto__ === d.__proto__ //=&amp;gt;true
+
+	var proto = new	Animal
+	Cat.prototype = proto;
+
+	var c2 = new Cat;
+	c.__proto__ === c2.__proto__ //=&amp;gt;false&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;注意：o instanceof Object时，instanceof运算符不会检查o是否由Object()构造函数初始化而来，而会检查o是否继承自Object.prototype。instanceof语法强化了”构造函数是类的公有标识的概念”，是类的”外在表现”。&lt;/p&gt;
+&lt;hr /&gt;
+&lt;h4 id=&quot;whitejs_3&quot;&gt;White:js中类(函数)和实例(对象)中有哪几个重要属性？&lt;/h4&gt;
+
+&lt;p&gt;&lt;em&gt;Black:&lt;/em&gt; js类中的重要属性有prototype,实例（类的原型prototype）的重要属性有原型(__proto__)、构造函数(constructor)。类也是对象，所以类也有__proto__、constructor，不过这两个属性都是指向Function类的，基本不会使用。&lt;/p&gt;
+
+&lt;p&gt;举例说明：&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;	function Person() {}
+	var p = new Person();
+
+	Person.constructor === Function; //=&amp;gt;true
+	Person.prototype === p.__proto__; //=&amp;gt;true
+	Person.prototype.__proto__ === Object.prototype;//=&amp;gt;true
+	Person.__proto__ === Function.prototype;//=&amp;gt;true
+	Person.prototype.constructor === Person;//=&amp;gt;true
+
+	p.__proto__ === Person.prototype;//=&amp;gt;true
+	p.constructor === Person;//=&amp;gt;true&lt;/code&gt;&lt;/pre&gt;
+&lt;hr /&gt;
+&lt;h4 id=&quot;whitejs_4&quot;&gt;White:js中检测实例的类的技术？&lt;/h4&gt;
+
+&lt;p&gt;&lt;em&gt;Black:&lt;/em&gt; js中有三种检测实例的类的技术：instanceof运算符、consructor属性、构造函数的名字。每种方式都有其缺点。&lt;/p&gt;
+
+&lt;p&gt;instanceof运算符：构造函数是类的公共标识，但原型是类的唯一标识。尽管instanceof运算符的右操作书是构造函数，但实际上是检测了对象的原型继承关系，而不是检测创建对象的构造函数。我们无法通过对象获得类名，只能检测对象是否属于指定的类名。&lt;/p&gt;
+
+&lt;p&gt;constructor属性：并非所有的对象都有constructor属性。通过原型链每个对象都有constructor属性，但是可能是继承Object的，不是自己的。自定义对象原型需要自己定义constructor。通过默认的函数创建的对象默认有constructor属性，并且指向类构造函数。&lt;/p&gt;
+
+&lt;p&gt;上述两种方式还有一个缺点，在多上下文的环境（比如两个页面），每个都有自己独立的全局变量和一组构造函数，一个页面的Array实例判断是否是另一个页面Array类是行不通的。&lt;/p&gt;
+
+&lt;p&gt;构造函数的名称：并不是所有的函数都有名字，函数表达式没有名字。&lt;/p&gt;
+
+&lt;p&gt;正式因为上述方式都有缺点，所以提出了”鸭式辩形”的策略，只关心行为，而不关心具体的类。&lt;/p&gt;
+&lt;hr /&gt;
+&lt;h4 id=&quot;white&quot;&gt;White:”鸭式辩形”是什么？&lt;/h4&gt;
+
+&lt;p&gt;&lt;em&gt;Black:&lt;/em&gt; 像鸭子一样走路、游泳并且嘎嘎叫的鸟就是鸭子。&lt;/p&gt;
+
+&lt;p&gt;鸭式辩形的核心思想就是重行为轻类型。检测行为而不检测类型。&lt;/p&gt;
+&lt;hr /&gt;</content>
+ </entry>
+ 
+ <entry>
+   <title>BW编程之js模块篇(十二)</title>
+   <link href="http://izhanghuaning.github.io/books/2011/06/25/jsdg-chap9-module.html"/>
+   <updated>2011-06-25T00:00:00+08:00</updated>
+   <id>http://izhanghuaning.github.io/books/2011/06/25/jsdg-chap9-module</id>
+   <content type="html">&lt;h4 id=&quot;whitejs&quot;&gt;White:js模块的含义是什么？&lt;/h4&gt;
+
+&lt;p&gt;&lt;em&gt;Black:&lt;/em&gt;将代码组织到类中的一个重要原因是，让代码更加”模块化”,可以在不同场景实现代码的复用。但类不是唯一的模块化代码的方式。一般来讲模块是一个独立的js文件。模块文件可以包含一个类定义、一组相关的类、一个函数库、一些待执行代码等。只要以模块的形式编写代码，任何js代码都可以当作一个模块。&lt;/p&gt;
+
+&lt;p&gt;js模块化保证了js代码的可维护性和可复用性，提高了开发效率，产生了一大批优秀的js类库，比如jquery、spine等等。&lt;/p&gt;
+&lt;hr /&gt;
+&lt;h4 id=&quot;white&quot;&gt;White:命名空间是什么？&lt;/h4&gt;
+
+&lt;p&gt;&lt;em&gt;Black:&lt;/em&gt; 现在的程序的规模越来越大，不只是一个组织内部很多人会参与到项目中来，而且程序中会用到大量第三方开发的类库、组件等，如果大家都把变量、函数等定义在顶层作用域中，那么就会导致命名冲突和相互影响，导致程序不能正常工作，也会进入无法维护的境地。命名空间就是用来把变量、函数等划分进不同模块的方法，通过对程序划分模块来提高可维护性和避免命名冲突。&lt;/p&gt;
+&lt;hr /&gt;
+&lt;h4 id=&quot;whitejs_2&quot;&gt;White:js中命名空间使用函数来实现的？&lt;/h4&gt;
+
+&lt;p&gt;&lt;em&gt;Black:&lt;/em&gt; js中只有一种作用域，即函数作用域，在js中无法声明只有某个代码快内可见的变量的。所以必须通过函数来做命名空间，在这个函数内定义的变量不会污染全局命名空间和其他命名空间。&lt;/p&gt;
+
+&lt;p&gt;最常用的方式有一个专门的名称：立即函数&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;	(function() {
+		//模块代码
+	}());
+
+	或者
+
+	(function mymodule() {
+		//模块代码
+	})();&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;这两种方式基本等同，mymodule是函数表达式，最开始的()是告诉避免编译器把function当作函数声明语句。&lt;/p&gt;
+&lt;hr /&gt;
+&lt;h4 id=&quot;whitejs_3&quot;&gt;White:js模块依赖关系管理是什么？&lt;/h4&gt;
+
+&lt;p&gt;&lt;em&gt;Black:&lt;/em&gt;模块化解决的是js代码的松耦合，但是不同模块之间会有依赖管理，当模块很多时就迫切需要有一个模块依赖关系管理的功能。js本身不提供这样的功能。业界有commonjs模块规范可以参考，也有类似sea.js等库提供这样的功能。&lt;/p&gt;
+&lt;hr /&gt;</content>
+ </entry>
  
  <entry>
    <title>BW编程之js函数篇this(十一)</title>
@@ -23,27 +150,25 @@
 
 &lt;p&gt;当内层嵌套函数想使用外层函数的this需要使用变量对this进行保存后使用。&lt;/p&gt;
 
-&lt;p&gt;任何函数的调用都会隐式传入一个实参，这个实参是一个对象，方法调用的母体就是这个对象。this是方法调用的核心，也就是谁正在调用方法，其就是调用上下文。&lt;/p&gt;
-&lt;hr /&gt;
-&lt;h4 id=&quot;whitejs&quot;&gt;White:js中创建对象有哪些方式？&lt;/h4&gt;
+&lt;p&gt;任何函数的调用都会隐式传入一个实参，这个实参是一个对象，方法调用的母体就是这个对象。如前所述，&lt;a href=&quot;/books/2011/06/10/jsdg-chap8-function.html&quot;&gt;函数有4中调用方式&lt;/a&gt;。&lt;/p&gt;
 
-&lt;p&gt;&lt;em&gt;Black:&lt;/em&gt;js中创建对象有三种方式：对象直接量、new、Object.create()；&lt;/p&gt;
+&lt;p&gt;如下所示，每种调用方式的this都有其作用方式，能够找到this指向的对象是很关键的。&lt;/p&gt;
 &lt;hr /&gt;
-&lt;h4 id=&quot;whitejs_2&quot;&gt;White:js中创建对象有哪些方式？&lt;/h4&gt;
+&lt;h4 id=&quot;whitethisof&quot;&gt;White:this在方法调用o.f()中的作用？&lt;/h4&gt;
 
-&lt;p&gt;&lt;em&gt;Black:&lt;/em&gt;js中创建对象有三种方式：对象直接量、new、Object.create()；&lt;/p&gt;
+&lt;p&gt;&lt;em&gt;Black:&lt;/em&gt;this是方法调用的核心，也就是谁正在调用方法,在f中的this就是o。如果f中包含嵌套函数g，那么函数g中的this 与f中的this没有任何联系，g中的this是window(global、undefined)。如果g中想要使用f中的this，一般的做法是在f中使用变量保存this的值，一般使用self或that作为变量名。这样在g中可以使用self指代f中的this。&lt;/p&gt;
 &lt;hr /&gt;
-&lt;h4 id=&quot;whitejs_3&quot;&gt;White:js中创建对象有哪些方式？&lt;/h4&gt;
+&lt;h4 id=&quot;whitethisnew_f&quot;&gt;White:this在构造函数new f()中的作用？&lt;/h4&gt;
 
-&lt;p&gt;&lt;em&gt;Black:&lt;/em&gt;js中创建对象有三种方式：对象直接量、new、Object.create()；&lt;/p&gt;
+&lt;p&gt;&lt;em&gt;Black:&lt;/em&gt;在构造函数中,新构造的对象会被关联到this，所以this.x中的x会成为新构造的对象的属性，最后返回新建构造函数。&lt;/p&gt;
 &lt;hr /&gt;
-&lt;h4 id=&quot;whitejs_4&quot;&gt;White:js中创建对象有哪些方式？&lt;/h4&gt;
+&lt;h4 id=&quot;whitethisfunctioncallo&quot;&gt;White:this在function.call(o)中的作用？&lt;/h4&gt;
 
-&lt;p&gt;&lt;em&gt;Black:&lt;/em&gt;js中创建对象有三种方式：对象直接量、new、Object.create()；&lt;/p&gt;
+&lt;p&gt;&lt;em&gt;Black:&lt;/em&gt;function.call或apply是显示指定调用上下文的间接调用方式，其第一个参数就是函数中this的值。&lt;/p&gt;
 &lt;hr /&gt;
-&lt;h4 id=&quot;whitejs_5&quot;&gt;White:js中创建对象有哪些方式？&lt;/h4&gt;
+&lt;h4 id=&quot;whitethisf&quot;&gt;White:this在函数调用f()中的作用？&lt;/h4&gt;
 
-&lt;p&gt;&lt;em&gt;Black:&lt;/em&gt;js中创建对象有三种方式：对象直接量、new、Object.create()；&lt;/p&gt;
+&lt;p&gt;&lt;em&gt;Black:&lt;/em&gt;在函数调用中，this的值是全局对象window。&lt;/p&gt;
 &lt;hr /&gt;</content>
  </entry>
  
@@ -52,29 +177,52 @@
    <link href="http://izhanghuaning.github.io/books/2011/06/15/jsdg-chap8-closure.html"/>
    <updated>2011-06-15T00:00:00+08:00</updated>
    <id>http://izhanghuaning.github.io/books/2011/06/15/jsdg-chap8-closure</id>
-   <content type="html">&lt;h4 id=&quot;whitejs&quot;&gt;White:js中创建对象有哪些方式？&lt;/h4&gt;
+   <content type="html">&lt;h4 id=&quot;whitejs&quot;&gt;White:js中的闭包是什么？&lt;/h4&gt;
 
-&lt;p&gt;&lt;em&gt;Black:&lt;/em&gt;js中创建对象有三种方式：对象直接量、new、Object.create()；&lt;/p&gt;
+&lt;p&gt;&lt;em&gt;Black:&lt;/em&gt;和大多数现代编程语言一样，js也采用词法作用域，也就是说函数的执行依赖语变量作用域，”这个作用域是在函数定义时决定的，而不是函数调用时决定的”。为了实现这种词法作用域，js函数对象的内部状态不但包含函数的逻辑代码，还必须引用当前的作用域链（调用上下文）。函数对象可以通过作用域链相互关联起来，函数体内部的变量都可以保存在函数作用域内，看起来就像函数将变量”包裹”起来一样，称为”闭包”。&lt;/p&gt;
+
+&lt;p&gt;这样来看每个函数内的变量都是”闭包”，但是实际中的概念却不是这个意思。&lt;/p&gt;
+
+&lt;p&gt;在js中术语”闭包”一句话来说明就是：”从作用域A访问作用域B的变量，一般是只从外层作用域A访问内层作用域B。”&lt;/p&gt;
 &lt;hr /&gt;
-&lt;h4 id=&quot;whitejs_2&quot;&gt;White:js中创建对象有哪些方式？&lt;/h4&gt;
+&lt;h4 id=&quot;whitejs_2&quot;&gt;White:js中闭包的作用有哪些？&lt;/h4&gt;
 
-&lt;p&gt;&lt;em&gt;Black:&lt;/em&gt;js中创建对象有三种方式：对象直接量、new、Object.create()；&lt;/p&gt;
+&lt;p&gt;&lt;em&gt;Black:&lt;/em&gt;从技术角度讲，所有的js函数都是闭包：它们都是对象，它们都关联作用域链。定义大多数函数时的作用域在调用函数时仍然有效，但这并不影响闭包。&lt;/p&gt;
+
+&lt;p&gt;当调用函数时闭包所指向的作用域链和定义函数时的作用域链不是同一个作用域链时，事情就不一样了。当一个函数嵌套了另外一个函数，外部函数将嵌套的函数作为返回值返回的时候往往会发生这种情况。&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;	var scope = &amp;quot;global scope&amp;quot;;
+	function checkscope() {
+		var scope = &amp;quot;local scope&amp;quot;;
+		function f() { return scope; }
+		return f;
+	}
+
+	checkscope()();//=&amp;gt;local scope&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;最后一行返回的是”local scope”而不是”global scope”，这正是因为闭包作用的结果。闭包的这个特性强大的令人吃惊：它们可以捕捉到局部变量（和参数），并一直保存下来，看起来像这些变量绑定到了其中定义它们的外部函数。&lt;/p&gt;
 &lt;hr /&gt;
-&lt;h4 id=&quot;whitejs_3&quot;&gt;White:js中创建对象有哪些方式？&lt;/h4&gt;
+&lt;h4 id=&quot;whitejs_3&quot;&gt;White:js中闭包的本质是什么？&lt;/h4&gt;
 
-&lt;p&gt;&lt;em&gt;Black:&lt;/em&gt;js中创建对象有三种方式：对象直接量、new、Object.create()；&lt;/p&gt;
+&lt;p&gt;&lt;em&gt;Black:&lt;/em&gt;按照java、c#等其他语言很难理解闭包，因为在这些语言中，函数内的局部变量在函数返回后就不可访问了。但是在js中却不是这样的，我们回想一下js中&lt;a href=&quot;/books/2011/05/15/jsdg-chap3-types-values-variables3.html&quot;&gt;如何定义作用域链&lt;/a&gt;。&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;我们将作用域链描述为一个列表，而不是绑定的栈。每次调用js函数的时候，都会创建一个新的对象(变量对象VO)来保存局部变量，并把这个对象添加至作用域链。当函数返回的时候就从作用域链中删除这个绑定对象，它就会被当作垃圾回收掉。但是如果一个函数A定义了嵌套函数B，每个嵌套函数B都各自对应一个作用域链，并且这个作用域链指向一个变量对象VO。如果函数A正常返回，则嵌套函数B所对应的变量对象VO也会被垃圾回收处理。但是如果函数A返回了嵌套函数B，则存在了一个引用指向了嵌套函数B的变量对象VO，那么变量对象VO就不会被垃圾回收处理，所以从函数A所在的上下文仍然可以使用嵌套变量对象VO的属性（变量、参数等）。这就是js中”闭包的本质”。&lt;/strong&gt;&lt;/p&gt;
 &lt;hr /&gt;
-&lt;h4 id=&quot;whitejs_4&quot;&gt;White:js中创建对象有哪些方式？&lt;/h4&gt;
+&lt;h4 id=&quot;whitejs_4&quot;&gt;White:js中闭包在实践中有哪些例子？&lt;/h4&gt;
 
-&lt;p&gt;&lt;em&gt;Black:&lt;/em&gt;js中创建对象有三种方式：对象直接量、new、Object.create()；&lt;/p&gt;
-&lt;hr /&gt;
-&lt;h4 id=&quot;whitejs_5&quot;&gt;White:js中创建对象有哪些方式？&lt;/h4&gt;
+&lt;p&gt;&lt;em&gt;Black:&lt;/em&gt;js中闭包可以实现计数器，可以真正模拟私有变量，因为这些私有变量只能通过返回的函数访问。&lt;/p&gt;
 
-&lt;p&gt;&lt;em&gt;Black:&lt;/em&gt;js中创建对象有三种方式：对象直接量、new、Object.create()；&lt;/p&gt;
-&lt;hr /&gt;
-&lt;h4 id=&quot;whitejs_6&quot;&gt;White:js中创建对象有哪些方式？&lt;/h4&gt;
+&lt;pre&gt;&lt;code&gt;	function counter() {
+		var n = 0 ;
+		return {
+			count: function() { return n++ ;},
+			reset: function() { n = 0;}
+		};
+	}&lt;/code&gt;&lt;/pre&gt;
 
-&lt;p&gt;&lt;em&gt;Black:&lt;/em&gt;js中创建对象有三种方式：对象直接量、new、Object.create()；&lt;/p&gt;
+&lt;p&gt;这里返回了一组方法组成的一个对象，返回对象的所有方法都共享一个私有变量n，只有返回对象的方法可以访问私有变量n。&lt;/p&gt;
+
+&lt;p&gt;这种方式是js模块化的基础，后面会详细介绍&lt;a href=&quot;/books/2011/06/25/jsdg-chap8-namespace.html&quot;&gt;js模块化&lt;/a&gt;。&lt;/p&gt;
 &lt;hr /&gt;</content>
  </entry>
  
@@ -187,7 +335,21 @@
 &lt;hr /&gt;
 &lt;h4 id=&quot;whitejquery&quot;&gt;White:jquery中常见的参数对象是什么意思？&lt;/h4&gt;
 
-&lt;p&gt;&lt;em&gt;Black:&lt;/em&gt;函数中的参数越多，调用起来就越不方便，所以引出了参数对象的概念，把所有参数封装为一个对象，对像赋值后直接传递给函数。&lt;/p&gt;
+&lt;p&gt;&lt;em&gt;Black:&lt;/em&gt;函数中的参数越多，调用起来就越不方便，所以引出了参数对象的概念dto(data transfer object)，把所有参数封装为一个对象，对像赋值后直接传递给函数。对于jquery等类库基本都需要支持option的参数对象。&lt;/p&gt;
+
+&lt;p&gt;实现类库注意事项有如下几点：&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;通过立即函数封装模块，只提供最少的全局变量。&lt;/li&gt;
+
+&lt;li&gt;提供配置参数对象。&lt;/li&gt;
+
+&lt;li&gt;只提供构造函数，其他方法通过参数调用方法。&lt;/li&gt;
+
+&lt;li&gt;支持链式调用，也支持对象显示功能，防止火车事故的难以跟踪。&lt;/li&gt;
+
+&lt;li&gt;最好支持extend和include等方式对类库进行扩展。&lt;/li&gt;
+&lt;/ul&gt;
 &lt;hr /&gt;</content>
  </entry>
  
@@ -472,7 +634,23 @@
 
 &lt;p&gt;&lt;em&gt;Black:&lt;/em&gt;对象创建表达式(object creation expression)创建一个对象并调用一个函数(这个函数称作构造函数)初始化对象的属性。js通过new关键字来进行对象创建，new关键字调用的函数与普通调用方式有2点不同：改变了上下文和改变了返回值。&lt;/p&gt;
 
-&lt;p&gt;&lt;strong&gt;&lt;em&gt;new的本质&lt;/em&gt;&lt;/strong&gt;，new关键字本质上也是调用函数的方式（普通函数调用是通过func.apply或func.call方式调用），它的特殊性在于把函数当作构造函数来执行，并最终创建一个对象。其过程如下：js解释器new关键字时知道是创建对象的时候了，首先传见一个新的空对象（{}），然后把这个对象赋值给this（自定义函数无法给this赋值），再调用构造函数把传入的参数和构造函数中赋值给this的属性都作为新对象的属性，如果构造函数没有return则把这个构造好新对象作为返回值，如果有return则把其返回的对象作为最后的返回值，即创建表达式计算的值。&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;&lt;em&gt;new的本质&lt;/em&gt;&lt;/strong&gt;，new关键字本质上也是调用函数的方式（普通函数调用是通过func.apply或func.call方式调用），它的特殊性在于把函数当作构造函数来执行，并最终创建一个对象。其过程如下：js解释器new关键字时知道是创建对象的时候了，进行了如下步骤：&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;首先传见一个新的空对象（{}）。&lt;/li&gt;
+
+&lt;li&gt;然后把这个对象赋值给this（自定义函数无法给this赋值）。&lt;/li&gt;
+
+&lt;li&gt;构造函数的prototype作为新对象的原型(__proto___)。&lt;/li&gt;
+
+&lt;li&gt;把构造函数作为新对象的原型(__proto__)的constructor。&lt;/li&gt;
+
+&lt;li&gt;调用构造函数把传入的参数和构造函数中赋值给this的属性都作为新对象的属性&lt;/li&gt;
+
+&lt;li&gt;如果构造函数没有return则把这个构造好新对象作为返回值。&lt;/li&gt;
+
+&lt;li&gt;如果有return则把其返回的对象作为最后的返回值，即创建表达式计算的值。&lt;/li&gt;
+&lt;/ul&gt;
 &lt;hr /&gt;
 &lt;h4 id=&quot;white_3&quot;&gt;White:比较运算符中的==和===的区别是什么？&lt;/h4&gt;
 

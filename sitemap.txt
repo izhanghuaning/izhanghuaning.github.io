@@ -9,6 +9,8 @@ http://izhanghuaning.github.io/categories.html
 http://izhanghuaning.github.io/pages.html
 http://izhanghuaning.github.io/archive.html
 
+http://izhanghuaning.github.io/books/2011/06/30/jsdg-chap9-class.html
+http://izhanghuaning.github.io/books/2011/06/25/jsdg-chap9-module.html
 http://izhanghuaning.github.io/books/2011/06/20/jsdg-chap8-this.html
 http://izhanghuaning.github.io/books/2011/06/15/jsdg-chap8-closure.html
 http://izhanghuaning.github.io/books/2011/06/10/jsdg-chap8-function.html

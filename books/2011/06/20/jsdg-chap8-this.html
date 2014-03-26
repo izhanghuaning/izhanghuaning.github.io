@@ -131,27 +131,25 @@
 
 <p>当内层嵌套函数想使用外层函数的this需要使用变量对this进行保存后使用。</p>
 
-<p>任何函数的调用都会隐式传入一个实参，这个实参是一个对象，方法调用的母体就是这个对象。this是方法调用的核心，也就是谁正在调用方法，其就是调用上下文。</p>
-<hr />
-<h4 id="whitejs">White:js中创建对象有哪些方式？</h4>
+<p>任何函数的调用都会隐式传入一个实参，这个实参是一个对象，方法调用的母体就是这个对象。如前所述，<a href="/books/2011/06/10/jsdg-chap8-function.html">函数有4中调用方式</a>。</p>
 
-<p><em>Black:</em>js中创建对象有三种方式：对象直接量、new、Object.create()；</p>
+<p>如下所示，每种调用方式的this都有其作用方式，能够找到this指向的对象是很关键的。</p>
 <hr />
-<h4 id="whitejs_2">White:js中创建对象有哪些方式？</h4>
+<h4 id="whitethisof">White:this在方法调用o.f()中的作用？</h4>
 
-<p><em>Black:</em>js中创建对象有三种方式：对象直接量、new、Object.create()；</p>
+<p><em>Black:</em>this是方法调用的核心，也就是谁正在调用方法,在f中的this就是o。如果f中包含嵌套函数g，那么函数g中的this 与f中的this没有任何联系，g中的this是window(global、undefined)。如果g中想要使用f中的this，一般的做法是在f中使用变量保存this的值，一般使用self或that作为变量名。这样在g中可以使用self指代f中的this。</p>
 <hr />
-<h4 id="whitejs_3">White:js中创建对象有哪些方式？</h4>
+<h4 id="whitethisnew_f">White:this在构造函数new f()中的作用？</h4>
 
-<p><em>Black:</em>js中创建对象有三种方式：对象直接量、new、Object.create()；</p>
+<p><em>Black:</em>在构造函数中,新构造的对象会被关联到this，所以this.x中的x会成为新构造的对象的属性，最后返回新建构造函数。</p>
 <hr />
-<h4 id="whitejs_4">White:js中创建对象有哪些方式？</h4>
+<h4 id="whitethisfunctioncallo">White:this在function.call(o)中的作用？</h4>
 
-<p><em>Black:</em>js中创建对象有三种方式：对象直接量、new、Object.create()；</p>
+<p><em>Black:</em>function.call或apply是显示指定调用上下文的间接调用方式，其第一个参数就是函数中this的值。</p>
 <hr />
-<h4 id="whitejs_5">White:js中创建对象有哪些方式？</h4>
+<h4 id="whitethisf">White:this在函数调用f()中的作用？</h4>
 
-<p><em>Black:</em>js中创建对象有三种方式：对象直接量、new、Object.create()；</p>
+<p><em>Black:</em>在函数调用中，this的值是全局对象window。</p>
 <hr />
     </div>
 
@@ -165,7 +163,7 @@
   
      
     	<li><a href="/categories.html#books-ref">
-    		books <span>11</span>
+    		books <span>13</span>
     	</a></li>
     
   
@@ -183,9 +181,9 @@
 
   
      
-    	<li><a href="/tags.html#javascript-ref">javascript <span>11</span></a></li>
+    	<li><a href="/tags.html#javascript-ref">javascript <span>13</span></a></li>
      
-    	<li><a href="/tags.html#web-ref">web <span>11</span></a></li>
+    	<li><a href="/tags.html#web-ref">web <span>13</span></a></li>
     
   
 
@@ -202,7 +200,7 @@
       
         <li><a href="/archive.html">Archive</a></li>
       
-        <li class="next disabled"><a>Next &rarr;</a>
+        <li class="next"><a href="/books/2011/06/25/jsdg-chap9-module.html" title="BW编程之js模块篇(十二)">Next &rarr;</a></li>
       
       </ul>
     </div>

@@ -229,7 +229,21 @@
 <hr />
 <h4 id="whitejquery">White:jquery中常见的参数对象是什么意思？</h4>
 
-<p><em>Black:</em>函数中的参数越多，调用起来就越不方便，所以引出了参数对象的概念，把所有参数封装为一个对象，对像赋值后直接传递给函数。</p>
+<p><em>Black:</em>函数中的参数越多，调用起来就越不方便，所以引出了参数对象的概念dto(data transfer object)，把所有参数封装为一个对象，对像赋值后直接传递给函数。对于jquery等类库基本都需要支持option的参数对象。</p>
+
+<p>实现类库注意事项有如下几点：</p>
+
+<ul>
+<li>通过立即函数封装模块，只提供最少的全局变量。</li>
+
+<li>提供配置参数对象。</li>
+
+<li>只提供构造函数，其他方法通过参数调用方法。</li>
+
+<li>支持链式调用，也支持对象显示功能，防止火车事故的难以跟踪。</li>
+
+<li>最好支持extend和include等方式对类库进行扩展。</li>
+</ul>
 <hr />
     </div>
 
@@ -243,7 +257,7 @@
   
      
     	<li><a href="/categories.html#books-ref">
-    		books <span>11</span>
+    		books <span>13</span>
     	</a></li>
     
   
@@ -261,9 +275,9 @@
 
   
      
-    	<li><a href="/tags.html#javascript-ref">javascript <span>11</span></a></li>
+    	<li><a href="/tags.html#javascript-ref">javascript <span>13</span></a></li>
      
-    	<li><a href="/tags.html#web-ref">web <span>11</span></a></li>
+    	<li><a href="/tags.html#web-ref">web <span>13</span></a></li>
     
   
 
