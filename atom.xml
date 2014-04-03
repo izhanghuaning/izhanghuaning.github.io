@@ -4,13 +4,125 @@
  <title>张华宁的笔记本</title>
  <link href="http://izhanghuaning.github.io/" rel="self"/>
  <link href="http://izhanghuaning.github.io"/>
- <updated>2014-03-26T09:28:17+08:00</updated>
+ <updated>2014-04-03T14:58:51+08:00</updated>
  <id>http://izhanghuaning.github.io</id>
  <author>
    <name>张华宁</name>
    <email>izhanghuaning$163.com</email>
  </author>
 
+ 
+ <entry>
+   <title>BW客户端js之线程篇(十四)</title>
+   <link href="http://izhanghuaning.github.io/books/2011/07/10/jsdg-chap13-jsthread.html"/>
+   <updated>2011-07-10T00:00:00+08:00</updated>
+   <id>http://izhanghuaning.github.io/books/2011/07/10/jsdg-chap13-jsthread</id>
+   <content type="html">&lt;h4 id=&quot;whitehtmlscriptasyncdefer&quot;&gt;White:html中script标签的async和defer属性的区别？&lt;/h4&gt;
+
+&lt;p&gt;&lt;em&gt;Black:&lt;/em&gt;&lt;/p&gt;
+&lt;hr /&gt;
+&lt;h4 id=&quot;whitehtmlscriptasyncdefer_2&quot;&gt;White:html中script标签的async和defer属性的区别？&lt;/h4&gt;
+
+&lt;p&gt;&lt;em&gt;Black:&lt;/em&gt;&lt;/p&gt;
+&lt;hr /&gt;
+&lt;h4 id=&quot;whitehtmlscriptasyncdefer_3&quot;&gt;White:html中script标签的async和defer属性的区别？&lt;/h4&gt;
+
+&lt;p&gt;&lt;em&gt;Black:&lt;/em&gt;&lt;/p&gt;
+&lt;hr /&gt;
+&lt;h4 id=&quot;whitehtmlscriptasyncdefer_4&quot;&gt;White:html中script标签的async和defer属性的区别？&lt;/h4&gt;
+
+&lt;p&gt;&lt;em&gt;Black:&lt;/em&gt;&lt;/p&gt;
+&lt;hr /&gt;
+&lt;h4 id=&quot;whitehtmlscriptasyncdefer_5&quot;&gt;White:html中script标签的async和defer属性的区别？&lt;/h4&gt;
+
+&lt;p&gt;&lt;em&gt;Black:&lt;/em&gt;&lt;/p&gt;
+&lt;hr /&gt;
+&lt;h4 id=&quot;whitehtmlscriptasyncdefer_6&quot;&gt;White:html中script标签的async和defer属性的区别？&lt;/h4&gt;
+
+&lt;p&gt;&lt;em&gt;Black:&lt;/em&gt;&lt;/p&gt;
+&lt;hr /&gt;
+&lt;h4 id=&quot;whitehtmlscriptasyncdefer_7&quot;&gt;White:html中script标签的async和defer属性的区别？&lt;/h4&gt;
+
+&lt;p&gt;&lt;em&gt;Black:&lt;/em&gt;&lt;/p&gt;
+&lt;hr /&gt;</content>
+ </entry>
+ 
+ <entry>
+   <title>BW客户端js概述篇(十四)</title>
+   <link href="http://izhanghuaning.github.io/books/2011/07/05/jsdg-chap13-introduction.html"/>
+   <updated>2011-07-05T00:00:00+08:00</updated>
+   <id>http://izhanghuaning.github.io/books/2011/07/05/jsdg-chap13-introduction</id>
+   <content type="html">&lt;h4 id=&quot;whitejs&quot;&gt;White:什么是客户端js？&lt;/h4&gt;
+
+&lt;p&gt;&lt;em&gt;Black:&lt;/em&gt; js分为原生js、客户端js、服务端js。原生js就是ECMAScript，是js标准，在客户端和服务端是一样的。客户端js就是在浏览器中使用的js，定义了window等一系列对象和方法，基于安全原因限制很多，不能操作文件、网络等。服务端js是可以类似java等构建整个应用的，可以操作网络、数据库、文件等。&lt;/p&gt;
+
+&lt;p&gt;客户端js主要是指window对象，window对象是所有客户端js特性和api的主要接入点，它表示web浏览器的一个窗口或者窗体，并且可以通过window来引用它。&lt;/p&gt;
+&lt;hr /&gt;
+&lt;h4 id=&quot;whitewindow&quot;&gt;White:什么是window对象？&lt;/h4&gt;
+
+&lt;p&gt;&lt;em&gt;Black:&lt;/em&gt; window对象是客户端js的全局变量。web浏览器每次向窗口或窗体载入新的内容，它都会开始一个新的js上下文，包含一个新创建的全局对象。但是当多个窗口或窗体在使用时，有一个重要概念，尽管窗口或窗体载入了新的文档，但是引用窗口或窗体的window对象仍然是一个有效引用。&lt;/p&gt;
+
+&lt;p&gt;所以客户端js有两个重要的对象。客户端全局对象处于作用域链的顶级，并且是全局变量和全局函数定义的地方。每个窗口或全体的window对象都是独立的，因为它们都是真是window的一个代理，我们所说的window对象实际上就是window proxy，没有办法能够引用到真正的window对象。&lt;/p&gt;
+
+&lt;p&gt;注意：如果web页面包含一个嵌入窗体（iframe），嵌入窗体中的js代码和文档窗口中的js代码会各自拥有独立的全局对象，它可被当作一个独立的窗口。两者的js代码一般情况不能相互访问（可以通过window.name、url的hash、jsonp等方式访问）。&lt;/p&gt;
+&lt;hr /&gt;
+&lt;h4 id=&quot;whitedom&quot;&gt;White:什么是文档对象模型（DOM）？&lt;/h4&gt;
+
+&lt;p&gt;&lt;em&gt;Black:&lt;/em&gt; 每个浏览器窗口、标签页和框架(iframe)都是由一个window对象所表示。每个window对象都有一个document属性引用了Document对象。Docuemnt对象表示窗口的内容，其并非是独立的，它是一个巨大的API的核心对象，叫做文档对象模型（DOM）。&lt;/p&gt;
+
+&lt;p&gt;DOM是表示和操作HTML和XML文档内容的基础API。DOM是由Emenent组成的树形结构，其根节点就是Document对象。&lt;/p&gt;
+&lt;hr /&gt;
+&lt;h4 id=&quot;whitehtmljs&quot;&gt;White:html中使用js的方式有哪些？&lt;/h4&gt;
+
+&lt;p&gt;&lt;em&gt;Black:&lt;/em&gt; js程序可以通过Document对象和它包含的Element对象遍历和管理文档内容。它可以通过操作CSS样式和类，修改文档内容的呈现。可以通过注册适当的事件处理程序来定义文档元素的行为。&lt;/p&gt;
+
+&lt;p&gt;html中使用js的方式有如下几种：&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;内联，放置在&lt;code&gt;&amp;lt;script&amp;gt;&lt;/code&gt;和&lt;code&gt;&amp;lt;/script&amp;gt;&lt;/code&gt;标签对之间。（少量js时可用）&lt;/li&gt;
+
+&lt;li&gt;放置在由script标签的src属性指定的外部js文件中。（模块化，推荐）&lt;/li&gt;
+
+&lt;li&gt;放置在html事件处理程序中，该事件处理程序由onclick等html属性指定。（不推荐）&lt;/li&gt;
+
+&lt;li&gt;放在一个url中，这个url使用特殊的”javascript:”协议。（不推荐）&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;上面的推荐与否是根据：内容(html)和行为(js代码）应该尽量松耦合的原则，同理css也一样。&lt;/p&gt;
+&lt;hr /&gt;
+&lt;h4 id=&quot;whitejsscript&quot;&gt;White:js中script标签的用法？&lt;/h4&gt;
+
+&lt;p&gt;&lt;em&gt;Black:&lt;/em&gt; script标签有多种用法：&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;内敛js代码。&lt;/li&gt;
+
+&lt;li&gt;外联js文件。&lt;/li&gt;
+
+&lt;li&gt;内敛数据（type=”data”）。&lt;/li&gt;
+
+&lt;li&gt;内敛模板（jquery.tmpl）。&lt;/li&gt;
+
+&lt;li&gt;动态引入js文件。&lt;/li&gt;
+
+&lt;li&gt;实现jsonp。&lt;/li&gt;
+&lt;/ul&gt;
+&lt;hr /&gt;
+&lt;h4 id=&quot;white_htmljs&quot;&gt;White: html中js是如何加载执行的？&lt;/h4&gt;
+
+&lt;p&gt;&lt;em&gt;Black:&lt;/em&gt; html中的js代码首先需要加载，然后才能执行。&lt;/p&gt;
+
+&lt;p&gt;第一阶段：打开一个新的窗口，这时候浏览器加载html文档，形成dom树，并在浏览器渲染加载内容。这时script标签只是加载的dom树中的一个元素，每加载完成一个script代码段(两个script构成封闭标签)或者js文件都会执行加载的js代码，这时候会阻塞浏览器的加载和渲染过程，也就是页面会卡死直到js代码执行完。js代码可能更改已经加载的dom的元素内容或者样式，所以js代码中操作的元素必须在之前加载好，否则会报错。如此反复直到页面加载完成。这个过程是同步操作。&lt;/p&gt;
+
+&lt;p&gt;第二阶段：直到使用者操作页面上的按钮等元素，这时候异步调用相应的js代码，完成相应的操作。&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;&lt;em&gt;注意：&lt;/em&gt;&lt;/strong&gt;第一阶段说js的加载执行是同步的，是指普通的写在页面script中的js代码是这样加载和执行的。如果通过动态构造script的方式则其执行是异步的，此时的加载和其后面的js代码的执行是异步的（同时进行的），后面的代码不能依赖动态加载的js内容。有些浏览器支持HTML5的script元素的defer和async属性，它们告诉浏览器链接进来的脚本不会使用document.write这样的改变dom的操作，也不会生成文档内容，因此浏览器可以在下载脚本时继续解析和渲染文档。&lt;/p&gt;
+&lt;hr /&gt;
+&lt;h4 id=&quot;whitehtmlscriptasyncdefer&quot;&gt;White:html中script标签的async和defer属性的区别？&lt;/h4&gt;
+
+&lt;p&gt;&lt;em&gt;Black:&lt;/em&gt; defer属性使得浏览器延迟脚本的执行，知道文档的载入和解析完成，并可以操作。async属性使得浏览器可以尽快执行脚本，而不用在下载脚本时阻塞脚本解析。如果两个属性同时出现，async起作用。defer是延迟执行，是在所有文档解析后再按照其出现顺序执行。async是异步执行，加载后立即无序执行（先加载好的先执行），async类似动态script加载方式。&lt;/p&gt;
+&lt;hr /&gt;</content>
+ </entry>
  
  <entry>
    <title>BW编程之js模块篇类(十三)</title>
