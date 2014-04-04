@@ -9,6 +9,7 @@ http://izhanghuaning.github.io/categories.html
 http://izhanghuaning.github.io/pages.html
 http://izhanghuaning.github.io/archive.html
 
+http://izhanghuaning.github.io/books/2011/07/15/jsdg-chap13-js-tsecurity.html
 http://izhanghuaning.github.io/books/2011/07/10/jsdg-chap13-jsthread.html
 http://izhanghuaning.github.io/books/2011/07/05/jsdg-chap13-introduction.html
 http://izhanghuaning.github.io/books/2011/06/30/jsdg-chap9-class.html
