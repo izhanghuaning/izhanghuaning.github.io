@@ -9,7 +9,10 @@ http://izhanghuaning.github.io/categories.html
 http://izhanghuaning.github.io/pages.html
 http://izhanghuaning.github.io/archive.html
 
-http://izhanghuaning.github.io/books/2011/07/15/jsdg-chap13-js-tsecurity.html
+http://izhanghuaning.github.io/books/2011/07/30/jsdg-chap14-windows.html
+http://izhanghuaning.github.io/books/2011/07/25/jsdg-chap14-timer.html
+http://izhanghuaning.github.io/books/2011/07/20/jsdg-chap14-window.html
+http://izhanghuaning.github.io/books/2011/07/15/jsdg-chap13-security.html
 http://izhanghuaning.github.io/books/2011/07/10/jsdg-chap13-jsthread.html
 http://izhanghuaning.github.io/books/2011/07/05/jsdg-chap13-introduction.html
 http://izhanghuaning.github.io/books/2011/06/30/jsdg-chap9-class.html

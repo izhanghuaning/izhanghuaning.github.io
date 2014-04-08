@@ -4,7 +4,7 @@
  <title>张华宁的笔记本</title>
  <link href="http://izhanghuaning.github.io/" rel="self"/>
  <link href="http://izhanghuaning.github.io"/>
- <updated>2014-04-04T15:09:11+08:00</updated>
+ <updated>2014-04-08T16:22:14+08:00</updated>
  <id>http://izhanghuaning.github.io</id>
  <author>
    <name>张华宁</name>
@@ -13,10 +13,197 @@
 
  
  <entry>
+   <title>BW客户端js之多窗口交互(六)</title>
+   <link href="http://izhanghuaning.github.io/books/2011/07/30/jsdg-chap14-windows.html"/>
+   <updated>2011-07-30T00:00:00+08:00</updated>
+   <id>http://izhanghuaning.github.io/books/2011/07/30/jsdg-chap14-windows</id>
+   <content type="html">&lt;h4 id=&quot;white&quot;&gt;White:浏览器的窗口和窗体的概念是什么？&lt;/h4&gt;
+
+&lt;p&gt;&lt;em&gt;Black:&lt;/em&gt;&lt;/p&gt;
+&lt;hr /&gt;
+&lt;h4 id=&quot;whitejs&quot;&gt;White:js如何打开和关闭窗口？&lt;/h4&gt;
+
+&lt;p&gt;&lt;em&gt;Black:&lt;/em&gt;&lt;/p&gt;
+&lt;hr /&gt;
+&lt;h4 id=&quot;white_2&quot;&gt;White:窗体之间的关系是什么样的？&lt;/h4&gt;
+
+&lt;p&gt;&lt;em&gt;Black:&lt;/em&gt;&lt;/p&gt;
+&lt;hr /&gt;</content>
+ </entry>
+ 
+ <entry>
+   <title>BW客户端js之异步调度(五)</title>
+   <link href="http://izhanghuaning.github.io/books/2011/07/25/jsdg-chap14-timer.html"/>
+   <updated>2011-07-25T00:00:00+08:00</updated>
+   <id>http://izhanghuaning.github.io/books/2011/07/25/jsdg-chap14-timer</id>
+   <content type="html">&lt;p&gt;&lt;strong&gt;&lt;em&gt;本篇是翻译，向大师致敬，原文请参见&lt;a href=&quot;http://ejohn.org/blog/how-javascript-timers-work/&quot;&gt;How JavaScript Timers Work&lt;/a&gt;。&lt;/em&gt;&lt;/strong&gt;&lt;/p&gt;
+
+&lt;p&gt;在最基本的层面，理解js计时器如何工作是很重要的，因为js的单线程模型经常导致事件的发生时间语预期不符。让我们从三个涉及到时间调度的函数入手看js如何进行事件执行时间的调度。&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;	* var id = setTimeout(fn, delay); //初始化一个延迟计时器，它在dealy毫秒事件后执行fn函数。这个初始化函数返回一个计时器句柄，可以用来在delay未到的事件内，取消其指定的fn函数的执行。
+
+	* var id = setInterval(fn, delay); //初始化一个区间执行计时器，它每间隔delay就执行一次fn函数，直到通过其初始化函数返回的句柄取消后续执行。
+
+	* clearInterval(id);, clearTimeout(id); //以上述的计时器句柄为参数，停止计时器继续执行回调函数。&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;为了深入理解计时器的执行首先要记住一个概念：计时器延时执行不是精确的，是不能保证的。浏览器执行异步事件(比如鼠标点击响应事件、计时器回调事件、XMLHttpRequest回调事件等)都是通过单线程执行的，一次只能执行一个事件。这些事件是通过一个事件队列进行管理的，概念上如下图所示：&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/assets/themes/twitter/img/Timers.png&quot; alt=&quot;&quot; title=&quot;js事件调度&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;上图包含很多内容，完全理解这些内容对你深入认识js事件异步执行方式很有帮助。这个图只有从上倒下的执行时间一个维度，时间是以毫秒为单位。每个蓝色盒子代表一个函数的执行，其盒子的大小代表执行事件的长短，第一个盒子可以是在全局环境解释执行入口代码的过程，大约是18ms。第二个盒子是相应用户点击的事件，大约是11毫秒，依次类推。&lt;/p&gt;
+
+&lt;p&gt;因为单线程，js每次只能执行一个函数（蓝色快），此时线程被锁住，此时发生的异步事件（鼠标点击、计时器回调、XMLHttpRequest完成等）需要等正在执行事件执行后才能代进入执行队列（具体队列怎么管理各个浏览器都有自己的方式，不妨考虑简单点）。&lt;/p&gt;
+
+&lt;p&gt;如图所示：在开始的第一个蓝色块（块1）中，初始化了2个计时器，一个延时10ms的延时计时器，一个间隔10ms的区间计时器。延时计时器在块1执行完之前就触发了，但是因为线程被块1锁住，所以它不能立即触发回调事件，计时器触发的事件实际上最早也是在第一个代码块（函数）执行完之后才能执行，所以这个延时计时器回调函数就进入了待执行队列等待下一个执行时间（等待线程解锁）。&lt;/p&gt;
+
+&lt;p&gt;另外在块1中，还有一个鼠标点击响应事件发生。js的响应事件是异步事件（我们不可能知道用户的行为），正如延时计时器的回调函数，它也不能立即执行，也进入了待执行队列等待。&lt;/p&gt;
+
+&lt;p&gt;在块1执行完成后，浏览器问了一个问题：还有谁在等待执行？延时计时器回调函数和鼠标响应事件在等待中。浏览器选择了鼠标响应事件执行，延时计时器触发事件则继续留在队列中等待（注意块1中鼠标响应触发没有延时，所以其早于延时计时器的触发）。&lt;/p&gt;
+
+&lt;p&gt;注意：在块2的鼠标响应事件执行过程中，区间计时器触发了回调，它也是异步事件，所以它也进入待执行队列等待执行。注意在块3的延时计时器执行回调的过程中，区间计时器又触发了回调，又要把它放入待执行队列中等待，&lt;strong&gt;但是发现队列中已经存在了一个待执行的回调还没有执行，所以这个触发被放弃了&lt;/strong&gt;。因为如果前面一个函数执行了很长时间的大代码，区间计时器不停向队列添加事件的话，队列里就会连续的无间隔的执行同一个回调函数，知道完成。而浏览器则简单的判断：如果队列中没有同一个区间计时器的触发事件才添加新的，所以块3的回调会被放弃。&lt;/p&gt;
+
+&lt;p&gt;在块4中我们看到，区间计时器的回调执行过程中又触发了新的回调。&lt;strong&gt;这告诉我们一个重要的事实：区间计时器不关心什么正在执行，它们只是机械的每到间隔时间(10ms)就触发一个回调，这样真正执行的间隔就不关心了，会产生事件差，所以区间计时器的时间间隔如果足够小就会无间隔的连续执行。它的间隔事件不是回调事件之间的间隔，而是触发时间的间隔，这个很重要。&lt;/strong&gt;&lt;/p&gt;
+
+&lt;p&gt;在块5中第二个区间计时器回调函数执行完，待执行队列没有任何事件在等待，所以浏览器就停下来等待新的异步事件的发生。这段时间线浏览器不工作。当下一个区间计时器回调被触发，它就立即执行，因为前面没有任何函数正在执行。&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;&lt;em&gt;（这段是我Black自己加上去帮助大家理解的）如上图所示：在开始第一个蓝色快中，依次发生了初始化一个延迟10ms的setTimeout延时计时器、一个鼠标响应事件回调，初始化一个间隔10ms的setInterval的区间计时器、触发延时计时器这些事件。这些事件分别有一个函数表示它，这些函数有的是同步执行的（2个计时器的初始化函数），也有异步执行的（鼠标点击响应事件、延时计时器触发事件），同步执行的函数在第一个蓝色块中执行完成，异步执行的则依次加入待执行事件的队列。所以第一个蓝色块执行完成时的队列依次是：鼠标点击响应事件、延时计时器触发事件。这时候区间计时器还没有触发其响应函数。这里主要提醒就是同步和异步的区别，只有异步调用会进入待执行队列等待，同步的在其调用块中直接执行完成。&lt;/em&gt;&lt;/strong&gt;&lt;/p&gt;
+
+&lt;p&gt;下面延时了延时计时器模拟的循环执行和区间计时器的循环执行的不同。&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;	setTimeout(function(){
+	    /* Some long block of code... */
+	    setTimeout(arguments.callee, 10);
+	  }, 10);
+	 
+	  setInterval(function(){
+	    /* Some long block of code... */
+	  }, 10);&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;粗看这两个函数似乎的效果是一样的，实际上不是这样。正如上面对区间计时器的时间间隔的解释：它是触发时间的间隔，而不是执行事件之间的调用间隔。而延时计时器是调用时间的间隔，只可能大于10ms(考虑不能立即执行的情况)，不可能小于10ms。&lt;/p&gt;
+
+&lt;p&gt;我们总结一下这次所学习的内容：&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;js引擎是单线程，它强迫异步事件进行排队处理。&lt;/li&gt;
+
+&lt;li&gt;setTimeout和setInterval在执行异步回调是本质上的不同。&lt;/li&gt;
+
+&lt;li&gt;因为队列处理，如果前面的没执行完成，后面的就不能执行，所以延迟或间隔不是一个可保证的事实。&lt;/li&gt;
+
+&lt;li&gt;区间计时器可能会无间隔连续执行（如果触发间隔小于执行时间的话）。&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;所有这一切是是帮助理解js异步调用中令人觉得违反直觉的重要知识。了解JavaScript引擎的工作原理，特别是与大量异步事件的调度方式，为大规模开发js代码打下一个很好的基础。&lt;/p&gt;</content>
+ </entry>
+ 
+ <entry>
+   <title>BW客户端js之window对象(四)</title>
+   <link href="http://izhanghuaning.github.io/books/2011/07/20/jsdg-chap14-window.html"/>
+   <updated>2011-07-20T00:00:00+08:00</updated>
+   <id>http://izhanghuaning.github.io/books/2011/07/20/jsdg-chap14-window</id>
+   <content type="html">&lt;h4 id=&quot;whitewindowsettimeoutsetinterval&quot;&gt;White:window对象的setTimeout()和setInterval()方法的使用？&lt;/h4&gt;
+
+&lt;p&gt;&lt;em&gt;Black:&lt;/em&gt; setTimeout(callback,ms)方法是用来延迟调用的，就是用来注册在ms毫秒后单次调用callback函数。setInterval(callback,ms)方法是用来注册在每过ms毫秒后重复调用callback函数。&lt;/p&gt;
+
+&lt;p&gt;正如表达式篇章提到过&lt;a href=&quot;/books/2011/05/25/jsdg-chap4-expression-operators2.html&quot;&gt;setTimeout也是一种eval&lt;/a&gt;。setTimeout和setInterval的第一个参数可以作为字符串输入，如果这么做，那这个字符串会在指定的超时时间或间隔之后进行求值（相当于eval）。&lt;/p&gt;
+
+&lt;p&gt;关于它们的触发触发时间的规律，请参见&lt;a href=&quot;/books/2011/07/25/jsdg-chap14-timer.html&quot;&gt;javascript响应事件如何在单线程模型中工作&lt;/a&gt;。&lt;/p&gt;
+
+&lt;p&gt;如果以0ms的超时时间来调用setTimeout()，那么指定的函数不会立即执行。相反把它放到待执行队列中，等前面处于等待处理的事件处理程序全部执行完成后，再”立即”调用它。像鼠标点击等异步事件的响应程序都是这样字的。&lt;/p&gt;
+&lt;hr /&gt;
+&lt;h4 id=&quot;whitelocation&quot;&gt;White:浏览器如何通过Location对象定位和导航？&lt;/h4&gt;
+
+&lt;p&gt;&lt;em&gt;Black:&lt;/em&gt; window对象的location属性引用的是Location对象，它表示该窗口中当前显示的文档的url，并定义了方法来使窗口载入新文档。&lt;/p&gt;
+
+&lt;p&gt;Document对象也有一个URL属性，是文档首次载入后保存该文档url的静态字符串。如果定位到文档中的片段标识符(如#table-of-contents)，Location对象会做相应更新，而document.URL属性却不会改变。&lt;/p&gt;
+
+&lt;p&gt;Location对象包括protocol、host、hostname、port、pathname、search、hash、href等属性，其中href是包含url完整文本的字符串，其他属性分别表示url的各个部分。它们成为“url分解”属性，同时被Link对象（html中a元素）支持。&lt;/p&gt;
+&lt;hr /&gt;
+&lt;h4 id=&quot;whitejsquerystring&quot;&gt;White:如何使用js提取查询字符串（querystring）参数？&lt;/h4&gt;
+
+&lt;p&gt;&lt;em&gt;Black:&lt;/em&gt; Location对象的hash和search属性比较有趣。如果存在的话，hash返回url中“片段标志符”部分（只在浏览器使用，不会上传到服务器），search返回的是查询字符串（url中问号之后的键值对）。&lt;/p&gt;
+
+&lt;p&gt;查询字符串一般来说是用来参数化url并在其中嵌入参数的，一般是用于服务器端的脚本，但在js页面也可以使用它们，如下：&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;	/*这个函数用来解析来自url的查询字符串name=value参数对，
+	 *它将name=value对储存在一个对象的属性中，并返回该对象
+	 *用法如下：
+	 *var args = urlArgs();
+	 *var q = args.q || &amp;quot;&amp;quot;;
+	 *var n = args.n || 10;
+	 */
+
+	 function urlArgs() {
+		var args = {};
+		var query = location.search.substring(1);
+		var pairs = query.split(&amp;#39;&amp;amp;&amp;#39;);
+		for(var i = 0; i &amp;lt; pairs.length; i++) {
+			var pos = pairs[i].indexof(&amp;#39;=&amp;#39;);
+			var name = pairs[i].substring(0, post);
+			var value = pairs[i].substring(post+1);
+			value = decodeURIComponent(value);
+			args[name] = value;
+		}
+		return args;
+	 }&lt;/code&gt;&lt;/pre&gt;
+&lt;hr /&gt;
+&lt;h4 id=&quot;whitejs&quot;&gt;White:在浏览器中使用js载入新文档的方式有哪些？&lt;/h4&gt;
+
+&lt;p&gt;&lt;em&gt;Black:&lt;/em&gt;&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;assign(url)方法使窗口载入并显示你只定的url中的文档。&lt;/li&gt;
+
+&lt;li&gt;replace(url)方法同assign()类似，但是会在载入前从浏览历史中把当前文档删除，不能使用后退退回旧文档。&lt;/li&gt;
+
+&lt;li&gt;reload()方法重新载入当前文档。&lt;/li&gt;
+
+&lt;li&gt;给location属性赋值&lt;code&gt;location=&amp;quot;newpage.html&amp;quot;&lt;/code&gt;。&lt;/li&gt;
+
+&lt;li&gt;纯粹的hash不会让浏览器载入新文档，而会滚动到hash所指定的锚点&lt;code&gt;location=&amp;quot;#top&amp;quot;&lt;/code&gt;。&lt;/li&gt;
+
+&lt;li&gt;改变Location的url分解属性会导致浏览器载入新文档&lt;code&gt;location.search=&amp;quot;?page=&amp;quot;+(pagenum + 1)&lt;/code&gt;。&lt;/li&gt;
+
+&lt;li&gt;location.href同location一样导致加载新指定的文档。&lt;/li&gt;
+
+&lt;li&gt;window.open是在新窗口打开指定的文档，强调的是新窗口，所有的window对象都是新的了。&lt;/li&gt;
+&lt;/ul&gt;
+&lt;hr /&gt;
+&lt;h4 id=&quot;whitewindow&quot;&gt;White:window提供哪些对话框？&lt;/h4&gt;
+
+&lt;p&gt;&lt;em&gt;Black:&lt;/em&gt;&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;alert(str)向用户提示一条信息，并等待用户关闭对话框。&lt;/li&gt;
+
+&lt;li&gt;confirm(str)向用户显示一条信息，并要求用户单击“确定”或“取消”按钮，并返回一个布尔值代表你的选择。&lt;/li&gt;
+
+&lt;li&gt;prompt(str)显示一条信息，并等待用户输入其回答的字符串，并返回用户输入的字符串。&lt;/li&gt;
+
+&lt;li&gt;showModalDialog()在当前窗口显示一个模态窗口，第一个参数是指定html内容的url，第二个是任意值（对象）通过window.dialogArguments访问，第三个参数类似window.open进行窗口定制化。&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;注意：前三个字符串都是纯文本，而不是html格式的文本，所以换行要用&lt;code&gt;\n&lt;/code&gt;而不是&lt;code&gt;&amp;lt;br /&amp;gt;&lt;/code&gt;等。还有这些对话框都是阻断式的，会锁定整个窗口。&lt;/p&gt;
+&lt;hr /&gt;
+&lt;h4 id=&quot;white&quot;&gt;White:什么是同源策略？&lt;/h4&gt;
+
+&lt;p&gt;&lt;em&gt;Black:&lt;/em&gt;&lt;/p&gt;
+&lt;hr /&gt;
+&lt;h4 id=&quot;white_2&quot;&gt;White:什么是同源策略？&lt;/h4&gt;
+
+&lt;p&gt;&lt;em&gt;Black:&lt;/em&gt;&lt;/p&gt;
+&lt;hr /&gt;
+&lt;h4 id=&quot;white_3&quot;&gt;White:什么是同源策略？&lt;/h4&gt;
+
+&lt;p&gt;&lt;em&gt;Black:&lt;/em&gt;&lt;/p&gt;
+&lt;hr /&gt;</content>
+ </entry>
+ 
+ <entry>
    <title>BW客户端js之安全概述篇(三)</title>
-   <link href="http://izhanghuaning.github.io/books/2011/07/15/jsdg-chap13-js-tsecurity.html"/>
+   <link href="http://izhanghuaning.github.io/books/2011/07/15/jsdg-chap13-security.html"/>
    <updated>2011-07-15T00:00:00+08:00</updated>
-   <id>http://izhanghuaning.github.io/books/2011/07/15/jsdg-chap13-js-tsecurity</id>
+   <id>http://izhanghuaning.github.io/books/2011/07/15/jsdg-chap13-security</id>
    <content type="html">&lt;h4 id=&quot;whitejs&quot;&gt;White:为什么要重视客户端js的安全性？&lt;/h4&gt;
 
 &lt;p&gt;&lt;em&gt;Black:&lt;/em&gt; web浏览器包含js解释器，也就是说一旦载入web页面，就可以让页面上的任意js代码在计算机中执行。&lt;/p&gt;
@@ -169,6 +356,14 @@
 &lt;p&gt;一般来说首屏用到的文档内容（html）、交互（js）、视觉效果（css）需要尽快加载完成。其他内容可以通过动态加载方式继续加载和渲染。&lt;/p&gt;
 
 &lt;p&gt;这就需要控制script代码、js文件、css文件、大图片等在html中的位置。首屏尽量不通过js代码进行布局和css渲染显示效果，如果需要则这些js代码和css尽量靠前(head中)，防止出现闪烁现象。同步执行的js代码应尽量少，并且需要放置在合适的位置(首屏内容)。用来响应首屏用户交互的代码尽量靠后（首屏内容后面）。其他html内容、js文件、css文件、图片等使用动态加载方式，延迟加载。&lt;/p&gt;
+&lt;hr /&gt;
+&lt;h4 id=&quot;whitejs_3&quot;&gt;White:客户端js的单线程模型是什么？&lt;/h4&gt;
+
+&lt;p&gt;&lt;em&gt;Black:&lt;/em&gt; 在浏览器中js的方法都是通过队列来调用的，每调用一个方法就把它加入执行队列，执行后从队列删除。回调函数就是在调用函数的最后调用回调函数。setTimeout和setInterval就是在指定时间向队列里面添加函数。clearTimeout和clearInterval就是告诉控制器不要再添加函数到队列中了。&lt;/p&gt;
+
+&lt;p&gt;猜测：控制器是一个无限循环的函数，不停操作队列,也就是说js引擎本身不是单线程，但是用户可使用的是单线程。setTimeout等方法是其在指定时间那一刻添加到队列，如果间隔时间设置为0毫秒，并不是立即执行该函数，而是立即添加到队列，等前面的都执行完再执行它。如果时间间隔是10毫秒（其实浏览器响应事件有限制，好像是20ms以上，我觉得这个限制就是控制器的循环触发时间），那么每10ms都向队列添加一个函数。像单击按钮等用户操作相当于setTimeout(cb,0),尽快执行;&lt;/p&gt;
+
+&lt;p&gt;在网上看到关于这个队列的权威的文章，作者john Resig是jquery的作者。请参见&lt;a href=&quot;http://ejohn.org/blog/how-javascript-timers-work/&quot;&gt;How JavaScript Timers Work&lt;/a&gt;。干脆自己也努力翻译一下吧&lt;a href=&quot;/books/2011/07/25/jsdg-chap14-timer.html&quot;&gt;javascript响应事件如何在单线程模型中工作&lt;/a&gt;。&lt;/p&gt;
 &lt;hr /&gt;</content>
  </entry>
  
@@ -459,7 +654,7 @@
 
 &lt;p&gt;这里返回了一组方法组成的一个对象，返回对象的所有方法都共享一个私有变量n，只有返回对象的方法可以访问私有变量n。&lt;/p&gt;
 
-&lt;p&gt;这种方式是js模块化的基础，后面会详细介绍&lt;a href=&quot;/books/2011/06/25/jsdg-chap8-namespace.html&quot;&gt;js模块化&lt;/a&gt;。&lt;/p&gt;
+&lt;p&gt;这种方式是js模块化的基础，后面会详细介绍&lt;a href=&quot;/books/2011/06/25/jsdg-chap9-module.html&quot;&gt;js模块化&lt;/a&gt;。&lt;/p&gt;
 &lt;hr /&gt;</content>
  </entry>
  
@@ -850,6 +1045,10 @@
 &lt;p&gt;表达式主要包含原始表达式(直接量(常量)、关键字(true,false，null,this)、变量），对象和数组初始化表达式（&lt;code&gt;var p = {x:2, y:3}&lt;/code&gt;、&lt;code&gt;var days = [1,2,3]&lt;/code&gt;） ，函数定义表达式（&lt;code&gt;var sum = function(a,b) {return a + b}&lt;/code&gt;)，属性访问表达式(&lt;code&gt;p.x&lt;/code&gt;、&lt;code&gt;p[&amp;quot;y&amp;quot;]&lt;/code&gt;、&lt;code&gt;days[0]&lt;/code&gt;），调用表达式（调用函数或方法的语法表示），对象创建表达式(new)，运算表达式（见下面运算符所示）等。&lt;/p&gt;
 
 &lt;p&gt;js中的运算符主要用于算术表达式(+、-、*、/)、比较表达式(&amp;lt;、===、&amp;gt;）、逻辑表达式（&amp;amp;&amp;amp;、||、！）、赋值表达式（=）等。大多数运算符都用标点符号表示，比如+-*/，也有一些运算符用关键字表示，比如delete、instanceof、typeof、void等。运算符是有优先级和结合性(一元操作符、赋值、三元条件运算符都是右结合)的，关于运算符可参见下图：&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/assets/themes/twitter/img/operator1.png&quot; alt=&quot;&quot; title=&quot;运算符汇总1&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/assets/themes/twitter/img/operator2.png&quot; alt=&quot;&quot; title=&quot;运算符汇总2&quot; /&gt;&lt;/p&gt;
 &lt;hr /&gt;
 &lt;h4 id=&quot;white&quot;&gt;White:什么是左值,什么是表达式副作用？&lt;/h4&gt;
 
@@ -1179,6 +1378,8 @@
 &lt;p&gt;!!x 转换成布尔值&lt;/p&gt;
 
 &lt;p&gt;void 0 转换成undefined&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/assets/themes/twitter/img/typeconvert.png&quot; alt=&quot;&quot; title=&quot;类型转换表&quot; /&gt;&lt;/p&gt;
 &lt;hr /&gt;</content>
  </entry>
  

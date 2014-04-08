@@ -179,6 +179,14 @@
 
 <p>这就需要控制script代码、js文件、css文件、大图片等在html中的位置。首屏尽量不通过js代码进行布局和css渲染显示效果，如果需要则这些js代码和css尽量靠前(head中)，防止出现闪烁现象。同步执行的js代码应尽量少，并且需要放置在合适的位置(首屏内容)。用来响应首屏用户交互的代码尽量靠后（首屏内容后面）。其他html内容、js文件、css文件、图片等使用动态加载方式，延迟加载。</p>
 <hr />
+<h4 id="whitejs_3">White:客户端js的单线程模型是什么？</h4>
+
+<p><em>Black:</em> 在浏览器中js的方法都是通过队列来调用的，每调用一个方法就把它加入执行队列，执行后从队列删除。回调函数就是在调用函数的最后调用回调函数。setTimeout和setInterval就是在指定时间向队列里面添加函数。clearTimeout和clearInterval就是告诉控制器不要再添加函数到队列中了。</p>
+
+<p>猜测：控制器是一个无限循环的函数，不停操作队列,也就是说js引擎本身不是单线程，但是用户可使用的是单线程。setTimeout等方法是其在指定时间那一刻添加到队列，如果间隔时间设置为0毫秒，并不是立即执行该函数，而是立即添加到队列，等前面的都执行完再执行它。如果时间间隔是10毫秒（其实浏览器响应事件有限制，好像是20ms以上，我觉得这个限制就是控制器的循环触发时间），那么每10ms都向队列添加一个函数。像单击按钮等用户操作相当于setTimeout(cb,0),尽快执行;</p>
+
+<p>在网上看到关于这个队列的权威的文章，作者john Resig是jquery的作者。请参见<a href="http://ejohn.org/blog/how-javascript-timers-work/">How JavaScript Timers Work</a>。干脆自己也努力翻译一下吧<a href="/books/2011/07/25/jsdg-chap14-timer.html">javascript响应事件如何在单线程模型中工作</a>。</p>
+<hr />
     </div>
 
   
@@ -191,7 +199,7 @@
   
      
     	<li><a href="/categories.html#books-ref">
-    		books <span>16</span>
+    		books <span>19</span>
     	</a></li>
     
   
@@ -209,9 +217,9 @@
 
   
      
-    	<li><a href="/tags.html#javascript-ref">javascript <span>16</span></a></li>
+    	<li><a href="/tags.html#javascript-ref">javascript <span>19</span></a></li>
      
-    	<li><a href="/tags.html#web-ref">web <span>16</span></a></li>
+    	<li><a href="/tags.html#web-ref">web <span>19</span></a></li>
     
   
 
@@ -228,7 +236,7 @@
       
         <li><a href="/archive.html">Archive</a></li>
       
-        <li class="next"><a href="/books/2011/07/15/jsdg-chap13-js-tsecurity.html" title="BW客户端js之安全概述篇(三)">Next &rarr;</a></li>
+        <li class="next"><a href="/books/2011/07/15/jsdg-chap13-security.html" title="BW客户端js之安全概述篇(三)">Next &rarr;</a></li>
       
       </ul>
     </div>

