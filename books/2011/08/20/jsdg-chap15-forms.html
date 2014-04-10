@@ -6,9 +6,9 @@
   <head>
 	  <meta charset="utf-8">
 	  <!--[if IE 8 ]><meta http-equiv="X-UA-Compatible" content="IE=7"><![endif]-->
-	  <title>BW编程之js函数篇闭包(十)</title>
-	<meta name="keywords" content="张华宁,javascript,js,closure,function">
-    <meta name="description" content="javascript 函数 闭包 function">
+	  <title>BW客户端js之HTML表单(十)</title>
+	<meta name="keywords" content="张华宁,javascript,js,form">
+    <meta name="description" content="javascript client form">
     <meta name="author" content="张华宁">
 
     <!-- Enable responsive viewport -->
@@ -116,61 +116,52 @@
       <div class="content">
         
 <div class="page-header">
-  <h1>BW编程之js函数篇闭包(十) </h1>
+  <h1>BW客户端js之HTML表单(十) </h1>
 </div>
 
 <div class="row-fluid post-full">
   <div class="span12">
     <div class="date">
-      <span>15 June 2011</span>
+      <span>20 August 2011</span>
     </div>
     <div class="content">
-      <h4 id="whitejs">White:js中的闭包是什么？</h4>
+      <h4 id="white_html">White: html表单元素都有哪些？</h4>
 
-<p><em>Black:</em>和大多数现代编程语言一样，js也采用词法作用域，也就是说函数的执行依赖语变量作用域，”这个作用域是在函数定义时决定的，而不是函数调用时决定的”。为了实现这种词法作用域，js函数对象的内部状态不但包含函数的逻辑代码，还必须引用当前的作用域链（调用上下文）。函数对象可以通过作用域链相互关联起来，函数体内部的变量都可以保存在函数作用域内，看起来就像函数将变量”包裹”起来一样，称为”闭包”。</p>
+<p><em>Black:</em></p>
 
-<p>这样来看每个函数内的变量都是”闭包”，但是实际中的概念却不是这个意思。</p>
+<p><img src="/assets/themes/twitter/img/formels1.png" alt="" title="html表单元素1" /></p>
 
-<p>在js中术语”闭包”一句话来说明就是：”从作用域A访问作用域B的变量，一般是只从外层作用域A访问内层作用域B。”</p>
+<p><img src="/assets/themes/twitter/img/formels2.png" alt="" title="html表单元素2" /></p>
 <hr />
-<h4 id="whitejs_2">White:js中闭包的作用有哪些？</h4>
+<h4 id="white_html_2">White: html表单元素有哪些属性？</h4>
 
-<p><em>Black:</em>从技术角度讲，所有的js函数都是闭包：它们都是对象，它们都关联作用域链。定义大多数函数时的作用域在调用函数时仍然有效，但这并不影响闭包。</p>
+<p><em>Black:</em></p>
 
-<p>当调用函数时闭包所指向的作用域链和定义函数时的作用域链不是同一个作用域链时，事情就不一样了。当一个函数嵌套了另外一个函数，外部函数将嵌套的函数作为返回值返回的时候往往会发生这种情况。</p>
+<ul>
+<li>type：标识表单元素类型的只读字符串，详细见上图。</li>
 
-<pre><code>	var scope = &quot;global scope&quot;;
-	function checkscope() {
-		var scope = &quot;local scope&quot;;
-		function f() { return scope; }
-		return f;
-	}
+<li>form：包含当前表单元素的form的引用，如果没有包含在form中为null。</li>
 
-	checkscope()();//=&gt;local scope</code></pre>
+<li>name：只读字符串，有name属性指定。</li>
 
-<p>最后一行返回的是”local scope”而不是”global scope”，这正是因为闭包作用的结果。闭包的这个特性强大的令人吃惊：它们可以捕捉到局部变量（和参数），并一直保存下来，看起来像这些变量绑定到了其中定义它们的外部函数。</p>
+<li>value：可读/写字符串，指定它的值。也就是发送到服务器的值。</li>
+</ul>
 <hr />
-<h4 id="whitejs_3">White:js中闭包的本质是什么？</h4>
+<h4 id="white_html_3">White: html表单元素有哪些需要注意的？</h4>
 
-<p><em>Black:</em>按照java、c#等其他语言很难理解闭包，因为在这些语言中，函数内的局部变量在函数返回后就不可访问了。但是在js中却不是这样的，我们回想一下js中<a href="/books/2011/05/15/jsdg-chap3-types-values-variables3.html">如何定义作用域链</a>。</p>
+<p><em>Black:</em></p>
 
-<p><strong>我们将作用域链描述为一个列表，而不是绑定的栈。每次调用js函数的时候，都会创建一个新的对象(变量对象VO)来保存局部变量，并把这个对象添加至作用域链。当函数返回的时候就从作用域链中删除这个绑定对象，它就会被当作垃圾回收掉。但是如果一个函数A定义了嵌套函数B，每个嵌套函数B都各自对应一个作用域链，并且这个作用域链指向一个变量对象VO。如果函数A正常返回，则嵌套函数B所对应的变量对象VO也会被垃圾回收处理。但是如果函数A返回了嵌套函数B，则存在了一个引用指向了嵌套函数B的变量对象VO，那么变量对象VO就不会被垃圾回收处理，所以从函数A所在的上下文仍然可以使用嵌套变量对象VO的属性（变量、参数等）。这就是js中”闭包的本质”。</strong></p>
-<hr />
-<h4 id="whitejs_4">White:js中闭包在实践中有哪些例子？</h4>
+<ul>
+<li>input的type为passowrd时，只是在浏览器中显示星号，在提交服务器过程中是明文的。</li>
 
-<p><em>Black:</em>js中闭包可以实现计数器，可以真正模拟私有变量，因为这些私有变量只能通过返回的函数访问。</p>
+<li>input的type为file时，value属性是只读的，这是安全原因限制的。</li>
 
-<pre><code>	function counter() {
-		var n = 0 ;
-		return {
-			count: function() { return n++ ;},
-			reset: function() { n = 0;}
-		};
-	}</code></pre>
+<li>设置元素（如div等)的contenteditable属性可以使其可编辑，构建富文本编辑器。</li>
 
-<p>这里返回了一组方法组成的一个对象，返回对象的所有方法都共享一个私有变量n，只有返回对象的方法可以访问私有变量n。</p>
+<li>通过js设置元素的contenteditable属性，也可以。</li>
 
-<p>这种方式是js模块化的基础，后面会详细介绍<a href="/books/2011/06/25/jsdg-chap9-module.html">js模块化</a>。</p>
+<li>通过js设置Document对象的designMode为“on”使整个文档可编辑。(ie中可以，chrome不行)</li>
+</ul>
 <hr />
     </div>
 
@@ -217,11 +208,11 @@
     <div class="pagination">
       <ul>
       
-        <li class="prev"><a href="/books/2011/06/10/jsdg-chap8-function.html" title="BW编程之js函数篇(九)">&larr; Previous</a></li>
+        <li class="prev"><a href="/books/2011/08/15/jsdg-chap15-jsdom2.html" title="BW客户端js之脚本化文档2(九)">&larr; Previous</a></li>
       
         <li><a href="/archive.html">Archive</a></li>
       
-        <li class="next"><a href="/books/2011/06/20/jsdg-chap8-this.html" title="BW编程之js函数篇this(十一)">Next &rarr;</a></li>
+        <li class="next"><a href="/books/2011/08/25/jsdg-chap16-jscss.html" title="BW客户端js之脚本化css(十一)">Next &rarr;</a></li>
       
       </ul>
     </div>

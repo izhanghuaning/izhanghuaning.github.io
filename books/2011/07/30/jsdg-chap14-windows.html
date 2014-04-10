@@ -127,15 +127,59 @@
     <div class="content">
       <h4 id="white">White:浏览器的窗口和窗体的概念是什么？</h4>
 
-<p><em>Black:</em></p>
+<p><em>Black:</em> 曾经的IE6一个浏览器窗口就是一个窗口，现在的浏览器都可以在一个浏览器窗口打开多个标签页，其实每个标签页就是曾经的一个窗口。因为它们都是独立的“浏览器上下文”，每一个上下文都有一个独立的window对象，它们之间相互独立，互不干扰。每个标签页中运行的脚本通常不知到其他标签页的存在，更不用说其他标签页的window对象进行相互交互或者操作其文档内容了。</p>
+
+<p>但是窗口之间并不总是没有关系的，一个窗口或标签页中的脚本可以打开一个新的窗口，这时候关联起来的多个窗口之间就可以相互操作了。</p>
+
+<p>html文档通常使用iframe进行文档嵌套，iframe也相当一个窗口，一般叫它“窗体”。窗体所创建的上下文是用它自己的window对象表示。但iframe和其外层的window对象并不是相互独立的。在一个窗体中运行的js程序总能看到它的祖先和子孙窗体，尽管脚本查看这些窗体中的文档同样受到同源策略的限制。</p>
+
+<p>对客户端js来说，窗口、标签页、窗体（iframe）、框架（frameset、frame）等都是浏览上下文，对于js来说它们都是独立的window对象，尽管有一些可以引用到其他的window对象。</p>
 <hr />
 <h4 id="whitejs">White:js如何打开和关闭窗口？</h4>
 
-<p><em>Black:</em></p>
+<p><em>Black:</em> window对象的open()方法可以打开一个新的浏览器窗口，window.open(url,name,options)载入指定的url到新的或已经存在的窗口中（根据name判断），并返回代表新打开的窗口的window对象。</p>
+
+<p>open方法能够指定到第二个参数name指定的窗口要受“允许导航”的限制，宽泛地讲，当且仅当窗口包含的文档来自相同的源（同源测策略）或者是这个脚本打开了哪个窗口，脚本才可以只通过名字来指定存在的窗口。否则会通过猜测名字来操作其他任意窗口了，这在安全上是不允许的，比如恶意脚本发现你在浏览网上银行，它在那个页面重新载入一个钓鱼网站，这就是不允许的。<em>脚本无法通过简单的猜测窗口的名字来操控这个窗口的web应用。</em></p>
+
+<p>还有如果一个窗体嵌套在一个窗口中，它们的脚本是可以可以相互导航的，这种情况可以使用保留字“_top”、“_parent”来获取彼此的浏览上下文。通过<code>var w = window.open(&quot;http://cn.bing.com&quot;);</code>时w是新窗口的window对象。在新窗口中window.opener是当前的窗口的window对象。它们也建立了相互的导航关系，可以进行互操作，比如<code>w.alert(&#39;abc&#39;);w.location=&quot;http://www.googel.com&quot;;</code>都会在新窗口引起相应操作。<code>w.close();</code>也会关闭那个新窗口。<em>但是操作其他窗口的文档的时候还是要受到“同源策略”的限制的，这是安全的要求。</em> <code>w.document；</code>如果不是同源，就会报错，因为它有安全风险。</p>
+
+<p>要关闭当前窗口只要调用window.close()方法。大多数浏览器只允许自动关闭由自己js代码创建的窗口。如果要关闭其他窗口，需要用户确认关闭或取消。在窗体而不是顶级窗口的window.close()不会有任何效果，它不能关闭一个窗体（反之可以从文档中删除iframe）。</p>
 <hr />
 <h4 id="white_2">White:窗体之间的关系是什么样的？</h4>
 
 <p><em>Black:</em></p>
+
+<ul>
+<li>任何窗口或窗体中的js代码都可以将自己的窗口或窗体引用为window或self。</li>
+
+<li>窗体可以用parent引用包含它的窗口的window对象。</li>
+
+<li>由window.open()创建的窗口中的js可以通过window.opener来引用打开它的窗口的window对象。</li>
+
+<li>iframe元素有contentWindow属性引用该窗体的window对象。</li>
+
+<li>在窗体中可以通过window.frameElement来取得其iframe。</li>
+</ul>
+<hr />
+<h4 id="white_js">White: js如何进行跨窗口的交互？</h4>
+
+<p><em>Black:</em></p>
+
+<ul>
+<li>首先窗口之间是“可导航的”。</li>
+
+<li>导航到相应窗口再执行js代码。</li>
+
+<li>受到同源策略限制。</li>
+
+<li>牢记词法作用域，函数在定义它的作用域中执行，而不是在它的调用的作用域执行。</li>
+
+<li>构造函数也是函数，用构造函数和相关原型对象定义一个类时，那个类只在一个单独的窗口中定义。</li>
+
+<li>内置类（String、Number、Date等）会在所有窗口中预定义，每个都是一个独立的副本。</li>
+
+<li>实际上每个window对象也是一个独立的副本。</li>
+</ul>
 <hr />
     </div>
 
@@ -149,7 +193,7 @@
   
      
     	<li><a href="/categories.html#books-ref">
-    		books <span>19</span>
+    		books <span>24</span>
     	</a></li>
     
   
@@ -167,9 +211,9 @@
 
   
      
-    	<li><a href="/tags.html#javascript-ref">javascript <span>19</span></a></li>
+    	<li><a href="/tags.html#javascript-ref">javascript <span>24</span></a></li>
      
-    	<li><a href="/tags.html#web-ref">web <span>19</span></a></li>
+    	<li><a href="/tags.html#web-ref">web <span>24</span></a></li>
     
   
 
@@ -186,7 +230,7 @@
       
         <li><a href="/archive.html">Archive</a></li>
       
-        <li class="next disabled"><a>Next &rarr;</a>
+        <li class="next"><a href="/books/2011/08/05/jsdg-chap15-jser.html" title="BW客户端js之脚本化概述(七)">Next &rarr;</a></li>
       
       </ul>
     </div>

@@ -5,24 +5,517 @@
         <description>张华宁的笔记本 - 张华宁</description>
         <link>http://izhanghuaning.github.io</link>
         <link>http://izhanghuaning.github.io</link>
-        <lastBuildDate>2014-04-08T16:22:14+08:00</lastBuildDate>
-        <pubDate>2014-04-08T16:22:14+08:00</pubDate>
+        <lastBuildDate>2014-04-10T15:48:55+08:00</lastBuildDate>
+        <pubDate>2014-04-10T15:48:55+08:00</pubDate>
         <ttl>1800</ttl>
 
+
+        <item>
+                <title>BW客户端js之脚本化css(十一)</title>
+                <description>&lt;h4 id=&quot;white_js&quot;&gt;White: js如何选取文档元素？&lt;/h4&gt;
+
+&lt;p&gt;&lt;em&gt;Black:&lt;/em&gt;&lt;/p&gt;
+&lt;hr /&gt;
+&lt;h4 id=&quot;white_js_2&quot;&gt;White: js如何选取文档元素？&lt;/h4&gt;
+
+&lt;p&gt;&lt;em&gt;Black:&lt;/em&gt;&lt;/p&gt;
+&lt;hr /&gt;
+&lt;h4 id=&quot;white_js_3&quot;&gt;White: js如何选取文档元素？&lt;/h4&gt;
+
+&lt;p&gt;&lt;em&gt;Black:&lt;/em&gt;&lt;/p&gt;
+&lt;hr /&gt;
+&lt;h4 id=&quot;white_js_4&quot;&gt;White: js如何选取文档元素？&lt;/h4&gt;
+
+&lt;p&gt;&lt;em&gt;Black:&lt;/em&gt;&lt;/p&gt;
+&lt;hr /&gt;
+&lt;h4 id=&quot;white_js_5&quot;&gt;White: js如何选取文档元素？&lt;/h4&gt;
+
+&lt;p&gt;&lt;em&gt;Black:&lt;/em&gt;&lt;/p&gt;
+&lt;hr /&gt;
+&lt;h4 id=&quot;white_js_6&quot;&gt;White: js如何选取文档元素？&lt;/h4&gt;
+
+&lt;p&gt;&lt;em&gt;Black:&lt;/em&gt;&lt;/p&gt;
+&lt;hr /&gt;
+&lt;h4 id=&quot;white_js_7&quot;&gt;White: js如何选取文档元素？&lt;/h4&gt;
+
+&lt;p&gt;&lt;em&gt;Black:&lt;/em&gt;&lt;/p&gt;
+&lt;hr /&gt;
+&lt;h4 id=&quot;white_js_8&quot;&gt;White: js如何选取文档元素？&lt;/h4&gt;
+
+&lt;p&gt;&lt;em&gt;Black:&lt;/em&gt;&lt;/p&gt;
+&lt;hr /&gt;
+&lt;h4 id=&quot;white_js_9&quot;&gt;White: js如何选取文档元素？&lt;/h4&gt;
+
+&lt;p&gt;&lt;em&gt;Black:&lt;/em&gt;&lt;/p&gt;
+&lt;hr /&gt;</description>
+                <link>http://izhanghuaning.github.io/books/2011/08/25/jsdg-chap16-jscss.html</link>
+                <guid>http://izhanghuaning.github.io/books/2011/08/25/jsdg-chap16-jscss</guid>
+                <pubDate>2011-08-25T00:00:00+08:00</pubDate>
+        </item>
+
+        <item>
+                <title>BW客户端js之HTML表单(十)</title>
+                <description>&lt;h4 id=&quot;white_html&quot;&gt;White: html表单元素都有哪些？&lt;/h4&gt;
+
+&lt;p&gt;&lt;em&gt;Black:&lt;/em&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/assets/themes/twitter/img/formels1.png&quot; alt=&quot;&quot; title=&quot;html表单元素1&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/assets/themes/twitter/img/formels2.png&quot; alt=&quot;&quot; title=&quot;html表单元素2&quot; /&gt;&lt;/p&gt;
+&lt;hr /&gt;
+&lt;h4 id=&quot;white_html_2&quot;&gt;White: html表单元素有哪些属性？&lt;/h4&gt;
+
+&lt;p&gt;&lt;em&gt;Black:&lt;/em&gt;&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;type：标识表单元素类型的只读字符串，详细见上图。&lt;/li&gt;
+
+&lt;li&gt;form：包含当前表单元素的form的引用，如果没有包含在form中为null。&lt;/li&gt;
+
+&lt;li&gt;name：只读字符串，有name属性指定。&lt;/li&gt;
+
+&lt;li&gt;value：可读/写字符串，指定它的值。也就是发送到服务器的值。&lt;/li&gt;
+&lt;/ul&gt;
+&lt;hr /&gt;
+&lt;h4 id=&quot;white_html_3&quot;&gt;White: html表单元素有哪些需要注意的？&lt;/h4&gt;
+
+&lt;p&gt;&lt;em&gt;Black:&lt;/em&gt;&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;input的type为passowrd时，只是在浏览器中显示星号，在提交服务器过程中是明文的。&lt;/li&gt;
+
+&lt;li&gt;input的type为file时，value属性是只读的，这是安全原因限制的。&lt;/li&gt;
+
+&lt;li&gt;设置元素（如div等)的contenteditable属性可以使其可编辑，构建富文本编辑器。&lt;/li&gt;
+
+&lt;li&gt;通过js设置元素的contenteditable属性，也可以。&lt;/li&gt;
+
+&lt;li&gt;通过js设置Document对象的designMode为“on”使整个文档可编辑。(ie中可以，chrome不行)&lt;/li&gt;
+&lt;/ul&gt;
+&lt;hr /&gt;</description>
+                <link>http://izhanghuaning.github.io/books/2011/08/20/jsdg-chap15-forms.html</link>
+                <guid>http://izhanghuaning.github.io/books/2011/08/20/jsdg-chap15-forms</guid>
+                <pubDate>2011-08-20T00:00:00+08:00</pubDate>
+        </item>
+
+        <item>
+                <title>BW客户端js之脚本化文档2(九)</title>
+                <description>&lt;h4 id=&quot;white_js&quot;&gt;White: js如何创建节点？&lt;/h4&gt;
+
+&lt;p&gt;&lt;em&gt;Black:&lt;/em&gt; Document类定义了创建Element和Text对象的方法，Node类定义了在节点树中插入、删除和替换的方法。&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;var el = document.createElement(“begintag property=’value’ content endtag”),用来创建Element节点。&lt;/li&gt;
+
+&lt;li&gt;var el = docuemnt.createTextNode(“content”),用来创建Text节点。&lt;/li&gt;
+
+&lt;li&gt;var el = node.cloneNode(true),复制已有的节点，参数true表示递归复制所有后代节点，false只执行一个浅复制。&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;注意：创建一个节点并不对dom产生任何影响，只有当创建的节点插入到dom中浏览器才对其进行渲染。&lt;/p&gt;
+&lt;hr /&gt;
+&lt;h4 id=&quot;white_js_2&quot;&gt;White: js如何插入节点？&lt;/h4&gt;
+
+&lt;p&gt;&lt;em&gt;Black:&lt;/em&gt; 一旦创建了新节点，就可以用Node的方法parent.appendChild(el)将el插入到文档中parent元素使其成为parent节点的最后一个子节点。还可以使用parent.insertBefore(el,existNode)将el插入parent中已存在的节点的前面。如果existNode为null，则同appendChild方法，插入点在最后。&lt;/p&gt;
+
+&lt;p&gt;如果appendChild和insertBefore将已存在的节点再次插入，则那个节点会自动从它当前的位置删除并在新的位置重新插入，没有必要显式删除该节点。&lt;/p&gt;
+&lt;hr /&gt;
+&lt;h4 id=&quot;white_js_3&quot;&gt;White: js如何删除和替换节点？&lt;/h4&gt;
+
+&lt;p&gt;&lt;em&gt;Black:&lt;/em&gt;&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;parent.removeChild(el),方法从文档树中删除一个节点.&lt;/li&gt;
+
+&lt;li&gt;el.parentNode.replaceChild(newNode, el),删除一个节点，并用一个新的节点取代它。&lt;/li&gt;
+&lt;/ul&gt;
+&lt;hr /&gt;
+&lt;h4 id=&quot;white_documentfragment&quot;&gt;White: 为什么要是用DocumentFragment？&lt;/h4&gt;
+
+&lt;p&gt;&lt;em&gt;Black:&lt;/em&gt; DocumentFragment是一种特殊的Node，它作为其他节点的临时的容器，创建方法是&lt;code&gt;var frag = document.createDocumentFragment()&lt;/code&gt;。像document节点一样，DocuemntFragment节点是独立的，不是其他任何文档的一部分，它的parentNode是null。但它又类似Element节点，可以通过appendChild、removeChild、replaceChild等去操作它。&lt;/p&gt;
+
+&lt;p&gt;DocumentFragment的特殊之处在于它的一组节点被当作一个节点操作，对它的appendChild等操作不是操作它本身，而是操作的它的所有的子节点。&lt;/p&gt;
+
+&lt;p&gt;&lt;em&gt;为什么需要DocumentFragment呢？&lt;/em&gt;&lt;/p&gt;
+
+&lt;p&gt;因为appendChild、removeChild、replaceChild等都会引起浏览器的重新渲染，如果一次操作很多个节点，那么频繁渲染会引起不良体验。所以把需要操作的一组节点放入DocumentFragment容器操作完成后，一次性更新到DOM树，是一个良好的习惯。&lt;/p&gt;
+&lt;hr /&gt;
+&lt;h4 id=&quot;white_&quot;&gt;White: 什么叫文档坐标和视口坐标？&lt;/h4&gt;
+
+&lt;p&gt;&lt;em&gt;Black:&lt;/em&gt; 当浏览器在窗口中渲染文档时，它创建文档的一个视觉表示层，在那里每个元素都有自己的位置和尺寸。大多数的元素在视觉上都有自己的坐标（位置）和尺寸（形状、大小）。元素的位置是以像素为单位来度量的，向右代表x坐标增加，向下代表y坐标增加。但是有两个不同的点作为坐标系的原点，这就产生了文档坐标和视口坐标。&lt;/p&gt;
+
+&lt;p&gt;在顶级窗口或标签页中，“视口”是指实际显示文档内容的浏览器的一部分：它不包括浏览器“外壳”（如菜单、工具条、标签条、状态条等）。针对框架页中显示的文档，视口是定义了框架页中iframe元素。元素在视口中的位置就是“视口坐标”。其原点是浏览器窗口的左上角。&lt;/p&gt;
+
+&lt;p&gt;文档坐标比视口坐标更加基础，是元素在整个文档树在浏览器中呈现的表示层中的位置。其原点是文档的左上角。&lt;/p&gt;
+
+&lt;p&gt;一般来说这两种坐标系之间可以相互转换，必须加上或减去滚动的偏移量。我们通过window对象的pageXOffset和pageYOffset属性来判定浏览器窗口的滚动条的位置。&lt;/p&gt;
+&lt;hr /&gt;
+&lt;h4 id=&quot;white_js_4&quot;&gt;White: js有哪些方法查询元素的尺寸、位置、滚动等信息？&lt;/h4&gt;
+
+&lt;p&gt;&lt;em&gt;Black:&lt;/em&gt; 判断一个元素的尺寸和位置最简单的方法就是调用它的getBoundingClientRect()方法，它不需要参数，返回一个有left、raight、top、bottom属性的对象，通过计算可以得到width和height信息，但是只是满足矩形的几何形状。这个方法返回的是元素在视口坐标中的位置，函数名中的“client”暗示了这一点。为了转化为文档坐标，需要加上滚动偏移量。&lt;/p&gt;
+
+&lt;p&gt;有时候我们想判断视口中的某个坐标上有什么元素。我们可以用Document对象的elementFromPoint()方法进行判定，传递x、y视口坐标值，返回一个元素。如果该坐标值在视口之外，那么返回的是null，即使在转换为文档坐标后是有效的。实际上鼠标事件的target属性包含了这样的信息，所以elementFromPoint()方法并不常用。&lt;/p&gt;
+
+&lt;p&gt;window对象的scrollTo(x,y)方法接受文档坐标值，并作为滚动的偏移量设置，并在视口中显示x、y为原点的那部分文档。&lt;/p&gt;
+
+&lt;p&gt;window对象的scrollBy()方法也类似，但是它的参数是相对的，并在当前滚动条的偏移量上增加。&lt;/p&gt;
+
+&lt;p&gt;如果只想显示某个元素，那么调用该元素的scrollToView()方法更加方便，它与设置window.location.hash为一个命名锚点的名字后，浏览器产生的行为类似。&lt;/p&gt;
+&lt;hr /&gt;
+&lt;h4 id=&quot;white_html&quot;&gt;White: html元素有哪些属性显示其尺寸、位置、滚动等信息？&lt;/h4&gt;
+
+&lt;p&gt;&lt;em&gt;Black:&lt;/em&gt; 任何html元素的只读属性offsetWidth和offsetHeight以css像素返回它的屏幕尺寸，返回的尺寸包括元素的边框和内边距，不包含外边距。&lt;/p&gt;
+
+&lt;p&gt;html元素的offsetLeft、offsetTop属性返回元素的x、y坐标。对于很多元素这些值是在文档坐标系中的x、y坐标，也可以设置它指定元素的位置。对于已定位元素的后代元素和一些其他元素（如表格单元），这些属性是相对祖先元素的而非文档的。offsetParent属性指定这些属性所相对的父元素。如果offsetParent为null，这些值就是文档坐标。&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;	//通过offsetLeft、offsetTop计算元素文档坐标
+	function getElementPostion(e) {
+			
+		var x = 0, y = 0;
+		while( e != null) {
+			x += e.offsetLeft;
+			y += e.offsetTop;
+			e = e.offsetParent;
+		}
+
+		return {x:x, y:y};
+	}
+
+	//通过offsetLeft、offsetTop和滚动信息计算元素视口坐标
+	function getElementPos(el) {
+		var x = 0, y = 0;
+		for(var e = el; e!=null; e = e.offsetParent) {
+			x += e.offsetLeft;
+			y += e.offsetTop;
+		}
+
+		for(var e = el.parentNode; e!=null &amp;amp;&amp;amp; e.nodeType === 1; e = e.parentNode) {
+			x -= e.scrollLeft;
+			y -= e.scrollTop;
+		}
+
+		return {x:x, y:y};
+	}&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;总结：&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;内容 + 内边距 + 边框&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;offsetWidth&lt;/li&gt;
+
+&lt;li&gt;offsetHeight&lt;/li&gt;
+
+&lt;li&gt;offsetLeft&lt;/li&gt;
+
+&lt;li&gt;offsetTop&lt;/li&gt;
+
+&lt;li&gt;offsetParent&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+
+&lt;li&gt;
+&lt;p&gt;内容 + 内边距&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;clientWidth //对于span等内联元素，其clientWidth、clientHeight总是返回0。&lt;/li&gt;
+
+&lt;li&gt;clientHeight //返回值不包含滚动条大小&lt;/li&gt;
+
+&lt;li&gt;clientLeft //内联元素通常返回0。&lt;/li&gt;
+
+&lt;li&gt;clientTop //返回元素的内边距的外侧和它的边框外侧的距离，除了有滚动条外它们就是边框的尺寸。&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+
+&lt;li&gt;
+&lt;p&gt;内容 + 内边距 + 溢出（视口外）&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;scrollWidth&lt;/li&gt;
+
+&lt;li&gt;scrollHeight&lt;/li&gt;
+
+&lt;li&gt;scrollLeft&lt;/li&gt;
+
+&lt;li&gt;scrollTop&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;hr /&gt;</description>
+                <link>http://izhanghuaning.github.io/books/2011/08/15/jsdg-chap15-jsdom2.html</link>
+                <guid>http://izhanghuaning.github.io/books/2011/08/15/jsdg-chap15-jsdom2</guid>
+                <pubDate>2011-08-15T00:00:00+08:00</pubDate>
+        </item>
+
+        <item>
+                <title>BW客户端js之脚本化文档(八)</title>
+                <description>&lt;h4 id=&quot;white_dom&quot;&gt;White: 文档对象模型DOM是什么？&lt;/h4&gt;
+
+&lt;p&gt;&lt;em&gt;Black:&lt;/em&gt; DOM是表示和操作html文档内容的基础api。html文档的树状结构包含html标签或元素和表示文本的字符串的节点，它也有可能包含表示html注释的节点。一个简单的html页面的dom树如下表示：&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/assets/themes/twitter/img/htmldom.png&quot; alt=&quot;&quot; title=&quot;html文档节点的dom树&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;上图每个方框都是一个节点，节点都是一个Node对象。上图包含3种不同类型的节点，树根是Document节点，它代表整个文档。代表html元素的是Element节点，代表文本的是Text节点。它们都是Node对象的子类，Node对象和各个类型节点的关系如下图所示：&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/assets/themes/twitter/img/doms.png&quot; alt=&quot;&quot; title=&quot;文档节点的层次结构&quot; /&gt;&lt;/p&gt;
+&lt;hr /&gt;
+&lt;h4 id=&quot;white_document&quot;&gt;White: Document对象有哪些属性？&lt;/h4&gt;
+
+&lt;p&gt;&lt;em&gt;Black:&lt;/em&gt;&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;head：head元素&lt;/li&gt;
+
+&lt;li&gt;body：body元素&lt;/li&gt;
+
+&lt;li&gt;forms：表单元素集合&lt;/li&gt;
+
+&lt;li&gt;cookie：允许js读写http cookie的特殊属性&lt;/li&gt;
+
+&lt;li&gt;domain：cookie或同源策略设置域名&lt;/li&gt;
+
+&lt;li&gt;lastModified：修改时间字符串&lt;/li&gt;
+
+&lt;li&gt;location：同window.location指向同一个Location对象&lt;/li&gt;
+
+&lt;li&gt;referrer：导航到当前文档的上一个文档的链接。&lt;/li&gt;
+
+&lt;li&gt;title：title元素&lt;/li&gt;
+
+&lt;li&gt;URL：文档的静态url&lt;/li&gt;
+&lt;/ul&gt;
+&lt;hr /&gt;
+&lt;h4 id=&quot;white_js&quot;&gt;White: js如何选取文档元素？&lt;/h4&gt;
+
+&lt;p&gt;&lt;em&gt;Black:&lt;/em&gt;&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;通过ID获取元素，&lt;code&gt;var el = document.getElementById(&amp;quot;id&amp;quot;)&lt;/code&gt;,返回一个id匹配的元素，id在文档中唯一。（常用）&lt;/li&gt;
+
+&lt;li&gt;通过name获取元素，&lt;code&gt;var els = document.getElementsByName(&amp;quot;name&amp;quot;)&lt;/code&gt;,返回一个匹配name的Nodeist对象。（很少用）&lt;/li&gt;
+
+&lt;li&gt;通过Tag获取元素，&lt;code&gt;var els = document.getElementsByTagName(&amp;quot;tagname&amp;quot;)&lt;/code&gt;，返回一个匹配tag的NodeLIst对象。（少用，一般用来取head元素）&lt;/li&gt;
+
+&lt;li&gt;通过CSS类获取元素，&lt;code&gt;var els = document.getElementsByClassName(&amp;quot;class&amp;quot;)&lt;/code&gt;，返回一个包含匹配class的NodeList对象。（常用）&lt;/li&gt;
+
+&lt;li&gt;通过CSS选择器获取元素，&lt;code&gt;var els = document.querySelectorAll(&amp;quot;selector&amp;quot;)&lt;/code&gt;，返回一个匹配选择器的NodeList对象。（涵盖了上面所有，最强大，其实jquery就是通过这个来实现）&lt;/li&gt;
+&lt;/ul&gt;
+&lt;hr /&gt;
+&lt;h4 id=&quot;white_nodejs&quot;&gt;White: Node对象有哪些属性，js如何遍历文档树？&lt;/h4&gt;
+
+&lt;p&gt;&lt;em&gt;Black:&lt;/em&gt; Document对象、Element对象、Text对象都是Node对象，Node对象定义了以下重要属性可用来快速查找其关联节点。&lt;/p&gt;
+
+&lt;p&gt;假定已经选定文档中的一个节点，它有以下属性来引用相关节点。&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;parentNode：该节点的父节点。&lt;/li&gt;
+
+&lt;li&gt;childNodes：只读的类数组对象（NodeList对象），它是该节点的(直系)子节点的实时表示。&lt;/li&gt;
+
+&lt;li&gt;firstChild、lastChild：该节点的子节点中的第一个和最后一个。&lt;/li&gt;
+
+&lt;li&gt;nextSibling、previoursSibling：该节点的下一个和上一个兄弟节点。&lt;/li&gt;
+
+&lt;li&gt;nodeType：该节点的类型。9代表Document、1代表Element、3代表Text、8代表Comment、11代表DocumentFragement。&lt;/li&gt;
+
+&lt;li&gt;nodeValue：Text节点或者Comment节点的文本内容。&lt;/li&gt;
+
+&lt;li&gt;nodeName：元素的标签名（Tag Name），以大写形式表示。&lt;/li&gt;
+
+&lt;li&gt;attributes：由Attr节点组成的NodeList对象，包含该元素所有的属性，对于非Element对象的任何节点为null。Attr对象name和value返回概述性的名字和值。&lt;/li&gt;
+&lt;/ul&gt;
+&lt;hr /&gt;
+&lt;h4 id=&quot;white_js_2&quot;&gt;White: 什么是元素树，js如何遍历元素树？&lt;/h4&gt;
+
+&lt;p&gt;&lt;em&gt;Black:&lt;/em&gt; 当将主要精力集中在文档的元素（Element）而不是它们之间的文本（包括空白）上时，我们可以使用另外一个有用的api。它将文档看作是Element对象树，忽略部分文档：Text和Comment节点。我们称为元素树。&lt;/p&gt;
+
+&lt;p&gt;假定选定一个元素，它有以下属性来引用相关元素。&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;children：类似childNodes，它也是一个NodeList对象，但是它只包含Element对象。&lt;/li&gt;
+
+&lt;li&gt;firstElementChild、lastElementChild&lt;/li&gt;
+
+&lt;li&gt;nextElementSibling、PreviousElementSibling&lt;/li&gt;
+
+&lt;li&gt;childElementCount：子元素的数量。返回值和children.length相等。&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;注意：Text和Comment节点没有children属性，它意味着Node.parentNode属性不可能返回Text或Comment节点。任何Element的parentNode总是返回另一个Element，或者追溯到树根的Document或DocumentFragement节点。&lt;/p&gt;
+&lt;hr /&gt;
+&lt;h4 id=&quot;white_html&quot;&gt;White: html元素的属性是什么？&lt;/h4&gt;
+
+&lt;p&gt;&lt;em&gt;Black:&lt;/em&gt; html元素由一个标签和一组称为属性的键值对组成。比如a超链接元素有href和id属性。html中属性名是不区分大小写的，js中则大小写敏感。如果html属性名在js中是保留字，则对这些属性的一般规则是为属性名加”html”前缀。“class”属性是一个例外，它在js中是“className”。&lt;/p&gt;
+
+&lt;p&gt;元素中定义了的属性称为标准属性，可以通过点号(.)方式使用，比如a.href。标准属性的值通常是字符串，也可以是数字、布尔、函数等。html的style属性值是CSSStyleDeclaration对象，而不是字符串。&lt;/p&gt;
+
+&lt;p&gt;Element对象定义了getAttribute()和setAttribute()方法来查询和设置非标准的html属性。非标准属性的值都看作字符串，并且属性名是js的保留字也没有关系。&lt;/p&gt;
+
+&lt;p&gt;Element对象还定义了hasAttribute()和removeAttribute()方法，可以用来检测命名属性是否存在和删除指定属性。当属性为不关心值，只关心其是否存在的布尔值特别有用，比如html元素的disabled属性。&lt;/p&gt;
+&lt;hr /&gt;
+&lt;h4 id=&quot;white_&quot;&gt;White: 什么是数据集属性？&lt;/h4&gt;
+
+&lt;p&gt;&lt;em&gt;Black:&lt;/em&gt; 有时候在html元素上绑定一些额外信息是很有用的，当js读取这些元素并以某种方式操作这些信息就是很典型的情况（比如自定义控件）。一般是用getAttribute和setAttribute来操作它们，但文档将不再是合法有效的html。&lt;/p&gt;
+
+&lt;p&gt;HTML5提供了新的解决方案。在html5中，任意以”data-“为前缀的消协的属性名都是符合html规范的。这些“数据集属性”将不会对元素的表现产生影响，它们定义了一种标准的、附加额外数据的方法，同时不会在文档合法性上作出让步。&lt;/p&gt;
+
+&lt;p&gt;html5还在Element对象上定义了dataset属性，该属性指代一个对象，它的各个属性对应于去掉”data-“前缀的属性，可以直接通过js点号方式操作它们。dataset属性是元素的”data-“属性的实时、双向接口。设置或删除dataset的一个属性就等同于设置或移除元素的“data-”属性。&lt;/p&gt;
+&lt;hr /&gt;
+&lt;h4 id=&quot;white__2&quot;&gt;White: 元素的内容有哪些形式？&lt;/h4&gt;
+
+&lt;p&gt;&lt;em&gt;Black:&lt;/em&gt; 元素的内容有三种形式：作为html的元素内容、作为纯文本的元素内容、作为text节点的元素内容。&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;作为html的元素内容：&lt;/p&gt;
+
+&lt;p&gt;通过Element对象的innerHTML和outerHTML属性作为字符串读取和设置元素的内容。在元素上设置该属性调用了web浏览器的解析器，用新字符串内容解析展示形式替换元素的当前内容。IE还引入了insertAdjacentHTML()方法将html标记插入到指定元素的“相邻”的位置。“相邻”的情况有：beforebegin、afterbegin、beforeend、afterend。&lt;/p&gt;
+&lt;/li&gt;
+
+&lt;li&gt;
+&lt;p&gt;作为纯文本的元素内容：&lt;/p&gt;
+
+&lt;p&gt;有时候需要查询纯文本形式的元素内容（而不关心其中的html标记），或者在文档中插入纯文本（不必转义html标记中使用的符号，不用解释器进行解析成html元素），标准的方法是使用Node的textContent属性来实现。在ie中可以使用innerText属性来替代。&lt;/p&gt;
+&lt;/li&gt;
+
+&lt;li&gt;
+&lt;p&gt;作为text节点的元素内容：&lt;/p&gt;
+
+&lt;p&gt;还有一种方法是将元素的内容当作一个子节点的列表，每个子节点可能还有自己的子节点。当考虑元素内容时，通常感兴趣的是它的Text节点。用法如下所示：&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;//返回元素e的纯文本内容，递归进入其子元素
+//该方法类似语上面的textContent属性
+function textContent(e) {
+	var child, type, s = &amp;quot;&amp;quot;;
+	for(child = e.firstChild; child != null; child = child.nextSibling) {
+		type = child.nodeType;
+		if(type === 3 || type === 4) { //Text和CDATASection节点
+			s += child.nodeValue;
+		} else  if(type === 1) { //Element节点
+			s += textContent(child);
+		}
+	}
+	return s;
+}&lt;/code&gt;&lt;/pre&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;hr /&gt;</description>
+                <link>http://izhanghuaning.github.io/books/2011/08/10/jsdg-chap15-jsdom.html</link>
+                <guid>http://izhanghuaning.github.io/books/2011/08/10/jsdg-chap15-jsdom</guid>
+                <pubDate>2011-08-10T00:00:00+08:00</pubDate>
+        </item>
+
+        <item>
+                <title>BW客户端js之脚本化概述(七)</title>
+                <description>&lt;h4 id=&quot;white_&quot;&gt;White: 什么是脚本化？&lt;/h4&gt;
+
+&lt;p&gt;&lt;em&gt;Black:&lt;/em&gt; 几年前的传统网站成为web页面，其主要是静态的html、css构成，只有少量的js代码是作为“看起来很炫的效果”，网站是单向向别人展示信息的，那时可以称为“Web1.0”时代。后来随着Ajax的兴起，web页面式的网站变成了web应用。web应用的内容（html）、表现（css）、行为(js）、数据(ajax)等都是动态构建的，网站不再是一个单纯单向展示信息的页面，而是可以进行购物、转账、社交、聊天等功能性双向交互性应用了，也有人把它称为“Web2.0”时代。&lt;/p&gt;
+
+&lt;p&gt;在web应用中，内容（html）是动态的，表现（css）是动态的、数据（Ajax）也是动态的，这些动态的实现者就是js，也就是使用js脚本去动态实现这些功能。&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;脚本化文档就是使用js操作（增加、删除、查询、修改）html内容（DOM）。&lt;/li&gt;
+
+&lt;li&gt;脚本化css就是使用js来操作（增加、删除、修改）html的表现形式。&lt;/li&gt;
+
+&lt;li&gt;脚本化事件处理程序就是使用js来动态响应复杂的用户行为。&lt;/li&gt;
+
+&lt;li&gt;脚本化HTTP就是通过js来进行Ajax操作，动态获取数据。&lt;/li&gt;
+&lt;/ul&gt;
+&lt;hr /&gt;
+&lt;h4 id=&quot;white_jquery&quot;&gt;White: jquery是什么？&lt;/h4&gt;
+
+&lt;p&gt;&lt;em&gt;Black:&lt;/em&gt; jquery是一个非常著名的js类库，它封装和优化了了上面所说的脚本化的方法。实际上jquery的本来的定位就是使用js进行dom查询，所以叫jquery，主要涵盖了css3的选择器。后来随着jquery的发展就成了现在这样的脚本化dom、脚本化css、脚本化js事件、脚本化Ajax这样全套的脚本化类库，基本上jquery也只涵盖这些内容，把握好自己的类库的涵盖边界。&lt;/p&gt;
+
+&lt;p&gt;&lt;a href=&quot;http://jquery.com/&quot;&gt;jquery官网&lt;/a&gt;&lt;/p&gt;
+&lt;hr /&gt;
+&lt;h4 id=&quot;white_spine&quot;&gt;White: spine是什么？&lt;/h4&gt;
+
+&lt;p&gt;&lt;em&gt;Black:&lt;/em&gt; spine是一个js的MVC框架类库，以类继承的方式重写了js原型继承体系，使用mvc思想把客户端js进行组织，形成了model、view、controller，数据交互通过restful风格的webservice进行，数据格式一般是json格式。spine是开发富客户端应用的利器，可以很好的实现客户端和服务端的并行开发。&lt;/p&gt;
+
+&lt;p&gt;spine的定位是mvc框架，可以使用jquery等其他类库来帮助它实现各个部分。&lt;/p&gt;
+
+&lt;p&gt;&lt;a href=&quot;http://spinejs.com/&quot;&gt;spine官网&lt;/a&gt;&lt;/p&gt;
+&lt;hr /&gt;
+&lt;h4 id=&quot;white_coffeescript&quot;&gt;White: coffeescript是什么？&lt;/h4&gt;
+
+&lt;p&gt;&lt;em&gt;Black:&lt;/em&gt; coffeescript是js语言的类继承形式的封装类库，spine使用coffeescript完成的，记住coffeescript就是js的一种形式，不是一种新的语言。 它引入了ruby的语法，提高了js的使用效率，通过类库可以把编写的coffeescript脚本自动转化为模块化的js脚本。&lt;/p&gt;
+
+&lt;p&gt;&lt;a href=&quot;http://coffeescript.org/&quot;&gt;coffeescript官网&lt;/a&gt;&lt;/p&gt;
+&lt;hr /&gt;
+&lt;h4 id=&quot;white_less&quot;&gt;White: less是什么？&lt;/h4&gt;
+
+&lt;p&gt;&lt;em&gt;Black:&lt;/em&gt; less与css的关系，正如coffeescript与js的关系，它也是css的一个壳，引入了很多css目前没有的新特性，方便了css的使用。可以通过解析器把less自动转化为css脚本。&lt;/p&gt;
+
+&lt;p&gt;&lt;a href=&quot;http://lesscss.org/&quot;&gt;less官网&lt;/a&gt;&lt;/p&gt;
+&lt;hr /&gt;
+&lt;p&gt;&lt;strong&gt;上面这些类库对开发前端很有帮助，它们的官网有些需要翻墙访问，你可以的。&lt;/strong&gt;&lt;/p&gt;
+&lt;hr /&gt;</description>
+                <link>http://izhanghuaning.github.io/books/2011/08/05/jsdg-chap15-jser.html</link>
+                <guid>http://izhanghuaning.github.io/books/2011/08/05/jsdg-chap15-jser</guid>
+                <pubDate>2011-08-05T00:00:00+08:00</pubDate>
+        </item>
 
         <item>
                 <title>BW客户端js之多窗口交互(六)</title>
                 <description>&lt;h4 id=&quot;white&quot;&gt;White:浏览器的窗口和窗体的概念是什么？&lt;/h4&gt;
 
-&lt;p&gt;&lt;em&gt;Black:&lt;/em&gt;&lt;/p&gt;
+&lt;p&gt;&lt;em&gt;Black:&lt;/em&gt; 曾经的IE6一个浏览器窗口就是一个窗口，现在的浏览器都可以在一个浏览器窗口打开多个标签页，其实每个标签页就是曾经的一个窗口。因为它们都是独立的“浏览器上下文”，每一个上下文都有一个独立的window对象，它们之间相互独立，互不干扰。每个标签页中运行的脚本通常不知到其他标签页的存在，更不用说其他标签页的window对象进行相互交互或者操作其文档内容了。&lt;/p&gt;
+
+&lt;p&gt;但是窗口之间并不总是没有关系的，一个窗口或标签页中的脚本可以打开一个新的窗口，这时候关联起来的多个窗口之间就可以相互操作了。&lt;/p&gt;
+
+&lt;p&gt;html文档通常使用iframe进行文档嵌套，iframe也相当一个窗口，一般叫它“窗体”。窗体所创建的上下文是用它自己的window对象表示。但iframe和其外层的window对象并不是相互独立的。在一个窗体中运行的js程序总能看到它的祖先和子孙窗体，尽管脚本查看这些窗体中的文档同样受到同源策略的限制。&lt;/p&gt;
+
+&lt;p&gt;对客户端js来说，窗口、标签页、窗体（iframe）、框架（frameset、frame）等都是浏览上下文，对于js来说它们都是独立的window对象，尽管有一些可以引用到其他的window对象。&lt;/p&gt;
 &lt;hr /&gt;
 &lt;h4 id=&quot;whitejs&quot;&gt;White:js如何打开和关闭窗口？&lt;/h4&gt;
 
-&lt;p&gt;&lt;em&gt;Black:&lt;/em&gt;&lt;/p&gt;
+&lt;p&gt;&lt;em&gt;Black:&lt;/em&gt; window对象的open()方法可以打开一个新的浏览器窗口，window.open(url,name,options)载入指定的url到新的或已经存在的窗口中（根据name判断），并返回代表新打开的窗口的window对象。&lt;/p&gt;
+
+&lt;p&gt;open方法能够指定到第二个参数name指定的窗口要受“允许导航”的限制，宽泛地讲，当且仅当窗口包含的文档来自相同的源（同源测策略）或者是这个脚本打开了哪个窗口，脚本才可以只通过名字来指定存在的窗口。否则会通过猜测名字来操作其他任意窗口了，这在安全上是不允许的，比如恶意脚本发现你在浏览网上银行，它在那个页面重新载入一个钓鱼网站，这就是不允许的。&lt;em&gt;脚本无法通过简单的猜测窗口的名字来操控这个窗口的web应用。&lt;/em&gt;&lt;/p&gt;
+
+&lt;p&gt;还有如果一个窗体嵌套在一个窗口中，它们的脚本是可以可以相互导航的，这种情况可以使用保留字“_top”、“_parent”来获取彼此的浏览上下文。通过&lt;code&gt;var w = window.open(&amp;quot;http://cn.bing.com&amp;quot;);&lt;/code&gt;时w是新窗口的window对象。在新窗口中window.opener是当前的窗口的window对象。它们也建立了相互的导航关系，可以进行互操作，比如&lt;code&gt;w.alert(&amp;#39;abc&amp;#39;);w.location=&amp;quot;http://www.googel.com&amp;quot;;&lt;/code&gt;都会在新窗口引起相应操作。&lt;code&gt;w.close();&lt;/code&gt;也会关闭那个新窗口。&lt;em&gt;但是操作其他窗口的文档的时候还是要受到“同源策略”的限制的，这是安全的要求。&lt;/em&gt; &lt;code&gt;w.document；&lt;/code&gt;如果不是同源，就会报错，因为它有安全风险。&lt;/p&gt;
+
+&lt;p&gt;要关闭当前窗口只要调用window.close()方法。大多数浏览器只允许自动关闭由自己js代码创建的窗口。如果要关闭其他窗口，需要用户确认关闭或取消。在窗体而不是顶级窗口的window.close()不会有任何效果，它不能关闭一个窗体（反之可以从文档中删除iframe）。&lt;/p&gt;
 &lt;hr /&gt;
 &lt;h4 id=&quot;white_2&quot;&gt;White:窗体之间的关系是什么样的？&lt;/h4&gt;
 
 &lt;p&gt;&lt;em&gt;Black:&lt;/em&gt;&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;任何窗口或窗体中的js代码都可以将自己的窗口或窗体引用为window或self。&lt;/li&gt;
+
+&lt;li&gt;窗体可以用parent引用包含它的窗口的window对象。&lt;/li&gt;
+
+&lt;li&gt;由window.open()创建的窗口中的js可以通过window.opener来引用打开它的窗口的window对象。&lt;/li&gt;
+
+&lt;li&gt;iframe元素有contentWindow属性引用该窗体的window对象。&lt;/li&gt;
+
+&lt;li&gt;在窗体中可以通过window.frameElement来取得其iframe。&lt;/li&gt;
+&lt;/ul&gt;
+&lt;hr /&gt;
+&lt;h4 id=&quot;white_js&quot;&gt;White: js如何进行跨窗口的交互？&lt;/h4&gt;
+
+&lt;p&gt;&lt;em&gt;Black:&lt;/em&gt;&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;首先窗口之间是“可导航的”。&lt;/li&gt;
+
+&lt;li&gt;导航到相应窗口再执行js代码。&lt;/li&gt;
+
+&lt;li&gt;受到同源策略限制。&lt;/li&gt;
+
+&lt;li&gt;牢记词法作用域，函数在定义它的作用域中执行，而不是在它的调用的作用域执行。&lt;/li&gt;
+
+&lt;li&gt;构造函数也是函数，用构造函数和相关原型对象定义一个类时，那个类只在一个单独的窗口中定义。&lt;/li&gt;
+
+&lt;li&gt;内置类（String、Number、Date等）会在所有窗口中预定义，每个都是一个独立的副本。&lt;/li&gt;
+
+&lt;li&gt;实际上每个window对象也是一个独立的副本。&lt;/li&gt;
+&lt;/ul&gt;
 &lt;hr /&gt;</description>
                 <link>http://izhanghuaning.github.io/books/2011/07/30/jsdg-chap14-windows.html</link>
                 <guid>http://izhanghuaning.github.io/books/2011/07/30/jsdg-chap14-windows</guid>
@@ -179,18 +672,6 @@
 &lt;/ul&gt;
 
 &lt;p&gt;注意：前三个字符串都是纯文本，而不是html格式的文本，所以换行要用&lt;code&gt;\n&lt;/code&gt;而不是&lt;code&gt;&amp;lt;br /&amp;gt;&lt;/code&gt;等。还有这些对话框都是阻断式的，会锁定整个窗口。&lt;/p&gt;
-&lt;hr /&gt;
-&lt;h4 id=&quot;white&quot;&gt;White:什么是同源策略？&lt;/h4&gt;
-
-&lt;p&gt;&lt;em&gt;Black:&lt;/em&gt;&lt;/p&gt;
-&lt;hr /&gt;
-&lt;h4 id=&quot;white_2&quot;&gt;White:什么是同源策略？&lt;/h4&gt;
-
-&lt;p&gt;&lt;em&gt;Black:&lt;/em&gt;&lt;/p&gt;
-&lt;hr /&gt;
-&lt;h4 id=&quot;white_3&quot;&gt;White:什么是同源策略？&lt;/h4&gt;
-
-&lt;p&gt;&lt;em&gt;Black:&lt;/em&gt;&lt;/p&gt;
 &lt;hr /&gt;</description>
                 <link>http://izhanghuaning.github.io/books/2011/07/20/jsdg-chap14-window.html</link>
                 <guid>http://izhanghuaning.github.io/books/2011/07/20/jsdg-chap14-window</guid>

@@ -9,6 +9,11 @@ http://izhanghuaning.github.io/categories.html
 http://izhanghuaning.github.io/pages.html
 http://izhanghuaning.github.io/archive.html
 
+http://izhanghuaning.github.io/books/2011/08/25/jsdg-chap16-jscss.html
+http://izhanghuaning.github.io/books/2011/08/20/jsdg-chap15-forms.html
+http://izhanghuaning.github.io/books/2011/08/15/jsdg-chap15-jsdom2.html
+http://izhanghuaning.github.io/books/2011/08/10/jsdg-chap15-jsdom.html
+http://izhanghuaning.github.io/books/2011/08/05/jsdg-chap15-jser.html
 http://izhanghuaning.github.io/books/2011/07/30/jsdg-chap14-windows.html
 http://izhanghuaning.github.io/books/2011/07/25/jsdg-chap14-timer.html
 http://izhanghuaning.github.io/books/2011/07/20/jsdg-chap14-window.html
