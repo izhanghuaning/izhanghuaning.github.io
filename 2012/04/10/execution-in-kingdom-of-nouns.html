@@ -1,0 +1,408 @@
+
+<!DOCTYPE html>
+<!--[if IE 7 ]>    <html lang="zh-CN" class="ie7"> <![endif]-->
+<!--[if IE 8 ]>    <html lang="zh-CN" class="ie8"> <![endif]-->
+<!--[if (gte IE 9)|!(IE)]><!--> <html lang="zh-CN"> <!--<![endif]-->
+  <head>
+	  <meta charset="utf-8">
+	  <!--[if IE 8 ]><meta http-equiv="X-UA-Compatible" content="IE=7"><![endif]-->
+	  <title>(翻译)java名词王国中的方法执行</title>
+	<meta name="keywords" content="张华宁,interface,pattern">
+    <meta name="description" content="execution in kingdom of nouns, java ">
+    <meta name="author" content="张华宁">
+
+    <!-- Enable responsive viewport -->
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+	<!-- Favicon -->
+	<link rel="shortcut icon" href="/favicon.ico">
+
+    <!-- atom & rss feed -->
+    <link href="/atom.xml" type="application/atom+xml" rel="alternate" title="Sitewide ATOM Feed">
+    <link href="/rss.xml" type="application/rss+xml" rel="alternate" title="Sitewide RSS Feed">
+
+	<!-- Styles 
+	<link rel="stylesheet" href="/assets/themes/twitter/css/style.min.css">
+	<link rel="stylesheet" href="/assets/themes/twitter/css/font-awesome.min.css">
+	-->
+	<!-- le Styles -->
+	<link rel="stylesheet" href="/assets/themes/twitter/bootstrap/css/bootstrap.2.2.2.min.css">
+	<link rel="stylesheet" href="/assets/themes/twitter/css/style.css?body=1">
+
+	<!-- Scripts -->
+	<script type="text/javascript" src="/assets/themes/twitter/js/jquery-1.10.1.min.js"></script>
+
+    <!-- Le HTML5 shim, for IE6-8 support of HTML elements -->
+    <!--[if lt IE 9]>
+	<script src="/assets/themes/twitter/js/html5shiv.js"></script>
+    <![endif]-->
+
+  </head>
+
+  <body>
+    <div class="navbar">
+      <div class="navbar-inner">
+        <div class="container-narrow">
+          <a class="brand" href="/">张华宁的笔记本</a>
+          <ul class="nav">
+            
+            
+            
+
+
+  
+    
+      
+      	
+      	<li><a href="/tags.html">Tags</a></li>
+      	
+      
+    
+  
+    
+      
+    
+  
+    
+      
+    
+  
+    
+      
+    
+  
+    
+      
+    
+  
+    
+      
+    
+  
+    
+      
+      	
+      	<li><a href="/categories.html">Categories</a></li>
+      	
+      
+    
+  
+    
+      
+      	
+      	<li><a href="/pages.html">Pages</a></li>
+      	
+      
+    
+  
+    
+      
+      	
+      	<li><a href="/archive.html">Archive</a></li>
+      	
+      
+    
+  
+
+
+
+          </ul>
+        </div>
+      </div>
+    </div>
+
+    <div class="container-narrow">
+
+      <div class="content">
+        
+<div class="page-header">
+  <h1>(翻译)java名词王国中的方法执行 </h1>
+</div>
+
+<div class="row-fluid post-full">
+  <div class="span12">
+    <div class="date">
+      <span>10 April 2012</span>
+    </div>
+    <div class="content">
+      <p><strong><em>本篇是翻译，向大师致敬，原文请参见<a href="http://steve-yegge.blogspot.com/2006/03/execution-in-kingdom-of-nouns.html">Execution in the Kingdom of Nouns</a>。</em></strong></p>
+
+<pre><code>They&#39;ve a temper, some of them—particularly verbs: they&#39;re the proudest—adjectives you can do anything with, but not verbs—however, I can manage the whole lot of them! Impenetrability! That&#39;s what I say!     — Humpty Dumpty（未翻译，请自己理解）</code></pre>
+
+<p>Hello, world! 我们今天将要听到一个关于邪恶的java国王和在java王国内灭绝verb（动词）的故事。</p>
+
+<p>警报：这个故事并没有一个好的结局。这个故事不是为了刺激你的心脏或者挑起嘴仗，如果你容易被冒犯，或者喜欢在博客评论中攻击与你不同意见的人，那么请你马上离开。</p>
+
+<p>在我们正式开始这个故事之前，我们先通过一个小故事理清一些概念问题。</p>
+
+<p><strong>倒垃圾(The Garbage Overfloweth)</strong></p>
+
+<p>所有的java公民都喜欢”用例”(use cases)，那么我们就从这样一个用例开始：XX，去倒垃圾。正如：“华宁，垃圾满出来了，快去倒垃圾。”</p>
+
+<p>如果你是一个正常的说汉语(English)的人，你被要求倒垃圾时，你可能会大致在头脑中进行这样的一些步骤（action）。</p>
+
+<pre><code>从垃圾桶中拿出垃圾袋
+走出房间
+把垃圾待扔到垃圾站
+回来
+洗手
+坐到沙发上
+继续干自己要做的事</code></pre>
+
+<p>即使你不是用汉语思考，那么这些场景也是类似的。无论你选择什么语言，或者你的具体行为步骤（action）是什么。倒垃圾都是把垃圾带出去，然后回到家里。</p>
+
+<p>我们的头脑中充满着勇敢、凶猛、热情等等各种各样的行为：我们活着、我们呼吸、走路，说话、大笑、吼叫、希望、恐惧、吃、喝、玩、行，和我们倒垃圾等等。以上所有的都是我们自由的去做（do）和表现（act）。如果我们都只能坐在阳光（in the sun）下的石头上，生活可能也还可以。但是我们将不再自由，我们的自由是来自于我们能够做(do)事情能够的能力。</p>
+
+<p>当然，我们的头脑中也充满了名词。我们吃”名词”、买名词、坐在名词上，睡在名词上等等一大堆名词。名词代表了某种存在，如果没有名词那么我们现在是在哪里呢？名词也仅仅代表东西，一种终态的存在。那有个建筑物，这有个岩石。小孩子都能说出这些名词。名词很简单，发生这些名词上的变化才让一切更加奇妙。</p>
+
+<p>变化则需要行为。行为是生活的调味料，行为让生活更精彩。毕竟如果你不去吃的话，永远不知道梨子有多么甜。名词一直存在着，是动词（行为）让生活不停的变化着，精彩着。</p>
+
+<p>当然还存在形容词、介词、代词等等让我们思考和表达这个世界的语言构成，它们都发挥着自己的作用，都非常重要，都是不可或缺的，但是我们主要考虑的是名词和动词，它们是今天故事的主角。</p>
+
+<p>如果说我们的语言中突然没有了动词会不会是特别奇怪或者无法理解的呢？？</p>
+
+<p>让我们回到故事的起点，java名词王国的故事。</p>
+
+<p><strong>名词王国（The Kingdom of Nouns）</strong></p>
+
+<p>在那遥远的java王国，国王java用“silcon fist”的强大武器进行着统治。这里的人民被禁止思考如何做事情。在java王国中，因为国王的关系，名词是最重要的一等公民。名词们四处巡视，身着华丽服饰的名词们看起来相当杰出，这些华丽服饰是由形容词提供的，形容词的使命就是让名词的生活更安心。形容词是二等公民，永远不能如名词高贵，但是它们至少庆幸的是它们不是动词。</p>
+
+<p>java王国的动词是悲惨的代名词，它们是名词的奴隶，没有自由。</p>
+
+<p>在java王国中，由国王颁布的“java法典”规定：动词归名词所有，但是又不仅仅像宠物那样，而是像奴隶。java王国的所有工作和劳动都是由动词做的。java王国的居民（包括动词）对此也习以为常，根本没有人意识到其实可以有另一种样子（动词可以是自由的一等公民）。</p>
+
+<p>java王国的动词们做了所有的工作和劳动，但是仍然被所有人蔑视，甚至连自由走动的权利都没有。如果动词出现在公共场合，它一定是被名词用绳子拴着（如同遛狗）。</p>
+
+<p>当然“拴”本身也是一个动词，是很难被允许单独出现的。它也必须被“监护者（Apply、Call）”拴（管理）着。“监护者”到底该怎么办呢？现实的情况是“监护者”也是名词，它们的职责就是监管低等的动词。<em>（译注：这段翻译不通畅，简单说就是java中通过点号（.拴）来调用方法，而点号（拴）本身也是一个方法，点号这个方法的调用是通过“监护者”来调用的，“监护着”的调用方法具体怎么实现，或许是编译器来实现的，根据计算机知识推理来说应该就是定位方法的地址吧，具体怎样有待考证。）</em></p>
+
+<p>java国王，在处理动词的事情上与他们的太阳神（Sun God）进行沟通后，多次威胁要在java王国内取消掉所有的动词。如果这一天真的来临，那么java王国的居民们至少还要一个动词来完成所有的工作。java国王，以他残酷的幽默感宣告他的选择一定会是“执行”的。</p>
+
+<p>动词“执行（execute）”，以及他的同义词们“run、start、go、justdoit、makeitso”等等所有的动词都可以被“执行者”的execute()所取代。需要服务？waiter.execute()。要刷牙？ToothBrusher(myTeeth).execute()。倒垃圾？TrashDisposalPlanExecutor.execute()。没有动词是安全得了，它们都可以被名词.execute()取代。<em>（译注：这段讲解的就是类似于命令模式(command pattern)吧）</em></p>
+
+<p>java王国中的每一个角落，名词们高呼着热烈的口号迫害流放了动词们。虽然看起来java王国中还到处都有动词，有“倒垃圾、刷牙、服务“等等动词，但是如果你足够接近它们，看的足够仔细你会发现其中的秘密，这些动词只不过是名词们给execute()取了别名，其本质千篇一律的样子没有丝毫改变。当你观察”倒垃圾者.倒垃圾()、刷牙者.刷牙()“，你真正看到的是邪恶的java国王掩盖在名词衣服之下的executioners的军队。<em>（译注：本段说java只有一个动词就是execute，其他动词都是它执行者起的别名）</em></p>
+
+<p><strong>邻国的动词</strong></p>
+
+<p>在java王国的邻国，比如ruby王国，倒垃圾就像汉语中所描述倒垃圾那样直接。而在java王国数据对象是名词，函数是动词，必须名词.动词()。而在ruby王国的文明中，名词和动词是平等的，可以根据他们的业务随意混合使用，不再有强制的隶属关系。</p>
+
+<p>在java王国的邻国：c王国、js王国、perl王国、ruby王国等等某人倒垃圾的步骤就是设计好一连串的动作。然后把这些动作按照顺序分配给某个人，倒垃圾的任务就会顺利完成，不需要多余的监管等步骤。</p>
+
+<p>这些王国中不需要为动词创建作为“监管者”的名词。它们没有GarbageDisposalStrategy名词，也不需要GarbageDisposalDestinationLocator名词去寻找道路，或者PostGarbageActionCallback名词让你返回沙发。它们就是简单的定义好操作名词的行为动作，然后通过一个大的动作take_out_garbage()把子步骤按照正确顺序组合起来就可以了。<em>（译注：这里指倒垃圾这个过程涉及到多个对象（垃圾、房间、垃圾站、返回等等），在java中需要创建多个对象来实现这个过程。而在ruby等只需要定义好每个动作，然后顺序调用动作就可以了，不需要创建多余的对象）</em></p>
+
+<p>在ruby等王国中如果需要名词的话，也是提供了实现的机制。如果ruby王国的发明家们创建了全新的、有用的、从未存在的概念，比如说一座房子、一个车子或者一个比牛耕地更块的机器，发明家们就类Class来表示它，它有自己的名字、描述、状态和行为。</p>
+
+<p>那么这样子不是和java国王的一样了么？它们的区别在哪里呢？ruby王国和java王国的区别在于，ruby王国中动词是和名词一样的一等公民，是可以单独存在的，不是名词的奴隶。</p>
+
+<p>java王国的人们鄙视着ruby王国。这就是语言王国们之间的语言优劣之争，从未停止，也不会消失。</p>
+
+<p><strong>如果你挖的坑够深的话</strong></p>
+
+<p>凡是有阴就有阳，谁能想到语言大陆上还存在着另外一些王国比如Haskellia、Schema等等，这些王国是函数式编程王国，这这些王国动词是超然存在的公民。他们很少接近java王国，因为他们并不接壤，但是因为同情java王国动词们的遭遇，函数式王国联盟的人们仇视这java王国，正如果java王国同样仇视它们。争端的解决之道唯有语言优劣口水仗，别无它法。</p>
+
+<p>在schema王国等函数式王国联盟中，动词和名词基本上是平等的，各有分工。因为动词们实在太活跃了，相比而言名词基本是什么也不做。这里没有奇怪的法律规定动词必须被名词监管，所以只会按需创建名词。</p>
+
+<p>正是因为如此，如果你忽视了表达式的话，你会看到到处都是动词。从局外人的观点来看，在函数式王国联盟中动词是最重要的公民。也正是如此才被成为函数式（功能）王国联盟吧。</p>
+
+<p>当我们把目光投向更远方，越过函数式联盟的天之边际，存在着一个叫lambda王国的传说中的王国。在那里根本就没有名词，只有动词，所以被成为“终极动词王国”。这里也有“东西的存在”，但是这些存在都是动词创建的，即使基本如数字的存在，数字是在货币交易中最常用的，也是能把谎言说成真理的地方。数字0就是简单的lambda()，1就是lambda(lambda())依次类推。在这个王国的类似语名词的存在都是从最基本的动作lambda创建出来的。</p>
+
+<p>事实上，绝大多数java王国的公民不知道外面的世界是什么样子。如果知道的话会带来什么样的文化的冲击呢？很可能他们会匆忙的创建一些新的名词，比如“闭关锁国”、“仇外”等来表达自己的感受。</p>
+
+<p><strong>java王国的公民幸福么？</strong></p>
+
+<p>你可能认为java王国的日常生活最多有一点奇怪，最坏的是方面是非常低效的。但是如果你想知道一个国家到底是什么样子的，那么你应该听听那里的童谣是怎么唱的。在java王国，孩子们都在传唱这样一个童谣： <em>(译注：就是那个著名的将军输掉战争是因为一个马蹄钉的故事)</em></p>
+
+<pre><code>For the lack of a nail,
+    throw new HorseshoeNailNotFoundException(&quot;no nails!&quot;);
+
+For the lack of a horseshoe,
+    EquestrianDoctor.getLocalInstance().getHorseDispatcher().shoot();
+
+For the lack of a horse,
+    RidersGuild.getRiderNotificationSubscriberList().getBroadcaster().run(
+      new BroadcastMessage(StableFactory.getNullHorseInstance()));
+
+For the lack of a rider,
+    MessageDeliverySubsystem.getLogger().logDeliveryFailure(
+      MessageFactory.getAbstractMessageInstance(
+        new MessageMedium(MessageType.VERBAL),
+        new MessageTransport(MessageTransportType.MOUNTED_RIDER),
+        new MessageSessionDestination(BattleManager.getRoutingInfo(
+                                        BattleLocation.NEAREST))),
+      MessageFailureReasonCode.UNKNOWN_RIDER_FAILURE);
+
+For the lack of a message,
+    ((BattleNotificationSender)
+      BattleResourceMediator.getMediatorInstance().getResource(
+        BattleParticipant.PROXY_PARTICIPANT,
+        BattleResource.BATTLE_NOTIFICATION_SENDER)).sendNotification(
+          ((BattleNotificationBuilder)
+            (BattleResourceMediator.getMediatorInstance().getResource(
+            BattleOrganizer.getBattleParticipant(Battle.Participant.GOOD_GUYS),
+            BattleResource.BATTLE_NOTIFICATION_BUILDER))).buildNotification(
+              BattleOrganizer.getBattleState(BattleResult.BATTLE_LOST),
+              BattleManager.getChainOfCommand().getCommandChainNotifier()));
+
+For the lack of a battle,
+    try {
+        synchronized(BattleInformationRouterLock.getLockInstance()) {
+          BattleInformationRouterLock.getLockInstance().wait();
+        }
+    } catch (InterruptedException ix) {
+      if (BattleSessionManager.getBattleStatus(
+           BattleResource.getLocalizedBattleResource(Locale.getDefault()),
+           BattleContext.createContext(
+             Kingdom.getMasterBattleCoordinatorInstance(
+               new TweedleBeetlePuddlePaddleBattle()).populate(
+                 RegionManager.getArmpitProvince(Armpit.LEFTMOST)))) ==
+          BattleStatus.LOST) {
+        if (LOGGER.isLoggable(Level.TOTALLY_SCREWED)) {
+          LOGGER.logScrewage(BattleLogger.createBattleLogMessage(
+            BattleStatusFormatter.format(BattleStatus.LOST_WAR,
+                                         Locale.getDefault())));
+        }
+      }
+    }
+
+For the lack of a war,
+    new ServiceExecutionJoinPoint(
+      DistributedQueryAnalyzer.forwardQueryResult(
+        NotificationSchemaManager.getAbstractSchemaMapper(
+          new PublishSubscribeNotificationSchema()).getSchemaProxy().
+            executePublishSubscribeQueryPlan(
+              NotificationSchema.ALERT,
+              new NotificationSchemaPriority(SchemaPriority.MAX_PRIORITY),
+              new PublisherMessage(MessageFactory.getAbstractMessage(
+                MessageType.WRITTEN,
+                new MessageTransport(MessageTransportType.WOUNDED_SURVIVOR),
+                new MessageSessionDestination(
+                  DestinationManager.getNullDestinationForQueryPlan()))),
+              DistributedWarMachine.getPartyRoleManager().getRegisteredParties(
+                PartyRoleManager.PARTY_KING ||
+                PartyRoleManager.PARTY_GENERAL ||
+                PartyRoleManager.PARTY_AMBASSADOR)).getQueryResult(),
+        PriorityMessageDispatcher.getPriorityDispatchInstance())).
+      waitForService();</code></pre>
+
+<p>All for the lack of a horseshoe nail.(缺少的仅仅是一个马蹄钉。)<em>(译注:创建了将军、战争、战斗、信息、通讯兵、马、马掌之后才发现没有创建马蹄钉，缺少马蹄钉导致了系统执行的失败。)</em></p>
+
+<p>这个童谣直到现在都是很有警示意义，被广泛流传。</p>
+
+<p>虽然java王国的童谣与弗兰克林的原版有些不同，但是java王国觉得他们的童谣有自己特别的魅力。</p>
+
+<p>主要的魅力是直观看到的上面高塔般的体系结构，这种体系结构被java国王特别推崇到很高的地位，因为这个体系结构完全由名词组成。众所周知，名词代表存在的事物（东西），并且在java王国名词被给予超过所有动词的重视。体系结构由可以看到的名词组成，堆砌起辉煌的高塔。所有的东西都发出令人愉悦的金属质感的声音当你用棍子敲击它们的时候。java国王非常喜欢这种金属质感的声音，他在踢新的马车的轮子的声音让他特别愉悦<em>(译注：这里影射java国王的怪癖)</em>。不管有什么缺点，上面的童谣中并不缺乏名词。</p>
+
+<p>人类的本能之一就是寻求安全感。房子越坚固，我们就觉得越安全。在java王国，创造了太多的东西去令居民们感觉安全。他们惊叹这样的体系结构，并且认为这是一个“强大的设计”。当这个体系结构有任何变化时这种自豪的感觉被强化。这种体系结构强大到令人生畏的地步，以至于他们觉得没有人可以伤害它。</p>
+
+<p>作为这个强大的体系结构的好处，java王国的所有的事情都被很好的组织起来。你可以在任何需要地方发现适合的名词。所有的东西都是一成不变：表达式显式构造一个领域对象，抽象出一个管理器接口，实现管理器接口的run方法。java王国的居民们发现这样可以实现任何事情，只要有足够的名词，甚至还有一套“名词演算”的方法来支持抽象、计算过程。所有被需要的就是足够的名词，构造出那些名词，通过存取器（accessor）关联名词，还有最重要的execute()去执行他们的计划。<em>(译注：如下面的代码所示)</em></p>
+
+<p>可以说：java王国的居民们不只是快乐，它们甚至是非常自豪的。</p>
+
+<p><strong>StateManager.getConsiderationSetter(“Noun Oriented Thinking”, State.HAMFUL).run()</strong></p>
+
+<p>正如上面java王国的表达方式，外面的人是这么表达的”Noun Oriented Thinking Considered Hamful”。</p>
+
+<p>面向对象编程把名词放到了首位。为什么要去关注长篇大论进行铺垫却不讲主题的演讲？为什么一个概念的优先级要高于其他？并不是面向对象突然让我们觉得动词不重要了，而是我们改变了观察的角度，从一个奇怪的角度看待问题了。正如我朋友Jacob Gabrielson曾经提到的，提倡“面向对象编程”就像提倡“面向内裤穿衣”。</p>
+
+<p>java的静态类型系统，就像其他类似的一样，存在着共享的问题。但是极致追求面向名词的想法处理处理并不是一点点麻烦。任何类型系统都要求你重构你的思维去适应系统，消除独立的动词是没有任何理由的一步。</p>
+
+<p>C++并不存在这样的问题，因为C++作为c语言的超集，允许单独的函数的存在。另外c++提供了不同的命名空间的抽象。java重用了类的概念去表示命名空间、用户定义类型、句法委托机制，可见性和作用域机制，还有除了这些的其他特性。</p>
+
+<p>不要误会。我不是在宣扬c++是好的。只是我觉得更加喜欢c++类型系统的灵活性，至少同java相比的情况下。c++也有自己问题，看起来合理的语句却难于找到出错的原因，可能会很难找到合适的“咒语”来表达c++中一个特定的想法。但是c++简洁表达想法的能力远远超过了java，起码在c++中有动词啊。谁会喜欢讲一个没有动词的语言呢。<em>（译注：c++可能不如java提供强大的类库吧，本人不懂c++。）</em></p>
+
+<p>类是java给你提供的所有东西的载体，如果你有一个想法，那么你需要把它放在一个类中，然后创建一个实例去使用它。即使你的想法的最初来源是一个动作或者其他的，反正不是一个名词。</p>
+
+<p>我真正意识到了8，9年前一个Perl朋友告诉我的那句话：“朋友，不是所有的东西都是对象”。</p>
+
+<p>令人奇怪的是java几乎是主流的面向对象语言中唯一的以名词为中心的。在python或者ruby中几乎不可能发现AbstractProxymediator、NotificationStrategyFactory这样的名词，然而在java中遍地都是，这是为什么呢？是因为对待动词的不同所决定的，在ruby、python、js、perl等和所有的函数式编程语言中，都允许你声明、传递、返回函数，不需要用类去管理它。<em>(译注：这就是为什么GOF的23设计模式中很多模式从java的角度和ruby的角度看会有完全不同的感觉)</em></p>
+
+<p>在ruby等动态类型的语言中有些事情是很容易的：传递一个引用给函数，根据名字得到值，用正确的参数调用函数并把值正确的返回回来。<em>(译注：高阶函数指：把方法作为参数传递，把参数作为返回值返回，单独定义，函数赋值给变量，上下文管理等。)</em></p>
+
+<p>许多静态类型的语言如c、c++等的函数也可以是一等公民。无类型（类型推断）的语言如haskell也是如此。这些语言只是需要一个语法去创建、传递、用恰当的函数签名调用函数。</p>
+
+<p>没有理由Java不能简单的让动词成为一等公民，最终进入成年非扭曲的世界，使人们能够使用动词作为他们的思维过程的一部分。事实上还有一种叫做“The Nice”的JVM编程语言，它提供了非常类似Java的语法，也包括使用动词作为一等公民提供更强大表现力：独立函数。在Java中他们强迫你通过”回调“或”可运行对象“或”其他匿名接口的实现类“来包装和引用它们。</p>
+
+<p>太阳神(Sun)甚至不必去打破他们要求所有的函数由类”拥有”的约定。每个匿名函数可以携带一种隐式”this”指针指向定义它们的类；这样问题就解决了。</p>
+
+<p>我不知道为什么Sun坚持保持Java名词王国的固执。我怀疑他们觉得这件事情不重要。他们增加了泛型，范型是一个更复杂的概念，所以他们显然已不再关心深深地保持语言的简单。这未必不是一件坏事，因为Java的现在定位是：给Java程序员更好的工具，让他们按照思考的方式编程。</p>
+
+<p>我当然希望他们解决这个，那样我可以倒垃圾，回到我的视频游戏。或不论我做什么。</p>
+    </div>
+
+    
+
+  
+    <ul class="tag_box inline">
+      <li><i class="icon-tags"></i></li>
+      
+      
+
+
+  
+     
+    	<li><a href="/tags.html#编程方法学-ref">编程方法学 <span>3</span></a></li>
+     
+    	<li><a href="/tags.html#翻译-ref">翻译 <span>4</span></a></li>
+     
+    	<li><a href="/tags.html#java-ref">java <span>3</span></a></li>
+    
+  
+
+
+
+    </ul>
+    
+
+    <hr>
+    <div class="pagination">
+      <ul>
+      
+        <li class="prev"><a href="/2011/08/25/jsdg-chap16-jscss.html" title="BW客户端js之脚本化css(十一)">&larr; Previous</a></li>
+      
+        <li><a href="/archive.html">Archive</a></li>
+      
+        <li class="next"><a href="/2012/04/15/why-gsetter-methods-are-evil.html" title="(翻译)为什么java中getter和setter方法是恶魔">Next &rarr;</a></li>
+      
+      </ul>
+    </div>
+    <hr>
+    
+
+
+  <div id="disqus_thread"></div>
+<script type="text/javascript">
+    var disqus_developer = 1;
+    var disqus_shortname = 'izhanghuaning'; // required: replace example with your forum shortname
+    
+    /* * * DON'T EDIT BELOW THIS LINE * * */
+    (function() {
+        var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+        dsq.src = 'http://' + disqus_shortname + '.disqus.com/embed.js';
+        (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    })();
+</script>
+<noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+<a href="http://disqus.com" class="dsq-brlink">blog comments powered by <span class="logo-disqus">Disqus</span></a>
+
+
+
+
+  </div>
+</div>
+
+
+      </div>
+	  <hr>
+      <footer>
+        <p>&copy;2011-2014 张华宁
+          基于 <a href="http://jekyllbootstrap.com" target="_blank" title="The Definitive Jekyll Blogging Framework">Jekyll Bootstrap</a>
+          和 <a href="http://twitter.github.com/bootstrap/" target="_blank">Twitter Bootstrap</a> 搭建,
+		  <em><strong>本博客的很多想法来自于其他优秀博客作者，时隔久远不能给出每个链接了，如果原作者觉得被冒犯，请留言或联系我（izhanghuaning$163.com），我会及时进行处理，衷心感谢你们，本博客内容和源代码遵循<a href="http://opensource.org/licenses/mit-license.php" target="_blank">MIT开源协议</a>,转载请注明出处，谢谢。</strong></em>
+        </p>
+      </footer>
+
+    </div>
+
+    
+  </body>
+</html>
+

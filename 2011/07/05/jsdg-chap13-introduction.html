@@ -1,0 +1,275 @@
+
+<!DOCTYPE html>
+<!--[if IE 7 ]>    <html lang="zh-CN" class="ie7"> <![endif]-->
+<!--[if IE 8 ]>    <html lang="zh-CN" class="ie8"> <![endif]-->
+<!--[if (gte IE 9)|!(IE)]><!--> <html lang="zh-CN"> <!--<![endif]-->
+  <head>
+	  <meta charset="utf-8">
+	  <!--[if IE 8 ]><meta http-equiv="X-UA-Compatible" content="IE=7"><![endif]-->
+	  <title>BW客户端js概述篇(一)</title>
+	<meta name="keywords" content="张华宁,javascript,js,web">
+    <meta name="description" content="javascript client introduction">
+    <meta name="author" content="张华宁">
+
+    <!-- Enable responsive viewport -->
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+	<!-- Favicon -->
+	<link rel="shortcut icon" href="/favicon.ico">
+
+    <!-- atom & rss feed -->
+    <link href="/atom.xml" type="application/atom+xml" rel="alternate" title="Sitewide ATOM Feed">
+    <link href="/rss.xml" type="application/rss+xml" rel="alternate" title="Sitewide RSS Feed">
+
+	<!-- Styles 
+	<link rel="stylesheet" href="/assets/themes/twitter/css/style.min.css">
+	<link rel="stylesheet" href="/assets/themes/twitter/css/font-awesome.min.css">
+	-->
+	<!-- le Styles -->
+	<link rel="stylesheet" href="/assets/themes/twitter/bootstrap/css/bootstrap.2.2.2.min.css">
+	<link rel="stylesheet" href="/assets/themes/twitter/css/style.css?body=1">
+
+	<!-- Scripts -->
+	<script type="text/javascript" src="/assets/themes/twitter/js/jquery-1.10.1.min.js"></script>
+
+    <!-- Le HTML5 shim, for IE6-8 support of HTML elements -->
+    <!--[if lt IE 9]>
+	<script src="/assets/themes/twitter/js/html5shiv.js"></script>
+    <![endif]-->
+
+  </head>
+
+  <body>
+    <div class="navbar">
+      <div class="navbar-inner">
+        <div class="container-narrow">
+          <a class="brand" href="/">张华宁的笔记本</a>
+          <ul class="nav">
+            
+            
+            
+
+
+  
+    
+      
+      	
+      	<li><a href="/tags.html">Tags</a></li>
+      	
+      
+    
+  
+    
+      
+    
+  
+    
+      
+    
+  
+    
+      
+    
+  
+    
+      
+    
+  
+    
+      
+    
+  
+    
+      
+      	
+      	<li><a href="/categories.html">Categories</a></li>
+      	
+      
+    
+  
+    
+      
+      	
+      	<li><a href="/pages.html">Pages</a></li>
+      	
+      
+    
+  
+    
+      
+      	
+      	<li><a href="/archive.html">Archive</a></li>
+      	
+      
+    
+  
+
+
+
+          </ul>
+        </div>
+      </div>
+    </div>
+
+    <div class="container-narrow">
+
+      <div class="content">
+        
+<div class="page-header">
+  <h1>BW客户端js概述篇(一) </h1>
+</div>
+
+<div class="row-fluid post-full">
+  <div class="span12">
+    <div class="date">
+      <span>05 July 2011</span>
+    </div>
+    <div class="content">
+      <h4 id="whitejs">White:什么是客户端js？</h4>
+
+<p><em>Black:</em> js分为原生js、客户端js、服务端js。原生js就是ECMAScript，是js标准，在客户端和服务端是一样的。客户端js就是在浏览器中使用的js，定义了window等一系列对象和方法，基于安全原因限制很多，不能操作文件、网络等。服务端js是可以类似java等构建整个应用的，可以操作网络、数据库、文件等。</p>
+
+<p>客户端js主要是指window对象，window对象是所有客户端js特性和api的主要接入点，它表示web浏览器的一个窗口或者窗体，并且可以通过window来引用它。</p>
+<hr />
+<h4 id="whitewindow">White:什么是window对象？</h4>
+
+<p><em>Black:</em> window对象是客户端js的全局变量。web浏览器每次向窗口或窗体载入新的内容，它都会开始一个新的js上下文，包含一个新创建的全局对象。但是当多个窗口或窗体在使用时，有一个重要概念，尽管窗口或窗体载入了新的文档，但是引用窗口或窗体的window对象仍然是一个有效引用。</p>
+
+<p>所以客户端js有两个重要的对象。客户端全局对象处于作用域链的顶级，并且是全局变量和全局函数定义的地方。每个窗口或全体的window对象都是独立的，因为它们都是真是window的一个代理，我们所说的window对象实际上就是window proxy，没有办法能够引用到真正的window对象。</p>
+
+<p>注意：如果web页面包含一个嵌入窗体（iframe），嵌入窗体中的js代码和文档窗口中的js代码会各自拥有独立的全局对象，它可被当作一个独立的窗口。两者的js代码一般情况不能相互访问（可以通过window.name、url的hash、jsonp等方式访问）。</p>
+<hr />
+<h4 id="whitedom">White:什么是文档对象模型（DOM）？</h4>
+
+<p><em>Black:</em> 每个浏览器窗口、标签页和框架(iframe)都是由一个window对象所表示。每个window对象都有一个document属性引用了Document对象。Docuemnt对象表示窗口的内容，其并非是独立的，它是一个巨大的API的核心对象，叫做文档对象模型（DOM）。</p>
+
+<p>DOM是表示和操作HTML和XML文档内容的基础API。DOM是由Emenent组成的树形结构，其根节点就是Document对象。</p>
+<hr />
+<h4 id="whitehtmljs">White:html中使用js的方式有哪些？</h4>
+
+<p><em>Black:</em> js程序可以通过Document对象和它包含的Element对象遍历和管理文档内容。它可以通过操作CSS样式和类，修改文档内容的呈现。可以通过注册适当的事件处理程序来定义文档元素的行为。</p>
+
+<p>html中使用js的方式有如下几种：</p>
+
+<ul>
+<li>内联，放置在<code>&lt;script&gt;</code>和<code>&lt;/script&gt;</code>标签对之间。（少量js时可用）</li>
+
+<li>放置在由script标签的src属性指定的外部js文件中。（模块化，推荐）</li>
+
+<li>放置在html事件处理程序中，该事件处理程序由onclick等html属性指定。（不推荐）</li>
+
+<li>放在一个url中，这个url使用特殊的”javascript:”协议。（不推荐）</li>
+</ul>
+
+<p>上面的推荐与否是根据：内容(html)和行为(js代码）应该尽量松耦合的原则，同理css也一样。</p>
+<hr />
+<h4 id="whitejsscript">White:js中script标签的用法？</h4>
+
+<p><em>Black:</em> script标签有多种用法：</p>
+
+<ul>
+<li>内敛js代码。</li>
+
+<li>外联js文件。</li>
+
+<li>内敛数据（type=”data”）。</li>
+
+<li>内敛模板（jquery.tmpl）。</li>
+
+<li>动态引入js文件。</li>
+
+<li>实现jsonp。</li>
+</ul>
+<hr />
+<h4 id="white_htmljs">White: html中js是如何加载执行的？</h4>
+
+<p><em>Black:</em> html中的js代码首先需要加载，然后才能执行。</p>
+
+<p>第一阶段：打开一个新的窗口，这时候浏览器加载html文档，形成dom树，并在浏览器渲染加载内容。这时script标签只是加载的dom树中的一个元素，每加载完成一个script代码段(两个script构成封闭标签)或者js文件都会执行加载的js代码，这时候会阻塞浏览器的加载和渲染过程，也就是页面会卡死直到js代码执行完。js代码可能更改已经加载的dom的元素内容或者样式，所以js代码中操作的元素必须在之前加载好，否则会报错。如此反复直到页面加载完成。这个过程是同步操作。</p>
+
+<p>第二阶段：直到使用者操作页面上的按钮等元素，这时候异步调用相应的js代码，完成相应的操作。</p>
+
+<p><strong><em>注意：</em></strong>第一阶段说js的加载执行是同步的，是指普通的写在页面script中的js代码是这样加载和执行的。如果通过动态构造script的方式则其执行是异步的，此时的加载和其后面的js代码的执行是异步的（同时进行的），后面的代码不能依赖动态加载的js内容。有些浏览器支持HTML5的script元素的defer和async属性，它们告诉浏览器链接进来的脚本不会使用document.write这样的改变dom的操作，也不会生成文档内容，因此浏览器可以在下载脚本时继续解析和渲染文档。</p>
+<hr />
+<h4 id="whitehtmlscriptasyncdefer">White:html中script标签的async和defer属性的区别？</h4>
+
+<p><em>Black:</em> defer属性使得浏览器延迟脚本的执行，知道文档的载入和解析完成，并可以操作。async属性使得浏览器可以尽快执行脚本，而不用在下载脚本时阻塞脚本解析。如果两个属性同时出现，async起作用。defer是延迟执行，是在所有文档解析后再按照其出现顺序执行。async是异步执行，加载后立即无序执行（先加载好的先执行），async类似动态script加载方式。</p>
+<hr />
+    </div>
+
+    
+
+  
+    <ul class="tag_box inline">
+      <li><i class="icon-tags"></i></li>
+      
+      
+
+
+  
+     
+    	<li><a href="/tags.html#javascript-ref">javascript <span>25</span></a></li>
+     
+    	<li><a href="/tags.html#js权威指南-ref">js权威指南 <span>25</span></a></li>
+    
+  
+
+
+
+    </ul>
+    
+
+    <hr>
+    <div class="pagination">
+      <ul>
+      
+        <li class="prev"><a href="/2011/06/30/jsdg-chap9-class.html" title="BW编程之js模块篇类(十三)">&larr; Previous</a></li>
+      
+        <li><a href="/archive.html">Archive</a></li>
+      
+        <li class="next"><a href="/2011/07/10/jsdg-chap13-jsthread.html" title="BW客户端js之线程篇(二)">Next &rarr;</a></li>
+      
+      </ul>
+    </div>
+    <hr>
+    
+
+
+  <div id="disqus_thread"></div>
+<script type="text/javascript">
+    var disqus_developer = 1;
+    var disqus_shortname = 'izhanghuaning'; // required: replace example with your forum shortname
+    
+    /* * * DON'T EDIT BELOW THIS LINE * * */
+    (function() {
+        var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+        dsq.src = 'http://' + disqus_shortname + '.disqus.com/embed.js';
+        (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    })();
+</script>
+<noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+<a href="http://disqus.com" class="dsq-brlink">blog comments powered by <span class="logo-disqus">Disqus</span></a>
+
+
+
+
+  </div>
+</div>
+
+
+      </div>
+	  <hr>
+      <footer>
+        <p>&copy;2011-2014 张华宁
+          基于 <a href="http://jekyllbootstrap.com" target="_blank" title="The Definitive Jekyll Blogging Framework">Jekyll Bootstrap</a>
+          和 <a href="http://twitter.github.com/bootstrap/" target="_blank">Twitter Bootstrap</a> 搭建,
+		  <em><strong>本博客的很多想法来自于其他优秀博客作者，时隔久远不能给出每个链接了，如果原作者觉得被冒犯，请留言或联系我（izhanghuaning$163.com），我会及时进行处理，衷心感谢你们，本博客内容和源代码遵循<a href="http://opensource.org/licenses/mit-license.php" target="_blank">MIT开源协议</a>,转载请注明出处，谢谢。</strong></em>
+        </p>
+      </footer>
+
+    </div>
+
+    
+  </body>
+</html>
+

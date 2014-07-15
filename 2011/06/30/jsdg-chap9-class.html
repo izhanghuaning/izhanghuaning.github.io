@@ -1,0 +1,286 @@
+
+<!DOCTYPE html>
+<!--[if IE 7 ]>    <html lang="zh-CN" class="ie7"> <![endif]-->
+<!--[if IE 8 ]>    <html lang="zh-CN" class="ie8"> <![endif]-->
+<!--[if (gte IE 9)|!(IE)]><!--> <html lang="zh-CN"> <!--<![endif]-->
+  <head>
+	  <meta charset="utf-8">
+	  <!--[if IE 8 ]><meta http-equiv="X-UA-Compatible" content="IE=7"><![endif]-->
+	  <title>BW编程之js模块篇类(十三)</title>
+	<meta name="keywords" content="张华宁,javascript,js,module,class">
+    <meta name="description" content="javascript 模块 module class">
+    <meta name="author" content="张华宁">
+
+    <!-- Enable responsive viewport -->
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+	<!-- Favicon -->
+	<link rel="shortcut icon" href="/favicon.ico">
+
+    <!-- atom & rss feed -->
+    <link href="/atom.xml" type="application/atom+xml" rel="alternate" title="Sitewide ATOM Feed">
+    <link href="/rss.xml" type="application/rss+xml" rel="alternate" title="Sitewide RSS Feed">
+
+	<!-- Styles 
+	<link rel="stylesheet" href="/assets/themes/twitter/css/style.min.css">
+	<link rel="stylesheet" href="/assets/themes/twitter/css/font-awesome.min.css">
+	-->
+	<!-- le Styles -->
+	<link rel="stylesheet" href="/assets/themes/twitter/bootstrap/css/bootstrap.2.2.2.min.css">
+	<link rel="stylesheet" href="/assets/themes/twitter/css/style.css?body=1">
+
+	<!-- Scripts -->
+	<script type="text/javascript" src="/assets/themes/twitter/js/jquery-1.10.1.min.js"></script>
+
+    <!-- Le HTML5 shim, for IE6-8 support of HTML elements -->
+    <!--[if lt IE 9]>
+	<script src="/assets/themes/twitter/js/html5shiv.js"></script>
+    <![endif]-->
+
+  </head>
+
+  <body>
+    <div class="navbar">
+      <div class="navbar-inner">
+        <div class="container-narrow">
+          <a class="brand" href="/">张华宁的笔记本</a>
+          <ul class="nav">
+            
+            
+            
+
+
+  
+    
+      
+      	
+      	<li><a href="/tags.html">Tags</a></li>
+      	
+      
+    
+  
+    
+      
+    
+  
+    
+      
+    
+  
+    
+      
+    
+  
+    
+      
+    
+  
+    
+      
+    
+  
+    
+      
+      	
+      	<li><a href="/categories.html">Categories</a></li>
+      	
+      
+    
+  
+    
+      
+      	
+      	<li><a href="/pages.html">Pages</a></li>
+      	
+      
+    
+  
+    
+      
+      	
+      	<li><a href="/archive.html">Archive</a></li>
+      	
+      
+    
+  
+
+
+
+          </ul>
+        </div>
+      </div>
+    </div>
+
+    <div class="container-narrow">
+
+      <div class="content">
+        
+<div class="page-header">
+  <h1>BW编程之js模块篇类(十三) </h1>
+</div>
+
+<div class="row-fluid post-full">
+  <div class="span12">
+    <div class="date">
+      <span>30 June 2011</span>
+    </div>
+    <div class="content">
+      <h4 id="whitejs">White:js中类是什么？</h4>
+
+<p><em>Black:</em> 在js中，每个js对象都是一个属性集合，相互之间没有任何联系。当开发人员需要复用某个对象，想要共享某个对象的属性时，继承的概念就显现出来了。首先要定义一个模板类(class)，然后使用模板来生产相似的实例(instance)。每个实例都有模板定义的属性，是相似的对象，达到了复用的目的。</p>
+
+<p>在js中，继承是基于原型来实现的。如果两个实例从同一个原型对象继承了属性，我们就说它们是同一个类的实例，它们往往是由同一个构造函数创建并初始化的。</p>
+
+<p>关于构造函数请参见：<a href="/2011/05/20/jsdg-chap4-expression-operators.html">对象创建表达式和new关键字</a>。</p>
+
+<p>调用构造函数的一个重要特征是：构造函数的prototype属性被用作新对象的原型，者意味着通过同一个构造函数创建的所有对象都继承字同一个对象，因此它们都是同一个类的实例。</p>
+
+<p>根据js约定俗称的做法，代表类的构造函数的首字母要大写，表明自己应该被new方式调用，如果使用普通方式调用就会出现意想不到的问题。new 关键字改变了函数的返回值、this，没有参数时可以省略括号。</p>
+<hr />
+<h4 id="whitejs_2">White:js中类的标识是构造函数么？</h4>
+
+<p><em>Black:</em> js中类的唯一标识是原型对象(__proto__)。当且仅当两个对象继承自同一个原型对象时，它们才属于同一个类的实例。而初始化对象状态的构造函数则不能作为类的标识，两个构造函数的prototype可能指向同一个原型对象，那么这两个构造函数创建的实例属于同一个类。</p>
+
+<pre><code>	function Animal() {
+		this.belongto = &quot;animal&quot;;
+	}
+	
+	function Cat() {
+		this.belongto = &quot;cat&quot;;
+	}
+
+	function Dog() {
+		this.belongto = &quot;dog&quot;;
+	}
+
+	Cat.prototype = Animal.prototype;
+	Dog.prototype = Animal.prototype;
+
+	var c = new Cat;
+	var d = new Dog;
+	c.__proto__ === d.__proto__ //=&gt;true
+
+	var proto = new	Animal
+	Cat.prototype = proto;
+
+	var c2 = new Cat;
+	c.__proto__ === c2.__proto__ //=&gt;false</code></pre>
+
+<p>注意：o instanceof Object时，instanceof运算符不会检查o是否由Object()构造函数初始化而来，而会检查o是否继承自Object.prototype。instanceof语法强化了”构造函数是类的公有标识的概念”，是类的”外在表现”。</p>
+<hr />
+<h4 id="whitejs_3">White:js中类(函数)和实例(对象)中有哪几个重要属性？</h4>
+
+<p><em>Black:</em> js类中的重要属性有prototype,实例（类的原型prototype）的重要属性有原型(__proto__)、构造函数(constructor)。类也是对象，所以类也有__proto__、constructor，不过这两个属性都是指向Function类的，基本不会使用。</p>
+
+<p>举例说明：</p>
+
+<pre><code>	function Person() {}
+	var p = new Person();
+
+	Person.constructor === Function; //=&gt;true
+	Person.prototype === p.__proto__; //=&gt;true
+	Person.prototype.__proto__ === Object.prototype;//=&gt;true
+	Person.__proto__ === Function.prototype;//=&gt;true
+	Person.prototype.constructor === Person;//=&gt;true
+
+	p.__proto__ === Person.prototype;//=&gt;true
+	p.constructor === Person;//=&gt;true</code></pre>
+<hr />
+<h4 id="whitejs_4">White:js中检测实例的类的技术？</h4>
+
+<p><em>Black:</em> js中有三种检测实例的类的技术：instanceof运算符、consructor属性、构造函数的名字。每种方式都有其缺点。</p>
+
+<p>instanceof运算符：构造函数是类的公共标识，但原型是类的唯一标识。尽管instanceof运算符的右操作书是构造函数，但实际上是检测了对象的原型继承关系，而不是检测创建对象的构造函数。我们无法通过对象获得类名，只能检测对象是否属于指定的类名。</p>
+
+<p>constructor属性：并非所有的对象都有constructor属性。通过原型链每个对象都有constructor属性，但是可能是继承Object的，不是自己的。自定义对象原型需要自己定义constructor。通过默认的函数创建的对象默认有constructor属性，并且指向类构造函数。</p>
+
+<p>上述两种方式还有一个缺点，在多上下文的环境（比如两个页面），每个都有自己独立的全局变量和一组构造函数，一个页面的Array实例判断是否是另一个页面Array类是行不通的。</p>
+
+<p>构造函数的名称：并不是所有的函数都有名字，函数表达式没有名字。</p>
+
+<p>正式因为上述方式都有缺点，所以提出了”鸭式辩形”的策略，只关心行为，而不关心具体的类。</p>
+<hr />
+<h4 id="white">White:”鸭式辩形”是什么？</h4>
+
+<p><em>Black:</em> 像鸭子一样走路、游泳并且嘎嘎叫的鸟就是鸭子。</p>
+
+<p>鸭式辩形的核心思想就是重行为轻类型。检测行为而不检测类型。</p>
+<hr />
+    </div>
+
+    
+
+  
+    <ul class="tag_box inline">
+      <li><i class="icon-tags"></i></li>
+      
+      
+
+
+  
+     
+    	<li><a href="/tags.html#javascript-ref">javascript <span>25</span></a></li>
+     
+    	<li><a href="/tags.html#js权威指南-ref">js权威指南 <span>25</span></a></li>
+    
+  
+
+
+
+    </ul>
+    
+
+    <hr>
+    <div class="pagination">
+      <ul>
+      
+        <li class="prev"><a href="/2011/06/25/jsdg-chap9-module.html" title="BW编程之js模块篇(十二)">&larr; Previous</a></li>
+      
+        <li><a href="/archive.html">Archive</a></li>
+      
+        <li class="next"><a href="/2011/07/05/jsdg-chap13-introduction.html" title="BW客户端js概述篇(一)">Next &rarr;</a></li>
+      
+      </ul>
+    </div>
+    <hr>
+    
+
+
+  <div id="disqus_thread"></div>
+<script type="text/javascript">
+    var disqus_developer = 1;
+    var disqus_shortname = 'izhanghuaning'; // required: replace example with your forum shortname
+    
+    /* * * DON'T EDIT BELOW THIS LINE * * */
+    (function() {
+        var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+        dsq.src = 'http://' + disqus_shortname + '.disqus.com/embed.js';
+        (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    })();
+</script>
+<noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+<a href="http://disqus.com" class="dsq-brlink">blog comments powered by <span class="logo-disqus">Disqus</span></a>
+
+
+
+
+  </div>
+</div>
+
+
+      </div>
+	  <hr>
+      <footer>
+        <p>&copy;2011-2014 张华宁
+          基于 <a href="http://jekyllbootstrap.com" target="_blank" title="The Definitive Jekyll Blogging Framework">Jekyll Bootstrap</a>
+          和 <a href="http://twitter.github.com/bootstrap/" target="_blank">Twitter Bootstrap</a> 搭建,
+		  <em><strong>本博客的很多想法来自于其他优秀博客作者，时隔久远不能给出每个链接了，如果原作者觉得被冒犯，请留言或联系我（izhanghuaning$163.com），我会及时进行处理，衷心感谢你们，本博客内容和源代码遵循<a href="http://opensource.org/licenses/mit-license.php" target="_blank">MIT开源协议</a>,转载请注明出处，谢谢。</strong></em>
+        </p>
+      </footer>
+
+    </div>
+
+    
+  </body>
+</html>
+

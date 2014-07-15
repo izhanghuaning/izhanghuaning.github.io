@@ -1,0 +1,356 @@
+
+<!DOCTYPE html>
+<!--[if IE 7 ]>    <html lang="zh-CN" class="ie7"> <![endif]-->
+<!--[if IE 8 ]>    <html lang="zh-CN" class="ie8"> <![endif]-->
+<!--[if (gte IE 9)|!(IE)]><!--> <html lang="zh-CN"> <!--<![endif]-->
+  <head>
+	  <meta charset="utf-8">
+	  <!--[if IE 8 ]><meta http-equiv="X-UA-Compatible" content="IE=7"><![endif]-->
+	  <title>BW客户端js之脚本化文档(八)</title>
+	<meta name="keywords" content="张华宁,javascript,js,dom">
+    <meta name="description" content="javascript client dom">
+    <meta name="author" content="张华宁">
+
+    <!-- Enable responsive viewport -->
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+	<!-- Favicon -->
+	<link rel="shortcut icon" href="/favicon.ico">
+
+    <!-- atom & rss feed -->
+    <link href="/atom.xml" type="application/atom+xml" rel="alternate" title="Sitewide ATOM Feed">
+    <link href="/rss.xml" type="application/rss+xml" rel="alternate" title="Sitewide RSS Feed">
+
+	<!-- Styles 
+	<link rel="stylesheet" href="/assets/themes/twitter/css/style.min.css">
+	<link rel="stylesheet" href="/assets/themes/twitter/css/font-awesome.min.css">
+	-->
+	<!-- le Styles -->
+	<link rel="stylesheet" href="/assets/themes/twitter/bootstrap/css/bootstrap.2.2.2.min.css">
+	<link rel="stylesheet" href="/assets/themes/twitter/css/style.css?body=1">
+
+	<!-- Scripts -->
+	<script type="text/javascript" src="/assets/themes/twitter/js/jquery-1.10.1.min.js"></script>
+
+    <!-- Le HTML5 shim, for IE6-8 support of HTML elements -->
+    <!--[if lt IE 9]>
+	<script src="/assets/themes/twitter/js/html5shiv.js"></script>
+    <![endif]-->
+
+  </head>
+
+  <body>
+    <div class="navbar">
+      <div class="navbar-inner">
+        <div class="container-narrow">
+          <a class="brand" href="/">张华宁的笔记本</a>
+          <ul class="nav">
+            
+            
+            
+
+
+  
+    
+      
+      	
+      	<li><a href="/tags.html">Tags</a></li>
+      	
+      
+    
+  
+    
+      
+    
+  
+    
+      
+    
+  
+    
+      
+    
+  
+    
+      
+    
+  
+    
+      
+    
+  
+    
+      
+      	
+      	<li><a href="/categories.html">Categories</a></li>
+      	
+      
+    
+  
+    
+      
+      	
+      	<li><a href="/pages.html">Pages</a></li>
+      	
+      
+    
+  
+    
+      
+      	
+      	<li><a href="/archive.html">Archive</a></li>
+      	
+      
+    
+  
+
+
+
+          </ul>
+        </div>
+      </div>
+    </div>
+
+    <div class="container-narrow">
+
+      <div class="content">
+        
+<div class="page-header">
+  <h1>BW客户端js之脚本化文档(八) </h1>
+</div>
+
+<div class="row-fluid post-full">
+  <div class="span12">
+    <div class="date">
+      <span>10 August 2011</span>
+    </div>
+    <div class="content">
+      <h4 id="white_dom">White: 文档对象模型DOM是什么？</h4>
+
+<p><em>Black:</em> DOM是表示和操作html文档内容的基础api。html文档的树状结构包含html标签或元素和表示文本的字符串的节点，它也有可能包含表示html注释的节点。一个简单的html页面的dom树如下表示：</p>
+
+<p><img src="/assets/themes/twitter/img/htmldom.png" alt="" title="html文档节点的dom树" /></p>
+
+<p>上图每个方框都是一个节点，节点都是一个Node对象。上图包含3种不同类型的节点，树根是Document节点，它代表整个文档。代表html元素的是Element节点，代表文本的是Text节点。它们都是Node对象的子类，Node对象和各个类型节点的关系如下图所示：</p>
+
+<p><img src="/assets/themes/twitter/img/doms.png" alt="" title="文档节点的层次结构" /></p>
+<hr />
+<h4 id="white_document">White: Document对象有哪些属性？</h4>
+
+<p><em>Black:</em></p>
+
+<ul>
+<li>head：head元素</li>
+
+<li>body：body元素</li>
+
+<li>forms：表单元素集合</li>
+
+<li>cookie：允许js读写http cookie的特殊属性</li>
+
+<li>domain：cookie或同源策略设置域名</li>
+
+<li>lastModified：修改时间字符串</li>
+
+<li>location：同window.location指向同一个Location对象</li>
+
+<li>referrer：导航到当前文档的上一个文档的链接。</li>
+
+<li>title：title元素</li>
+
+<li>URL：文档的静态url</li>
+</ul>
+<hr />
+<h4 id="white_js">White: js如何选取文档元素？</h4>
+
+<p><em>Black:</em></p>
+
+<ul>
+<li>通过ID获取元素，<code>var el = document.getElementById(&quot;id&quot;)</code>,返回一个id匹配的元素，id在文档中唯一。（常用）</li>
+
+<li>通过name获取元素，<code>var els = document.getElementsByName(&quot;name&quot;)</code>,返回一个匹配name的Nodeist对象。（很少用）</li>
+
+<li>通过Tag获取元素，<code>var els = document.getElementsByTagName(&quot;tagname&quot;)</code>，返回一个匹配tag的NodeLIst对象。（少用，一般用来取head元素）</li>
+
+<li>通过CSS类获取元素，<code>var els = document.getElementsByClassName(&quot;class&quot;)</code>，返回一个包含匹配class的NodeList对象。（常用）</li>
+
+<li>通过CSS选择器获取元素，<code>var els = document.querySelectorAll(&quot;selector&quot;)</code>，返回一个匹配选择器的NodeList对象。（涵盖了上面所有，最强大，其实jquery就是通过这个来实现）</li>
+</ul>
+<hr />
+<h4 id="white_nodejs">White: Node对象有哪些属性，js如何遍历文档树？</h4>
+
+<p><em>Black:</em> Document对象、Element对象、Text对象都是Node对象，Node对象定义了以下重要属性可用来快速查找其关联节点。</p>
+
+<p>假定已经选定文档中的一个节点，它有以下属性来引用相关节点。</p>
+
+<ul>
+<li>parentNode：该节点的父节点。</li>
+
+<li>childNodes：只读的类数组对象（NodeList对象），它是该节点的(直系)子节点的实时表示。</li>
+
+<li>firstChild、lastChild：该节点的子节点中的第一个和最后一个。</li>
+
+<li>nextSibling、previoursSibling：该节点的下一个和上一个兄弟节点。</li>
+
+<li>nodeType：该节点的类型。9代表Document、1代表Element、3代表Text、8代表Comment、11代表DocumentFragement。</li>
+
+<li>nodeValue：Text节点或者Comment节点的文本内容。</li>
+
+<li>nodeName：元素的标签名（Tag Name），以大写形式表示。</li>
+
+<li>attributes：由Attr节点组成的NodeList对象，包含该元素所有的属性，对于非Element对象的任何节点为null。Attr对象name和value返回概述性的名字和值。</li>
+</ul>
+<hr />
+<h4 id="white_js_2">White: 什么是元素树，js如何遍历元素树？</h4>
+
+<p><em>Black:</em> 当将主要精力集中在文档的元素（Element）而不是它们之间的文本（包括空白）上时，我们可以使用另外一个有用的api。它将文档看作是Element对象树，忽略部分文档：Text和Comment节点。我们称为元素树。</p>
+
+<p>假定选定一个元素，它有以下属性来引用相关元素。</p>
+
+<ul>
+<li>children：类似childNodes，它也是一个NodeList对象，但是它只包含Element对象。</li>
+
+<li>firstElementChild、lastElementChild</li>
+
+<li>nextElementSibling、PreviousElementSibling</li>
+
+<li>childElementCount：子元素的数量。返回值和children.length相等。</li>
+</ul>
+
+<p>注意：Text和Comment节点没有children属性，它意味着Node.parentNode属性不可能返回Text或Comment节点。任何Element的parentNode总是返回另一个Element，或者追溯到树根的Document或DocumentFragement节点。</p>
+<hr />
+<h4 id="white_html">White: html元素的属性是什么？</h4>
+
+<p><em>Black:</em> html元素由一个标签和一组称为属性的键值对组成。比如a超链接元素有href和id属性。html中属性名是不区分大小写的，js中则大小写敏感。如果html属性名在js中是保留字，则对这些属性的一般规则是为属性名加”html”前缀。“class”属性是一个例外，它在js中是“className”。</p>
+
+<p>元素中定义了的属性称为标准属性，可以通过点号(.)方式使用，比如a.href。标准属性的值通常是字符串，也可以是数字、布尔、函数等。html的style属性值是CSSStyleDeclaration对象，而不是字符串。</p>
+
+<p>Element对象定义了getAttribute()和setAttribute()方法来查询和设置非标准的html属性。非标准属性的值都看作字符串，并且属性名是js的保留字也没有关系。</p>
+
+<p>Element对象还定义了hasAttribute()和removeAttribute()方法，可以用来检测命名属性是否存在和删除指定属性。当属性为不关心值，只关心其是否存在的布尔值特别有用，比如html元素的disabled属性。</p>
+<hr />
+<h4 id="white_">White: 什么是数据集属性？</h4>
+
+<p><em>Black:</em> 有时候在html元素上绑定一些额外信息是很有用的，当js读取这些元素并以某种方式操作这些信息就是很典型的情况（比如自定义控件）。一般是用getAttribute和setAttribute来操作它们，但文档将不再是合法有效的html。</p>
+
+<p>HTML5提供了新的解决方案。在html5中，任意以”data-“为前缀的消协的属性名都是符合html规范的。这些“数据集属性”将不会对元素的表现产生影响，它们定义了一种标准的、附加额外数据的方法，同时不会在文档合法性上作出让步。</p>
+
+<p>html5还在Element对象上定义了dataset属性，该属性指代一个对象，它的各个属性对应于去掉”data-“前缀的属性，可以直接通过js点号方式操作它们。dataset属性是元素的”data-“属性的实时、双向接口。设置或删除dataset的一个属性就等同于设置或移除元素的“data-”属性。</p>
+<hr />
+<h4 id="white__2">White: 元素的内容有哪些形式？</h4>
+
+<p><em>Black:</em> 元素的内容有三种形式：作为html的元素内容、作为纯文本的元素内容、作为text节点的元素内容。</p>
+
+<ul>
+<li>
+<p>作为html的元素内容：</p>
+
+<p>通过Element对象的innerHTML和outerHTML属性作为字符串读取和设置元素的内容。在元素上设置该属性调用了web浏览器的解析器，用新字符串内容解析展示形式替换元素的当前内容。IE还引入了insertAdjacentHTML()方法将html标记插入到指定元素的“相邻”的位置。“相邻”的情况有：beforebegin、afterbegin、beforeend、afterend。</p>
+</li>
+
+<li>
+<p>作为纯文本的元素内容：</p>
+
+<p>有时候需要查询纯文本形式的元素内容（而不关心其中的html标记），或者在文档中插入纯文本（不必转义html标记中使用的符号，不用解释器进行解析成html元素），标准的方法是使用Node的textContent属性来实现。在ie中可以使用innerText属性来替代。</p>
+</li>
+
+<li>
+<p>作为text节点的元素内容：</p>
+
+<p>还有一种方法是将元素的内容当作一个子节点的列表，每个子节点可能还有自己的子节点。当考虑元素内容时，通常感兴趣的是它的Text节点。用法如下所示：</p>
+
+<pre><code>//返回元素e的纯文本内容，递归进入其子元素
+//该方法类似语上面的textContent属性
+function textContent(e) {
+	var child, type, s = &quot;&quot;;
+	for(child = e.firstChild; child != null; child = child.nextSibling) {
+		type = child.nodeType;
+		if(type === 3 || type === 4) { //Text和CDATASection节点
+			s += child.nodeValue;
+		} else  if(type === 1) { //Element节点
+			s += textContent(child);
+		}
+	}
+	return s;
+}</code></pre>
+</li>
+</ul>
+<hr />
+    </div>
+
+    
+
+  
+    <ul class="tag_box inline">
+      <li><i class="icon-tags"></i></li>
+      
+      
+
+
+  
+     
+    	<li><a href="/tags.html#javascript-ref">javascript <span>25</span></a></li>
+     
+    	<li><a href="/tags.html#js权威指南-ref">js权威指南 <span>25</span></a></li>
+    
+  
+
+
+
+    </ul>
+    
+
+    <hr>
+    <div class="pagination">
+      <ul>
+      
+        <li class="prev"><a href="/2011/08/05/jsdg-chap15-jser.html" title="BW客户端js之脚本化概述(七)">&larr; Previous</a></li>
+      
+        <li><a href="/archive.html">Archive</a></li>
+      
+        <li class="next"><a href="/2011/08/15/jsdg-chap15-jsdom2.html" title="BW客户端js之脚本化文档2(九)">Next &rarr;</a></li>
+      
+      </ul>
+    </div>
+    <hr>
+    
+
+
+  <div id="disqus_thread"></div>
+<script type="text/javascript">
+    var disqus_developer = 1;
+    var disqus_shortname = 'izhanghuaning'; // required: replace example with your forum shortname
+    
+    /* * * DON'T EDIT BELOW THIS LINE * * */
+    (function() {
+        var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+        dsq.src = 'http://' + disqus_shortname + '.disqus.com/embed.js';
+        (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    })();
+</script>
+<noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+<a href="http://disqus.com" class="dsq-brlink">blog comments powered by <span class="logo-disqus">Disqus</span></a>
+
+
+
+
+  </div>
+</div>
+
+
+      </div>
+	  <hr>
+      <footer>
+        <p>&copy;2011-2014 张华宁
+          基于 <a href="http://jekyllbootstrap.com" target="_blank" title="The Definitive Jekyll Blogging Framework">Jekyll Bootstrap</a>
+          和 <a href="http://twitter.github.com/bootstrap/" target="_blank">Twitter Bootstrap</a> 搭建,
+		  <em><strong>本博客的很多想法来自于其他优秀博客作者，时隔久远不能给出每个链接了，如果原作者觉得被冒犯，请留言或联系我（izhanghuaning$163.com），我会及时进行处理，衷心感谢你们，本博客内容和源代码遵循<a href="http://opensource.org/licenses/mit-license.php" target="_blank">MIT开源协议</a>,转载请注明出处，谢谢。</strong></em>
+        </p>
+      </footer>
+
+    </div>
+
+    
+  </body>
+</html>
+

@@ -1,0 +1,237 @@
+
+<!DOCTYPE html>
+<!--[if IE 7 ]>    <html lang="zh-CN" class="ie7"> <![endif]-->
+<!--[if IE 8 ]>    <html lang="zh-CN" class="ie8"> <![endif]-->
+<!--[if (gte IE 9)|!(IE)]><!--> <html lang="zh-CN"> <!--<![endif]-->
+  <head>
+	  <meta charset="utf-8">
+	  <!--[if IE 8 ]><meta http-equiv="X-UA-Compatible" content="IE=7"><![endif]-->
+	  <title>BW编程之js模块篇(十二)</title>
+	<meta name="keywords" content="张华宁,javascript,js,namespace,module">
+    <meta name="description" content="javascript namespace module function">
+    <meta name="author" content="张华宁">
+
+    <!-- Enable responsive viewport -->
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+	<!-- Favicon -->
+	<link rel="shortcut icon" href="/favicon.ico">
+
+    <!-- atom & rss feed -->
+    <link href="/atom.xml" type="application/atom+xml" rel="alternate" title="Sitewide ATOM Feed">
+    <link href="/rss.xml" type="application/rss+xml" rel="alternate" title="Sitewide RSS Feed">
+
+	<!-- Styles 
+	<link rel="stylesheet" href="/assets/themes/twitter/css/style.min.css">
+	<link rel="stylesheet" href="/assets/themes/twitter/css/font-awesome.min.css">
+	-->
+	<!-- le Styles -->
+	<link rel="stylesheet" href="/assets/themes/twitter/bootstrap/css/bootstrap.2.2.2.min.css">
+	<link rel="stylesheet" href="/assets/themes/twitter/css/style.css?body=1">
+
+	<!-- Scripts -->
+	<script type="text/javascript" src="/assets/themes/twitter/js/jquery-1.10.1.min.js"></script>
+
+    <!-- Le HTML5 shim, for IE6-8 support of HTML elements -->
+    <!--[if lt IE 9]>
+	<script src="/assets/themes/twitter/js/html5shiv.js"></script>
+    <![endif]-->
+
+  </head>
+
+  <body>
+    <div class="navbar">
+      <div class="navbar-inner">
+        <div class="container-narrow">
+          <a class="brand" href="/">张华宁的笔记本</a>
+          <ul class="nav">
+            
+            
+            
+
+
+  
+    
+      
+      	
+      	<li><a href="/tags.html">Tags</a></li>
+      	
+      
+    
+  
+    
+      
+    
+  
+    
+      
+    
+  
+    
+      
+    
+  
+    
+      
+    
+  
+    
+      
+    
+  
+    
+      
+      	
+      	<li><a href="/categories.html">Categories</a></li>
+      	
+      
+    
+  
+    
+      
+      	
+      	<li><a href="/pages.html">Pages</a></li>
+      	
+      
+    
+  
+    
+      
+      	
+      	<li><a href="/archive.html">Archive</a></li>
+      	
+      
+    
+  
+
+
+
+          </ul>
+        </div>
+      </div>
+    </div>
+
+    <div class="container-narrow">
+
+      <div class="content">
+        
+<div class="page-header">
+  <h1>BW编程之js模块篇(十二) </h1>
+</div>
+
+<div class="row-fluid post-full">
+  <div class="span12">
+    <div class="date">
+      <span>25 June 2011</span>
+    </div>
+    <div class="content">
+      <h4 id="whitejs">White:js模块的含义是什么？</h4>
+
+<p><em>Black:</em>将代码组织到类中的一个重要原因是，让代码更加”模块化”,可以在不同场景实现代码的复用。但类不是唯一的模块化代码的方式。一般来讲模块是一个独立的js文件。模块文件可以包含一个类定义、一组相关的类、一个函数库、一些待执行代码等。只要以模块的形式编写代码，任何js代码都可以当作一个模块。</p>
+
+<p>js模块化保证了js代码的可维护性和可复用性，提高了开发效率，产生了一大批优秀的js类库，比如jquery、spine等等。</p>
+<hr />
+<h4 id="white">White:命名空间是什么？</h4>
+
+<p><em>Black:</em> 现在的程序的规模越来越大，不只是一个组织内部很多人会参与到项目中来，而且程序中会用到大量第三方开发的类库、组件等，如果大家都把变量、函数等定义在顶层作用域中，那么就会导致命名冲突和相互影响，导致程序不能正常工作，也会进入无法维护的境地。命名空间就是用来把变量、函数等划分进不同模块的方法，通过对程序划分模块来提高可维护性和避免命名冲突。</p>
+<hr />
+<h4 id="whitejs_2">White:js中命名空间使用函数来实现的？</h4>
+
+<p><em>Black:</em> js中只有一种作用域，即函数作用域，在js中无法声明只有某个代码快内可见的变量的。所以必须通过函数来做命名空间，在这个函数内定义的变量不会污染全局命名空间和其他命名空间。</p>
+
+<p>最常用的方式有一个专门的名称：立即函数</p>
+
+<pre><code>	(function() {
+		//模块代码
+	}());
+
+	或者
+
+	(function mymodule() {
+		//模块代码
+	})();</code></pre>
+
+<p>这两种方式基本等同，mymodule是函数表达式，最开始的()是告诉避免编译器把function当作函数声明语句。</p>
+<hr />
+<h4 id="whitejs_3">White:js模块依赖关系管理是什么？</h4>
+
+<p><em>Black:</em>模块化解决的是js代码的松耦合，但是不同模块之间会有依赖管理，当模块很多时就迫切需要有一个模块依赖关系管理的功能。js本身不提供这样的功能。业界有commonjs模块规范可以参考，也有类似sea.js等库提供这样的功能。</p>
+<hr />
+    </div>
+
+    
+
+  
+    <ul class="tag_box inline">
+      <li><i class="icon-tags"></i></li>
+      
+      
+
+
+  
+     
+    	<li><a href="/tags.html#javascript-ref">javascript <span>25</span></a></li>
+     
+    	<li><a href="/tags.html#js权威指南-ref">js权威指南 <span>25</span></a></li>
+    
+  
+
+
+
+    </ul>
+    
+
+    <hr>
+    <div class="pagination">
+      <ul>
+      
+        <li class="prev"><a href="/2011/06/20/jsdg-chap8-this.html" title="BW编程之js函数篇this(十一)">&larr; Previous</a></li>
+      
+        <li><a href="/archive.html">Archive</a></li>
+      
+        <li class="next"><a href="/2011/06/30/jsdg-chap9-class.html" title="BW编程之js模块篇类(十三)">Next &rarr;</a></li>
+      
+      </ul>
+    </div>
+    <hr>
+    
+
+
+  <div id="disqus_thread"></div>
+<script type="text/javascript">
+    var disqus_developer = 1;
+    var disqus_shortname = 'izhanghuaning'; // required: replace example with your forum shortname
+    
+    /* * * DON'T EDIT BELOW THIS LINE * * */
+    (function() {
+        var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+        dsq.src = 'http://' + disqus_shortname + '.disqus.com/embed.js';
+        (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    })();
+</script>
+<noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+<a href="http://disqus.com" class="dsq-brlink">blog comments powered by <span class="logo-disqus">Disqus</span></a>
+
+
+
+
+  </div>
+</div>
+
+
+      </div>
+	  <hr>
+      <footer>
+        <p>&copy;2011-2014 张华宁
+          基于 <a href="http://jekyllbootstrap.com" target="_blank" title="The Definitive Jekyll Blogging Framework">Jekyll Bootstrap</a>
+          和 <a href="http://twitter.github.com/bootstrap/" target="_blank">Twitter Bootstrap</a> 搭建,
+		  <em><strong>本博客的很多想法来自于其他优秀博客作者，时隔久远不能给出每个链接了，如果原作者觉得被冒犯，请留言或联系我（izhanghuaning$163.com），我会及时进行处理，衷心感谢你们，本博客内容和源代码遵循<a href="http://opensource.org/licenses/mit-license.php" target="_blank">MIT开源协议</a>,转载请注明出处，谢谢。</strong></em>
+        </p>
+      </footer>
+
+    </div>
+
+    
+  </body>
+</html>
+
