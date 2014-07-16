@@ -5,8 +5,8 @@
         <description>张华宁的笔记本 - 张华宁</description>
         <link>http://izhanghuaning.github.io</link>
         <link>http://izhanghuaning.github.io</link>
-        <lastBuildDate>2014-07-16T10:21:26+08:00</lastBuildDate>
-        <pubDate>2014-07-16T10:21:26+08:00</pubDate>
+        <lastBuildDate>2014-07-16T17:08:05+08:00</lastBuildDate>
+        <pubDate>2014-07-16T17:08:05+08:00</pubDate>
         <ttl>1800</ttl>
 
 
@@ -226,7 +226,277 @@
 
         <item>
                 <title>(翻译)为什么java中继承是恶魔</title>
-                <description></description>
+                <description>&lt;p&gt;&lt;strong&gt;&lt;em&gt;本篇是翻译，向大师致敬，原文请参见&lt;a href=&quot;http://www.javaworld.com/article/2073649/core-java/why-extends-is-evil.html&quot;&gt;Why extends is evil&lt;/a&gt;。&lt;/em&gt;&lt;/strong&gt;&lt;/p&gt;
+
+&lt;p&gt;关键字extends是邪恶的，虽然达不到杀人狂魔Charles Manson的程度，但是还是足以让你任何时候都要远离它。“四人帮”的《设计模式》一书用很大篇幅讨论了使用接口实现（interface implements）的方式替代继承的方式(extends)。&lt;em&gt;（译注：ruby之父把extends称为“实现继承”，implements称为“规格继承”，它们只是继承的不同实现方式。）&lt;/em&gt;&lt;/p&gt;
+
+&lt;p&gt;优秀的软件设计人员在实现继承关系时大多是面向接口编程，而不是使用具体的基类。本文就是介绍为什么他们做出这样的选择，为了让读者易于理解也会一些面向接口编程的基础知识。&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;Interfaces对阵classes&lt;/strong&gt;&lt;/p&gt;
+
+&lt;p&gt;我曾经参加了一个James Gosling(java之父)作为演讲嘉宾的java用户沙龙。当进入问答环节时，一个令人难忘的问题是有人问James：“如果你从新设计java，你会做哪些改变？”。“我会放弃classes”，James回答到。这个回答引起听众们哈哈大笑&lt;em&gt;(译注：这是不可能的)&lt;/em&gt;，他随后解释到，他想放弃的不是classes本身，而是通过extends实现类继承的方式，接口实现的方式可能会更适合。你应该时刻注意避免使用extends的继承方式。&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;丧失灵活(Losing Flexibility)&lt;/strong&gt;&lt;/p&gt;
+
+&lt;p&gt;为什么你要避免extends继承方式呢？首要的问题是java extends实现继承的方式是把你紧耦合到了基类的具体实现上了，难于应对变化。&lt;/p&gt;
+
+&lt;p&gt;当前敏捷编程的核心概念是“设计和开发并行”。在完全理解需求之前就已经开始着手开发工作了。遵照传统来说，应该在全部完成设计之后才开始开发工作，但是有众多的成功案例证明敏捷开发方式能够更快的开发出同样高质量的项目。但是不管怎么说，并行开发对于修改的灵活性有更高要求。敏捷开发要求写出的代码必须在发现新需求的时候能够快速灵活的进行修改，不令人感觉需求变更是一个痛苦，而是拥抱变化。&lt;/p&gt;
+
+&lt;p&gt;面向接口编程是这种灵活开发的核心思想。为什么？让我们举例来看不使用接口和使用接口会是什么样的不同。&lt;/p&gt;
+
+&lt;p&gt;当不使用接口的时候的代码：&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;f()
+{   LinkedList list = new LinkedList();
+    //...
+    g( list );
+}
+g( LinkedList list )
+{
+    list.add( ... );
+    g2( list )
+}&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;上面的代码看起来还不错，不过现在新的需求来了。这个需求是要求f()更快查找，LinkedList的效率已经不能满足需求了。所以需要把LinkedList换成HashSet。但是从现有代码来看，这个需求变更并不能局限在某一个局部完成，你必须修改f()和g()，因为目前g()参数是LinkedList，不能接受HashSet。&lt;/p&gt;
+
+&lt;p&gt;第一步修改后的代码变成这个样子：&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;f()
+{   Collection list = new LinkedList();
+    //...
+    g( list );
+}
+g( Collection list )
+{
+    list.add( ... );
+    g2( list )
+}&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;好了，吸取上一个变更的教训，我们把g()的参数变成Collection，这样子就可以任意使用其子类了，因为”里式替换原则“，基类一定可以使用子类替换。接下来就简单的把new LinkedList() 替换为 new HashSet()。好，其他的地方也不需要改变了。&lt;/p&gt;
+
+&lt;p&gt;再举一个例子，比较下面的这些代码：&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;f()
+{   Collection c = new HashSet();
+    //...
+    g( c );
+}
+g( Collection c )
+{
+    for( Iterator i = c.iterator(); i.hasNext() ;)
+        do_something_with( i.next() );
+}&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;对比代码：&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;f2()
+{   Collection c = new HashSet();
+    //...
+    g2( c.iterator() );
+}
+g2( Iterator i )
+{   while( i.hasNext() ;)
+        do_something_with( i.next() );
+}&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;在g2()方法中除了可以接受Collection参数，也可以接受键值对的Map参数。事实上，任何衍生自Iterator的类都可以作为g2()参数。你可以写出提供测试框架信息或者程序文件信息等任意的Iterator，都可以使用，拥有极大的灵活性。&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;耦合&lt;/strong&gt;&lt;/p&gt;
+
+&lt;p&gt;使用extends的更为严重的问题是不必要的把程序的不同模块紧耦合在一起。紧耦合惹出的麻烦在全局变量的例子比比皆是。例如：当全局变量修改时，所有使用了这个变量的函数都需要受到影响，必须检查、修改、重新测试相关的代码。更进一步，这些不相关的函数被一个全局变量紧耦合在一起，一个函数如果在某个尴尬的时间修改了这个全局变量的值，某个函数或许就会出错或异常。在多线程编程中这个问题尤其突出和令人讨厌。&lt;/p&gt;
+
+&lt;p&gt;作为设计人员，应该尽量避免紧耦合的关联。在实际编程中，因为函数相互调用的关系所以不可能完全清除耦合关系。但是设计人员应该遵循面向对象编程的原则，对调用者隐藏实现上的细节。例如：一个对象实例的变量应该是、也必须是private（私有的）。你可以偶尔使用protected方法，但是protected变量就令人讨厌了，不要去使用它。而且基于相同的考虑你也不应该使用getter和setter方法&lt;em&gt;(译注：请参见另一篇文章：&lt;a href=&quot;http://www.javaworld.com/article/2073723/core-java/why-getter-and-setter-methods-are-evil.html&quot;&gt;Why getter and setter methods are evil&lt;/a&gt;,也有翻译的&lt;a href=&quot;/2012/04/15/why-gsetter-methods-are-evil.html&quot;&gt;为什么java中getter和setter方法是恶魔&lt;/a&gt;)&lt;/em&gt;，getter和setter只是让变量公开化(public)的复杂途径（方法）。（尽管通过存取器方法得到一个完整的对象而不是一堆基本值在某些情况下是合理的，比如返回的对象在设计中是一个关键抽象）&lt;em&gt;(译注：通常是纯数据对象、数据传输对象等)&lt;/em&gt;&lt;/p&gt;
+
+&lt;p&gt;我不是吹毛求疵的老学究，我是从我的实际工作中得出上面这些结论的。我工作中发现一个重要的直接的关联：严格按照面向对象原则写的代码，开发更快速，代码也更加易于维护。当我因为种种原因违背了面向对象编程的原则，比如最小知识原则（隐藏实现细节）的时候，我最终都要返工那些代码（通常是代码不可调试的原因）。我没有很多时间去返工，所以我严格遵守面向对象编程的原则。我得出这个结论完全是出于实用主义，而不是“为遵循面向对象编程而面向对象编程”。&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;脆弱的基类的问题&lt;/strong&gt;&lt;/p&gt;
+
+&lt;p&gt;让我们从面向对象编程的角度重新审视extends继承这个问题。通过extends的继承方式，子类紧耦合于基类，有些时候这些耦合过于紧密。设计人员中甚至为这个问题起了一个绰号“脆弱的基类的问题”来描述它。基类之所以脆弱是因为你可以以你认为安全的方式去修改基类的某个方法。但是因为你的修改，子类中使用了该方法的时候可能会引发错误。所以你不能简单判断你的修改是否安全，你必须检查基类和所有子类，甚至调用了基类和子类的对象也许要检查，因为在它们中也可能引发问题。一个简单的修改基类的问题可能引发整个继承体系的中某个环节的错误。&lt;/p&gt;
+
+&lt;p&gt;让我们举例说明”the fragile base-class problem”是如何产生的问题。下面的类继承了(extends)java的ArrayList类实现一个栈(Stack)的功能。&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;class Stack extends ArrayList
+{   private int stack_pointer = 0;
+    public void push( Object article )
+    {   add( stack_pointer++, article );
+    }
+    public Object pop()
+    {   return remove( --stack_pointer );
+    }
+    public void push_many( Object[] articles )
+    {   for( int i = 0; i &amp;lt; articles.length; ++i )
+            push( articles[i] );
+    }
+}&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;就这样简单的一些代码就存在问题。想想看会发生什么？当我们使用ArrayList的clear()方法来pop出所有的项的时候。&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;Stack a_stack = new Stack();
+a_stack.push(&amp;quot;1&amp;quot;);
+a_stack.push(&amp;quot;2&amp;quot;);
+a_stack.clear();&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;这些代码编译成功，但是由于基类并不知道关于Stack的栈指针（stack_pointer）的存在&lt;em&gt;(译注：clear的时候没有把当前项的指针指向正确的位置，只是清空了数组中的值)&lt;/em&gt;，Stack对象现在出现了预期之外的状态。再调用push()方法会把新的项放入索引为2（stack_pointer当前值,而不是预期的索引0的位置）的位置，所以目前stack对象有3个值，下面两个是空值。(java确实存在这个问题，所以java中不能这么定义使用Stack)&lt;/p&gt;
+
+&lt;p&gt;解决这种非期望的继承问题的一个方案是Stack重写所有可能改变数组状态的ArrayList的方法，重写它们使stack_pointer指向正确位置，或者直接抛出异常。（ArrayList的removeRange()方法就可以抛出异常来解决）&lt;/p&gt;
+
+&lt;p&gt;这个解决方法有2个缺点：首先你需要重写所有的方法，那么基类就成为了一个接口了。如果你不重用基类的方法的话，那么就没有必要继承基类了，为什么不直接使用接口呢。其次，更重要的是你不喜欢你的Stack有removeRange这样的ArrayList的方法，它没有任何用处。唯一合理的处理removeRange方法的方案是直接抛出异常，因为你不希望任何人使用它。但是这样的话就把异常从编译阶段带入了运行阶段，你不知道别人会如何使用你的Stack，你无法避免使用者调用removeRange方法。这样并不好，最好就是根本不定义这个方法，这样使用者就不会看到这个不应该存在的方法了。&lt;/p&gt;
+
+&lt;p&gt;编程真理：“组合大于继承”。更好的方案是使用组合而不是继承。代码如下：&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;class Stack
+{   private int stack_pointer = 0;
+    private ArrayList the_data = new ArrayList();
+    public void push( Object article )
+    {   the_data.add( stack_pointer++, article );
+    }
+    public Object pop()
+    {   return the_data.remove( --stack_pointer );
+    }
+    public void push_many( Object[] articles )
+    {   for( int i = 0; i &amp;lt; o.length; ++i )
+            push( articles[i] );
+    }
+}&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;现在看来还是不错，但是考虑到我们在谈论的“脆弱的基类问题”。我们假设你又有一个新的需求，你需要跟踪Stack到目前为止最大长度值。然后你是实现了类似下面的代码：&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;class Monitorable_stack extends Stack
+{
+    private int high_water_mark = 0;
+    private int current_size;
+    public void push( Object article )
+    {   if( ++current_size &amp;gt; high_water_mark )
+            high_water_mark = current_size;
+        super.push(article);
+    }
+    
+    public Object pop()
+    {   --current_size;
+        return super.pop();
+    }
+    public int maximum_size_so_far()
+    {   return high_water_mark;
+    }
+}&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;恩，这个实现看起来还是不错的，至少到目前为止。不幸的是，代码显示了push_many()方法是通过调用push()来完成工作的。定义Stack的时候这并不是一个不好的选择，它简化了代码。当你实现了Monitorable_stack的时候，它也能正常调用子类的push方法实现high_water_mark的正确更新。&lt;/p&gt;
+
+&lt;p&gt;在某个风和日丽的一天，某个性能测试显示在压力测试中Stack不够块。所以你需要修改Stack，放弃了ArrayList而直接使用数组来改善性能。代码如下：&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;class Stack
+{   private int stack_pointer = -1;
+    private Object[] stack = new Object[1000];
+    public void push( Object article )
+    {   assert stack_pointer &amp;lt; stack.length;
+        stack[ ++stack_pointer ] = article;
+    }
+    public Object pop()
+    {   assert stack_pointer &amp;gt;= 0;
+        return stack[ stack_pointer-- ];
+    }
+    public void push_many( Object[] articles )
+    {   assert (stack_pointer + articles.length) &amp;lt; stack.length;
+        System.arraycopy(articles, 0, stack, stack_pointer+1,
+                                                articles.length);
+        stack_pointer += articles.length;
+    }
+}&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;注意：Stack的push_many方法不再通过反复调用push实现，而是直接通过块传输。这个版本的性能有了很大提高，感觉很好。但是不幸的是，Monitorable_stack再也不能正常工作了，因为调用push_many()的时候不能正常更新high_water_mark了。Stack是一个“脆弱的基类”，至此读者也应该明白了“脆弱的基类的问题”是什么样的问题了吧。正如所看到的，实际上不可能通过要求程序员仔细工作就可以避免和解决这样类型问题的。&lt;/p&gt;
+
+&lt;p&gt;感到很迷茫？提示你一下，如果你是用接口编程就不会遇到这种问题，因为接口没有实现的继承，只有规格的继承，不会让你出错。如果你的Stack是一个接口，Simple_stack和Monitorable_stack是Stack接口的两个实现，让我们看一下代码是什么样子的。&lt;/p&gt;
+
+&lt;p&gt;在下面的Listing 0.1 提供了一个接口继承的版本。这个版本同样满足了松耦合的灵活性：你可以使用Stack接口作为参数，而不用考虑具体传入的是哪个具体类型。因为子类实现接口必须实现几口中的所有方法，接口本身不提共任何实现，所以不容易出错。我同样基于“组合优于继承”的原则在Monitorable_stack中复用Simple_stack的方法。在Monitorable_stack底层我在复用Simple_stack的push()方法的基础上增加了处理high_water_mark的处理自己的逻辑。程序员可能会抱怨要写接口等这些代码，但是额外写一些代码却能带来消除潜在的bug的效果还是非常值得的。&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;Listing 0.1. Eliminate fragile base classes using interfaces&lt;/strong&gt;&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt; 1| import java.util.*;
+ 2| 
+ 3| interface Stack
+ 4| {
+ 5|     void push( Object o );
+ 6|     Object pop();
+ 7|     void push_many( Object[] source );
+ 8| }
+ 9| 
+10| class Simple_stack implements Stack
+11| {   private int stack_pointer = -1;
+12|     private Object[] stack = new Object[1000];
+13| 
+14|     public void push( Object o )
+15|     {   assert stack_pointer &amp;lt; stack.length;
+16| 
+17|         stack[ ++stack_pointer ] = o;
+18|     }
+19| 
+20|     public Object pop()
+21|     {   assert stack_pointer &amp;gt;= 0;
+22| 
+23|         return stack[ stack_pointer-- ];
+24|     }
+25| 
+26|     public void push_many( Object[] source )
+27|     {   assert (stack_pointer + source.length) &amp;lt; stack.length;
+28| 
+29|         System.arraycopy(source,0,stack,stack_pointer+1,source.length);
+30|         stack_pointer += source.length;
+31|     }
+32| }
+33| 
+34| 
+35| class Monitorable_Stack implements Stack
+36| {
+37|     private int high_water_mark = 0;
+38|     private int current_size;
+39|     Simple_stack stack = new Simple_stack();
+40| 
+41|     public void push( Object o )
+42|     {   if( ++current_size &amp;gt; high_water_mark )
+43|             high_water_mark = current_size;
+44|         stack.push(o);
+45|     }
+46|     
+47|     public Object pop()
+48|     {   --current_size;
+49|         return stack.pop();
+50|     }
+51| 
+52|     public void push_many( Object[] source )
+53|     {
+54|         if( current_size + source.length &amp;gt; high_water_mark )
+55|             high_water_mark = current_size + source.length;
+56| 
+57|         stack.push_many( source );
+58|     }
+59| 
+60|     public int maximum_size()
+61|     {   return high_water_mark;
+62|     }
+63| }
+64| &lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;&lt;strong&gt;框架(Frameworks)&lt;/strong&gt;&lt;/p&gt;
+
+&lt;p&gt;当我们讨论“脆弱的基类的问题”的时候没有提到基于框架的编程是不完整的。像微软的MFC(Microsoft Foundation Classes)是基于类库的最流行的框架。虽然MFC本身与基于框架编程渐行渐远，但是MFC的这种方式已经被无数的微软技术程序员认定这是最好的方式。&lt;/p&gt;
+
+&lt;p&gt;基于架构编程的系统通常是从一个半成品的框架入手，你不需要去做每件事情，你只要通过子类的方式实现你的业务功能，然后框架会调用你的业务实现运行起来，成为一个完整的应用。举个例子来说：java中Component的paint()方法，实际上是一个容器，子类必须实现这个方法来让它真正可用。&lt;em&gt;(译注：就是GOF的模板模式，框架实现整体流程和调用，子类实现细节实现)&lt;/em&gt;&lt;/p&gt;
+
+&lt;p&gt;你可以使用面向框架编程作出一些东西，但是这种基于继承关系的框架在某些极端情况下是非常脆弱的。基类们是脆弱的。我用MFC编程的时候，每当微软发布一个iexindeMFC版本的时候，我就不得不重写我的程序。这些程序经常是编译没有问题，但是当运行时却不能正常工作，因为很多基类已经改变了。&lt;/p&gt;
+
+&lt;p&gt;java的packages的方式就没有这个问题，即开即用。你不需要继承实现任何类去使它们工作。这种“即开即用(works-out-of-the-box)”的方式优于基于继承的框架。它易于维护和使用，并且在Sun公司更改类的实现的时候不会把你的代码置于危险不可用的境地。&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;脆弱的基类的问题小结&lt;/strong&gt;&lt;/p&gt;
+
+&lt;p&gt;通常最好避免使用extends的方式进行复用，接口implements的方式更好。我粗略估计是80%的代码是完全面向接口编程的。我从来不用引用HasMap，而是用Map接口作为参数。（我使用接口来表达松耦合，其实像InputStream看起来像是接口的类，其实在java中是抽象类，抽象类的用法和接口一致）&lt;/p&gt;
+
+&lt;p&gt;代码的抽象程度越高，灵活性就越强。在当今复杂多变的商业环境，业务需求频繁多变，又不可避免，代码的灵活性也是非常重要。进一步来说，大多数敏捷编程方法论如果你遵照面向接口编程那样抽象的话，就不能工作的。&lt;/p&gt;
+
+&lt;p&gt;如果你仔细看GOF的设计模式，你会发现很多模式都是通过实现接口的方式，这也是设计模式的核心特征，他们都说“模式是被发现的，而不是被发明的”。当我们遵照面向接口编程的原则编写和重构程序时，设计模式也就慢慢出现了，或者会契合某种设计模式了。要写出易于维护的代码就要不惜一切代价避免使用extends的实现继承的方式，而是使用implement的规格继承方式。&lt;/p&gt;
+
+&lt;p&gt;这篇文章选择作者即将出版的书,书名可能是《Holub on Patterns:Learning Design Patterns by Looking at Code》,大约会由Apress出版社在今年秋天出版。&lt;/p&gt;
+
+&lt;p&gt;Allen Holub has worked in the computer industry since 1979. He currently works as a consultant, helping companies not squander money on software by providing advice to executives, training, and design-and-programming services. He’s authored eight books, including Taming Java Threads (Apress, 2000) and Compiler Design in C (Pearson Higher Education, 1990), and teaches regularly for the University of California Berkeley Extension. Find more information on his Website (http://www.holub.com).&lt;em&gt;(译注：关于作者介绍就不翻译了，翻译结束，谢谢大家。)&lt;/em&gt;&lt;/p&gt;</description>
                 <link>http://izhanghuaning.github.io/2012/04/20/why-extends-is-evil.html</link>
                 <guid>http://izhanghuaning.github.io/2012/04/20/why-extends-is-evil</guid>
                 <pubDate>2012-04-20T00:00:00+08:00</pubDate>
@@ -234,7 +504,7 @@
 
         <item>
                 <title>(翻译)为什么java中getter和setter方法是恶魔</title>
-                <description></description>
+                <description>&lt;p&gt;&lt;strong&gt;&lt;em&gt;本篇是翻译，向大师致敬，原文请参见&lt;a href=&quot;http://www.javaworld.com/article/2073723/core-java/why-getter-and-setter-methods-are-evil.html&quot;&gt;Why getter and setter methods are evil&lt;/a&gt;。&lt;/em&gt;&lt;/strong&gt;&lt;/p&gt;</description>
                 <link>http://izhanghuaning.github.io/2012/04/15/why-gsetter-methods-are-evil.html</link>
                 <guid>http://izhanghuaning.github.io/2012/04/15/why-gsetter-methods-are-evil</guid>
                 <pubDate>2012-04-15T00:00:00+08:00</pubDate>
@@ -2099,7 +2369,7 @@ function textContent(e) {
 
 	}&lt;/code&gt;&lt;/pre&gt;
 
-&lt;p&gt;ScopeChains和this两个属性不进入作用域链查找，查找时先看当前VO有没有相应属性，没有则进入上一级的ScopeChains查找。this是javascript的最核心内容（也可能是之一），后面应该也要单独讲解,请参见&lt;a href=&quot;/jsdg/2011/06/20/jsdg-chap8-this.html&quot;&gt;javascript this详解&lt;/a&gt;。&lt;/p&gt;
+&lt;p&gt;ScopeChains和this两个属性不进入作用域链查找，查找时先看当前VO有没有相应属性，没有则进入上一级的ScopeChains查找。this是javascript的最核心内容（也可能是之一），后面应该也要单独讲解,请参见&lt;a href=&quot;/2011/06/20/jsdg-chap8-this.html&quot;&gt;javascript this详解&lt;/a&gt;。&lt;/p&gt;
 &lt;hr /&gt;
 &lt;h4 id=&quot;whitevo__proto__objectprototype&quot;&gt;White:VO既然是个对象，那么它的原型(__proto__)是什么？对象Object.prototype？&lt;/h4&gt;
 
