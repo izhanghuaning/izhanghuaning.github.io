@@ -6,6 +6,7 @@ http://izhanghuaning.github.io/rss.xml
 http://izhanghuaning.github.io/index.html
 http://izhanghuaning.github.io/sitemap.txt
 http://izhanghuaning.github.io/categories.html
+http://izhanghuaning.github.io/about.html
 http://izhanghuaning.github.io/pages.html
 http://izhanghuaning.github.io/archive.html
 
