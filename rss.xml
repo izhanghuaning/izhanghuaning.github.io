@@ -5,8 +5,8 @@
         <description>张华宁的笔记本 - 张华宁</description>
         <link>http://izhanghuaning.github.io</link>
         <link>http://izhanghuaning.github.io</link>
-        <lastBuildDate>2014-07-16T17:08:05+08:00</lastBuildDate>
-        <pubDate>2014-07-16T17:08:05+08:00</pubDate>
+        <lastBuildDate>2014-07-23T17:07:20+08:00</lastBuildDate>
+        <pubDate>2014-07-23T17:07:20+08:00</pubDate>
         <ttl>1800</ttl>
 
 
@@ -486,7 +486,7 @@ a_stack.clear();&lt;/code&gt;&lt;/pre&gt;
 
 &lt;p&gt;java的packages的方式就没有这个问题，即开即用。你不需要继承实现任何类去使它们工作。这种“即开即用(works-out-of-the-box)”的方式优于基于继承的框架。它易于维护和使用，并且在Sun公司更改类的实现的时候不会把你的代码置于危险不可用的境地。&lt;/p&gt;
 
-&lt;p&gt;&lt;strong&gt;脆弱的基类的问题小结&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;总结&lt;/strong&gt;&lt;/p&gt;
 
 &lt;p&gt;通常最好避免使用extends的方式进行复用，接口implements的方式更好。我粗略估计是80%的代码是完全面向接口编程的。我从来不用引用HasMap，而是用Map接口作为参数。（我使用接口来表达松耦合，其实像InputStream看起来像是接口的类，其实在java中是抽象类，抽象类的用法和接口一致）&lt;/p&gt;
 
@@ -503,8 +503,166 @@ a_stack.clear();&lt;/code&gt;&lt;/pre&gt;
         </item>
 
         <item>
-                <title>(翻译)为什么java中getter和setter方法是恶魔</title>
-                <description>&lt;p&gt;&lt;strong&gt;&lt;em&gt;本篇是翻译，向大师致敬，原文请参见&lt;a href=&quot;http://www.javaworld.com/article/2073723/core-java/why-getter-and-setter-methods-are-evil.html&quot;&gt;Why getter and setter methods are evil&lt;/a&gt;。&lt;/em&gt;&lt;/strong&gt;&lt;/p&gt;</description>
+                <title>(翻译)为什么java中g(s)etter是恶魔</title>
+                <description>&lt;p&gt;&lt;strong&gt;&lt;em&gt;本篇是翻译，向大师致敬，原文请参见&lt;a href=&quot;http://www.javaworld.com/article/2073723/core-java/why-getter-and-setter-methods-are-evil.html&quot;&gt;Why getter and setter methods are evil&lt;/a&gt;。&lt;/em&gt;&lt;/strong&gt;&lt;/p&gt;
+
+&lt;p&gt;我不并打算写一个“邪恶”的系列，因为有些读者在看了我的上一篇文章“Why extends is evil”（为什么java中继承是邪恶的）后问我为什么我说要避免使用get/set方法。我在这篇文章中详细讨论一下get/set。&lt;/p&gt;
+
+&lt;p&gt;虽然java中到处都是getter/setter，但是他们并不是那么面向对象。实际上它们可能会让你的代码更加难以维护。进一步讲，大量的getter/setter是对你的代码设计上不那么面向对象发出的一个警告。&lt;/p&gt;
+
+&lt;p&gt;本文解释了为什么你不应该使用getters/setters（当然也有你什么时候可以使用它们）和一个帮助你破除getter/setter迷惑的一个设计方法学。&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;设计的本质&lt;/strong&gt;&lt;/p&gt;
+
+&lt;p&gt;在我启动另一个关于设计的专题之前，我想先澄清一些概念事实。&lt;/p&gt;
+
+&lt;p&gt;有些读者对我上个月的专题“why extnds is evil”的一些评论让我大吃一惊。他们相信我认为面向对象不好是简单的因为java extends继承存在问题，并且把这两个等同起来。我的本意可不是这个样子，所以我觉得有必要深入探讨一下这个问题。&lt;/p&gt;
+
+&lt;p&gt;上个月关于extends的专题和这个专题都是关于软件设计的。设计，自然就是一系列的权衡。每个选择都有优点和缺点，根据总体实际的必要性来进行取舍。优点和缺点都不是绝对的，在某个情形下是好的选择可能在另一个情形下就不太好了。&lt;/p&gt;
+
+&lt;p&gt;如果你没有搞清楚一个选择的优缺点，那么你就不能作出一个聪明的选择。实际上，如果你不能清楚明白你的行为的后果，那么你不是在做设计，你是在撞大运。GOF的设计模式一书每个模式都有一个“后果”的部分并不是一个巧合，而是告诉读者什么时候和为什么使用一个模式是不恰当的。&lt;/p&gt;
+
+&lt;p&gt;证明某些语言的特性或者编程习惯（例如存取器）有问题并不是说你在任何场景下都不能使用它们。同样某个特性或者惯用法被广泛使用也不意味着你也应该使用它，要考虑具体的场景。很多程序员写了很多程序，很容易被Sun或者微软雇佣，但是他们没有相应提高编程和设计的能力。java包包含很多代码，其中有些代码，我觉得其作者都不好意思承认是他们写的。&lt;/p&gt;
+
+&lt;p&gt;同样，出于市场推广或者政治诱惑的需求，经常会推出一些新的设计术语。有时候程序员作出一个糟糕的决定，但是公司为了推广这项技术，所以他们不会强调这个方法达不到理想状态。他们是在糟糕的条件下作出了最好的选择。结果就是，你不负责任的采取任何编程实践，仅仅因为“你觉得可以行”。很多失败的EJB项目证明了这一点。基于EJB技术是一个伟大的技术如果使用恰当，但是也可能把一家公司拖跨如果使用不恰当的话。&lt;/p&gt;
+
+&lt;p&gt;我的观点是你不应该盲目的编程。你必须清楚使用某个特性或者惯用法可能会造成巨大的损害。这样的话，你就能更好的决定你是否应该使用这些技术。你的选择应该是知情和务实的。本文的目的就是帮助你在编程的时候能够有更清楚的认识。&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;数据抽象(Data absraction)&lt;/strong&gt;&lt;/p&gt;
+
+&lt;p&gt;面向对象编程的一个基本前提是对象不应该暴露它的实现细节。这样，你可以任意更改你的对象的实现细节而不对使用者产生影响。照这样来看，在面向对象系统中你应该避免使用getter/setter，因为它们提供了访问对象实现细节的功能。&lt;/p&gt;
+
+&lt;p&gt;让我们用着一个场景来说明为什么getter/setter会产生问题。假设你的对象提供了一个getX()方法返回一个局部变量X的值给外部使用。这个方法很受欢迎，在你的程序中有超过1000个地方使用了getX()方法。突然有一天你需要改变X的类型，你就会陷入大麻烦中了。&lt;/p&gt;
+
+&lt;p&gt;假设你的X本来是int类型，现在必须把它变成long类型。那么你会看到超过1000个编译错误了。如果你简单的通过把getX的返回值强制类型转换为int，那么没有编译错误了，但是运行就可能出问题，不是预期的结果了(结果可能被截位)。所以你就必须修改超过1000个使用getX()方法的地方来保证这个变更的正确。我想你一定不愿意这么做。&lt;/p&gt;
+
+&lt;p&gt;面向对象系统的最基本的原则之一是数据抽象。你应该对对象的使用者完全隐藏对象的实现细节。这也正是你的所有的实例变量应该是private的原因之一。&lt;/p&gt;
+
+&lt;p&gt;如果你的实例变量是public的，那么你就不能自由的更改这个变量，因为可能某个地方的代码正在使用你这个变量。你可不希望因为你需要修改你的类而必须修改不计其数的使用者的代码。&lt;/p&gt;
+
+&lt;p&gt;封装的实现是检验面向对象系统质量的一个观测点：如果你可以任意更改、重构你对象内部的实现而不会影响外部的使用者，也不会引起错误的话，你的代码就是良好的模块化的。模块化是面向对象的核心前提，它使代码更加易于维护。如果没有封装隐藏实现细节，可以说就不算是面向对象编程了。&lt;/p&gt;
+
+&lt;p&gt;getter/setter正如public变量一样危险，它们使外部可以访问你的内部实现细节。如果你该变了X变量的类型，那么你也必须修改getX()返回值的类型。那么你就可能需要修改不计其数的使用者的代码。我希望能够仅仅修改自己的代码就可以了，我可不希望修改扩散到整个程序。&lt;/p&gt;
+
+&lt;p&gt;既然存取器破坏了封装的原则，你可以简单的认为过渡使用它们，不正确使用它们的系统是不面向对象的。如果你单纯从设计流程的角度，而不是从编码的角度来看，那么你会发现几乎不会用到getter/setter。这个设计流程是非常重要的。我在本文的结尾会更多的讨论这个问题。&lt;/p&gt;
+
+&lt;p&gt;限制了getter/setter方法的使用并不意味着数据不在系统中流动。不管怎样，尽可能限制和最小化数据的流动是好的。我的经验是系统的维护性和系统对象间流动数据的数量是成反比的。虽然你可能没注意到，其实你可以清除绝大多数的数据流动。&lt;/p&gt;
+
+&lt;p&gt;通过仔细的设计来把注意力放在你需要做什么而不是你怎么去做，你会发现大部分的getter/setter方法是不需要的。不要去要求你需要的数据，而是让有这些数据的对象为你去做这件事。大多数存取器存在于代码中是因为设计者没有考虑清楚动态模型。他们错误的设计了一个类体系，然后用这些类生搬硬套进业务动态模型。这种方式永远也不会有效。构建一个静态模型，你需要发现这些类之间的联系和通过这些联系的数据流动。两个类存在联系的是因为它们之间有信息从一个类发送给另一个类。静态模型主要是理清动态模型的之间的关联。&lt;/p&gt;
+
+&lt;p&gt;没有一个清楚定义的动态模型，所以你只能猜测你怎么去使用一个类对象。结果就是，存取器方法在模型中处处存在。因为你不能预知需要哪些东西，你必须提供尽可能多的访问来满足潜在的需求。这种靠猜测进行设计的方式是最没有效果的。你把时间浪费在写那些没有用的方法（或者向类中添加不必要的功能）。&lt;/p&gt;
+
+&lt;p&gt;存取器们在设计中也被习惯的力量所终结。当一个面向过程的程序员转向java，他们倾向于用熟悉的方式写代码。面向过程的语言没有类的概念，但是有结构这样的和类有些类似的概念（结构没有方法）。自然而然的就用一个类来模拟熟悉的结构的概念，这个类没有方法而只有public的变量。后来，这些转型java的面向过程者了解到，在java中不应该使用public变量，变量都应该是private的。这怎么办呢？嗯，把变量都声明为private吧，然后通过public的存取器方法来访问它们。他们只是通过存取器方法模拟了public变量，而没有面向对象的构建这个系统，依然是面向过程的思维方式。&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;自我实现(Draw thyself)&lt;/strong&gt;&lt;/p&gt;
+
+&lt;p&gt;自我封装的理想状态是什么样子的呢？典型的就是用户界面(user interface)的构造。如果你不能使用存取器方法来获得用户界面的数据，比如没有getAttribute()方法。那么会怎么做呢？就是让用户界面的类拥有drawYourself()的能力。&lt;/p&gt;
+
+&lt;p&gt;当然并不是所有的getXXX方法都不能使用，我们谈论的是getX作为存取器方法公开一个内部private字段的情况。如果getIdentity()方法返回的是一个实现了Identity接口的对象，那么我们当然可以使用它。这个Identity接口必须包含一个类似语drawYourself()的方法（或者叫做give-me-a-jcomponent-that-represents-your-identity方法）。虽然getIdentity()名字中有”get”,但是它不是一个存取器方法，它没有返回一个字段，而是返回了一个有自我行为的复杂对象。即使我们从返回值得到了一个Identity对象，我们依然不知到它的内部实现细节。&lt;/p&gt;
+
+&lt;p&gt;当然，“drawYourself()”策略意味着把用户接口UI的方式应用到业务逻辑中去。考虑一下如果用户接口需求发生变化了应该怎么办？例如我想用另一种重新设置这些属性。现在标识（identity）是一个名字，明天可能就是一个名字加一个ID数字的组合，后天又可能是一个名字、ID数字加上一张图片。我们需要把这些变更的修改范围限定到对一处代码的修改。如果你有一个give-me-a-jcomponent-that-represents-your-identity类，我就可以把identity的信息从系统中隔离到这个类中。&lt;/p&gt;
+
+&lt;p&gt;记住，我没有真正的把任何用户接口的代码放入业务逻辑中，只是这个概念。我写用户接口是通过AWT或者Swing这样的抽象层工具来实现的。实际的用户接口代码是写在AWT/Swing的实现方法中的。抽象层的所做的所有是把你的业务逻辑（如何画用户接口）从系统结构隔离开。我可以很容易的把系统移植到另一种图形环境而不必要修改代码，只是看起来可能乱七八糟的，失真。你可以很容易消除这样的失真，通过把UI代码移动到一个内部类（或者通过Facade设计模式），重新实现其内部细节。&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;JavaBeans&lt;/strong&gt;&lt;/p&gt;
+
+&lt;p&gt;你可能会说“javabeans怎么办呢？”。javabeans？你当然可以不同过getters/setters来构造javabeans了。BeanCustomizer,BeanInfo,BeanDescriptor等类就是为此而存在的啊。javabean规格设计师们提供getter/setter用法是他们认为这样会容易实现和入手，他们期望你然后会逐渐掌握正确的方式（不使用getter/setter）.不幸的事，没有人这么做。&lt;/p&gt;
+
+&lt;p&gt;存取器方法的存在其实单单是为了让用户接口构建工具来存取数据使用的。你不应该自己去使用存取器方法，它们是给自动化工具使用的。这些工具通过类的内醒机制api来查找方法，并且通过方法的名字推断出属性。在实践中，这种内醒机制并没有成功，它使代码更加复杂和面向过程。不了解这些的程序员们人工调用这些存取器方法，结果就是，代码更加难于维护了。因为这些原因，在java 1.5的版本中会引入一种新的机制，元数据特性来解决这个问题。原来是这样写代码的：&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;private int property;
+public int getProperty  (         ){ return property; }
+public void setProperty (int value}{ property = value; }&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;java 1.5中就会是下面的样子了：&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;private @property int property;&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;用户接口构造工具等可以通过内醒机制api正确使用这些属性，而不是通过存取器方法名字来查找属性了。所以，没有运行时的存取器方法会破坏你的代码了。&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;什么时候可以使用存取器方法&lt;/strong&gt;&lt;/p&gt;
+
+&lt;p&gt;首先，正如前面提到的getIdentity()方法，你可以通过方法返回一个实现某个接口的对象来隔离实现细节的变化，这种方法其实并不是我们讨论存取器方法，它只是方法名中有”get”罢了。如果你改变了返回Identity对象的内部实现，你只需要更改相应的返回对象的实现就好了。它对于外部的使用者来说是不可见的，没有暴露实现细节。&lt;/p&gt;
+
+&lt;p&gt;其次，我想所有的面向对象系统都有一个面向过程的边界层。绝大多数的面向对象程序都运行在面向过程的操作系统上，也要和面向过程的数据库交互。对这些外部面向过程的系统的交互接口自然是要通用的。JDBC的设计者并不知道它要是用哪些数据库，所以设计的类就必须具有很高的灵活性。通常来讲，不必要的灵活性是不好的，但是对于这些边界API来说，额外的灵活性是不可避免的。这些边界层的类通过存取器方法来加载其实是设计者无可避免的选择。&lt;/p&gt;
+
+&lt;p&gt;事实上，这个not-knowing-how-it-will-be-used问题困扰着所有的java包。如果你不能准确预测出将如何使用你的类，你就很难完全清除存取器方法。基于这个约束，java设计师们尽可能隐藏实现的细节来做好他们的工作。并不是说JDBC或者类似的产品的设计思想就适应你的代码。它们不会的。我们应该尽可能了解清楚将如何使用这些类，我们不应该浪费时间去构建不必要的灵活性。&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;设计策略&lt;/strong&gt;&lt;/p&gt;
+
+&lt;p&gt;那么我们将怎么去设计没有getter/setter的系统呢？&lt;/p&gt;
+
+&lt;p&gt;面向对象系统设计过程习惯使用“用例”：一个用户独立处理某些任务并且得到有用的结果。（记录日志不是一个用例，因为它在问题域缺少有用的结果。付费检查就是一个用例。）面向对象的系统实现了演示组成用例的各种场景的活动。运行时的对象通过发送消息给另一个对象来演示用例。不是所有的消息都是一样的。如果你只是使用对象和类构建了一个面向过程的程序，你做的远远不够。&lt;/p&gt;
+
+&lt;p&gt;1989年，Kent Beck和Ward Cunningham教授面向对象的类设计时，他们就遇到了让人们放弃使用get/set做法的问题。他们觉得这个问题有如下特征：&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;The most difficult problem in teaching object-oriented programming is getting the learner to give up the global knowledge of control that is possible with procedural programs, and rely on the local knowledge of objects to accomplish their tasks. Novice designs are littered with regressions to global thinking: gratuitous global variables, unnecessary pointers, and inappropriate reliance on the implementation of other objects.
+
+翻译：在教授面向对象编程的最大困难就是让学员放弃他们在面向过程编程中习惯通过使用的全局变量进行控制的做法，而是通过使用局部变量来实现。面向对象的新手设计师经常退回到面向过程的全局化思维：滥用的全局变量、不必要的指针还有对象之间不恰当的依赖关系。&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;&lt;img src=&quot;/assets/themes/twitter/img/crcCardLayout.jpg&quot; alt=&quot;&quot; title=&quot;CRC Card&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;Cunningham开发了一种可以很好延时设计过程的教学技巧：CRC卡片法(classes,responsibilities,collaboration card)。如上图所示，基本的做法就是制作一些4X6的索引卡片，卡片上划分为三个部分：&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;strong&gt;Class:&lt;/strong&gt;对象的类的名字&lt;/p&gt;
+&lt;/li&gt;
+
+&lt;li&gt;
+&lt;p&gt;&lt;strong&gt;Responsiblities:&lt;/strong&gt;这些对象可以做什么。这些职责应该集中在某一个方面。&lt;/p&gt;
+&lt;/li&gt;
+
+&lt;li&gt;
+&lt;p&gt;&lt;strong&gt;Collaborators:&lt;/strong&gt;与其他类的协作对象的关系。越少约好。&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;卡片上的最初内容都是猜想，都是不停变化的。&lt;/p&gt;
+
+&lt;p&gt;Beck和Cunningham挑出一个用例，然后猜测哪些对象（CRC卡片）会被用上。典型的情形是通过两个对象开始，随着场景的需要再增加其他的。他们从班上选择学员拿着一张CRC卡，来扮演卡片所代表的类的对象。如果他们需要一个类的多个对象，就让对个学员对应这些对象。&lt;/p&gt;
+
+&lt;p&gt;然后根据下面的规则来扮演“用例”：&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;通过学员彼此间的交谈表现用例的活动。&lt;/p&gt;
+&lt;/li&gt;
+
+&lt;li&gt;
+&lt;p&gt;你只能同你的协作者进行交谈。如果你必须痛其他人交谈的话，你需要通过你的协作者进行传话。如果没有人能够同他交谈，你就把他加入你的协作者中(CRC卡的协作者部分)。&lt;/p&gt;
+&lt;/li&gt;
+
+&lt;li&gt;
+&lt;p&gt;你不能要求其他人提供你完成某个任务需要的信息，你比序要求拥有这些信息的协作者去做这个任务。你可以给你的协作者一些信息帮助他完成任务，同时保持这样的交互尽可能的最小。&lt;/p&gt;
+&lt;/li&gt;
+
+&lt;li&gt;
+&lt;p&gt;如果某个任务没有人能够完成，建立一个新的类（和一张新的CRC卡）或者给现有的类添加一个新的功能（CRC卡的功能部分）。&lt;/p&gt;
+&lt;/li&gt;
+
+&lt;li&gt;
+&lt;p&gt;如果一张CRC卡的内容太多已经填满了，你就必须创建另一个类（CRC卡）来处理当前卡的某些功能。类的复杂度以4X6的索引卡的限额为度量标准。&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;由所有会话构成的记录就是程序的动态模型。最终的那组CRC卡片就是程序的静态模型。通过多次重复和调整，你可以用这个方法解决任何问题。&lt;/p&gt;
+
+&lt;p&gt;我把上述的面向对象设计过程尽可能的描述成可以适应简单的课堂的环境。也有一些人在工作中使用CRCka来进行程序设计。大多数人不会这么做，它们使用UML来构建动态和静态模型。关键点是面向对象系统是不同对象之间的对话。如果你多从这方面考虑，你会觉得你不需要get/set方法的。如果在设计中不许要get/set方法，那么你的代码中也不会需要它。&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;总结&lt;/strong&gt;&lt;/p&gt;
+
+&lt;p&gt;让我来个综上所述：除非绝对有必要，否则你不应该使用存取器方法（getters/setters），因为它们会暴露你的类的实现细节，会让你的代码难于维护。有些时候get/set方法是不可避免的，但是作为一个成熟的面向对象设计人员，你应该可以很容易消除代码中99%的存取器方法。&lt;/p&gt;
+
+&lt;p&gt;存取器方法经常因为用面向过程的编程思维来进行面向对象编程而出现在你的代码中。破除面向过程编程思维的最好方法是通过对象之间的对话来划请每个对象的责任。Cunningham的CRC卡片法是一个很好的入门手段。&lt;/p&gt;
+
+&lt;p&gt;这篇文章选择作者即将出版的书,书名可能是《Holub on Patterns:Learning Design Patterns by Looking at Code》,大约会由Apress出版社在今年秋天出版。&lt;/p&gt;
+
+&lt;p&gt;Allen Holub has worked in the computer industry since 1979. He currently works as a consultant, helping companies not squander money on software by providing advice to executives, training, and design-and-programming services. He’s authored eight books, including Taming Java Threads (Apress, 2000) and Compiler Design in C (Pearson Higher Education, 1990), and teaches regularly for the University of California Berkeley Extension. Find more information on his Website (http://www.holub.com).&lt;em&gt;(译注：关于作者介绍就不翻译了，翻译结束，谢谢大家。)&lt;/em&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;em&gt;(译注：CRC卡的图片是从网上找到的，下面是一张多CRC卡片的示例：)&lt;/em&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/assets/themes/twitter/img/crcModel.jpg&quot; alt=&quot;&quot; title=&quot;CRC Cards,CRC model&quot; /&gt;&lt;/p&gt;</description>
                 <link>http://izhanghuaning.github.io/2012/04/15/why-gsetter-methods-are-evil.html</link>
                 <guid>http://izhanghuaning.github.io/2012/04/15/why-gsetter-methods-are-evil</guid>
                 <pubDate>2012-04-15T00:00:00+08:00</pubDate>

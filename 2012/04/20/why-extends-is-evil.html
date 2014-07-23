@@ -389,7 +389,7 @@ a_stack.clear();</code></pre>
 
 <p>java的packages的方式就没有这个问题，即开即用。你不需要继承实现任何类去使它们工作。这种“即开即用(works-out-of-the-box)”的方式优于基于继承的框架。它易于维护和使用，并且在Sun公司更改类的实现的时候不会把你的代码置于危险不可用的境地。</p>
 
-<p><strong>脆弱的基类的问题小结</strong></p>
+<p><strong>总结</strong></p>
 
 <p>通常最好避免使用extends的方式进行复用，接口implements的方式更好。我粗略估计是80%的代码是完全面向接口编程的。我从来不用引用HasMap，而是用Map接口作为参数。（我使用接口来表达松耦合，其实像InputStream看起来像是接口的类，其实在java中是抽象类，抽象类的用法和接口一致）</p>
 
@@ -430,7 +430,7 @@ a_stack.clear();</code></pre>
     <div class="pagination">
       <ul>
       
-        <li class="prev"><a href="/2012/04/15/why-gsetter-methods-are-evil.html" title="(翻译)为什么java中getter和setter方法是恶魔">&larr; Previous</a></li>
+        <li class="prev"><a href="/2012/04/15/why-gsetter-methods-are-evil.html" title="(翻译)为什么java中g(s)etter是恶魔">&larr; Previous</a></li>
       
         <li><a href="/archive.html">Archive</a></li>
       
