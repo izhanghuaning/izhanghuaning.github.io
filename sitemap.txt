@@ -10,12 +10,15 @@ http://izhanghuaning.github.io/about.html
 http://izhanghuaning.github.io/pages.html
 http://izhanghuaning.github.io/archive.html
 
+http://izhanghuaning.github.io/2013/05/01/hub-switch-router-and-network.html
 http://izhanghuaning.github.io/2012/05/05/pgrb-chap1-introduction.html
 http://izhanghuaning.github.io/2012/05/01/pgrb-introduction.html
 http://izhanghuaning.github.io/2012/04/25/license-introduction.html
 http://izhanghuaning.github.io/2012/04/20/why-extends-is-evil.html
 http://izhanghuaning.github.io/2012/04/15/why-gsetter-methods-are-evil.html
 http://izhanghuaning.github.io/2012/04/10/execution-in-kingdom-of-nouns.html
+http://izhanghuaning.github.io/2011/09/05/jsdg-chap18-jshttp.html
+http://izhanghuaning.github.io/2011/08/30/jsdg-chap17-event.html
 http://izhanghuaning.github.io/2011/08/25/jsdg-chap16-jscss.html
 http://izhanghuaning.github.io/2011/08/20/jsdg-chap15-forms.html
 http://izhanghuaning.github.io/2011/08/15/jsdg-chap15-jsdom2.html

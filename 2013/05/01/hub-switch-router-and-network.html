@@ -1,0 +1,258 @@
+
+<!DOCTYPE html>
+<!--[if IE 7 ]>    <html lang="zh-CN" class="ie7"> <![endif]-->
+<!--[if IE 8 ]>    <html lang="zh-CN" class="ie8"> <![endif]-->
+<!--[if (gte IE 9)|!(IE)]><!--> <html lang="zh-CN"> <!--<![endif]-->
+  <head>
+	  <meta charset="utf-8">
+	  <!--[if IE 8 ]><meta http-equiv="X-UA-Compatible" content="IE=7"><![endif]-->
+	  <title>深入浅出讲解网络基础知识</title>
+	<meta name="keywords" content="张华宁,network">
+    <meta name="description" content="">
+    <meta name="author" content="张华宁">
+
+    <!-- Enable responsive viewport -->
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+	<!-- Favicon -->
+	<link rel="shortcut icon" href="/favicon.ico">
+
+    <!-- atom & rss feed -->
+    <link href="/atom.xml" type="application/atom+xml" rel="alternate" title="Sitewide ATOM Feed">
+    <link href="/rss.xml" type="application/rss+xml" rel="alternate" title="Sitewide RSS Feed">
+
+	<!-- Styles 
+	<link rel="stylesheet" href="/assets/themes/twitter/css/style.min.css">
+	<link rel="stylesheet" href="/assets/themes/twitter/css/font-awesome.min.css">
+	-->
+	<!-- le Styles -->
+	<link rel="stylesheet" href="/assets/themes/twitter/bootstrap/css/bootstrap.2.2.2.min.css">
+	<link rel="stylesheet" href="/assets/themes/twitter/css/style.css?body=1">
+
+	<!-- Scripts -->
+	<script type="text/javascript" src="/assets/themes/twitter/js/jquery-1.10.1.min.js"></script>
+
+    <!-- Le HTML5 shim, for IE6-8 support of HTML elements -->
+    <!--[if lt IE 9]>
+	<script src="/assets/themes/twitter/js/html5shiv.js"></script>
+    <![endif]-->
+
+  </head>
+
+  <body>
+    <div class="navbar">
+      <div class="navbar-inner">
+        <div class="container-narrow">
+          <a class="brand" href="/">张华宁的笔记本</a>
+          <ul class="nav">
+           <!-- 
+            
+            
+
+
+  
+    
+      
+      	
+      	<li><a href="/tags.html">标签</a></li>
+      	
+      
+    
+  
+    
+      
+    
+  
+    
+      
+    
+  
+    
+      
+    
+  
+    
+      
+    
+  
+    
+      
+    
+  
+    
+      
+    
+  
+    
+      
+      	
+      	<li><a href="/about.html">关于我</a></li>
+      	
+      
+    
+  
+    
+      
+    
+  
+    
+      
+      	
+      	<li><a href="/archive.html">归档</a></li>
+      	
+      
+    
+  
+
+
+ -->
+            <li><a href="/index.html">首页</a></li>
+            <li><a href="/archive.html">归档</a></li>
+            <li><a href="/tags.html">标签</a></li>
+            <li><a href="/about.html">关于我</a></li>
+          </ul>
+        </div>
+      </div>
+    </div>
+
+    <div class="container-narrow">
+
+      <div class="content">
+        
+<div class="page-header">
+  <h1>深入浅出讲解网络基础知识 </h1>
+</div>
+
+<div class="row-fluid post-full">
+  <div class="span12">
+    <div class="date">
+      <span>01 May 2013</span>
+    </div>
+    <div class="content">
+      <p>从前在一个叫网络孤岛的小山村,有一对青梅竹马名字就叫server和client,他们每天有说不完的话.到了晚上不能通讯基本靠吼,于是他们就经常通过一根线和两个喇叭在家里和对方说话,他们叫那根线为网络专线.client和server每天都把唧唧咋咋的比特音传递给对方,生活多么美好.</p>
+
+<p>突然有一天server全家搬离了小山村到叫物理层的镇子上居住.小山村和镇子之间路途遥远,client不再能够通过网线同server通话了,于是委托在县城上学的哥哥中继器来帮忙带口信,中继器就相当于延伸了他们之间的专线,client和server在需要的时候还是能够彼此联系.</p>
+
+<p>过了两年中继器毕业了不能帮他们带话了,于是client只能托村里一个叫集线器的大叔帮忙,集线器大叔有办法收口信和送口信,除了帮client带口信,也帮村里的几个其他人带.但是集线器大叔比较懒,每次大叔有口信回到村里都在村口广播上大叫:”XX,镇子里的OO让我带话给你,告诉你明天老地方见”,于是村里的该听到的和不该听到的人都听到了,client比较苦恼,明明是server让集线器带给自己的口信为什么要被大家都听到,真是苦闷,不过还能够联系到server也就凑合了.</p>
+
+<p>集线器大叔还有个坏毛病爱喝酒,还有就是使用村口的广播习惯了,有时候喝醉了在广播口信的时候罗罗嗦嗦的说了很多家常里短没用的事情,别人委托他带的口信却忘说了.大家都很痛恨喝醉了在广播乱叫的大叔,称喝醉状态的集线器为”广播风暴”.</p>
+
+<p>后来server又随着她老爸的高升搬到了数字链路层的县城居住了.再也没有什么认识的人能够直接给client和server带话了.他们也长大识字了,于是他们便开始通过写信联系对方.</p>
+
+<p>小村里有个个体邮差叫二层交换机,二层交换机可以负责在小山村和县城里送信,也能在小村里送信.二层交换机很有办法,他给了大家很多叫做”帧信封”的东西,告诉大家在信封上写上收信人和发信人的名字,然后把信装到信封里封起来给他就可以了,他能把信送给收件人.client很开心,因为他可以把甜言蜜语写下来封好信封而不怕别人看到了.二层交换机大哥也不是在村口广播叫大家自己去认领信件了,而是根据信封上的名字把信送到大家手里,于是client的日子又是幸福快乐了.</p>
+
+<p>二层交换机有个本子记着村里人的名字,他的本子是画图的方式记录的,把名字写在地图相应的位置.到了村口拿出信看看名字,然后在地图上看看怎么走,就把信送到了.有次他带了一封写了”路人甲”收信人的信件,他一看不知道这个人住在哪里,在地图上也就没有路人甲的名字.不过二层交换机有办法,他就像集线器一样,在村口的广播上大喊:”有人叫路人甲么,有你的信,告诉我你在哪个位置.”.广播的声音真大,村里的人都听到了,路人甲听到找自己,赶紧告诉交换机自己的位置,交换机就把路人甲的名字添加到地图本的相应位置上,并把信送到路人甲手中.</p>
+
+<p>有断时间client很喜欢听广播电台的武侠评书.有次client想给广播电台主持人写信,但是又不知道主持人的真实名字.于是client问二层交换机该怎么办,二层交换机说没关系,你把信给我,我想办法帮你送过去.于是client把信写好了,在收信人写上”二层交换机(转)”,二层交换机看到后笑了,于是又给它包上一个信封,把收信人写上”主持人”,而发信人则习惯性写上了自己的名字.二层交换机找到主持人,回来后二层交换机把主持人的名字告诉了client,这样client就可以直接给主持人写信了,cient很是开心,亲切的称二层交换机为”网关”,什么意思谁也不知道,可能是”一夫当关”的意思吧.</p>
+
+<p>后来有卖化肥的商人头脑精明,想出通过邮差送广告的点子,就告诉交换机把化肥广告送到小山村里面的每个人的手里,效果很显著.其他商家也眼红纷纷跟进,路由器为了赚钱只要有广告我就广播式群发出去.可是村民们不胜其扰,男人小孩子也收到大量卫生巾广告,大家很是愤怒.于是交换机妥协了说:”好吧,我辛苦点把大家分成虚拟网的组里,只发给你们需要的广告”,这样一来商家因为广告精确定位也高兴,村民们也因为不被骚扰也高兴了.二层交换机为这个点子美其名曰”组播”,对于所有人的组播就叫”广播”,连给单个人送信也有了个名字叫”单播”.可见二层路由器真是一个人才.</p>
+
+<p>不过这样子的话不同的”虚拟网”之间的用户再也不能向以前一样自由通信了,不过”物以类聚,人以群分”,大家也没有太觉得不方便也就这样子了.</p>
+
+<p>server爸爸又高升了,调到叫做网络层的市里去了,于是server又一次搬家了.不过client这回可难过了.他不知道怎么写信给server了.村里类似client这样感到不便的人越来越多,大家都向市里反应.市里经过研究决定为小山村的每家提供一个叫ip地址的门牌号,所有的ip地址通过DHCP机构管理,并且在叫路由器的邮局进行登记,送”ip包”信的事情都交给邮局统一办理了.</p>
+
+<p>邮局派人到小山村详细介绍新的通信方式,告诉大家写信的格式要求.不再把收信人姓名写在信封上,而是需要在信封写上收信人的ip地址和发信人的ip地址.写好信以后把信件放到邮局在村里的邮桶中邮局会派人收取.当邮局收到信之后在自己的黄页中查看一下这个ip是谁的,然后派人把信发过去.于是大家又能快乐的联系了.</p>
+
+<p>小山村里面难得来了个叫欢乐多的下乡知情,他从大城市过来见过世面,到了小山村安定下来后赶紧到处问问叫DHCP的ip地址分配机构在哪里,然后领ip地址,可是他忘记去邮局登记了.后来他家里人给他写信,邮局收到信件一看是自己负责的范围,可是在ip地址黄页里面没有找到这个人住哪里.那时候邮局还是很负责人的,就在叫arp(地址解析协议)的广播电台寻找他,他听到广播后就赶紧去邮局登记了自己的ip地址,慢慢也在小山村扎根了.</p>
+
+<p>大家的日子又开开心心的过着,除了原来的邮差二级交换机.二层交换机本来的送信工作被路由器抢去了,没有了固定收入来源,生活一下子很是拮据,思前想后不知道自己该干点什么.好在他脑子很灵,发现路由器很官僚,送东西又贵又慢态度很差,路由器在他看来好处就是到处都能送和官方质量保证,但是在县城里二级交换机的一亩三分地就不如自己有优势.于是二层交换机改行做县城区域快递,可以送信,也可以送大件物品,又快又便宜,很受大家欢迎.</p>
+
+<p>二层交换机的快递生意越来越大,红红火火,以至于市里的邮局都知道这个生意好赚钱了.于是邮局出资组建了三层交换机的三产公司,赤果果的山寨了二层交换机的成果,它除了能够涵盖二层交换机的功能,还能够通过官方北京实现了类似路由器的ip地址寻址,功能更加强大,一经推出迅速占领大部分市场.二层交换机欲哭无泪,民不能与官斗啊,二层交换机被迫只能做做低端客户,由先驱变成先烈了.</p>
+
+<p>随着三层交换机的推出,路由器邮局也对自身的定位进行了调整,主要负责对外的互联通信功能.邮局和它的三产公司终于垄断了网络层市里的通信和快递业务,后来干脆合并称为”IP通讯”.</p>
+
+<p>有一阵子大家都热衷于交笔友,小村子里的人也不能例外.client和他哥哥ck都有自己的笔友,更巧合的是兄弟两个居然有同一个笔友,但是按照邮局的规定信封上只能写自己家里的ip地址,收到信后不能知道是不是给自己的.为此兄弟两个争吵了很多次,最后他们约定,写信的时候在信封里面再加上自己制作的一个信封,上面用自己生日来区分是给谁的.他们的笔友也很是惊奇于这个巧合,也答应他们用这个方法配合他们.client自豪的称生日为”端口”,可能是解决争端的口子吧.</p>
+
+<p>client和server的信写的越来越频繁,有时候一天要写上好几封,可是邮局却不能按照他们写信的顺序送达,经常是先收到后面的,看了半天都不明所以,因为很多事情是在前面一封信里提到的.让他们很是郁闷.更有甚者,有些信件居然在送达过程中丢失了.可能是笔友的火热导致邮局业务量猛增,招收了很多新员工又没有来得及正规培训所致吧.</p>
+
+<p>不知道邮局怎么发现client信封套信封的方式,于是对这个奇思妙想进行了系统论证,看看能不能提出一个解决方案解决这些问题,这个工程成为”传输层之TCP”.经过长时间论证,提出了挂号信方式来进行传递保证.在邮局收到信件后先对信件进行集中处理,为多封同一地址的信加上编号和数量标志,经过传递,在收到这些信件会确认收到所有信件标志完整后进行投递到收信人手中.通过”tcp段”终于解决了信件丢失的问题.</p>
+
+<p>TCP协议星星之火可以燎原,大家受到其解决完整性的启发,提出各种方式解决信件的保密性,防篡改,防抵赖等功能,商务信件终于走上了蓬勃发展的道路了.</p>
+
+<p>时光飞逝server到了遥远的帝都上会话大学去了,与client相隔千山万水,那时候交通还是很不方便,为了减少server的思乡之情,client除了给server写信,也经常邮递一些家乡土特产给server.邮局会及时更新到帝都的道路是否畅通,邮寄物品需要贴上哪些证明材料等.如果遇到雨雪不能送达则需要等待道路恢复.</p>
+
+<p>server上完大学又忙着出国留学到了解释层学院,server把解释层学院的外文通讯地址给了client,让client照着抄上去就可以了.client写了好几封信件,但是一直没有收到server的回信.过了一段时间收到server的信才知道server一直没有收到他的信,突然想起来她现在在的国家是从右向左的书写习惯,特地提醒client一下.server的信里还提到大端法小端法,格式变换,代码转换等client不知道的事情.client按照提醒把书写顺序调整好,终于又和client恢复了联系.</p>
+
+<p>server毕业后到了应用层软件帝国工作,软件层帝国产品完全改变了全世界人们的生活方式,著名的产品族有smtp和pop3,ftp,http,icmp等等,server把这些最新的产品都给client使用.</p>
+
+<p>client对server说:”我一直在寻找你,通过各种方式”.</p>
+
+<p>server对client说:”我一直在等着你找我,通过各种方式.我在域名服务器注册了一个虚拟地址www.imissu.com,你再也不用写你不熟悉的外文ip地址了.你想问我是怎么办到的,你可以问问dns,他知道.”</p>
+
+<p>终!</p>
+    </div>
+
+    
+
+  
+    <ul class="tag_box inline">
+      <li><i class="icon-tags"></i></li>
+      
+      
+
+
+  
+     
+    	<li><a href="/tags.html#网络-ref">网络 <span>1</span></a></li>
+    
+  
+
+
+
+    </ul>
+    
+
+    <hr>
+    <div class="pagination">
+      <ul>
+      
+        <li class="prev"><a href="/2012/05/05/pgrb-chap1-introduction.html" title="BW编程ruby入门之对象">&larr; Previous</a></li>
+      
+        <li><a href="/archive.html">Archive</a></li>
+      
+        <li class="next disabled"><a>Next &rarr;</a>
+      
+      </ul>
+    </div>
+    <hr>
+    
+
+
+  <div id="disqus_thread"></div>
+<script type="text/javascript">
+    var disqus_developer = 1;
+    var disqus_shortname = 'izhanghuaning'; // required: replace example with your forum shortname
+    
+    /* * * DON'T EDIT BELOW THIS LINE * * */
+    (function() {
+        var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+        dsq.src = 'http://' + disqus_shortname + '.disqus.com/embed.js';
+        (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    })();
+</script>
+<noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+<a href="http://disqus.com" class="dsq-brlink">blog comments powered by <span class="logo-disqus">Disqus</span></a>
+
+
+
+
+  </div>
+</div>
+
+
+      </div>
+	  <hr>
+      <footer>
+        <p>&copy;2011-2014 张华宁
+          基于 <a href="http://jekyllbootstrap.com" target="_blank" title="The Definitive Jekyll Blogging Framework">Jekyll Bootstrap</a>
+          和 <a href="http://twitter.github.com/bootstrap/" target="_blank">Twitter Bootstrap</a> 搭建,
+		  <em><strong>本博客的很多想法来自于其他优秀博客作者，时隔久远不能给出每个链接了，如果原作者觉得被冒犯，请留言或联系我（izhanghuaning$163.com），我会及时进行处理，衷心感谢你们，本博客内容和源代码遵循<a href="http://opensource.org/licenses/mit-license.php" target="_blank">MIT开源协议</a>,转载请注明出处，谢谢。</strong></em>
+        </p>
+      </footer>
+
+    </div>
+
+    
+  </body>
+</html>
+

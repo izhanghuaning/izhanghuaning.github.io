@@ -4,13 +4,71 @@
  <title>张华宁的笔记本</title>
  <link href="http://izhanghuaning.github.io/" rel="self"/>
  <link href="http://izhanghuaning.github.io"/>
- <updated>2014-07-23T17:07:20+08:00</updated>
+ <updated>2014-09-22T16:23:18+08:00</updated>
  <id>http://izhanghuaning.github.io</id>
  <author>
    <name>张华宁</name>
    <email>izhanghuaning$163.com</email>
  </author>
 
+ 
+ <entry>
+   <title>深入浅出讲解网络基础知识</title>
+   <link href="http://izhanghuaning.github.io/2013/05/01/hub-switch-router-and-network.html"/>
+   <updated>2013-05-01T00:00:00+08:00</updated>
+   <id>http://izhanghuaning.github.io/2013/05/01/hub-switch-router-and-network</id>
+   <content type="html">&lt;p&gt;从前在一个叫网络孤岛的小山村,有一对青梅竹马名字就叫server和client,他们每天有说不完的话.到了晚上不能通讯基本靠吼,于是他们就经常通过一根线和两个喇叭在家里和对方说话,他们叫那根线为网络专线.client和server每天都把唧唧咋咋的比特音传递给对方,生活多么美好.&lt;/p&gt;
+
+&lt;p&gt;突然有一天server全家搬离了小山村到叫物理层的镇子上居住.小山村和镇子之间路途遥远,client不再能够通过网线同server通话了,于是委托在县城上学的哥哥中继器来帮忙带口信,中继器就相当于延伸了他们之间的专线,client和server在需要的时候还是能够彼此联系.&lt;/p&gt;
+
+&lt;p&gt;过了两年中继器毕业了不能帮他们带话了,于是client只能托村里一个叫集线器的大叔帮忙,集线器大叔有办法收口信和送口信,除了帮client带口信,也帮村里的几个其他人带.但是集线器大叔比较懒,每次大叔有口信回到村里都在村口广播上大叫:”XX,镇子里的OO让我带话给你,告诉你明天老地方见”,于是村里的该听到的和不该听到的人都听到了,client比较苦恼,明明是server让集线器带给自己的口信为什么要被大家都听到,真是苦闷,不过还能够联系到server也就凑合了.&lt;/p&gt;
+
+&lt;p&gt;集线器大叔还有个坏毛病爱喝酒,还有就是使用村口的广播习惯了,有时候喝醉了在广播口信的时候罗罗嗦嗦的说了很多家常里短没用的事情,别人委托他带的口信却忘说了.大家都很痛恨喝醉了在广播乱叫的大叔,称喝醉状态的集线器为”广播风暴”.&lt;/p&gt;
+
+&lt;p&gt;后来server又随着她老爸的高升搬到了数字链路层的县城居住了.再也没有什么认识的人能够直接给client和server带话了.他们也长大识字了,于是他们便开始通过写信联系对方.&lt;/p&gt;
+
+&lt;p&gt;小村里有个个体邮差叫二层交换机,二层交换机可以负责在小山村和县城里送信,也能在小村里送信.二层交换机很有办法,他给了大家很多叫做”帧信封”的东西,告诉大家在信封上写上收信人和发信人的名字,然后把信装到信封里封起来给他就可以了,他能把信送给收件人.client很开心,因为他可以把甜言蜜语写下来封好信封而不怕别人看到了.二层交换机大哥也不是在村口广播叫大家自己去认领信件了,而是根据信封上的名字把信送到大家手里,于是client的日子又是幸福快乐了.&lt;/p&gt;
+
+&lt;p&gt;二层交换机有个本子记着村里人的名字,他的本子是画图的方式记录的,把名字写在地图相应的位置.到了村口拿出信看看名字,然后在地图上看看怎么走,就把信送到了.有次他带了一封写了”路人甲”收信人的信件,他一看不知道这个人住在哪里,在地图上也就没有路人甲的名字.不过二层交换机有办法,他就像集线器一样,在村口的广播上大喊:”有人叫路人甲么,有你的信,告诉我你在哪个位置.”.广播的声音真大,村里的人都听到了,路人甲听到找自己,赶紧告诉交换机自己的位置,交换机就把路人甲的名字添加到地图本的相应位置上,并把信送到路人甲手中.&lt;/p&gt;
+
+&lt;p&gt;有断时间client很喜欢听广播电台的武侠评书.有次client想给广播电台主持人写信,但是又不知道主持人的真实名字.于是client问二层交换机该怎么办,二层交换机说没关系,你把信给我,我想办法帮你送过去.于是client把信写好了,在收信人写上”二层交换机(转)”,二层交换机看到后笑了,于是又给它包上一个信封,把收信人写上”主持人”,而发信人则习惯性写上了自己的名字.二层交换机找到主持人,回来后二层交换机把主持人的名字告诉了client,这样client就可以直接给主持人写信了,cient很是开心,亲切的称二层交换机为”网关”,什么意思谁也不知道,可能是”一夫当关”的意思吧.&lt;/p&gt;
+
+&lt;p&gt;后来有卖化肥的商人头脑精明,想出通过邮差送广告的点子,就告诉交换机把化肥广告送到小山村里面的每个人的手里,效果很显著.其他商家也眼红纷纷跟进,路由器为了赚钱只要有广告我就广播式群发出去.可是村民们不胜其扰,男人小孩子也收到大量卫生巾广告,大家很是愤怒.于是交换机妥协了说:”好吧,我辛苦点把大家分成虚拟网的组里,只发给你们需要的广告”,这样一来商家因为广告精确定位也高兴,村民们也因为不被骚扰也高兴了.二层交换机为这个点子美其名曰”组播”,对于所有人的组播就叫”广播”,连给单个人送信也有了个名字叫”单播”.可见二层路由器真是一个人才.&lt;/p&gt;
+
+&lt;p&gt;不过这样子的话不同的”虚拟网”之间的用户再也不能向以前一样自由通信了,不过”物以类聚,人以群分”,大家也没有太觉得不方便也就这样子了.&lt;/p&gt;
+
+&lt;p&gt;server爸爸又高升了,调到叫做网络层的市里去了,于是server又一次搬家了.不过client这回可难过了.他不知道怎么写信给server了.村里类似client这样感到不便的人越来越多,大家都向市里反应.市里经过研究决定为小山村的每家提供一个叫ip地址的门牌号,所有的ip地址通过DHCP机构管理,并且在叫路由器的邮局进行登记,送”ip包”信的事情都交给邮局统一办理了.&lt;/p&gt;
+
+&lt;p&gt;邮局派人到小山村详细介绍新的通信方式,告诉大家写信的格式要求.不再把收信人姓名写在信封上,而是需要在信封写上收信人的ip地址和发信人的ip地址.写好信以后把信件放到邮局在村里的邮桶中邮局会派人收取.当邮局收到信之后在自己的黄页中查看一下这个ip是谁的,然后派人把信发过去.于是大家又能快乐的联系了.&lt;/p&gt;
+
+&lt;p&gt;小山村里面难得来了个叫欢乐多的下乡知情,他从大城市过来见过世面,到了小山村安定下来后赶紧到处问问叫DHCP的ip地址分配机构在哪里,然后领ip地址,可是他忘记去邮局登记了.后来他家里人给他写信,邮局收到信件一看是自己负责的范围,可是在ip地址黄页里面没有找到这个人住哪里.那时候邮局还是很负责人的,就在叫arp(地址解析协议)的广播电台寻找他,他听到广播后就赶紧去邮局登记了自己的ip地址,慢慢也在小山村扎根了.&lt;/p&gt;
+
+&lt;p&gt;大家的日子又开开心心的过着,除了原来的邮差二级交换机.二层交换机本来的送信工作被路由器抢去了,没有了固定收入来源,生活一下子很是拮据,思前想后不知道自己该干点什么.好在他脑子很灵,发现路由器很官僚,送东西又贵又慢态度很差,路由器在他看来好处就是到处都能送和官方质量保证,但是在县城里二级交换机的一亩三分地就不如自己有优势.于是二层交换机改行做县城区域快递,可以送信,也可以送大件物品,又快又便宜,很受大家欢迎.&lt;/p&gt;
+
+&lt;p&gt;二层交换机的快递生意越来越大,红红火火,以至于市里的邮局都知道这个生意好赚钱了.于是邮局出资组建了三层交换机的三产公司,赤果果的山寨了二层交换机的成果,它除了能够涵盖二层交换机的功能,还能够通过官方北京实现了类似路由器的ip地址寻址,功能更加强大,一经推出迅速占领大部分市场.二层交换机欲哭无泪,民不能与官斗啊,二层交换机被迫只能做做低端客户,由先驱变成先烈了.&lt;/p&gt;
+
+&lt;p&gt;随着三层交换机的推出,路由器邮局也对自身的定位进行了调整,主要负责对外的互联通信功能.邮局和它的三产公司终于垄断了网络层市里的通信和快递业务,后来干脆合并称为”IP通讯”.&lt;/p&gt;
+
+&lt;p&gt;有一阵子大家都热衷于交笔友,小村子里的人也不能例外.client和他哥哥ck都有自己的笔友,更巧合的是兄弟两个居然有同一个笔友,但是按照邮局的规定信封上只能写自己家里的ip地址,收到信后不能知道是不是给自己的.为此兄弟两个争吵了很多次,最后他们约定,写信的时候在信封里面再加上自己制作的一个信封,上面用自己生日来区分是给谁的.他们的笔友也很是惊奇于这个巧合,也答应他们用这个方法配合他们.client自豪的称生日为”端口”,可能是解决争端的口子吧.&lt;/p&gt;
+
+&lt;p&gt;client和server的信写的越来越频繁,有时候一天要写上好几封,可是邮局却不能按照他们写信的顺序送达,经常是先收到后面的,看了半天都不明所以,因为很多事情是在前面一封信里提到的.让他们很是郁闷.更有甚者,有些信件居然在送达过程中丢失了.可能是笔友的火热导致邮局业务量猛增,招收了很多新员工又没有来得及正规培训所致吧.&lt;/p&gt;
+
+&lt;p&gt;不知道邮局怎么发现client信封套信封的方式,于是对这个奇思妙想进行了系统论证,看看能不能提出一个解决方案解决这些问题,这个工程成为”传输层之TCP”.经过长时间论证,提出了挂号信方式来进行传递保证.在邮局收到信件后先对信件进行集中处理,为多封同一地址的信加上编号和数量标志,经过传递,在收到这些信件会确认收到所有信件标志完整后进行投递到收信人手中.通过”tcp段”终于解决了信件丢失的问题.&lt;/p&gt;
+
+&lt;p&gt;TCP协议星星之火可以燎原,大家受到其解决完整性的启发,提出各种方式解决信件的保密性,防篡改,防抵赖等功能,商务信件终于走上了蓬勃发展的道路了.&lt;/p&gt;
+
+&lt;p&gt;时光飞逝server到了遥远的帝都上会话大学去了,与client相隔千山万水,那时候交通还是很不方便,为了减少server的思乡之情,client除了给server写信,也经常邮递一些家乡土特产给server.邮局会及时更新到帝都的道路是否畅通,邮寄物品需要贴上哪些证明材料等.如果遇到雨雪不能送达则需要等待道路恢复.&lt;/p&gt;
+
+&lt;p&gt;server上完大学又忙着出国留学到了解释层学院,server把解释层学院的外文通讯地址给了client,让client照着抄上去就可以了.client写了好几封信件,但是一直没有收到server的回信.过了一段时间收到server的信才知道server一直没有收到他的信,突然想起来她现在在的国家是从右向左的书写习惯,特地提醒client一下.server的信里还提到大端法小端法,格式变换,代码转换等client不知道的事情.client按照提醒把书写顺序调整好,终于又和client恢复了联系.&lt;/p&gt;
+
+&lt;p&gt;server毕业后到了应用层软件帝国工作,软件层帝国产品完全改变了全世界人们的生活方式,著名的产品族有smtp和pop3,ftp,http,icmp等等,server把这些最新的产品都给client使用.&lt;/p&gt;
+
+&lt;p&gt;client对server说:”我一直在寻找你,通过各种方式”.&lt;/p&gt;
+
+&lt;p&gt;server对client说:”我一直在等着你找我,通过各种方式.我在域名服务器注册了一个虚拟地址www.imissu.com,你再也不用写你不熟悉的外文ip地址了.你想问我是怎么办到的,你可以问问dns,他知道.”&lt;/p&gt;
+
+&lt;p&gt;终!&lt;/p&gt;</content>
+ </entry>
  
  <entry>
    <title>BW编程ruby入门之对象</title>
@@ -879,10 +937,10 @@ For the lack of a war,
  </entry>
  
  <entry>
-   <title>BW客户端js之脚本化css(十一)</title>
-   <link href="http://izhanghuaning.github.io/2011/08/25/jsdg-chap16-jscss.html"/>
-   <updated>2011-08-25T00:00:00+08:00</updated>
-   <id>http://izhanghuaning.github.io/2011/08/25/jsdg-chap16-jscss</id>
+   <title>BW客户端js之脚本化http(十三)</title>
+   <link href="http://izhanghuaning.github.io/2011/09/05/jsdg-chap18-jshttp.html"/>
+   <updated>2011-09-05T00:00:00+08:00</updated>
+   <id>http://izhanghuaning.github.io/2011/09/05/jsdg-chap18-jshttp</id>
    <content type="html">&lt;h4 id=&quot;white_js&quot;&gt;White: js如何选取文档元素？&lt;/h4&gt;
 
 &lt;p&gt;&lt;em&gt;Black:&lt;/em&gt;&lt;/p&gt;
@@ -918,6 +976,379 @@ For the lack of a war,
 &lt;h4 id=&quot;white_js_9&quot;&gt;White: js如何选取文档元素？&lt;/h4&gt;
 
 &lt;p&gt;&lt;em&gt;Black:&lt;/em&gt;&lt;/p&gt;
+&lt;hr /&gt;</content>
+ </entry>
+ 
+ <entry>
+   <title>BW客户端js之事件(十二)</title>
+   <link href="http://izhanghuaning.github.io/2011/08/30/jsdg-chap17-event.html"/>
+   <updated>2011-08-30T00:00:00+08:00</updated>
+   <id>http://izhanghuaning.github.io/2011/08/30/jsdg-chap17-event</id>
+   <content type="html">&lt;h4 id=&quot;white_js&quot;&gt;White: js中事件相关的重要定义？&lt;/h4&gt;
+
+&lt;p&gt;&lt;em&gt;Black:&lt;/em&gt;&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;事件类型(event type)：一个用来说明发生了什么类型事件的字符串，比如“click”、“load”、“mousemove”等。&lt;/p&gt;
+&lt;/li&gt;
+
+&lt;li&gt;
+&lt;p&gt;事件目标(event target)：发生事件的或与之县官的对象。描述事件时通常必须指出类型和目标，例如：window上的load事件、button元素的click事件、XMLHttpRequest的readystatechange事件。&lt;/p&gt;
+&lt;/li&gt;
+
+&lt;li&gt;
+&lt;p&gt;事件处理程序(event handler)或事件监听程序(event listener)：是处理或者响应事件的函数。应用程序通过指明事件类型和事件目标，在web浏览器中注册它们的事件处理函数。当特定目标上的发生注册的事件时，浏览器会调用相应的事件处理程序。&lt;/p&gt;
+&lt;/li&gt;
+
+&lt;li&gt;
+&lt;p&gt;事件对象(event object)：是与特定事件相关且包含有关事件详细信息的对象。事件对象作为参数传递给事件处理程序函数(IE8之前版本通过全局变量event得到参数)。所有事件对象都有用来指明事件类型的type属性和事件目标的target属性(IE8之前版本通过srcElement代替target属性)。每个事件类型都会为其相关的事件对象定义一组属性来表示特定信息。&lt;/p&gt;
+&lt;/li&gt;
+
+&lt;li&gt;
+&lt;p&gt;事件传播(event propagation)：是浏览器决定哪个对象触发其事件处理程序的过程。对于某些事件（例如window的load事件）必须是不能传播的。当文档元素发生某个特定类型事件时，它们会沿着文档树向上传播（也叫“冒泡”）。事件传播的另一种方式叫“事件捕获(event capturing)”，是在容器元素上注册特定的事件处理程序能够在事件传播到其真实目标钱“捕获”（或拦截）它。（IE8之前版本不支持捕获），常见的例子是元素“拖动”。&lt;/p&gt;
+&lt;/li&gt;
+
+&lt;li&gt;
+&lt;p&gt;默认操作：一些事件有与之相关的默认操作（例如超链接上click会打开一个页面）。事件处理程序可以通过返回一个特定值(ie的return false)、调用事件对象的某个方法（e.preventDefault()）或设置事件对象的某个属性(e.returnValue=false)来阻止默认操作的发生。&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;hr /&gt;
+&lt;h4 id=&quot;white_js_2&quot;&gt;White: 浏览器支持的js事件主要有哪些来源？&lt;/h4&gt;
+
+&lt;p&gt;&lt;em&gt;Black:&lt;/em&gt; 主要有四个：&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;传统事件：表单事件、window事件（load、unload、onerror等）、鼠标事件（mousemove、click、dbclick、contextmenu等）、键盘事件（keydown、keypress等）。&lt;/p&gt;
+&lt;/li&gt;
+
+&lt;li&gt;
+&lt;p&gt;3级DOM事件规范：DOMContentLoaded等&lt;/p&gt;
+&lt;/li&gt;
+
+&lt;li&gt;
+&lt;p&gt;HTML5规范及其衍生的大量API定义的新事件。&lt;/p&gt;
+&lt;/li&gt;
+
+&lt;li&gt;
+&lt;p&gt;基于触摸和支持js的新设备（移动设备等）的出现。&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;hr /&gt;
+&lt;h4 id=&quot;white_js_3&quot;&gt;White: js事件可以大体分为哪些类别？&lt;/h4&gt;
+
+&lt;p&gt;&lt;em&gt;Black:&lt;/em&gt;&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;依赖语设备的输入事件（键盘、鼠标）。&lt;/p&gt;
+&lt;/li&gt;
+
+&lt;li&gt;
+&lt;p&gt;独立与设备的输入事件(超链接、click等)。&lt;/p&gt;
+&lt;/li&gt;
+
+&lt;li&gt;
+&lt;p&gt;用户界面事件（提交事件、输入框focus等）&lt;/p&gt;
+&lt;/li&gt;
+
+&lt;li&gt;
+&lt;p&gt;状态变化事件（window的load、XHR的readystatechange等）&lt;/p&gt;
+&lt;/li&gt;
+
+&lt;li&gt;
+&lt;p&gt;特定API事件（HTML5的API）&lt;/p&gt;
+&lt;/li&gt;
+
+&lt;li&gt;
+&lt;p&gt;计时器和错误处理程序(计时器、错误处理程序等)&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;hr /&gt;
+&lt;h4 id=&quot;white_&quot;&gt;White: 概念类似的冒泡和非冒泡事件有哪些？&lt;/h4&gt;
+
+&lt;p&gt;&lt;em&gt;Black:&lt;/em&gt;&lt;/p&gt;
+
+&lt;p&gt;冒泡事件：focusin、fucusout；mouseover、mouseout；&lt;/p&gt;
+
+&lt;p&gt;非冒泡事件：focus、blur；mouseenter、mouseleave;&lt;/p&gt;
+&lt;hr /&gt;
+&lt;h4 id=&quot;white__2&quot;&gt;White: 如何注册事件处理程序？&lt;/h4&gt;
+
+&lt;p&gt;&lt;em&gt;Black:&lt;/em&gt;&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;设置js对象的属性为函数。&lt;/p&gt;
+
+&lt;p&gt;window.onload = function() { var elt = document.getElementById(“shipping_address”); elt.onsubmit = function() { return validate(this);} }&lt;/p&gt;
+&lt;/li&gt;
+
+&lt;li&gt;
+&lt;p&gt;设置HTML标签属性为事件处理程序&lt;/p&gt;
+
+&lt;p&gt;&lt;button onclick=&#39;alert(&amp;apos;thank you&amp;apos;);&#39;&gt;点击这里&lt;/button&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;code&gt;&amp;lt;button onclick=&amp;quot;alert(&amp;#39;thank you&amp;#39;);&amp;quot;&amp;gt;点击这里&amp;lt;/button&amp;gt;&lt;/code&gt;&lt;/p&gt;
+&lt;/li&gt;
+
+&lt;li&gt;
+&lt;p&gt;addEventListener()&lt;/p&gt;
+
+&lt;p&gt;&lt;button id=&#39;mybutton&#39;&gt;Click me&lt;/button&gt;&lt;/p&gt;
+&lt;script&gt;
+  var b = document.getElementById(&quot;mybutton&quot;);
+  b.onclick = function() { alert(&quot;Thanks for clicking me!&quot;); };
+  b.addEventListener(&quot;click&quot;, function() { alert(&quot;Thanks again!&quot;); }, false);
+  &lt;/script&gt;
+&lt;p&gt;var b = document.getElementById(“mybutton”);&lt;/p&gt;
+
+&lt;p&gt;b.onclick = function() { alert(“Thanks for clicking me!”); };&lt;/p&gt;
+
+&lt;p&gt;b.addEventListener(“click”, function() { alert(“Thanks again!”); }, false);&lt;/p&gt;
+&lt;/li&gt;
+
+&lt;li&gt;
+&lt;p&gt;attachevent()&lt;/p&gt;
+
+&lt;p&gt;&lt;button id=&#39;mybtn&#39;&gt;Click me&lt;/button&gt;&lt;/p&gt;
+&lt;script&gt;
+  var b = document.getElementById(&quot;mybtn&quot;);
+  var handler = function() { alert(&quot;Thanks!&quot;); };
+  if (b.addEventListener)
+  b.addEventListener(&quot;click&quot;, handler, false);
+  else if (b.attachEvent)
+  b.attachEvent(&quot;onclick&quot;, handler);
+  &lt;/script&gt;
+&lt;p&gt;var b = document.getElementById(“mybtn”);&lt;/p&gt;
+
+&lt;p&gt;var handler = function() { alert(“Thanks!”); };&lt;/p&gt;
+
+&lt;p&gt;if (b.addEventListener) {&lt;/p&gt;
+
+&lt;p&gt;b.addEventListener(“click”, handler, false);&lt;/p&gt;
+
+&lt;p&gt;} else if (b.attachEvent) {&lt;/p&gt;
+
+&lt;p&gt;b.attachEvent(“onclick”, handler);&lt;/p&gt;
+
+&lt;p&gt;}&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;hr /&gt;
+&lt;h4 id=&quot;white__3&quot;&gt;White: 事件的本质是什么？&lt;/h4&gt;
+
+&lt;p&gt;&lt;em&gt;Black:&lt;/em&gt; 通过jquery、spine等js类库可以看到事件的本质。事件首先要有注册、注销和触发等几个动作，一般使用bind、unbind和trigger来作为方法名。&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;注册bind：就是给当前对象的回调列表增加响应的事件类型和函数处理程序。&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;注销unbind：就是从当前对象的回调列表中指定的事件类型中去除指定的函数处理程序。&lt;/p&gt;
+
+&lt;p&gt;触发trigger：就是指定事件类型的事件发生时，调用注册的函数处理程序，并传给其相应的参数。&lt;/p&gt;
+
+&lt;p&gt;事件的机制本质上就是回调函数。&lt;/p&gt;
+&lt;hr /&gt;
+&lt;h4 id=&quot;white_jsthis&quot;&gt;White: js的事件处理程序中的this指向什么？&lt;/h4&gt;
+
+&lt;p&gt;&lt;em&gt;Black:&lt;/em&gt; 用一个按钮btnHello上的click事件进行举例说明： 事件处理程序是一般可以写作一个独立的函数例如hello(){}，事件注册程序是在一个列表中click事件的回调函数中增加hello()，这样单击按钮时就可以调用hello()函数了。&lt;/p&gt;
+
+&lt;p&gt;如果hello函数体中有了this，比如&lt;code&gt;alert(this);&lt;/code&gt;，那么this指向什么呢？&lt;/p&gt;
+
+&lt;p&gt;根据经验应该是btnHello元素的对象。&lt;/p&gt;
+
+&lt;p&gt;但是hello()是作为回调函数调用的，它不是btnHello的一个方法，回调的过程内部发生了什么呢？&lt;/p&gt;
+
+&lt;p&gt;很简单，回调内部使用了Function#call或apply方法。例如hello.call(this, arguments)。&lt;/p&gt;
+
+&lt;p&gt;这样的话，事件处理程序中的this就指向了注册事件的对象了。&lt;/p&gt;
+&lt;hr /&gt;
+&lt;h4 id=&quot;white_js_4&quot;&gt;White: js中一个事件类型注册了多个事件处理程序，其触发顺序如何？&lt;/h4&gt;
+
+&lt;p&gt;&lt;em&gt;Black:&lt;/em&gt; 浏览器按照如下规则调用所有的事件处理程序：&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;通过设置对象属性或HTML属性的处理程序一直优先调用&lt;/p&gt;
+&lt;/li&gt;
+
+&lt;li&gt;
+&lt;p&gt;使用addEventListener()注册的处理程序按照它们的注册顺序&lt;/p&gt;
+&lt;/li&gt;
+
+&lt;li&gt;
+&lt;p&gt;使用attchEvent()注册的程序可能按照任意顺序调用，代码不应该依赖于调用顺序。&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;hr /&gt;
+&lt;h4 id=&quot;white_js_5&quot;&gt;White: js事件处理程序的返回值有何意义？&lt;/h4&gt;
+
+&lt;p&gt;&lt;em&gt;Black:&lt;/em&gt; 通过设置对象属性或HTML属性注册的事件处理程序，返回值有时有非常重要的意义。通常情况下，返回false就是告诉浏览器不要执行这个事件相关的默认操作。&lt;/p&gt;
+
+&lt;p&gt;通过addEventlisner()或attachEvent()注册事件处理程序则不能这样，需要通过调用preventDefault()方法或设置对象的returnValue属性达到相同的目的。&lt;/p&gt;
+&lt;hr /&gt;</content>
+ </entry>
+ 
+ <entry>
+   <title>BW客户端js之脚本化css(十一)</title>
+   <link href="http://izhanghuaning.github.io/2011/08/25/jsdg-chap16-jscss.html"/>
+   <updated>2011-08-25T00:00:00+08:00</updated>
+   <id>http://izhanghuaning.github.io/2011/08/25/jsdg-chap16-jscss</id>
+   <content type="html">&lt;h4 id=&quot;white_css&quot;&gt;White: 什么是css？&lt;/h4&gt;
+
+&lt;p&gt;&lt;em&gt;Black:&lt;/em&gt; 层叠样式表(cascading style sheet,css)是一种指定HTML文档视觉表现的标准。它允许开发人员精确指定文档元素的字体、颜色、外边距、缩进、边框，甚至定位。&lt;/p&gt;
+
+&lt;p&gt;css是个复杂的标准，涵盖了页面视觉显示的各个方面，有很多书籍是专门介绍它的，比如《精通CSS》、《CSS权威指南》等。&lt;/p&gt;
+&lt;hr /&gt;
+&lt;h4 id=&quot;white_css_2&quot;&gt;White: 什么是脚本化css？&lt;/h4&gt;
+
+&lt;p&gt;&lt;em&gt;Black:&lt;/em&gt; 脚本化css是前端开发人员通过使用js控制文档元素的视觉表现效果，可以创建一系列的有趣的视觉效果（比如动画效果、菜单、显示隐藏内容等）。&lt;/p&gt;
+&lt;hr /&gt;
+&lt;h4 id=&quot;white_css_3&quot;&gt;White: 脚本化css都有哪些方式？&lt;/h4&gt;
+
+&lt;p&gt;&lt;em&gt;Black:&lt;/em&gt; 脚本化css主要有以下几种方式：&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;通过js直接修改单个文档元素的style属性&lt;/p&gt;
+&lt;/li&gt;
+
+&lt;li&gt;
+&lt;p&gt;通过js修改文档元素的class属性&lt;/p&gt;
+&lt;/li&gt;
+
+&lt;li&gt;
+&lt;p&gt;通过js修改document.styleShets属性&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;hr /&gt;
+&lt;h4 id=&quot;white_sytle&quot;&gt;White: 举例说明脚本化元素的sytle属性？&lt;/h4&gt;
+
+&lt;p&gt;&lt;em&gt;Black:&lt;/em&gt; 首先需要通过js选中你需要修改的文档元素，比如&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;var el = document.getElementByID(&amp;quot;head1&amp;quot;);&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;然后直接修改el的style属性&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;el.style.fontSize = &amp;quot;24pt&amp;quot;;
+el.style.fontWeight = &amp;quot;bold&amp;quot;;
+el.style.color = &amp;quot;blue&amp;quot;;&lt;/code&gt;&lt;/pre&gt;
+&lt;hr /&gt;
+&lt;h4 id=&quot;white_jscss&quot;&gt;White: js中css属性的命名约定？&lt;/h4&gt;
+
+&lt;p&gt;&lt;em&gt;Black:&lt;/em&gt; js中style的属性与css属性可能不一致。比如css属性font-size名字中包含连字符，在js中连字符是减号，所以不能书写成如下样子：&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;e.style.font-size = &amp;quot;24pt&amp;quot;;&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;而应该使用骆驼峰(camel)命名法去掉连字符：&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;e.style.fontSize = &amp;quot;24pt&amp;quot;;&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;注意：style属性的值全部都是字符串，分号要在字符串外面。&lt;/p&gt;
+&lt;hr /&gt;
+&lt;h4 id=&quot;white_style&quot;&gt;White: 为什么元素的内联样式style只能用于设置值而不能读取？&lt;/h4&gt;
+
+&lt;p&gt;&lt;em&gt;Black:&lt;/em&gt;&lt;/p&gt;
+
+&lt;p&gt;首先，它只能读取元素的自身style属性设定的值，对于在样式表或者style标签中中为元素设定的值不能读取出来。&lt;/p&gt;
+
+&lt;p&gt;其次，style的值必须包含单位，但对于很多复合属性来说代码不得不包含解析css的能力。&lt;/p&gt;
+
+&lt;p&gt;总之，元素的内联样式只在设置样式的时候有用，如果需要查询元素的样式，就需要使用计算样式。&lt;/p&gt;
+&lt;hr /&gt;
+&lt;h4 id=&quot;white_jsstyle&quot;&gt;White: js可以给元素的style直接赋值字符串？&lt;/h4&gt;
+
+&lt;p&gt;&lt;em&gt;Black:&lt;/em&gt; 元素的style属性实际上是CSSStyleDeclaration对象，有时候会发现如果直接给style赋值一个字符串，而不是使用其CSSStyleDeclaration对象会更加方便。如下所示：&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;//两者都可以设置e的样式为字符串s
+e.setAttribute(&amp;quot;style&amp;quot;, s);
+e.style.cssText = s;
+
+//两者都可以查询元素的内联样式
+s = e.getAttribute(&amp;quot;style&amp;quot;);
+s = e.style.cssText;&lt;/code&gt;&lt;/pre&gt;
+&lt;hr /&gt;
+&lt;h4 id=&quot;white_js&quot;&gt;White: js如何查询元素的计算样式？&lt;/h4&gt;
+
+&lt;p&gt;&lt;em&gt;Black:&lt;/em&gt; 元素的style内联样式覆盖了样式表的所有内容，它是设置css属性值来改变视觉表现的最好的地方。但是，如上所述，它在查询样式时用处不大，查询样式需要使用计算样式。&lt;/p&gt;
+
+&lt;p&gt;元素的计算样式是一组属性值，它由浏览器通过把样式表、style标签、内联样式等效果通过响应规则层叠计算后得到的，它就是一组在显示元素时实际使用的属性值。&lt;/p&gt;
+
+&lt;p&gt;类似于内联样式，计算样式也是使用一个CSSStyleDeclaration对象表示的，区别是，计算样式是只读的。&lt;/p&gt;
+
+&lt;p&gt;用window对象的getComputedStyle()方法获得一个元素的计算样式。&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;var title = document.getElementByID(&amp;quot;sectiontitle&amp;quot;);
+var titlesytles = window.getComputedStyle(title,null);&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;注意：方法第一个参数是要计算样式的元素，第二个也是必须的不过通常是null，它也可以是命名css伪对象的字符串，如”:before”、”:after”等。&lt;/p&gt;
+&lt;hr /&gt;
+&lt;h4 id=&quot;white_jsclasscss&quot;&gt;White: js如何通过class属性脚本化css？&lt;/h4&gt;
+
+&lt;p&gt;&lt;em&gt;Black:&lt;/em&gt; HTML元素可以有多个css类名，class属性保存了一个用空格分割的类名的列表。因为class是js的保留字，所以在js中需要使用className来代表html元素的class属性。class属性是替代式的更改，即使有多个css类名，也不能单独操作，只能整体替换。&lt;/p&gt;
+
+&lt;p&gt;为了解决单独操作的问题，HTML5为每个元素定义了classList属性。该属性值是DOMTokenList对象：一个只读的类数组对象，它包含元素的单独类名。其add()和remove()方法可以单独增加或者去除一个css类名。还提供toggle()和contains()等方法。&lt;/p&gt;
+
+&lt;p&gt;DOMTokenList对象是“实时地”代表了元素类名的集合。其改变通过className属性也可以实时看到。&lt;/p&gt;
+&lt;hr /&gt;
+&lt;h4 id=&quot;white_js_2&quot;&gt;White: js如何脚本化样式表？&lt;/h4&gt;
+
+&lt;p&gt;&lt;em&gt;Black:&lt;/em&gt; 前面的方式都是js脚本化某个元素的样式，直接脚本化样式表（标签或者文件）使之适用于整个页面也是有可能的，虽然不太会这么做。&lt;/p&gt;
+
+&lt;p&gt;在脚本化样式表时，将会碰到两类需要使用的对象。&lt;/p&gt;
+
+&lt;p&gt;第一类是元素对象，由style标签和link标签表示，两种元素包含或者引用了样式表。&lt;/p&gt;
+
+&lt;p&gt;第二类是CSSStyleSheet对象，它表示样式表本身，表示与文档关联在一起的样式表。如果我们定义了style或者link的title属性，该title作为对应CSSStyleSheet对象的title属性就可用。&lt;/p&gt;
+
+&lt;p&gt;实例：禁用样式表&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;function disabledStylesheet(ss) {
+    if (typeof ss == &amp;quot;number&amp;quot;) {
+        document.styleSheets[ss].disabled = true;
+    }
+    else {
+        var sheets = document.querySelectorAll(ss);
+        for(var i =0; i &amp;lt;sheets.length; i++)
+        {
+            sheets[i].disabled = true;
+        }
+    }
+}&lt;/code&gt;&lt;/pre&gt;
+&lt;hr /&gt;
+&lt;h4 id=&quot;white_js_3&quot;&gt;White: js如何查询、插入、删除样式表规则？&lt;/h4&gt;
+
+&lt;p&gt;&lt;em&gt;Black:&lt;/em&gt; document.styleSheets[]数组的元素是CSSStyleSheet对象，CSSStyleSheet对象有一个cssRules[]数组（IE使用属性rules替代cssRules），其元素是CSSRule对象，它包含样式表的所有规则。&lt;/p&gt;
+
+&lt;p&gt;CSSRule对象有两个属性可以很便捷使用。selectText是规则的css选择器，它引用一个描述与选择器相关的样式的可写CSSStyleDeclaration对象（用来表示内量和计算样式的那个对象，其cssText属性可以获得规则的文本表示），可以用它来查询规则的样式值或更新样式。&lt;/p&gt;
+
+&lt;p&gt;insertRule()、deleteRule()方法（IE中对应addRule()、removeRule()替代，但addRule()希望选择器文本和样式文本作为两个参数）可以向样式表中添加和删除规则。&lt;/p&gt;
+
+&lt;p&gt;示例：遍历样式表规则&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;var ss = document.styleSheets[0]; // Get the first stylesheet
+var rules = ss.cssRules?ss.cssRules:ss.rules; // Get the stylesheet rules
+for(var i = 0; i &amp;lt; rules.length; i++) {
+    // Loop through those rules
+    var rule = rules[i];
+    if (!rule.selectorText) continue; //Skip @import and other nonstyle rules
+    var selector = rule.selectorText; // The selector
+    var ruleText = rule.style.cssText; // The styles, in text form
+    // If the rule applies to h1 elements, apply it to h2 elements as well
+    // Note this only works if the selector is literally &amp;quot;h1&amp;quot;
+    if (selector == &amp;quot;h1&amp;quot;) {
+        if (ss.insertRule) ss.insertRule(&amp;quot;h2 {&amp;quot; + ruleText + &amp;quot;}&amp;quot;, rules.length);
+        else if (ss.addRule) ss.addRule(&amp;quot;h2&amp;quot;, ruleText, rules.length);
+    }
+}
+// If the rule sets the text-decoration property, delete it.
+if (rule.style.textDecoration) {
+    if (ss.deleteRule) ss.deleteRule(i);
+    else if (ss.removeRule) ss.removeRule(i);
+    i--; // Adjust the loop index since the former rule i+1 is now rule i
+}&lt;/code&gt;&lt;/pre&gt;
 &lt;hr /&gt;</content>
  </entry>
  

@@ -129,41 +129,159 @@
       <span>25 August 2011</span>
     </div>
     <div class="content">
-      <h4 id="white_js">White: js如何选取文档元素？</h4>
+      <h4 id="white_css">White: 什么是css？</h4>
 
-<p><em>Black:</em></p>
+<p><em>Black:</em> 层叠样式表(cascading style sheet,css)是一种指定HTML文档视觉表现的标准。它允许开发人员精确指定文档元素的字体、颜色、外边距、缩进、边框，甚至定位。</p>
+
+<p>css是个复杂的标准，涵盖了页面视觉显示的各个方面，有很多书籍是专门介绍它的，比如《精通CSS》、《CSS权威指南》等。</p>
 <hr />
-<h4 id="white_js_2">White: js如何选取文档元素？</h4>
+<h4 id="white_css_2">White: 什么是脚本化css？</h4>
 
-<p><em>Black:</em></p>
+<p><em>Black:</em> 脚本化css是前端开发人员通过使用js控制文档元素的视觉表现效果，可以创建一系列的有趣的视觉效果（比如动画效果、菜单、显示隐藏内容等）。</p>
 <hr />
-<h4 id="white_js_3">White: js如何选取文档元素？</h4>
+<h4 id="white_css_3">White: 脚本化css都有哪些方式？</h4>
 
-<p><em>Black:</em></p>
+<p><em>Black:</em> 脚本化css主要有以下几种方式：</p>
+
+<ul>
+<li>
+<p>通过js直接修改单个文档元素的style属性</p>
+</li>
+
+<li>
+<p>通过js修改文档元素的class属性</p>
+</li>
+
+<li>
+<p>通过js修改document.styleShets属性</p>
+</li>
+</ul>
 <hr />
-<h4 id="white_js_4">White: js如何选取文档元素？</h4>
+<h4 id="white_sytle">White: 举例说明脚本化元素的sytle属性？</h4>
 
-<p><em>Black:</em></p>
+<p><em>Black:</em> 首先需要通过js选中你需要修改的文档元素，比如</p>
+
+<pre><code>var el = document.getElementByID(&quot;head1&quot;);</code></pre>
+
+<p>然后直接修改el的style属性</p>
+
+<pre><code>el.style.fontSize = &quot;24pt&quot;;
+el.style.fontWeight = &quot;bold&quot;;
+el.style.color = &quot;blue&quot;;</code></pre>
 <hr />
-<h4 id="white_js_5">White: js如何选取文档元素？</h4>
+<h4 id="white_jscss">White: js中css属性的命名约定？</h4>
 
-<p><em>Black:</em></p>
+<p><em>Black:</em> js中style的属性与css属性可能不一致。比如css属性font-size名字中包含连字符，在js中连字符是减号，所以不能书写成如下样子：</p>
+
+<pre><code>e.style.font-size = &quot;24pt&quot;;</code></pre>
+
+<p>而应该使用骆驼峰(camel)命名法去掉连字符：</p>
+
+<pre><code>e.style.fontSize = &quot;24pt&quot;;</code></pre>
+
+<p>注意：style属性的值全部都是字符串，分号要在字符串外面。</p>
 <hr />
-<h4 id="white_js_6">White: js如何选取文档元素？</h4>
+<h4 id="white_style">White: 为什么元素的内联样式style只能用于设置值而不能读取？</h4>
 
 <p><em>Black:</em></p>
+
+<p>首先，它只能读取元素的自身style属性设定的值，对于在样式表或者style标签中中为元素设定的值不能读取出来。</p>
+
+<p>其次，style的值必须包含单位，但对于很多复合属性来说代码不得不包含解析css的能力。</p>
+
+<p>总之，元素的内联样式只在设置样式的时候有用，如果需要查询元素的样式，就需要使用计算样式。</p>
 <hr />
-<h4 id="white_js_7">White: js如何选取文档元素？</h4>
+<h4 id="white_jsstyle">White: js可以给元素的style直接赋值字符串？</h4>
 
-<p><em>Black:</em></p>
+<p><em>Black:</em> 元素的style属性实际上是CSSStyleDeclaration对象，有时候会发现如果直接给style赋值一个字符串，而不是使用其CSSStyleDeclaration对象会更加方便。如下所示：</p>
+
+<pre><code>//两者都可以设置e的样式为字符串s
+e.setAttribute(&quot;style&quot;, s);
+e.style.cssText = s;
+
+//两者都可以查询元素的内联样式
+s = e.getAttribute(&quot;style&quot;);
+s = e.style.cssText;</code></pre>
 <hr />
-<h4 id="white_js_8">White: js如何选取文档元素？</h4>
+<h4 id="white_js">White: js如何查询元素的计算样式？</h4>
 
-<p><em>Black:</em></p>
+<p><em>Black:</em> 元素的style内联样式覆盖了样式表的所有内容，它是设置css属性值来改变视觉表现的最好的地方。但是，如上所述，它在查询样式时用处不大，查询样式需要使用计算样式。</p>
+
+<p>元素的计算样式是一组属性值，它由浏览器通过把样式表、style标签、内联样式等效果通过响应规则层叠计算后得到的，它就是一组在显示元素时实际使用的属性值。</p>
+
+<p>类似于内联样式，计算样式也是使用一个CSSStyleDeclaration对象表示的，区别是，计算样式是只读的。</p>
+
+<p>用window对象的getComputedStyle()方法获得一个元素的计算样式。</p>
+
+<pre><code>var title = document.getElementByID(&quot;sectiontitle&quot;);
+var titlesytles = window.getComputedStyle(title,null);</code></pre>
+
+<p>注意：方法第一个参数是要计算样式的元素，第二个也是必须的不过通常是null，它也可以是命名css伪对象的字符串，如”:before”、”:after”等。</p>
 <hr />
-<h4 id="white_js_9">White: js如何选取文档元素？</h4>
+<h4 id="white_jsclasscss">White: js如何通过class属性脚本化css？</h4>
 
-<p><em>Black:</em></p>
+<p><em>Black:</em> HTML元素可以有多个css类名，class属性保存了一个用空格分割的类名的列表。因为class是js的保留字，所以在js中需要使用className来代表html元素的class属性。class属性是替代式的更改，即使有多个css类名，也不能单独操作，只能整体替换。</p>
+
+<p>为了解决单独操作的问题，HTML5为每个元素定义了classList属性。该属性值是DOMTokenList对象：一个只读的类数组对象，它包含元素的单独类名。其add()和remove()方法可以单独增加或者去除一个css类名。还提供toggle()和contains()等方法。</p>
+
+<p>DOMTokenList对象是“实时地”代表了元素类名的集合。其改变通过className属性也可以实时看到。</p>
+<hr />
+<h4 id="white_js_2">White: js如何脚本化样式表？</h4>
+
+<p><em>Black:</em> 前面的方式都是js脚本化某个元素的样式，直接脚本化样式表（标签或者文件）使之适用于整个页面也是有可能的，虽然不太会这么做。</p>
+
+<p>在脚本化样式表时，将会碰到两类需要使用的对象。</p>
+
+<p>第一类是元素对象，由style标签和link标签表示，两种元素包含或者引用了样式表。</p>
+
+<p>第二类是CSSStyleSheet对象，它表示样式表本身，表示与文档关联在一起的样式表。如果我们定义了style或者link的title属性，该title作为对应CSSStyleSheet对象的title属性就可用。</p>
+
+<p>实例：禁用样式表</p>
+
+<pre><code>function disabledStylesheet(ss) {
+    if (typeof ss == &quot;number&quot;) {
+        document.styleSheets[ss].disabled = true;
+    }
+    else {
+        var sheets = document.querySelectorAll(ss);
+        for(var i =0; i &lt;sheets.length; i++)
+        {
+            sheets[i].disabled = true;
+        }
+    }
+}</code></pre>
+<hr />
+<h4 id="white_js_3">White: js如何查询、插入、删除样式表规则？</h4>
+
+<p><em>Black:</em> document.styleSheets[]数组的元素是CSSStyleSheet对象，CSSStyleSheet对象有一个cssRules[]数组（IE使用属性rules替代cssRules），其元素是CSSRule对象，它包含样式表的所有规则。</p>
+
+<p>CSSRule对象有两个属性可以很便捷使用。selectText是规则的css选择器，它引用一个描述与选择器相关的样式的可写CSSStyleDeclaration对象（用来表示内量和计算样式的那个对象，其cssText属性可以获得规则的文本表示），可以用它来查询规则的样式值或更新样式。</p>
+
+<p>insertRule()、deleteRule()方法（IE中对应addRule()、removeRule()替代，但addRule()希望选择器文本和样式文本作为两个参数）可以向样式表中添加和删除规则。</p>
+
+<p>示例：遍历样式表规则</p>
+
+<pre><code>var ss = document.styleSheets[0]; // Get the first stylesheet
+var rules = ss.cssRules?ss.cssRules:ss.rules; // Get the stylesheet rules
+for(var i = 0; i &lt; rules.length; i++) {
+    // Loop through those rules
+    var rule = rules[i];
+    if (!rule.selectorText) continue; //Skip @import and other nonstyle rules
+    var selector = rule.selectorText; // The selector
+    var ruleText = rule.style.cssText; // The styles, in text form
+    // If the rule applies to h1 elements, apply it to h2 elements as well
+    // Note this only works if the selector is literally &quot;h1&quot;
+    if (selector == &quot;h1&quot;) {
+        if (ss.insertRule) ss.insertRule(&quot;h2 {&quot; + ruleText + &quot;}&quot;, rules.length);
+        else if (ss.addRule) ss.addRule(&quot;h2&quot;, ruleText, rules.length);
+    }
+}
+// If the rule sets the text-decoration property, delete it.
+if (rule.style.textDecoration) {
+    if (ss.deleteRule) ss.deleteRule(i);
+    else if (ss.removeRule) ss.removeRule(i);
+    i--; // Adjust the loop index since the former rule i+1 is now rule i
+}</code></pre>
 <hr />
     </div>
 
@@ -178,9 +296,9 @@
 
   
      
-    	<li><a href="/tags.html#javascript-ref">javascript <span>25</span></a></li>
+    	<li><a href="/tags.html#javascript-ref">javascript <span>27</span></a></li>
      
-    	<li><a href="/tags.html#js权威指南-ref">js权威指南 <span>25</span></a></li>
+    	<li><a href="/tags.html#js权威指南-ref">js权威指南 <span>27</span></a></li>
     
   
 
@@ -197,7 +315,7 @@
       
         <li><a href="/archive.html">Archive</a></li>
       
-        <li class="next"><a href="/2012/04/10/execution-in-kingdom-of-nouns.html" title="(翻译)java名词王国中的方法执行">Next &rarr;</a></li>
+        <li class="next"><a href="/2011/08/30/jsdg-chap17-event.html" title="BW客户端js之事件(十二)">Next &rarr;</a></li>
       
       </ul>
     </div>

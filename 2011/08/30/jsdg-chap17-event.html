@@ -1,0 +1,414 @@
+
+<!DOCTYPE html>
+<!--[if IE 7 ]>    <html lang="zh-CN" class="ie7"> <![endif]-->
+<!--[if IE 8 ]>    <html lang="zh-CN" class="ie8"> <![endif]-->
+<!--[if (gte IE 9)|!(IE)]><!--> <html lang="zh-CN"> <!--<![endif]-->
+  <head>
+	  <meta charset="utf-8">
+	  <!--[if IE 8 ]><meta http-equiv="X-UA-Compatible" content="IE=7"><![endif]-->
+	  <title>BW客户端js之事件(十二)</title>
+	<meta name="keywords" content="张华宁,javascript,js,event">
+    <meta name="description" content="javascript client event">
+    <meta name="author" content="张华宁">
+
+    <!-- Enable responsive viewport -->
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+	<!-- Favicon -->
+	<link rel="shortcut icon" href="/favicon.ico">
+
+    <!-- atom & rss feed -->
+    <link href="/atom.xml" type="application/atom+xml" rel="alternate" title="Sitewide ATOM Feed">
+    <link href="/rss.xml" type="application/rss+xml" rel="alternate" title="Sitewide RSS Feed">
+
+	<!-- Styles 
+	<link rel="stylesheet" href="/assets/themes/twitter/css/style.min.css">
+	<link rel="stylesheet" href="/assets/themes/twitter/css/font-awesome.min.css">
+	-->
+	<!-- le Styles -->
+	<link rel="stylesheet" href="/assets/themes/twitter/bootstrap/css/bootstrap.2.2.2.min.css">
+	<link rel="stylesheet" href="/assets/themes/twitter/css/style.css?body=1">
+
+	<!-- Scripts -->
+	<script type="text/javascript" src="/assets/themes/twitter/js/jquery-1.10.1.min.js"></script>
+
+    <!-- Le HTML5 shim, for IE6-8 support of HTML elements -->
+    <!--[if lt IE 9]>
+	<script src="/assets/themes/twitter/js/html5shiv.js"></script>
+    <![endif]-->
+
+  </head>
+
+  <body>
+    <div class="navbar">
+      <div class="navbar-inner">
+        <div class="container-narrow">
+          <a class="brand" href="/">张华宁的笔记本</a>
+          <ul class="nav">
+           <!-- 
+            
+            
+
+
+  
+    
+      
+      	
+      	<li><a href="/tags.html">标签</a></li>
+      	
+      
+    
+  
+    
+      
+    
+  
+    
+      
+    
+  
+    
+      
+    
+  
+    
+      
+    
+  
+    
+      
+    
+  
+    
+      
+    
+  
+    
+      
+      	
+      	<li><a href="/about.html">关于我</a></li>
+      	
+      
+    
+  
+    
+      
+    
+  
+    
+      
+      	
+      	<li><a href="/archive.html">归档</a></li>
+      	
+      
+    
+  
+
+
+ -->
+            <li><a href="/index.html">首页</a></li>
+            <li><a href="/archive.html">归档</a></li>
+            <li><a href="/tags.html">标签</a></li>
+            <li><a href="/about.html">关于我</a></li>
+          </ul>
+        </div>
+      </div>
+    </div>
+
+    <div class="container-narrow">
+
+      <div class="content">
+        
+<div class="page-header">
+  <h1>BW客户端js之事件(十二) </h1>
+</div>
+
+<div class="row-fluid post-full">
+  <div class="span12">
+    <div class="date">
+      <span>30 August 2011</span>
+    </div>
+    <div class="content">
+      <h4 id="white_js">White: js中事件相关的重要定义？</h4>
+
+<p><em>Black:</em></p>
+
+<ul>
+<li>
+<p>事件类型(event type)：一个用来说明发生了什么类型事件的字符串，比如“click”、“load”、“mousemove”等。</p>
+</li>
+
+<li>
+<p>事件目标(event target)：发生事件的或与之县官的对象。描述事件时通常必须指出类型和目标，例如：window上的load事件、button元素的click事件、XMLHttpRequest的readystatechange事件。</p>
+</li>
+
+<li>
+<p>事件处理程序(event handler)或事件监听程序(event listener)：是处理或者响应事件的函数。应用程序通过指明事件类型和事件目标，在web浏览器中注册它们的事件处理函数。当特定目标上的发生注册的事件时，浏览器会调用相应的事件处理程序。</p>
+</li>
+
+<li>
+<p>事件对象(event object)：是与特定事件相关且包含有关事件详细信息的对象。事件对象作为参数传递给事件处理程序函数(IE8之前版本通过全局变量event得到参数)。所有事件对象都有用来指明事件类型的type属性和事件目标的target属性(IE8之前版本通过srcElement代替target属性)。每个事件类型都会为其相关的事件对象定义一组属性来表示特定信息。</p>
+</li>
+
+<li>
+<p>事件传播(event propagation)：是浏览器决定哪个对象触发其事件处理程序的过程。对于某些事件（例如window的load事件）必须是不能传播的。当文档元素发生某个特定类型事件时，它们会沿着文档树向上传播（也叫“冒泡”）。事件传播的另一种方式叫“事件捕获(event capturing)”，是在容器元素上注册特定的事件处理程序能够在事件传播到其真实目标钱“捕获”（或拦截）它。（IE8之前版本不支持捕获），常见的例子是元素“拖动”。</p>
+</li>
+
+<li>
+<p>默认操作：一些事件有与之相关的默认操作（例如超链接上click会打开一个页面）。事件处理程序可以通过返回一个特定值(ie的return false)、调用事件对象的某个方法（e.preventDefault()）或设置事件对象的某个属性(e.returnValue=false)来阻止默认操作的发生。</p>
+</li>
+</ul>
+<hr />
+<h4 id="white_js_2">White: 浏览器支持的js事件主要有哪些来源？</h4>
+
+<p><em>Black:</em> 主要有四个：</p>
+
+<ul>
+<li>
+<p>传统事件：表单事件、window事件（load、unload、onerror等）、鼠标事件（mousemove、click、dbclick、contextmenu等）、键盘事件（keydown、keypress等）。</p>
+</li>
+
+<li>
+<p>3级DOM事件规范：DOMContentLoaded等</p>
+</li>
+
+<li>
+<p>HTML5规范及其衍生的大量API定义的新事件。</p>
+</li>
+
+<li>
+<p>基于触摸和支持js的新设备（移动设备等）的出现。</p>
+</li>
+</ul>
+<hr />
+<h4 id="white_js_3">White: js事件可以大体分为哪些类别？</h4>
+
+<p><em>Black:</em></p>
+
+<ul>
+<li>
+<p>依赖语设备的输入事件（键盘、鼠标）。</p>
+</li>
+
+<li>
+<p>独立与设备的输入事件(超链接、click等)。</p>
+</li>
+
+<li>
+<p>用户界面事件（提交事件、输入框focus等）</p>
+</li>
+
+<li>
+<p>状态变化事件（window的load、XHR的readystatechange等）</p>
+</li>
+
+<li>
+<p>特定API事件（HTML5的API）</p>
+</li>
+
+<li>
+<p>计时器和错误处理程序(计时器、错误处理程序等)</p>
+</li>
+</ul>
+<hr />
+<h4 id="white_">White: 概念类似的冒泡和非冒泡事件有哪些？</h4>
+
+<p><em>Black:</em></p>
+
+<p>冒泡事件：focusin、fucusout；mouseover、mouseout；</p>
+
+<p>非冒泡事件：focus、blur；mouseenter、mouseleave;</p>
+<hr />
+<h4 id="white__2">White: 如何注册事件处理程序？</h4>
+
+<p><em>Black:</em></p>
+
+<ul>
+<li>
+<p>设置js对象的属性为函数。</p>
+
+<p>window.onload = function() { var elt = document.getElementById(“shipping_address”); elt.onsubmit = function() { return validate(this);} }</p>
+</li>
+
+<li>
+<p>设置HTML标签属性为事件处理程序</p>
+
+<p><button onclick='alert(&apos;thank you&apos;);'>点击这里</button></p>
+
+<p><code>&lt;button onclick=&quot;alert(&#39;thank you&#39;);&quot;&gt;点击这里&lt;/button&gt;</code></p>
+</li>
+
+<li>
+<p>addEventListener()</p>
+
+<p><button id='mybutton'>Click me</button></p>
+<script>
+  var b = document.getElementById("mybutton");
+  b.onclick = function() { alert("Thanks for clicking me!"); };
+  b.addEventListener("click", function() { alert("Thanks again!"); }, false);
+  </script>
+<p>var b = document.getElementById(“mybutton”);</p>
+
+<p>b.onclick = function() { alert(“Thanks for clicking me!”); };</p>
+
+<p>b.addEventListener(“click”, function() { alert(“Thanks again!”); }, false);</p>
+</li>
+
+<li>
+<p>attachevent()</p>
+
+<p><button id='mybtn'>Click me</button></p>
+<script>
+  var b = document.getElementById("mybtn");
+  var handler = function() { alert("Thanks!"); };
+  if (b.addEventListener)
+  b.addEventListener("click", handler, false);
+  else if (b.attachEvent)
+  b.attachEvent("onclick", handler);
+  </script>
+<p>var b = document.getElementById(“mybtn”);</p>
+
+<p>var handler = function() { alert(“Thanks!”); };</p>
+
+<p>if (b.addEventListener) {</p>
+
+<p>b.addEventListener(“click”, handler, false);</p>
+
+<p>} else if (b.attachEvent) {</p>
+
+<p>b.attachEvent(“onclick”, handler);</p>
+
+<p>}</p>
+</li>
+</ul>
+<hr />
+<h4 id="white__3">White: 事件的本质是什么？</h4>
+
+<p><em>Black:</em> 通过jquery、spine等js类库可以看到事件的本质。事件首先要有注册、注销和触发等几个动作，一般使用bind、unbind和trigger来作为方法名。</p>
+
+<ul>
+<li>注册bind：就是给当前对象的回调列表增加响应的事件类型和函数处理程序。</li>
+</ul>
+
+<p>注销unbind：就是从当前对象的回调列表中指定的事件类型中去除指定的函数处理程序。</p>
+
+<p>触发trigger：就是指定事件类型的事件发生时，调用注册的函数处理程序，并传给其相应的参数。</p>
+
+<p>事件的机制本质上就是回调函数。</p>
+<hr />
+<h4 id="white_jsthis">White: js的事件处理程序中的this指向什么？</h4>
+
+<p><em>Black:</em> 用一个按钮btnHello上的click事件进行举例说明： 事件处理程序是一般可以写作一个独立的函数例如hello(){}，事件注册程序是在一个列表中click事件的回调函数中增加hello()，这样单击按钮时就可以调用hello()函数了。</p>
+
+<p>如果hello函数体中有了this，比如<code>alert(this);</code>，那么this指向什么呢？</p>
+
+<p>根据经验应该是btnHello元素的对象。</p>
+
+<p>但是hello()是作为回调函数调用的，它不是btnHello的一个方法，回调的过程内部发生了什么呢？</p>
+
+<p>很简单，回调内部使用了Function#call或apply方法。例如hello.call(this, arguments)。</p>
+
+<p>这样的话，事件处理程序中的this就指向了注册事件的对象了。</p>
+<hr />
+<h4 id="white_js_4">White: js中一个事件类型注册了多个事件处理程序，其触发顺序如何？</h4>
+
+<p><em>Black:</em> 浏览器按照如下规则调用所有的事件处理程序：</p>
+
+<ul>
+<li>
+<p>通过设置对象属性或HTML属性的处理程序一直优先调用</p>
+</li>
+
+<li>
+<p>使用addEventListener()注册的处理程序按照它们的注册顺序</p>
+</li>
+
+<li>
+<p>使用attchEvent()注册的程序可能按照任意顺序调用，代码不应该依赖于调用顺序。</p>
+</li>
+</ul>
+<hr />
+<h4 id="white_js_5">White: js事件处理程序的返回值有何意义？</h4>
+
+<p><em>Black:</em> 通过设置对象属性或HTML属性注册的事件处理程序，返回值有时有非常重要的意义。通常情况下，返回false就是告诉浏览器不要执行这个事件相关的默认操作。</p>
+
+<p>通过addEventlisner()或attachEvent()注册事件处理程序则不能这样，需要通过调用preventDefault()方法或设置对象的returnValue属性达到相同的目的。</p>
+<hr />
+    </div>
+
+    
+
+  
+    <ul class="tag_box inline">
+      <li><i class="icon-tags"></i></li>
+      
+      
+
+
+  
+     
+    	<li><a href="/tags.html#javascript-ref">javascript <span>27</span></a></li>
+     
+    	<li><a href="/tags.html#js权威指南-ref">js权威指南 <span>27</span></a></li>
+    
+  
+
+
+
+    </ul>
+    
+
+    <hr>
+    <div class="pagination">
+      <ul>
+      
+        <li class="prev"><a href="/2011/08/25/jsdg-chap16-jscss.html" title="BW客户端js之脚本化css(十一)">&larr; Previous</a></li>
+      
+        <li><a href="/archive.html">Archive</a></li>
+      
+        <li class="next"><a href="/2011/09/05/jsdg-chap18-jshttp.html" title="BW客户端js之脚本化http(十三)">Next &rarr;</a></li>
+      
+      </ul>
+    </div>
+    <hr>
+    
+
+
+  <div id="disqus_thread"></div>
+<script type="text/javascript">
+    var disqus_developer = 1;
+    var disqus_shortname = 'izhanghuaning'; // required: replace example with your forum shortname
+    
+    /* * * DON'T EDIT BELOW THIS LINE * * */
+    (function() {
+        var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+        dsq.src = 'http://' + disqus_shortname + '.disqus.com/embed.js';
+        (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    })();
+</script>
+<noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+<a href="http://disqus.com" class="dsq-brlink">blog comments powered by <span class="logo-disqus">Disqus</span></a>
+
+
+
+
+  </div>
+</div>
+
+
+      </div>
+	  <hr>
+      <footer>
+        <p>&copy;2011-2014 张华宁
+          基于 <a href="http://jekyllbootstrap.com" target="_blank" title="The Definitive Jekyll Blogging Framework">Jekyll Bootstrap</a>
+          和 <a href="http://twitter.github.com/bootstrap/" target="_blank">Twitter Bootstrap</a> 搭建,
+		  <em><strong>本博客的很多想法来自于其他优秀博客作者，时隔久远不能给出每个链接了，如果原作者觉得被冒犯，请留言或联系我（izhanghuaning$163.com），我会及时进行处理，衷心感谢你们，本博客内容和源代码遵循<a href="http://opensource.org/licenses/mit-license.php" target="_blank">MIT开源协议</a>,转载请注明出处，谢谢。</strong></em>
+        </p>
+      </footer>
+
+    </div>
+
+    
+  </body>
+</html>
+
