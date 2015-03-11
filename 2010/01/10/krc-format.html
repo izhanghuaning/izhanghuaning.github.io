@@ -6,9 +6,9 @@
   <head>
 	  <meta charset="utf-8">
 	  <!--[if IE 8 ]><meta http-equiv="X-UA-Compatible" content="IE=7"><![endif]-->
-	  <title>BW客户端js之脚本化http(十三)</title>
-	<meta name="keywords" content="张华宁,javascript,js,xhr,http">
-    <meta name="description" content="javascript client xhr http">
+	  <title>c语言print格式化</title>
+	<meta name="keywords" content="c,k&r">
+    <meta name="description" content="">
     <meta name="author" content="张华宁">
 
     <!-- Enable responsive viewport -->
@@ -120,50 +120,120 @@
       <div class="content">
         
 <div class="page-header">
-  <h1>BW客户端js之脚本化http(十三) </h1>
+  <h1>c语言print格式化 </h1>
 </div>
 
 <div class="row-fluid post-full">
   <div class="span12">
     <div class="date">
-      <span>05 September 2011</span>
+      <span>10 January 2010</span>
     </div>
     <div class="content">
-      <h4 id="white_js">White: js如何选取文档元素？</h4>
+      <h4 id="whiteprintf">White：什么是printf函数？</h4>
 
-<p><em>Black:</em></p>
+<p><em>Black:</em> printf函数是c语言标准库提供的输出函数,可以把其参数指定的内容输出到控制台.其参数可以格式化输出内容.</p>
+
+<p>函数原型为:</p>
+
+<pre><code>    int printf(const char *format,[argument]);</code></pre>
+
+<p>format参数输出的格式,定义格式为:</p>
+
+<pre><code>    %[flags][width][.perc][F|N|h|I]type</code></pre>
 <hr />
-<h4 id="white_js_2">White: js如何选取文档元素？</h4>
+<h4 id="whiteformat">White：format的一般用法是哪些？</h4>
 
 <p><em>Black:</em></p>
+
+<ul>
+<li>%d:十进制整数</li>
+
+<li>%u:无符号十进制整数</li>
+
+<li>%o:无符号八进制整数</li>
+
+<li>%x|%X:无符号十六进制整数</li>
+
+<li>%c:字符</li>
+
+<li>%s:字符串</li>
+
+<li>%p:十六进制形式表示的指针地址</li>
+
+<li>%%:百分号本身</li>
+
+<li>%f:小数</li>
+</ul>
 <hr />
-<h4 id="white_js_3">White: js如何选取文档元素？</h4>
+<h4 id="whitewidth">White：如何控制输出参数的宽度width？</h4>
 
 <p><em>Black:</em></p>
+
+<ul>
+<li>%nd:输出宽度n,右对齐,左边填充0和空格</li>
+
+<li>%-nd:输出宽度n,左对齐,右边填充空格</li>
+</ul>
 <hr />
-<h4 id="white_js_4">White: js如何选取文档元素？</h4>
+<h4 id="white">White：如何显示正负号？</h4>
 
 <p><em>Black:</em></p>
+
+<ul>
+<li>%+d:显示正负号</li>
+
+<li>% d:只显示负数的符号</li>
+</ul>
 <hr />
-<h4 id="white_js_5">White: js如何选取文档元素？</h4>
+<h4 id="white_2">White：如何控制浮点数小数位数？</h4>
 
 <p><em>Black:</em></p>
+
+<ul>
+<li>%.nf:显示n位小数</li>
+
+<li>%e|%E:科学记数法</li>
+</ul>
 <hr />
-<h4 id="white_js_6">White: js如何选取文档元素？</h4>
+<h4 id="white_3">White：如何表示长整数或者双精度浮点数？</h4>
 
 <p><em>Black:</em></p>
+
+<ul>
+<li>%ld:长整数</li>
+
+<li>%lf:双精度浮点数</li>
+
+<li>%hd:短整数</li>
+
+<li>%hf:单精度浮点数</li>
+</ul>
 <hr />
-<h4 id="white_js_7">White: js如何选取文档元素？</h4>
+<h4 id="white_4">White：有哪些常用的转义字符？</h4>
 
 <p><em>Black:</em></p>
+
+<ul>
+<li>\ddd:八进制显示ASCII任意字符</li>
+
+<li>\xhh:十六进制显示ASCII任意字符</li>
+
+<li>\n:换行</li>
+
+<li>\:斜杠\本身</li>
+</ul>
 <hr />
-<h4 id="white_js_8">White: js如何选取文档元素？</h4>
+<h4 id="white_5">White：特殊用法？</h4>
 
 <p><em>Black:</em></p>
-<hr />
-<h4 id="white_js_9">White: js如何选取文档元素？</h4>
 
-<p><em>Black:</em></p>
+<pre><code>    %n:后面参数是一个指针,n存放已写字符的个数.</code></pre>
+
+<p>例如:</p>
+
+<pre><code>    int slen;
+    printf(&quot;hello world%n&quot;);
+    执行后slen被赋值为11.</code></pre>
 <hr />
     </div>
 
@@ -178,9 +248,9 @@
 
   
      
-    	<li><a href="/tags.html#javascript-ref">javascript <span>27</span></a></li>
+    	<li><a href="/tags.html#c-ref">c <span>7</span></a></li>
      
-    	<li><a href="/tags.html#js权威指南-ref">js权威指南 <span>27</span></a></li>
+    	<li><a href="/tags.html#k&r-ref">k&r <span>3</span></a></li>
     
   
 
@@ -193,11 +263,11 @@
     <div class="pagination">
       <ul>
       
-        <li class="prev"><a href="/2011/08/30/jsdg-chap17-event.html" title="BW客户端js之事件(十二)">&larr; Previous</a></li>
+        <li class="prev"><a href="/2010/01/05/krc-gcc.html" title="c语言gcc编译环境简介">&larr; Previous</a></li>
       
         <li><a href="/archive.html">Archive</a></li>
       
-        <li class="next"><a href="/2011/09/10/css-lineheight.html" title="css lineheight">Next &rarr;</a></li>
+        <li class="next"><a href="/2010/01/15/krc-gdb.html" title="c语言调试工具gdb简介">Next &rarr;</a></li>
       
       </ul>
     </div>

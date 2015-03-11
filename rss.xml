@@ -5,8 +5,8 @@
         <description>张华宁的笔记本 - 张华宁</description>
         <link>http://izhanghuaning.github.io</link>
         <link>http://izhanghuaning.github.io</link>
-        <lastBuildDate>2014-09-22T16:23:18+08:00</lastBuildDate>
-        <pubDate>2014-09-22T16:23:18+08:00</pubDate>
+        <lastBuildDate>2014-12-10T13:57:53+08:00</lastBuildDate>
+        <pubDate>2014-12-10T13:57:53+08:00</pubDate>
         <ttl>1800</ttl>
 
 
@@ -932,6 +932,246 @@ For the lack of a war,
                 <link>http://izhanghuaning.github.io/2012/04/10/execution-in-kingdom-of-nouns.html</link>
                 <guid>http://izhanghuaning.github.io/2012/04/10/execution-in-kingdom-of-nouns</guid>
                 <pubDate>2012-04-10T00:00:00+08:00</pubDate>
+        </item>
+
+        <item>
+                <title>css replaced element</title>
+                <description></description>
+                <link>http://izhanghuaning.github.io/2012/02/05/css-replaced-element.html</link>
+                <guid>http://izhanghuaning.github.io/2012/02/05/css-replaced-element</guid>
+                <pubDate>2012-02-05T00:00:00+08:00</pubDate>
+        </item>
+
+        <item>
+                <title>html introduction</title>
+                <description></description>
+                <link>http://izhanghuaning.github.io/2012/01/30/html-introduction.html</link>
+                <guid>http://izhanghuaning.github.io/2012/01/30/html-introduction</guid>
+                <pubDate>2012-01-30T00:00:00+08:00</pubDate>
+        </item>
+
+        <item>
+                <title>html modular</title>
+                <description></description>
+                <link>http://izhanghuaning.github.io/2012/01/25/html-modular.html</link>
+                <guid>http://izhanghuaning.github.io/2012/01/25/html-modular</guid>
+                <pubDate>2012-01-25T00:00:00+08:00</pubDate>
+        </item>
+
+        <item>
+                <title>css font</title>
+                <description></description>
+                <link>http://izhanghuaning.github.io/2012/01/20/css-font.html</link>
+                <guid>http://izhanghuaning.github.io/2012/01/20/css-font</guid>
+                <pubDate>2012-01-20T00:00:00+08:00</pubDate>
+        </item>
+
+        <item>
+                <title>css table</title>
+                <description></description>
+                <link>http://izhanghuaning.github.io/2012/01/15/css-table.html</link>
+                <guid>http://izhanghuaning.github.io/2012/01/15/css-table</guid>
+                <pubDate>2012-01-15T00:00:00+08:00</pubDate>
+        </item>
+
+        <item>
+                <title>css text</title>
+                <description></description>
+                <link>http://izhanghuaning.github.io/2012/01/10/css-text.html</link>
+                <guid>http://izhanghuaning.github.io/2012/01/10/css-text</guid>
+                <pubDate>2012-01-10T00:00:00+08:00</pubDate>
+        </item>
+
+        <item>
+                <title>css cascade</title>
+                <description></description>
+                <link>http://izhanghuaning.github.io/2012/01/05/css-cascade.html</link>
+                <guid>http://izhanghuaning.github.io/2012/01/05/css-cascade</guid>
+                <pubDate>2012-01-05T00:00:00+08:00</pubDate>
+        </item>
+
+        <item>
+                <title>css list</title>
+                <description></description>
+                <link>http://izhanghuaning.github.io/2011/12/30/css-list.html</link>
+                <guid>http://izhanghuaning.github.io/2011/12/30/css-list</guid>
+                <pubDate>2011-12-30T00:00:00+08:00</pubDate>
+        </item>
+
+        <item>
+                <title>css boxer</title>
+                <description></description>
+                <link>http://izhanghuaning.github.io/2011/12/25/css-boxer.html</link>
+                <guid>http://izhanghuaning.github.io/2011/12/25/css-boxer</guid>
+                <pubDate>2011-12-25T00:00:00+08:00</pubDate>
+        </item>
+
+        <item>
+                <title>css background</title>
+                <description></description>
+                <link>http://izhanghuaning.github.io/2011/12/20/css-background.html</link>
+                <guid>http://izhanghuaning.github.io/2011/12/20/css-background</guid>
+                <pubDate>2011-12-20T00:00:00+08:00</pubDate>
+        </item>
+
+        <item>
+                <title>css position</title>
+                <description></description>
+                <link>http://izhanghuaning.github.io/2011/12/15/css-position.html</link>
+                <guid>http://izhanghuaning.github.io/2011/12/15/css-position</guid>
+                <pubDate>2011-12-15T00:00:00+08:00</pubDate>
+        </item>
+
+        <item>
+                <title>css inline</title>
+                <description></description>
+                <link>http://izhanghuaning.github.io/2011/12/10/css-inline.html</link>
+                <guid>http://izhanghuaning.github.io/2011/12/10/css-inline</guid>
+                <pubDate>2011-12-10T00:00:00+08:00</pubDate>
+        </item>
+
+        <item>
+                <title>css block</title>
+                <description></description>
+                <link>http://izhanghuaning.github.io/2011/12/05/css-block.html</link>
+                <guid>http://izhanghuaning.github.io/2011/12/05/css-block</guid>
+                <pubDate>2011-12-05T00:00:00+08:00</pubDate>
+        </item>
+
+        <item>
+                <title>css float</title>
+                <description></description>
+                <link>http://izhanghuaning.github.io/2011/11/30/css-float.html</link>
+                <guid>http://izhanghuaning.github.io/2011/11/30/css-float</guid>
+                <pubDate>2011-11-30T00:00:00+08:00</pubDate>
+        </item>
+
+        <item>
+                <title>html5 fileapi</title>
+                <description></description>
+                <link>http://izhanghuaning.github.io/2011/11/25/html5-fileapi.html</link>
+                <guid>http://izhanghuaning.github.io/2011/11/25/html5-fileapi</guid>
+                <pubDate>2011-11-25T00:00:00+08:00</pubDate>
+        </item>
+
+        <item>
+                <title>html5 web socket</title>
+                <description></description>
+                <link>http://izhanghuaning.github.io/2011/11/20/html5-web-socket.html</link>
+                <guid>http://izhanghuaning.github.io/2011/11/20/html5-web-socket</guid>
+                <pubDate>2011-11-20T00:00:00+08:00</pubDate>
+        </item>
+
+        <item>
+                <title>html5 web worker</title>
+                <description></description>
+                <link>http://izhanghuaning.github.io/2011/11/15/html5-web-worker.html</link>
+                <guid>http://izhanghuaning.github.io/2011/11/15/html5-web-worker</guid>
+                <pubDate>2011-11-15T00:00:00+08:00</pubDate>
+        </item>
+
+        <item>
+                <title>html5 cross site</title>
+                <description></description>
+                <link>http://izhanghuaning.github.io/2011/11/10/html5-cross-site.html</link>
+                <guid>http://izhanghuaning.github.io/2011/11/10/html5-cross-site</guid>
+                <pubDate>2011-11-10T00:00:00+08:00</pubDate>
+        </item>
+
+        <item>
+                <title>html5 history</title>
+                <description></description>
+                <link>http://izhanghuaning.github.io/2011/11/05/html5-history.html</link>
+                <guid>http://izhanghuaning.github.io/2011/11/05/html5-history</guid>
+                <pubDate>2011-11-05T00:00:00+08:00</pubDate>
+        </item>
+
+        <item>
+                <title>html5 video</title>
+                <description></description>
+                <link>http://izhanghuaning.github.io/2011/10/30/html5-video.html</link>
+                <guid>http://izhanghuaning.github.io/2011/10/30/html5-video</guid>
+                <pubDate>2011-10-30T00:00:00+08:00</pubDate>
+        </item>
+
+        <item>
+                <title>html5 geo</title>
+                <description></description>
+                <link>http://izhanghuaning.github.io/2011/10/25/html5-geo.html</link>
+                <guid>http://izhanghuaning.github.io/2011/10/25/html5-geo</guid>
+                <pubDate>2011-10-25T00:00:00+08:00</pubDate>
+        </item>
+
+        <item>
+                <title>html5 canvas</title>
+                <description></description>
+                <link>http://izhanghuaning.github.io/2011/10/20/html5-canvas.html</link>
+                <guid>http://izhanghuaning.github.io/2011/10/20/html5-canvas</guid>
+                <pubDate>2011-10-20T00:00:00+08:00</pubDate>
+        </item>
+
+        <item>
+                <title>html5 localstorage</title>
+                <description></description>
+                <link>http://izhanghuaning.github.io/2011/10/15/html5-localstorage.html</link>
+                <guid>http://izhanghuaning.github.io/2011/10/15/html5-localstorage</guid>
+                <pubDate>2011-10-15T00:00:00+08:00</pubDate>
+        </item>
+
+        <item>
+                <title>jquery plugin</title>
+                <description></description>
+                <link>http://izhanghuaning.github.io/2011/10/10/jquery-plugin.html</link>
+                <guid>http://izhanghuaning.github.io/2011/10/10/jquery-plugin</guid>
+                <pubDate>2011-10-10T00:00:00+08:00</pubDate>
+        </item>
+
+        <item>
+                <title>jquery ajax</title>
+                <description></description>
+                <link>http://izhanghuaning.github.io/2011/10/05/jquery-ajax.html</link>
+                <guid>http://izhanghuaning.github.io/2011/10/05/jquery-ajax</guid>
+                <pubDate>2011-10-05T00:00:00+08:00</pubDate>
+        </item>
+
+        <item>
+                <title>jquery selector</title>
+                <description></description>
+                <link>http://izhanghuaning.github.io/2011/09/30/jquery-selector.html</link>
+                <guid>http://izhanghuaning.github.io/2011/09/30/jquery-selector</guid>
+                <pubDate>2011-09-30T00:00:00+08:00</pubDate>
+        </item>
+
+        <item>
+                <title>jquery event</title>
+                <description></description>
+                <link>http://izhanghuaning.github.io/2011/09/25/jquery-event.html</link>
+                <guid>http://izhanghuaning.github.io/2011/09/25/jquery-event</guid>
+                <pubDate>2011-09-25T00:00:00+08:00</pubDate>
+        </item>
+
+        <item>
+                <title>jquery dom</title>
+                <description></description>
+                <link>http://izhanghuaning.github.io/2011/09/20/jquery-dom.html</link>
+                <guid>http://izhanghuaning.github.io/2011/09/20/jquery-dom</guid>
+                <pubDate>2011-09-20T00:00:00+08:00</pubDate>
+        </item>
+
+        <item>
+                <title>jquery introduction</title>
+                <description></description>
+                <link>http://izhanghuaning.github.io/2011/09/15/jquery-introduction.html</link>
+                <guid>http://izhanghuaning.github.io/2011/09/15/jquery-introduction</guid>
+                <pubDate>2011-09-15T00:00:00+08:00</pubDate>
+        </item>
+
+        <item>
+                <title>css lineheight</title>
+                <description></description>
+                <link>http://izhanghuaning.github.io/2011/09/10/css-lineheight.html</link>
+                <guid>http://izhanghuaning.github.io/2011/09/10/css-lineheight</guid>
+                <pubDate>2011-09-10T00:00:00+08:00</pubDate>
         </item>
 
         <item>
@@ -3222,6 +3462,668 @@ function textContent(e) {
                 <link>http://izhanghuaning.github.io/2011/04/25/jsdg-introduction.html</link>
                 <guid>http://izhanghuaning.github.io/2011/04/25/jsdg-introduction</guid>
                 <pubDate>2011-04-25T00:00:00+08:00</pubDate>
+        </item>
+
+        <item>
+                <title>c语言编译makefile进阶</title>
+                <description>&lt;p&gt;本篇是根据陈皓先生的&lt;a href=&quot;http://blog.csdn.net/haoel/article/details/2886&quot;&gt;跟我一起写 Makefile&lt;/a&gt;简化而来,如想了解更多请参见陈皓先生博客http://blog.csdn.net/haoel/article/details/2886&lt;/p&gt;
+
+&lt;h4 id=&quot;white&quot;&gt;White：如何实现大量文件的依赖关系？&lt;/h4&gt;
+
+&lt;p&gt;&lt;em&gt;Black:&lt;/em&gt; 如果项目有很多文件,每一次新增,删除文件都要重新修改makefile文件,这是一个枯燥又繁琐的工作,如何更加省时省力的构建makefile文件,主要有如下几种方式:&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;静态模式&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;objects = foo.o bar.o
+
+all: $(objects)
+
+$(objects): %.o: %.c
+    $(CC) -c $&amp;lt; -o $@&lt;/code&gt;&lt;/pre&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;解释:把所有需要编译的目标文件通过objects变量定义好,然后通过&lt;code&gt;$(objects): %.o: %.c&lt;/code&gt;的静态模式把结尾的o换成c实现了依赖关系.命令中的“$&amp;lt;”表示所有的依赖目标集（也就是“foo.c bar.c”），“$@”表示目标集（也就是“foo.o bar.o”）。&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;自动生成依赖性&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt; %.d: %.c
+    @set -e; rm -f $@; /
+     $(CC) -M  $&amp;lt; &amp;gt; $@.$$$$; /
+     sed &amp;#39;s,/($*/)/.o[ :]*,/1.o $@ : ,g&amp;#39; &amp;lt; $@.$$$$ &amp;gt; $@; /
+     rm -f $@.$$$$&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;解释:上面代码是通过&lt;code&gt;gcc -MM a.c&lt;/code&gt;来确定a.c依赖的头文件的依赖关系,为每个c文件生成一个对应的.d文件.此时.d文件内容可能是这样子&lt;code&gt;a.o : a.c c.h&lt;/code&gt;这也正是makefile隐藏模式的依赖关系.后面通过include把生成的.d文件引入到主makefile文件&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;sources = foo.c bar.c
+include $(sources:.c=.d)&lt;/code&gt;&lt;/pre&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;$(sources:.c=.d)是把变量sources中的.c换成.d然后包含进来.这样a.c的头文件发生变化了,.d文件也会重新生成,依赖关系也重新生成了,省时省力美好了很多.&lt;/p&gt;
+&lt;hr /&gt;
+&lt;h4 id=&quot;whitemake&quot;&gt;White：make过程中如何查看命令反馈？&lt;/h4&gt;
+
+&lt;p&gt;&lt;em&gt;Black:&lt;/em&gt; 如果make执行时，带入make参数“-n”或“–just-print”，那么其只是显示命令，但不会执行命令，这个功能很有利于我们调试我们的Makefile，看看我们书写的命令是执行起来是什么样子的或是什么顺序的。而make参数“-s”或“–slient”则是全面禁止命令的显示。&lt;/p&gt;
+
+&lt;p&gt;在make过程中可以通过在命令前面增加@来隐藏该显示命令,只现实结果.&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;默认命令: echo 正在编译XXX模块......
+
+输出:       echo 正在编译XXX模块......
+            正在编译XXX模块......
+
+ 加@命令: @echo 正在编译XXX模块......
+
+ 输出:          正在编译XXX模块......&lt;/code&gt;&lt;/pre&gt;
+&lt;hr /&gt;
+&lt;h4 id=&quot;white_2&quot;&gt;White：如何定义一个可复用的命令包？&lt;/h4&gt;
+
+&lt;p&gt;&lt;em&gt;Black:&lt;/em&gt;&lt;/p&gt;
+
+&lt;p&gt;如果Makefile中出现一些相同命令序列，那么我们可以为这些相同的命令序列定义一个变量。定义这种命令序列的语法以“define”开始，以“endef”结束，如：&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;define runyacc
+yacc $(firstword $^)
+mv y.tab.c $@
+endef&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;这里，“runyacc”是这个命令包的名字，其不要和Makefile中的变量重名。在“define”和“endef”中的两行就是命令序列。&lt;/p&gt;
+
+&lt;p&gt;使用方式如下:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;foo.c : foo.y
+        $(run-yacc)&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;提示:其实命令包就是一个看起来复杂的变量,其中包含命令的执行,使用方式和变量也一样.&lt;/p&gt;
+&lt;hr /&gt;
+&lt;h4 id=&quot;whitemakefile&quot;&gt;White：makefile还有哪些内容？&lt;/h4&gt;
+
+&lt;p&gt;&lt;em&gt;Black:&lt;/em&gt; 更多变量使用方法,条件语句,函数等内容还请参见陈皓先生博客http://blog.csdn.net/haoel/article/details/2886 .&lt;/p&gt;
+
+&lt;p&gt;函数需要时候查一下手册或者陈皓先生博客就好,即使想写也没有什么可以简化了,照搬陈皓先生博客也没有太大意义,就到此为止了.&lt;/p&gt;
+&lt;hr /&gt;</description>
+                <link>http://izhanghuaning.github.io/2010/01/30/krc-makefile2.html</link>
+                <guid>http://izhanghuaning.github.io/2010/01/30/krc-makefile2</guid>
+                <pubDate>2010-01-30T00:00:00+08:00</pubDate>
+        </item>
+
+        <item>
+                <title>c语言编译makefile入门</title>
+                <description>&lt;p&gt;本篇是根据陈皓先生的&lt;a href=&quot;http://blog.csdn.net/haoel/article/details/2886&quot;&gt;跟我一起写 Makefile&lt;/a&gt;简化而来,如想了解更多请参见陈皓先生博客http://blog.csdn.net/haoel/article/details/2886&lt;/p&gt;
+
+&lt;h4 id=&quot;whitemakemakefile&quot;&gt;White：什么是make和makefile？&lt;/h4&gt;
+
+&lt;p&gt;&lt;em&gt;Black:&lt;/em&gt; make是gnu提供的c源码编译的工具.正如前面提到的c语言源代码要经过编译才能生成可执行文件.编译过程分为预处理,编译,汇编和链接等步骤.汇编后产生了二进制文件.o文件,然后进行链接生成最终的可执行文件.&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;在linux系统常常会见到需要自己编译源代码进行安装的程序,其就是使用make工具进行,一般步骤是在你得到源代码以后这样子:
+
+    &amp;gt; tar zxvf xxx.tar.gz ( or tar jxvf xxx.tar.bz2)
+    &amp;gt; cd xxx
+    &amp;gt; ./configure
+    &amp;gt; make&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;.c文件首先被编译成.o文件,如果.o文件很多,那么他们之间可能就会有复杂的依赖关系,makefile文件就是处理这些依赖关系的文件.make工具通过读取makefile文件查看.o文件之间的相互依赖关系和查看文件更改情况,按需编译.c文件生成最新版本的可执行文件.&lt;/p&gt;
+
+&lt;p&gt;上面的configure一般是一个脚本,就是用来检查机器环境和依赖,并且生成makefile文件.&lt;/p&gt;
+
+&lt;p&gt;编辑好makefile文件以后,编译可执行文件只需要make一下就可以了,make命令会查找并使用当前目录下的makefile文件.&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;    &amp;gt; make &lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;makefile的最基本形式是:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;    target ... : prerequisites ...
+        command ...
+        ...
+        ...&lt;/code&gt;&lt;/pre&gt;
+&lt;hr /&gt;
+&lt;h4 id=&quot;whitemakefile&quot;&gt;White：简要介绍一下一个简单的makefile文件的例子？&lt;/h4&gt;
+
+&lt;p&gt;&lt;em&gt;Black:&lt;/em&gt; 简单的makefile的例子可能如下,源文件有4个文件组成,分别是a.c, b.c, c.h, d.h, 其中a.c引用了c.h, b.c引用了c.h d.h头文件.&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;    helloworld : a.o b.o
+        gcc -o helloworld a.o b.o
+
+    a.o : a.c c.h
+        gcc -c a.c
+    b.o : b.c c.h d.h
+        gcc -c b.c
+
+    .PHONY : clean
+    clean:
+        -rm -rf helloworld a.o b.o&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;简要说明: 每一段大体上都是根据上面提到的基本格式 target : prerequisites ; cmd.&lt;/p&gt;
+
+&lt;p&gt;例如第一段:target是helloworld,prerequisites是a.o b.o ,cmd是 gcc -o helloworld a.o b.o. 第二段与第一段一致,依赖中有了头文件.&lt;/p&gt;
+
+&lt;p&gt;在进行make时,第一个target是主要target,其他所有target都是为主要的服务的,所以一定要注意顺序,就是出现在makefile文件中的顺序.&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;如果第一次进行make时,没有helloworld,也没有&lt;code&gt;*.o&lt;/code&gt;文件那么make判断所有第二段的target都要执行,也就是编译&lt;code&gt;*.c&lt;/code&gt;文件成&lt;code&gt;*.o&lt;/code&gt;文件,再链接成helloworld可执行文件.&lt;/p&gt;
+&lt;/li&gt;
+
+&lt;li&gt;
+&lt;p&gt;如果不是第一次make,假如a.c文件修改过,那么make判断target a.o需要执行,继而helloworld也要被执行,其他不执行.&lt;/p&gt;
+&lt;/li&gt;
+
+&lt;li&gt;
+&lt;p&gt;如果d.h更改了,那么target a.o b.o都需要执行,继而helloworld也要被执行.&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;第三段比较特殊,其实他们不会被make执行.PHONY表明其后面的clean等是伪目标,因为clean后面没有依赖prerequisites,只有cmd.&lt;/p&gt;
+
+&lt;p&gt;clean要想被执行需要在&lt;code&gt;make clean&lt;/code&gt;这样才能执行,其目的是清理以前生成的文件.&lt;/p&gt;
+&lt;hr /&gt;
+&lt;h4 id=&quot;whitecleantarget&quot;&gt;White：像clean这样的常用的伪target有哪些？&lt;/h4&gt;
+
+&lt;p&gt;&lt;em&gt;Black:&lt;/em&gt; 在unix世界,特别像gnu这种开源软件发布时,makefile都包含了编译,安装,打包等功能,我们可以参照这些规则来定义makefile中的伪目标&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;all : 所有目标的目标,其功能一般是编译所有目标&lt;/li&gt;
+
+&lt;li&gt;clean : 删除所有被make创建的文件.&lt;/li&gt;
+
+&lt;li&gt;install : 安装已编译好的程序,其实就是把目标执行文件拷贝到特定目标中去.&lt;/li&gt;
+
+&lt;li&gt;print : 列出改变过的源文件&lt;/li&gt;
+
+&lt;li&gt;tar : 把源程序打包备份,也就是一个tar文件&lt;/li&gt;
+
+&lt;li&gt;dist : 常见一个压缩文件,一般是把tar文件压缩成z或gz文件.&lt;/li&gt;
+
+&lt;li&gt;TAGS : 更新所有的目标, 以备完整的重新编译使用&lt;/li&gt;
+
+&lt;li&gt;check和test : 测试makefile流程.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;如果你需要上面这些功能,请尽量用这些名字定义伪目标,因为这样才众所周知,不用不停查看readme和manual.&lt;/p&gt;
+&lt;hr /&gt;
+&lt;h4 id=&quot;whitemakefile_2&quot;&gt;White：如何使用变量和自动推导简化makefile文件编写？&lt;/h4&gt;
+
+&lt;p&gt;&lt;em&gt;Black:&lt;/em&gt; makefile文件中可以使用变量,make也可以根据一定规则自动推导简化的makefile文件.&lt;/p&gt;
+
+&lt;p&gt;上面简单的例子可以简化成如下版本:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;objects = a.o b.o
+
+helloworld : $(objects)
+    gcc -o helloworld $(objects)
+
+a.o : c.h
+b.o : c.h d.h
+
+.PHONY : clean
+clean: 
+    -rm -rf helloworld $(objects)&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;注意: * 第一行不是target : prerequisites ; cmd格式,而是定义一个变量objects.&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;后续通过$(objects)替代原来的a.o b.o;包括伪目标clean中的,甚至可以替代shell的命令本身.&lt;/p&gt;
+&lt;/li&gt;
+
+&lt;li&gt;
+&lt;p&gt;第二段中没有了cmd行,prerequisites中也没有target对应的c文件.这样格式才可以自动推导的.&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;hr /&gt;
+&lt;h4 id=&quot;whitemake&quot;&gt;White：make的工作方式怎样？&lt;/h4&gt;
+
+&lt;p&gt;&lt;em&gt;Black:&lt;/em&gt;&lt;/p&gt;
+
+&lt;ol&gt;
+&lt;li&gt;读入makefile&lt;/li&gt;
+
+&lt;li&gt;读入被include的makefile&lt;/li&gt;
+
+&lt;li&gt;初始化文件中的变量&lt;/li&gt;
+
+&lt;li&gt;根据自动推导规则和变量分析文件&lt;/li&gt;
+
+&lt;li&gt;为所有target创建依赖关系&lt;/li&gt;
+
+&lt;li&gt;根据依赖关系和文件更新情况,决定重新生成哪些target&lt;/li&gt;
+
+&lt;li&gt;执行生成命令,得到可执行文件.&lt;/li&gt;
+&lt;/ol&gt;
+&lt;hr /&gt;
+&lt;h4 id=&quot;whitemakefile_3&quot;&gt;White：编辑makefile文件需要注意哪些？&lt;/h4&gt;
+
+&lt;p&gt;&lt;em&gt;Black:&lt;/em&gt;&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;注意顺序,第一个target被make认为是主target,默认情况make只认着一个target,其他都是为主服务的.&lt;/p&gt;
+&lt;/li&gt;
+
+&lt;li&gt;
+&lt;p&gt;command可以是任何shell命令,注意前面是tab制表符,否则不会被当作command执行.&lt;/p&gt;
+&lt;/li&gt;
+
+&lt;li&gt;
+&lt;p&gt;如果command同target : prerequisites写在一行,则prerequisites;后面需要加上分号(;),这时cmd前面不需要tab.&lt;/p&gt;
+&lt;/li&gt;
+
+&lt;li&gt;
+&lt;p&gt;command前面如果加上负号(-)则表明即使命令出错也不停止,忽略错误继续.&lt;/p&gt;
+&lt;/li&gt;
+
+&lt;li&gt;
+&lt;p&gt;makefile文件可以include其他makefile文件,如c语言那样.&lt;/p&gt;
+&lt;/li&gt;
+
+&lt;li&gt;
+&lt;p&gt;makefile文件中可以使用通配符&lt;code&gt;* ? %&lt;/code&gt;等,需要使用它们本身需要使用转义字符&lt;code&gt;&amp;quot;/&amp;quot;&lt;/code&gt;.&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;hr /&gt;</description>
+                <link>http://izhanghuaning.github.io/2010/01/25/krc-makefile.html</link>
+                <guid>http://izhanghuaning.github.io/2010/01/25/krc-makefile</guid>
+                <pubDate>2010-01-25T00:00:00+08:00</pubDate>
+        </item>
+
+        <item>
+                <title>c语言函数简介</title>
+                <description>&lt;h4 id=&quot;white&quot;&gt;White：函数是什么？&lt;/h4&gt;
+
+&lt;p&gt;&lt;em&gt;Black:&lt;/em&gt; gcc是linux系统下的c语言编译环境,当然也能编译其他语言,一般默认情况下linux系统自带gcc编译环境.&lt;/p&gt;
+&lt;hr /&gt;
+&lt;h4 id=&quot;white_2&quot;&gt;White：函数声明和函数定义有什么差别？&lt;/h4&gt;
+
+&lt;p&gt;&lt;em&gt;Black:&lt;/em&gt; gcc是linux系统下的c语言编译环境,当然也能编译其他语言,一般默认情况下linux系统自带gcc编译环境.&lt;/p&gt;
+&lt;hr /&gt;
+&lt;h4 id=&quot;whitegcc&quot;&gt;White：什么是gcc？&lt;/h4&gt;
+
+&lt;p&gt;&lt;em&gt;Black:&lt;/em&gt; gcc是linux系统下的c语言编译环境,当然也能编译其他语言,一般默认情况下linux系统自带gcc编译环境.&lt;/p&gt;
+&lt;hr /&gt;
+&lt;h4 id=&quot;whitegcc_2&quot;&gt;White：什么是gcc？&lt;/h4&gt;
+
+&lt;p&gt;&lt;em&gt;Black:&lt;/em&gt; gcc是linux系统下的c语言编译环境,当然也能编译其他语言,一般默认情况下linux系统自带gcc编译环境.&lt;/p&gt;
+&lt;hr /&gt;
+&lt;h4 id=&quot;whitegcc_3&quot;&gt;White：什么是gcc？&lt;/h4&gt;
+
+&lt;p&gt;&lt;em&gt;Black:&lt;/em&gt; gcc是linux系统下的c语言编译环境,当然也能编译其他语言,一般默认情况下linux系统自带gcc编译环境.&lt;/p&gt;
+&lt;hr /&gt;
+&lt;h4 id=&quot;whitegcc_4&quot;&gt;White：什么是gcc？&lt;/h4&gt;
+
+&lt;p&gt;&lt;em&gt;Black:&lt;/em&gt; gcc是linux系统下的c语言编译环境,当然也能编译其他语言,一般默认情况下linux系统自带gcc编译环境.&lt;/p&gt;
+&lt;hr /&gt;
+&lt;h4 id=&quot;whitegcc_5&quot;&gt;White：什么是gcc？&lt;/h4&gt;
+
+&lt;p&gt;&lt;em&gt;Black:&lt;/em&gt; gcc是linux系统下的c语言编译环境,当然也能编译其他语言,一般默认情况下linux系统自带gcc编译环境.&lt;/p&gt;
+&lt;hr /&gt;</description>
+                <link>http://izhanghuaning.github.io/2010/01/20/krc-function.html</link>
+                <guid>http://izhanghuaning.github.io/2010/01/20/krc-function</guid>
+                <pubDate>2010-01-20T00:00:00+08:00</pubDate>
+        </item>
+
+        <item>
+                <title>c语言调试工具gdb简介</title>
+                <description>&lt;p&gt;本篇是根据陈皓先生的&lt;a href=&quot;http://blog.csdn.net/haoel/article/details/2879&quot;&gt;用GDB调试程序&lt;/a&gt;简化而来,如想了解更多请参见陈皓先生博客http://blog.csdn.net/haoel/article/details/2879.&lt;/p&gt;
+
+&lt;h4 id=&quot;white&quot;&gt;White：如何产生可调试的可执行文件？&lt;/h4&gt;
+
+&lt;p&gt;&lt;em&gt;Black:&lt;/em&gt; 一般来说GDB主要调试的是C/C++的程序。要调试C/C++的程序，首先在编译时，我们必须要把调试信息加到可执行文件中。使用编译器（cc/gcc/g++）的 -g 参数可以做到这一点。如：&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;    cc -g hello.c -o hello
+    g++ -g hello.cpp -o hello&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;如果没有-g，你将看不见程序的函数名、变量名，所代替的全是运行时的内存地址。当你用-g把调试信息加入之后，并成功编译目标代码以后，让我们来看看如何用gdb来调试他。&lt;/p&gt;
+&lt;hr /&gt;
+&lt;h4 id=&quot;whitegdb&quot;&gt;White：常用的使用gdb基本步骤有哪些？&lt;/h4&gt;
+
+&lt;p&gt;&lt;em&gt;Black:&lt;/em&gt; 根据上面的步骤,首先我们有了带有调试信息的可执行文件hello,使用gdb调试基本步骤有如下:&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;gdb hello:加在hello文件至gdb.&lt;/li&gt;
+
+&lt;li&gt;gdb&amp;gt; list:查看源文件hello.c的代码&lt;/li&gt;
+
+&lt;li&gt;gdb&amp;gt; break &amp;lt; linenum&amp;gt;或break &amp;lt; funcname&amp;gt;:设置断点至某行或者某个函数开始位置&lt;/li&gt;
+
+&lt;li&gt;gdb&amp;gt; info break:查看已设置的断点&lt;/li&gt;
+
+&lt;li&gt;gdb&amp;gt; run:开始调试&lt;/li&gt;
+
+&lt;li&gt;gdb&amp;gt; p &amp;lt; exp&amp;gt;或p &amp;lt; var&amp;gt;;显示断点位置表达式的值,也可以是变量.&lt;/li&gt;
+
+&lt;li&gt;gdb&amp;gt; p var i=10;更改变量i的值.&lt;/li&gt;
+
+&lt;li&gt;gdb&amp;gt; step:单步调试下一步,遇到函数进入&lt;/li&gt;
+
+&lt;li&gt;gdb&amp;gt; next:单步调试下一步,遇到函数不进入&lt;/li&gt;
+
+&lt;li&gt;gdb&amp;gt; continue:下一个断点位置&lt;/li&gt;
+
+&lt;li&gt;gdb&amp;gt; backtrace:查看堆栈信息&lt;/li&gt;
+
+&lt;li&gt;gdb&amp;gt; finish:退出函数&lt;/li&gt;
+
+&lt;li&gt;gdb&amp;gt; return:忽视后续断点,执行至函数结束&lt;/li&gt;
+
+&lt;li&gt;gdb&amp;gt; quit:退出gdb调试&lt;/li&gt;
+
+&lt;li&gt;gdb&amp;gt; clear:删除所有断点&lt;/li&gt;
+
+&lt;li&gt;gdb&amp;gt; clear &amp;lt; linenum&amp;gt; | clear &amp;lt; funcname&amp;gt;:删除特定断点&lt;/li&gt;
+
+&lt;li&gt;gdb&amp;gt; delete &amp;lt; linenum&amp;gt; | clear &amp;lt; funcname&amp;gt;:删除特定断点&lt;/li&gt;
+
+&lt;li&gt;gdb&amp;gt; disable &amp;lt; breaknum&amp;gt;:禁用但不删除断点&lt;/li&gt;
+
+&lt;li&gt;gdb&amp;gt; enbale &amp;lt; breaknum&amp;gt;:启用断点&lt;/li&gt;
+
+&lt;li&gt;gdb&amp;gt; search &amp;lt; regexp&amp;gt;:当前位置向后搜索源文件&lt;/li&gt;
+
+&lt;li&gt;gdb&amp;gt; reverse-search &amp;lt; regexp&amp;gt;:当前位置向前搜索源文件&lt;/li&gt;
+
+&lt;li&gt;gdb&amp;gt; &amp;lt; enter&amp;gt;:重复执行上一条命令&lt;/li&gt;
+
+&lt;li&gt;gdb&amp;gt; help:查看gdb的help&lt;/li&gt;
+
+&lt;li&gt;gdb&amp;gt; help breakpoints:查看gdb的breakpoints的help&lt;/li&gt;
+&lt;/ul&gt;
+&lt;hr /&gt;
+&lt;h4 id=&quot;whitegdb_2&quot;&gt;White：gdb进阶使用的命令有哪些？&lt;/h4&gt;
+
+&lt;p&gt;&lt;em&gt;Black:&lt;/em&gt;&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;gdb&amp;gt; break &amp;lt; linenum&amp;gt; if i==100:条件设置断点,满足条件才中断&lt;/li&gt;
+
+&lt;li&gt;gdb&amp;gt; condition &amp;lt; breaknum&amp;gt; i==101:修改条件设置的断点&lt;/li&gt;
+
+&lt;li&gt;gdb&amp;gt; conditon &amp;lt; breaknum&amp;gt;:删除条件设置断点的条件.&lt;/li&gt;
+
+&lt;li&gt;gdb&amp;gt; shell &amp;lt; cmd string&amp;gt;:在gdb中使用shell命令&lt;/li&gt;
+
+&lt;li&gt;gdb&amp;gt; make &amp;lt; make-arg&amp;gt;:使用make命令,重新build自己的程序&lt;/li&gt;
+
+&lt;li&gt;gdb&amp;gt; watch &amp;lt; exp&amp;gt;:观察表达式(变量)的值,如果变化则中断&lt;/li&gt;
+
+&lt;li&gt;gdb&amp;gt; rwatch &amp;lt; exp&amp;gt;:观察表达式(变量),如果被读取则中断&lt;/li&gt;
+
+&lt;li&gt;gdb&amp;gt; info watchpoints:查看设置的观察点&lt;/li&gt;
+
+&lt;li&gt;gdb&amp;gt; step &amp;lt; count&amp;gt;:count次单步执行,遇到函数进入&lt;/li&gt;
+
+&lt;li&gt;gdb&amp;gt; next &amp;lt; count&amp;gt;:count次单步执行,遇到函数不进入&lt;/li&gt;
+
+&lt;li&gt;gdb&amp;gt; step &amp;lt; count&amp;gt;:count次单步执行,遇到函数进入&lt;/li&gt;
+
+&lt;li&gt;gdb&amp;gt; coutinue &amp;lt; ingore-count&amp;gt;:忽视后续n个断点,继续&lt;/li&gt;
+
+&lt;li&gt;gdb&amp;gt; list &amp;lt; linenum&amp;gt;:查看linenum附近的代码&lt;/li&gt;
+
+&lt;li&gt;gdb&amp;gt; list &amp;lt; funcname&amp;gt;:查看func的代码&lt;/li&gt;
+
+&lt;li&gt;gdb&amp;gt; list:查看当前行后的代码&lt;/li&gt;
+
+&lt;li&gt;gdb&amp;gt; list -:查看当前行前的代码&lt;/li&gt;
+&lt;/ul&gt;
+&lt;hr /&gt;
+&lt;h4 id=&quot;whitegdb_3&quot;&gt;White：gdb中高级命令有哪些？&lt;/h4&gt;
+
+&lt;p&gt;&lt;em&gt;Black:&lt;/em&gt;&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;gdb&amp;gt; commands &amp;lt; breaknum&amp;gt; –cmd list– end:为断点停止时执行cmd命令&lt;/li&gt;
+
+&lt;li&gt;gdb&amp;gt; commands &amp;lt; breaknum&amp;gt; end:清除为断点停止时执行cmd命令&lt;/li&gt;
+
+&lt;li&gt;gdb&amp;gt; info line &amp;lt; linenum&amp;gt;|&amp;lt; funcname&amp;gt;:显示行号或函数运行时的内存地址&lt;/li&gt;
+
+&lt;li&gt;gdb&amp;gt; disassembel &amp;lt; func&amp;gt;:编译显示func的汇编代码&lt;/li&gt;
+
+&lt;li&gt;gdb&amp;gt; display &amp;lt; exp&amp;gt;:停止后自动显示信息&lt;/li&gt;
+
+&lt;li&gt;gdb&amp;gt; info display:显示自动显示信息&lt;/li&gt;
+
+&lt;li&gt;gdb&amp;gt; undisplay &amp;lt; dnum&amp;gt;:取消特定自动显示信息&lt;/li&gt;
+
+&lt;li&gt;gdb&amp;gt; frame:显示当前栈层信息&lt;/li&gt;
+
+&lt;li&gt;gdb&amp;gt; info frame:显示当前栈层详细信息&lt;/li&gt;
+
+&lt;li&gt;gdb&amp;gt; info args:显示当前函数参数及值&lt;/li&gt;
+
+&lt;li&gt;gdb&amp;gt; info locals:显示当前函数所有本地变量&lt;/li&gt;
+
+&lt;li&gt;gdb&amp;gt; info catch:显示当前函数所有异常处理信息&lt;/li&gt;
+
+&lt;li&gt;gdb&amp;gt; info registers:查看寄存器信息&lt;/li&gt;
+
+&lt;li&gt;gdb&amp;gt; call &amp;lt; exp&amp;gt;:表达式中可以是函数，达到强制调用函数的目的,并显示函数的返回值&lt;/li&gt;
+
+&lt;li&gt;gdb&amp;gt; x/&amp;lt; n/f/u&amp;gt; &amp;lt; addr&amp;gt;:查看内存&lt;/li&gt;
+&lt;/ul&gt;
+&lt;hr /&gt;
+&lt;h4 id=&quot;whitegdb_4&quot;&gt;White：gdb的查看内存方式如何解释？&lt;/h4&gt;
+
+&lt;p&gt;&lt;em&gt;Black:&lt;/em&gt;&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;    gdb&amp;gt; x/&amp;lt; n/f/u&amp;gt; &amp;lt; addr&amp;gt;:查看内存&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;n 是一个正整数，表示显示内存的长度，也就是说从当前地址向后显示几个地址的内容。&lt;/p&gt;
+
+&lt;p&gt;f 表示显示的格式，参见上面。如果地址所指的是字符串，那么格式可以是s，如果地十是指令地址，那么格式可以是i。 u表示从当前地址往后请求的字节数，如果不指定的话，GDB默认是4个bytes。u参数可以用下面的字符来代替，b表示单字节，h表示双字节，w表示四字节，g表示八字节。当我们指定了字节长度后，GDB会从指内存定的内存地址开始，读写指定字节，并把其当作一个值取出来。print的格式化方式p/c aaa;&lt;/p&gt;
+
+&lt;p&gt;命令：x/3uh 0x54320 表示，从内存地址0x54320读取内容，h表示以双字节为一个单位，3表示三个单位，u表示按十六进制显示。&lt;/p&gt;
+&lt;hr /&gt;
+&lt;h4 id=&quot;whitegdbprint&quot;&gt;White：gdb的print有哪些格式？&lt;/h4&gt;
+
+&lt;p&gt;&lt;em&gt;Black:&lt;/em&gt; print的格式化方式p/c aaa;&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt; x  按十六进制格式显示变量。
+ d  按十进制格式显示变量。
+ u  按十六进制格式显示无符号整型。
+ o  按八进制格式显示变量。
+ t  按二进制格式显示变量。 
+ a  按十六进制格式显示变量。
+ c  按字符格式显示变量。
+ f  按浮点数格式显示变量。&lt;/code&gt;&lt;/pre&gt;
+&lt;hr /&gt;
+&lt;h4 id=&quot;whitegdb_5&quot;&gt;White：gdb使用小结？&lt;/h4&gt;
+
+&lt;p&gt;&lt;em&gt;Black:&lt;/em&gt; 完全摘抄陈皓先生文章:&lt;/p&gt;
+
+&lt;p&gt;GDB是一个强大的命令行调试工具。大家知道命令行的强大就是在于，其可以形成执行序列，形成脚本。UNIX下的软件全是命令行的，这给程序开发提代供了极大的便利，命令行软件的优势在于，它们可以非常容易的集成在一起，使用几个简单的已有工具的命令，就可以做出一个非常强大的功能。 于是UNIX下的软件比Windows下的软件更能有机地结合，各自发挥各自的长处，组合成更为强劲的功能。而Windows下的图形软件基本上是各自为营，互相不能调用，很不利于各种软件的相互集成。在这里并不是要和Windows做个什么比较，所谓“寸有所长，尺有所短”，图形化工具还是有不如命令行的地方。（看到这句话时，希望各位千万再也不要认为我就是“鄙视图形界面”，和我抬杠了 ）&lt;/p&gt;
+&lt;hr /&gt;</description>
+                <link>http://izhanghuaning.github.io/2010/01/15/krc-gdb.html</link>
+                <guid>http://izhanghuaning.github.io/2010/01/15/krc-gdb</guid>
+                <pubDate>2010-01-15T00:00:00+08:00</pubDate>
+        </item>
+
+        <item>
+                <title>c语言print格式化</title>
+                <description>&lt;h4 id=&quot;whiteprintf&quot;&gt;White：什么是printf函数？&lt;/h4&gt;
+
+&lt;p&gt;&lt;em&gt;Black:&lt;/em&gt; printf函数是c语言标准库提供的输出函数,可以把其参数指定的内容输出到控制台.其参数可以格式化输出内容.&lt;/p&gt;
+
+&lt;p&gt;函数原型为:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;    int printf(const char *format,[argument]);&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;format参数输出的格式,定义格式为:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;    %[flags][width][.perc][F|N|h|I]type&lt;/code&gt;&lt;/pre&gt;
+&lt;hr /&gt;
+&lt;h4 id=&quot;whiteformat&quot;&gt;White：format的一般用法是哪些？&lt;/h4&gt;
+
+&lt;p&gt;&lt;em&gt;Black:&lt;/em&gt;&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;%d:十进制整数&lt;/li&gt;
+
+&lt;li&gt;%u:无符号十进制整数&lt;/li&gt;
+
+&lt;li&gt;%o:无符号八进制整数&lt;/li&gt;
+
+&lt;li&gt;%x|%X:无符号十六进制整数&lt;/li&gt;
+
+&lt;li&gt;%c:字符&lt;/li&gt;
+
+&lt;li&gt;%s:字符串&lt;/li&gt;
+
+&lt;li&gt;%p:十六进制形式表示的指针地址&lt;/li&gt;
+
+&lt;li&gt;%%:百分号本身&lt;/li&gt;
+
+&lt;li&gt;%f:小数&lt;/li&gt;
+&lt;/ul&gt;
+&lt;hr /&gt;
+&lt;h4 id=&quot;whitewidth&quot;&gt;White：如何控制输出参数的宽度width？&lt;/h4&gt;
+
+&lt;p&gt;&lt;em&gt;Black:&lt;/em&gt;&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;%nd:输出宽度n,右对齐,左边填充0和空格&lt;/li&gt;
+
+&lt;li&gt;%-nd:输出宽度n,左对齐,右边填充空格&lt;/li&gt;
+&lt;/ul&gt;
+&lt;hr /&gt;
+&lt;h4 id=&quot;white&quot;&gt;White：如何显示正负号？&lt;/h4&gt;
+
+&lt;p&gt;&lt;em&gt;Black:&lt;/em&gt;&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;%+d:显示正负号&lt;/li&gt;
+
+&lt;li&gt;% d:只显示负数的符号&lt;/li&gt;
+&lt;/ul&gt;
+&lt;hr /&gt;
+&lt;h4 id=&quot;white_2&quot;&gt;White：如何控制浮点数小数位数？&lt;/h4&gt;
+
+&lt;p&gt;&lt;em&gt;Black:&lt;/em&gt;&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;%.nf:显示n位小数&lt;/li&gt;
+
+&lt;li&gt;%e|%E:科学记数法&lt;/li&gt;
+&lt;/ul&gt;
+&lt;hr /&gt;
+&lt;h4 id=&quot;white_3&quot;&gt;White：如何表示长整数或者双精度浮点数？&lt;/h4&gt;
+
+&lt;p&gt;&lt;em&gt;Black:&lt;/em&gt;&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;%ld:长整数&lt;/li&gt;
+
+&lt;li&gt;%lf:双精度浮点数&lt;/li&gt;
+
+&lt;li&gt;%hd:短整数&lt;/li&gt;
+
+&lt;li&gt;%hf:单精度浮点数&lt;/li&gt;
+&lt;/ul&gt;
+&lt;hr /&gt;
+&lt;h4 id=&quot;white_4&quot;&gt;White：有哪些常用的转义字符？&lt;/h4&gt;
+
+&lt;p&gt;&lt;em&gt;Black:&lt;/em&gt;&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;\ddd:八进制显示ASCII任意字符&lt;/li&gt;
+
+&lt;li&gt;\xhh:十六进制显示ASCII任意字符&lt;/li&gt;
+
+&lt;li&gt;\n:换行&lt;/li&gt;
+
+&lt;li&gt;\:斜杠\本身&lt;/li&gt;
+&lt;/ul&gt;
+&lt;hr /&gt;
+&lt;h4 id=&quot;white_5&quot;&gt;White：特殊用法？&lt;/h4&gt;
+
+&lt;p&gt;&lt;em&gt;Black:&lt;/em&gt;&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;    %n:后面参数是一个指针,n存放已写字符的个数.&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;例如:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;    int slen;
+    printf(&amp;quot;hello world%n&amp;quot;);
+    执行后slen被赋值为11.&lt;/code&gt;&lt;/pre&gt;
+&lt;hr /&gt;</description>
+                <link>http://izhanghuaning.github.io/2010/01/10/krc-format.html</link>
+                <guid>http://izhanghuaning.github.io/2010/01/10/krc-format</guid>
+                <pubDate>2010-01-10T00:00:00+08:00</pubDate>
+        </item>
+
+        <item>
+                <title>c语言gcc编译环境简介</title>
+                <description>&lt;h4 id=&quot;whitegcc&quot;&gt;White：什么是gcc？&lt;/h4&gt;
+
+&lt;p&gt;&lt;em&gt;Black:&lt;/em&gt; gcc是linux系统下的c语言编译环境,当然也能编译其他语言,一般默认情况下linux系统自带gcc编译环境.&lt;/p&gt;
+&lt;hr /&gt;
+&lt;h4 id=&quot;whitegccc&quot;&gt;White：如何使用gcc编译c文件？&lt;/h4&gt;
+
+&lt;p&gt;&lt;em&gt;Black:&lt;/em&gt; 比如通过文本编辑器写了一个helloworld.c的程序.使用下面参数的gcc命令.&lt;/p&gt;
+
+&lt;p&gt;c语言编译由预处理,编译,汇编,链接等过程,下面每一步都包含了前面的过程.&lt;/p&gt;
+
+&lt;p&gt;预处理:gcc -o hw.i -E helloworld.c :得到hw.i文件,进行头文件包含,删除注释,宏命令替换,条件编译选择等处理最终本质还是.c文件,输出.i是自选的,代表Intermediate(中间的).&lt;/p&gt;
+
+&lt;p&gt;编译: gcc -S -O1 helloworld.c :得到helloworld.s的汇编代码文件,经过词法,语法分析正确后进行编译,O1代表gcc优化级别,优化级别越高执行效率越高,也越难直接看懂..s文件还是文本文件,能够直接通过编辑器查看.&lt;/p&gt;
+
+&lt;p&gt;汇编: gcc -c helloworld.c :得到helloworld.o的二进制文件,把汇编代码变成机器代码,不能通过编辑器查看了.但是可以通过objdump -d helloworld.o看到相应的机器代码及汇编代码,此时内存地址还没有.&lt;/p&gt;
+
+&lt;p&gt;链接:gcc -o hw helloworld.c :得到hw的可执行二进制文件,如果没有明确指定输出文件hw则输出到a.out文件.可以使用objdump -d hw看到机器代码及汇编代码,此时已经分配相应的内存地址.&lt;/p&gt;
+
+&lt;p&gt;分析:gcc -MD helloworld.c :得到helloworld.d的关联信息,包括文件所以来的所有文件的列表.&lt;/p&gt;
+&lt;hr /&gt;
+&lt;h4 id=&quot;whitegnu&quot;&gt;White：什么是gnu？&lt;/h4&gt;
+
+&lt;p&gt;&lt;em&gt;Black:&lt;/em&gt; gnu是一个开源项目,旨在建立自由(free)的系统,提供了gcc,gdb,make,emacs,gnome,bash等众多工具,但是它最终没有提供操作系统内核,它选择使用linux作为操作系统内核.&lt;/p&gt;
+&lt;hr /&gt;
+&lt;h4 id=&quot;whitegdb&quot;&gt;White：什么是gdb？&lt;/h4&gt;
+
+&lt;p&gt;&lt;em&gt;Black:&lt;/em&gt; gnu提供的bug调试器,命令行调试器.gdb 可以让您查看程序的内部结构、打印变量值、设置断点，以及单步调试源代码。它是功能极其强大的工具，适用于修复程序代码中的问题。&lt;/p&gt;
+
+&lt;p&gt;使用gdb首先要在可执行文件中加入调试信息,这个可以通过下面命令实现编译helloworld文件生成带调试信息的hw可执行程序:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;    gcc -g helloworld.c -o hw&lt;/code&gt;&lt;/pre&gt;
+&lt;hr /&gt;</description>
+                <link>http://izhanghuaning.github.io/2010/01/05/krc-gcc.html</link>
+                <guid>http://izhanghuaning.github.io/2010/01/05/krc-gcc</guid>
+                <pubDate>2010-01-05T00:00:00+08:00</pubDate>
+        </item>
+
+        <item>
+                <title>c编程语言简介</title>
+                <description>&lt;h4 id=&quot;whiteckr&quot;&gt;White：简要介绍一下”c程序设计语言”及”k&amp;amp;r”？&lt;/h4&gt;
+
+&lt;p&gt;&lt;em&gt;Black:&lt;/em&gt;在计算机发展的历史上，没有哪一种程序设计语言像C语言这样应用广泛,是现代软件行业基石一般的存在。”the c program language”为C语言的设计者之一Dennis M.Ritchie和著名计算机科学家Brian W Kernighan合著的一本介绍C语言的权威经典著作。我们现在见到的大量论述C语言程序设计的教材和专著均以此书为蓝本。人们熟知的”hello,World”程序就是由本书首次引入的。&lt;/p&gt;
+
+&lt;p&gt;由于最初的c语言就是个人而不是由某个组织设计的,所以c语言最大的特点就是本身规则简单,虽然使用它不一定很简单.&lt;/p&gt;
+&lt;hr /&gt;
+&lt;h4 id=&quot;whitec&quot;&gt;White：怎样学习c语言？&lt;/h4&gt;
+
+&lt;p&gt;&lt;em&gt;Black:&lt;/em&gt; 学习任何编程语言甚至人类语言的方法都是去使用它,熟能生巧.首先在你的机器上安装c语言的编译环境gcc,然后跟随教程的顺序使用它.&lt;/p&gt;
+
+&lt;p&gt;学习c语言基本上只看k&amp;amp;r的”c程序设计语言”就可以了.&lt;/p&gt;
+&lt;hr /&gt;
+&lt;h4 id=&quot;whitec_2&quot;&gt;White：为什么要学习c语言？&lt;/h4&gt;
+
+&lt;p&gt;&lt;em&gt;Black:&lt;/em&gt; c语言作为一门古老的高级语言,从现代语言的眼光看有很多的不足,但是c语言至今仍是使用最多的语言之一是有道理的.&lt;/p&gt;
+
+&lt;p&gt;首先,c语言是高级语言,比机器语言,汇编语言高级很多,从人的角度编写程序,而不是从机器的角度,所以比较高效.&lt;/p&gt;
+
+&lt;p&gt;其次,c语言是底层语言,使用c语言可以比较容易操作内存和硬件,运行很高效,大多数操作系统都是c语言编写的,比如unix,windows的内核.&lt;/p&gt;
+
+&lt;p&gt;再次,学习c语言结合gcc编译环境可以更加容易理解程序在硬件运行的本质.&lt;/p&gt;
+
+&lt;p&gt;最后,现在虽然高级语言使用人员很多,但是现在和历史上大量项目还是使用c语言开发和编写的,在偏硬件和底层软件行业有大量的工作机会.&lt;/p&gt;
+&lt;hr /&gt;</description>
+                <link>http://izhanghuaning.github.io/2010/01/01/krc-introduction.html</link>
+                <guid>http://izhanghuaning.github.io/2010/01/01/krc-introduction</guid>
+                <pubDate>2010-01-01T00:00:00+08:00</pubDate>
         </item>
 
 

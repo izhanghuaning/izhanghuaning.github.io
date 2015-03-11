@@ -1,0 +1,377 @@
+
+<!DOCTYPE html>
+<!--[if IE 7 ]>    <html lang="zh-CN" class="ie7"> <![endif]-->
+<!--[if IE 8 ]>    <html lang="zh-CN" class="ie8"> <![endif]-->
+<!--[if (gte IE 9)|!(IE)]><!--> <html lang="zh-CN"> <!--<![endif]-->
+  <head>
+	  <meta charset="utf-8">
+	  <!--[if IE 8 ]><meta http-equiv="X-UA-Compatible" content="IE=7"><![endif]-->
+	  <title>c语言调试工具gdb简介</title>
+	<meta name="keywords" content="c,gdb,debug">
+    <meta name="description" content="">
+    <meta name="author" content="张华宁">
+
+    <!-- Enable responsive viewport -->
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+	<!-- Favicon -->
+	<link rel="shortcut icon" href="/favicon.ico">
+
+    <!-- atom & rss feed -->
+    <link href="/atom.xml" type="application/atom+xml" rel="alternate" title="Sitewide ATOM Feed">
+    <link href="/rss.xml" type="application/rss+xml" rel="alternate" title="Sitewide RSS Feed">
+
+	<!-- Styles 
+	<link rel="stylesheet" href="/assets/themes/twitter/css/style.min.css">
+	<link rel="stylesheet" href="/assets/themes/twitter/css/font-awesome.min.css">
+	-->
+	<!-- le Styles -->
+	<link rel="stylesheet" href="/assets/themes/twitter/bootstrap/css/bootstrap.2.2.2.min.css">
+	<link rel="stylesheet" href="/assets/themes/twitter/css/style.css?body=1">
+
+	<!-- Scripts -->
+	<script type="text/javascript" src="/assets/themes/twitter/js/jquery-1.10.1.min.js"></script>
+
+    <!-- Le HTML5 shim, for IE6-8 support of HTML elements -->
+    <!--[if lt IE 9]>
+	<script src="/assets/themes/twitter/js/html5shiv.js"></script>
+    <![endif]-->
+
+  </head>
+
+  <body>
+    <div class="navbar">
+      <div class="navbar-inner">
+        <div class="container-narrow">
+          <a class="brand" href="/">张华宁的笔记本</a>
+          <ul class="nav">
+           <!-- 
+            
+            
+
+
+  
+    
+      
+      	
+      	<li><a href="/tags.html">标签</a></li>
+      	
+      
+    
+  
+    
+      
+    
+  
+    
+      
+    
+  
+    
+      
+    
+  
+    
+      
+    
+  
+    
+      
+    
+  
+    
+      
+    
+  
+    
+      
+      	
+      	<li><a href="/about.html">关于我</a></li>
+      	
+      
+    
+  
+    
+      
+    
+  
+    
+      
+      	
+      	<li><a href="/archive.html">归档</a></li>
+      	
+      
+    
+  
+
+
+ -->
+            <li><a href="/index.html">首页</a></li>
+            <li><a href="/archive.html">归档</a></li>
+            <li><a href="/tags.html">标签</a></li>
+            <li><a href="/about.html">关于我</a></li>
+          </ul>
+        </div>
+      </div>
+    </div>
+
+    <div class="container-narrow">
+
+      <div class="content">
+        
+<div class="page-header">
+  <h1>c语言调试工具gdb简介 </h1>
+</div>
+
+<div class="row-fluid post-full">
+  <div class="span12">
+    <div class="date">
+      <span>15 January 2010</span>
+    </div>
+    <div class="content">
+      <p>本篇是根据陈皓先生的<a href="http://blog.csdn.net/haoel/article/details/2879">用GDB调试程序</a>简化而来,如想了解更多请参见陈皓先生博客http://blog.csdn.net/haoel/article/details/2879.</p>
+
+<h4 id="white">White：如何产生可调试的可执行文件？</h4>
+
+<p><em>Black:</em> 一般来说GDB主要调试的是C/C++的程序。要调试C/C++的程序，首先在编译时，我们必须要把调试信息加到可执行文件中。使用编译器（cc/gcc/g++）的 -g 参数可以做到这一点。如：</p>
+
+<pre><code>    cc -g hello.c -o hello
+    g++ -g hello.cpp -o hello</code></pre>
+
+<p>如果没有-g，你将看不见程序的函数名、变量名，所代替的全是运行时的内存地址。当你用-g把调试信息加入之后，并成功编译目标代码以后，让我们来看看如何用gdb来调试他。</p>
+<hr />
+<h4 id="whitegdb">White：常用的使用gdb基本步骤有哪些？</h4>
+
+<p><em>Black:</em> 根据上面的步骤,首先我们有了带有调试信息的可执行文件hello,使用gdb调试基本步骤有如下:</p>
+
+<ul>
+<li>gdb hello:加在hello文件至gdb.</li>
+
+<li>gdb&gt; list:查看源文件hello.c的代码</li>
+
+<li>gdb&gt; break &lt; linenum&gt;或break &lt; funcname&gt;:设置断点至某行或者某个函数开始位置</li>
+
+<li>gdb&gt; info break:查看已设置的断点</li>
+
+<li>gdb&gt; run:开始调试</li>
+
+<li>gdb&gt; p &lt; exp&gt;或p &lt; var&gt;;显示断点位置表达式的值,也可以是变量.</li>
+
+<li>gdb&gt; p var i=10;更改变量i的值.</li>
+
+<li>gdb&gt; step:单步调试下一步,遇到函数进入</li>
+
+<li>gdb&gt; next:单步调试下一步,遇到函数不进入</li>
+
+<li>gdb&gt; continue:下一个断点位置</li>
+
+<li>gdb&gt; backtrace:查看堆栈信息</li>
+
+<li>gdb&gt; finish:退出函数</li>
+
+<li>gdb&gt; return:忽视后续断点,执行至函数结束</li>
+
+<li>gdb&gt; quit:退出gdb调试</li>
+
+<li>gdb&gt; clear:删除所有断点</li>
+
+<li>gdb&gt; clear &lt; linenum&gt; | clear &lt; funcname&gt;:删除特定断点</li>
+
+<li>gdb&gt; delete &lt; linenum&gt; | clear &lt; funcname&gt;:删除特定断点</li>
+
+<li>gdb&gt; disable &lt; breaknum&gt;:禁用但不删除断点</li>
+
+<li>gdb&gt; enbale &lt; breaknum&gt;:启用断点</li>
+
+<li>gdb&gt; search &lt; regexp&gt;:当前位置向后搜索源文件</li>
+
+<li>gdb&gt; reverse-search &lt; regexp&gt;:当前位置向前搜索源文件</li>
+
+<li>gdb&gt; &lt; enter&gt;:重复执行上一条命令</li>
+
+<li>gdb&gt; help:查看gdb的help</li>
+
+<li>gdb&gt; help breakpoints:查看gdb的breakpoints的help</li>
+</ul>
+<hr />
+<h4 id="whitegdb_2">White：gdb进阶使用的命令有哪些？</h4>
+
+<p><em>Black:</em></p>
+
+<ul>
+<li>gdb&gt; break &lt; linenum&gt; if i==100:条件设置断点,满足条件才中断</li>
+
+<li>gdb&gt; condition &lt; breaknum&gt; i==101:修改条件设置的断点</li>
+
+<li>gdb&gt; conditon &lt; breaknum&gt;:删除条件设置断点的条件.</li>
+
+<li>gdb&gt; shell &lt; cmd string&gt;:在gdb中使用shell命令</li>
+
+<li>gdb&gt; make &lt; make-arg&gt;:使用make命令,重新build自己的程序</li>
+
+<li>gdb&gt; watch &lt; exp&gt;:观察表达式(变量)的值,如果变化则中断</li>
+
+<li>gdb&gt; rwatch &lt; exp&gt;:观察表达式(变量),如果被读取则中断</li>
+
+<li>gdb&gt; info watchpoints:查看设置的观察点</li>
+
+<li>gdb&gt; step &lt; count&gt;:count次单步执行,遇到函数进入</li>
+
+<li>gdb&gt; next &lt; count&gt;:count次单步执行,遇到函数不进入</li>
+
+<li>gdb&gt; step &lt; count&gt;:count次单步执行,遇到函数进入</li>
+
+<li>gdb&gt; coutinue &lt; ingore-count&gt;:忽视后续n个断点,继续</li>
+
+<li>gdb&gt; list &lt; linenum&gt;:查看linenum附近的代码</li>
+
+<li>gdb&gt; list &lt; funcname&gt;:查看func的代码</li>
+
+<li>gdb&gt; list:查看当前行后的代码</li>
+
+<li>gdb&gt; list -:查看当前行前的代码</li>
+</ul>
+<hr />
+<h4 id="whitegdb_3">White：gdb中高级命令有哪些？</h4>
+
+<p><em>Black:</em></p>
+
+<ul>
+<li>gdb&gt; commands &lt; breaknum&gt; –cmd list– end:为断点停止时执行cmd命令</li>
+
+<li>gdb&gt; commands &lt; breaknum&gt; end:清除为断点停止时执行cmd命令</li>
+
+<li>gdb&gt; info line &lt; linenum&gt;|&lt; funcname&gt;:显示行号或函数运行时的内存地址</li>
+
+<li>gdb&gt; disassembel &lt; func&gt;:编译显示func的汇编代码</li>
+
+<li>gdb&gt; display &lt; exp&gt;:停止后自动显示信息</li>
+
+<li>gdb&gt; info display:显示自动显示信息</li>
+
+<li>gdb&gt; undisplay &lt; dnum&gt;:取消特定自动显示信息</li>
+
+<li>gdb&gt; frame:显示当前栈层信息</li>
+
+<li>gdb&gt; info frame:显示当前栈层详细信息</li>
+
+<li>gdb&gt; info args:显示当前函数参数及值</li>
+
+<li>gdb&gt; info locals:显示当前函数所有本地变量</li>
+
+<li>gdb&gt; info catch:显示当前函数所有异常处理信息</li>
+
+<li>gdb&gt; info registers:查看寄存器信息</li>
+
+<li>gdb&gt; call &lt; exp&gt;:表达式中可以是函数，达到强制调用函数的目的,并显示函数的返回值</li>
+
+<li>gdb&gt; x/&lt; n/f/u&gt; &lt; addr&gt;:查看内存</li>
+</ul>
+<hr />
+<h4 id="whitegdb_4">White：gdb的查看内存方式如何解释？</h4>
+
+<p><em>Black:</em></p>
+
+<pre><code>    gdb&gt; x/&lt; n/f/u&gt; &lt; addr&gt;:查看内存</code></pre>
+
+<p>n 是一个正整数，表示显示内存的长度，也就是说从当前地址向后显示几个地址的内容。</p>
+
+<p>f 表示显示的格式，参见上面。如果地址所指的是字符串，那么格式可以是s，如果地十是指令地址，那么格式可以是i。 u表示从当前地址往后请求的字节数，如果不指定的话，GDB默认是4个bytes。u参数可以用下面的字符来代替，b表示单字节，h表示双字节，w表示四字节，g表示八字节。当我们指定了字节长度后，GDB会从指内存定的内存地址开始，读写指定字节，并把其当作一个值取出来。print的格式化方式p/c aaa;</p>
+
+<p>命令：x/3uh 0x54320 表示，从内存地址0x54320读取内容，h表示以双字节为一个单位，3表示三个单位，u表示按十六进制显示。</p>
+<hr />
+<h4 id="whitegdbprint">White：gdb的print有哪些格式？</h4>
+
+<p><em>Black:</em> print的格式化方式p/c aaa;</p>
+
+<pre><code> x  按十六进制格式显示变量。
+ d  按十进制格式显示变量。
+ u  按十六进制格式显示无符号整型。
+ o  按八进制格式显示变量。
+ t  按二进制格式显示变量。 
+ a  按十六进制格式显示变量。
+ c  按字符格式显示变量。
+ f  按浮点数格式显示变量。</code></pre>
+<hr />
+<h4 id="whitegdb_5">White：gdb使用小结？</h4>
+
+<p><em>Black:</em> 完全摘抄陈皓先生文章:</p>
+
+<p>GDB是一个强大的命令行调试工具。大家知道命令行的强大就是在于，其可以形成执行序列，形成脚本。UNIX下的软件全是命令行的，这给程序开发提代供了极大的便利，命令行软件的优势在于，它们可以非常容易的集成在一起，使用几个简单的已有工具的命令，就可以做出一个非常强大的功能。 于是UNIX下的软件比Windows下的软件更能有机地结合，各自发挥各自的长处，组合成更为强劲的功能。而Windows下的图形软件基本上是各自为营，互相不能调用，很不利于各种软件的相互集成。在这里并不是要和Windows做个什么比较，所谓“寸有所长，尺有所短”，图形化工具还是有不如命令行的地方。（看到这句话时，希望各位千万再也不要认为我就是“鄙视图形界面”，和我抬杠了 ）</p>
+<hr />
+    </div>
+
+    
+
+  
+    <ul class="tag_box inline">
+      <li><i class="icon-tags"></i></li>
+      
+      
+
+
+  
+     
+    	<li><a href="/tags.html#c-ref">c <span>7</span></a></li>
+    
+  
+
+
+
+    </ul>
+    
+
+    <hr>
+    <div class="pagination">
+      <ul>
+      
+        <li class="prev"><a href="/2010/01/10/krc-format.html" title="c语言print格式化">&larr; Previous</a></li>
+      
+        <li><a href="/archive.html">Archive</a></li>
+      
+        <li class="next"><a href="/2010/01/20/krc-function.html" title="c语言函数简介">Next &rarr;</a></li>
+      
+      </ul>
+    </div>
+    <hr>
+    
+
+
+  <div id="disqus_thread"></div>
+<script type="text/javascript">
+    var disqus_developer = 1;
+    var disqus_shortname = 'izhanghuaning'; // required: replace example with your forum shortname
+    
+    /* * * DON'T EDIT BELOW THIS LINE * * */
+    (function() {
+        var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+        dsq.src = 'http://' + disqus_shortname + '.disqus.com/embed.js';
+        (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    })();
+</script>
+<noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+<a href="http://disqus.com" class="dsq-brlink">blog comments powered by <span class="logo-disqus">Disqus</span></a>
+
+
+
+
+  </div>
+</div>
+
+
+      </div>
+	  <hr>
+      <footer>
+        <p>&copy;2011-2014 张华宁
+          基于 <a href="http://jekyllbootstrap.com" target="_blank" title="The Definitive Jekyll Blogging Framework">Jekyll Bootstrap</a>
+          和 <a href="http://twitter.github.com/bootstrap/" target="_blank">Twitter Bootstrap</a> 搭建,
+		  <em><strong>本博客的很多想法来自于其他优秀博客作者，时隔久远不能给出每个链接了，如果原作者觉得被冒犯，请留言或联系我（izhanghuaning$163.com），我会及时进行处理，衷心感谢你们，本博客内容和源代码遵循<a href="http://opensource.org/licenses/mit-license.php" target="_blank">MIT开源协议</a>,转载请注明出处，谢谢。</strong></em>
+        </p>
+      </footer>
+
+    </div>
+
+    
+  </body>
+</html>
+
